@@ -1,0 +1,15 @@
+automaton C7:
+  disc bool C5_I1__func2__blk_async__C7_async_var = false;
+  event I1__func2__arslt_blk_ret__C5;
+  location loc1:
+    initial;
+    marked;
+    edge C5.I1__event__evt_evtcb__C7 goto loc2;
+    edge C5.I1__func2__blk_async__C7 when C5_I1__func2__blk_async__C7_async_var = false do C5_I1__func2__blk_async__C7_async_var := true goto loc1;
+  location loc2:
+    edge I1__func2__arslt_blk_ret__C5 when C5_I1__func2__blk_async__C7_async_var = true do C5_I1__func2__blk_async__C7_async_var := false goto loc1;
+end
+group C5:
+  event I1__event__evt_evtcb__C7;
+  event I1__func2__blk_async__C7;
+end

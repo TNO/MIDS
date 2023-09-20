@@ -1,0 +1,23 @@
+group C31:
+  event I22__func074__blk_async__C13;
+end
+group C13:
+  event I22__func074__arslt_blk_ret__C31;
+  event I22__func074__arslt_ret;
+  event I22__func074__async_ret;
+  automaton C31_I22__func074__blk_async__C13:
+    location loc1:
+      initial;
+      marked;
+      edge C31.I22__func074__blk_async__C13 goto loc2;
+    location loc2:
+      marked;
+      edge I22__func074__arslt_blk_ret__C31 goto loc3;
+    location loc3:
+      marked;
+      edge I22__func074__arslt_ret goto loc4;
+    location loc4:
+      marked;
+      edge I22__func074__async_ret goto loc1;
+  end
+end

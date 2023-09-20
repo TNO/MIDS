@@ -1,0 +1,47 @@
+automaton TypesServer:
+  event Interface__async_call__arslt_call_ret__Interface_untraced;
+  event Interface__async_call__arslt_ret;
+  event Interface__async_call__async_ret;
+  event Interface__subscribe__evtsubh;
+  event Interface__sync_call__sync_ret_call_ret__Interface_untraced;
+  event Interface__trigger__trigh;
+  event Interface__unsubscribe__evtunsubh;
+  location loc1:
+    initial;
+    marked;
+    edge Interface_untraced.Interface__async_call__call_async__TypesServer goto loc2;
+    edge Interface_untraced.Interface__library_call__call_sync__TypesServer goto loc1;
+    edge Interface_untraced.Interface__subscribe__evtsub_evtsubh__TypesServer goto loc5;
+    edge Interface_untraced.Interface__sync_call__call_sync__TypesServer goto loc6;
+    edge Interface_untraced.Interface__trigger__trig_trigh__TypesServer goto loc7;
+    edge Interface_untraced.Interface__unsubscribe__evtunsub_evtunsubh__TypesServer goto loc8;
+  location loc2:
+    marked false;
+    edge Interface__async_call__async_ret goto loc3;
+  location loc3:
+    marked false;
+    edge Interface__async_call__arslt_call_ret__Interface_untraced goto loc4;
+  location loc4:
+    marked false;
+    edge Interface__async_call__arslt_ret goto loc1;
+  location loc5:
+    marked false;
+    edge Interface__subscribe__evtsubh goto loc1;
+  location loc6:
+    marked false;
+    edge Interface__sync_call__sync_ret_call_ret__Interface_untraced goto loc1;
+  location loc7:
+    marked false;
+    edge Interface__trigger__trigh goto loc1;
+  location loc8:
+    marked false;
+    edge Interface__unsubscribe__evtunsubh goto loc1;
+end
+group Interface_untraced:
+  event Interface__async_call__call_async__TypesServer;
+  event Interface__library_call__call_sync__TypesServer;
+  event Interface__subscribe__evtsub_evtsubh__TypesServer;
+  event Interface__sync_call__call_sync__TypesServer;
+  event Interface__trigger__trig_trigh__TypesServer;
+  event Interface__unsubscribe__evtunsub_evtunsubh__TypesServer;
+end

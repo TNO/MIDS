@@ -1,0 +1,38 @@
+digraph diffautomaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle"];
+	4 [label=<s4> shape="doublecircle"];
+	5 [label=<s5> shape="doublecircle"];
+	6 [label=<s6> shape="doublecircle"];
+	7 [label=<s7> shape="doublecircle"];
+	8 [label=<s8> shape="doublecircle"];
+	9 [label=<s9> shape="doublecircle"];
+	10 [label=<s10> shape="doublecircle"];
+	11 [label=<s11> shape="doublecircle"];
+	12 [label=<s12> shape="doublecircle"];
+	13 [label=<s13> shape="doublecircle"];
+	14 [label=<s14> shape="doublecircle"];
+	15 [label=<s15> shape="doublecircle"];
+	16 [label=<s16> shape="doublecircle"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<<font color="#000000">C20.I29__func156__sync_ret_fcncb__CI1</font>> id="1-0-2"];
+	2 -> 3 [label=<<font color="#000000">CI1.I29__func104__fcn_sync__C20</font>> id="2-0-3"];
+	3 -> 4 [label=<<font color="#000000">CI1.I29__func104__fcn_ret</font>> id="3-0-4"];
+	4 -> 5 [label=<<font color="#000000">CI1.I11__func011__blk</font>> id="4-0-5"];
+	4 -> 1 [label=<<font color="#000000">CI1.I29__func156__fcncb_ret</font>> id="4-1-1"];
+	5 -> 6 [label=<<font color="#000000">CI1.I11__func011__sync</font>> id="5-0-6"];
+	6 -> 7 [label=<<font color="#000000">CI1.I9__func055__blk_sync__C7</font>> id="6-0-7"];
+	7 -> 8 [label=<<font color="#000000">C7.I9__func055__sync_ret_blk_ret__CI1</font>> id="7-0-8"];
+	8 -> 9 [label=<<font color="#000000">CI1.I17__func026__blk_sync__C10</font>> id="8-0-9"];
+	9 -> 10 [label=<<font color="#000000">C10.I17__func026__sync_ret_blk_ret__CI1</font>> id="9-0-10"];
+	10 -> 11 [label=<<font color="#000000">CI1.I11__func011__sync_ret</font>> id="10-0-11"];
+	11 -> 12 [label=<<font color="#000000">CI1.I11__func011__blk_ret</font>> id="11-0-12"];
+	12 -> 14 [label=<<font color="#000000">CI1.I10__C33__fcn_async__C7</font>> id="12-0-14"];
+	12 -> 1 [label=<<font color="#00cc00">CI1.I29__func156__fcncb_ret</font>> color="#00cc00" id="12-1-1"];
+	13 -> 1 [label=<<font color="#000000">CI1.I29__func156__fcncb_ret</font>> id="13-0-1"];
+	14 -> 15 [label=<<font color="#000000">CI1.I10__C33__fcn_ret</font>> id="14-0-15"];
+	15 -> 16 [label=<<font color="#000000">CI1.CI1__func112__evt_evtcb__C17</font>> id="15-0-16"];
+	16 -> 13 [label=<<font color="#000000">CI1.CI1__func112__evt_ret</font>> id="16-0-13"];
+}

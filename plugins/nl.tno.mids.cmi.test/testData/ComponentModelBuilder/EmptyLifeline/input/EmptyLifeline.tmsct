@@ -1,0 +1,21 @@
+executor Empty as Empty
+executor Client as Client
+executor Server as Server
+
+interface IServer {
+    operation f
+}
+
+component ClientComp
+function "f call" as f_call implements IServer.f { execType: blk }
+
+component ServerComp
+function "f call handle" as f_call_handle implements IServer.f { execType: sync }
+
+/* The trace itself. */
+
+// Blocking call/return example.
+1 Client ClientComp > f_call !M1
+1.12 Server ServerComp > f_call_handle ?M1
+3.5 Server ServerComp < f_call_handle !M2
+3.6 Client ClientComp < f_call ?M2

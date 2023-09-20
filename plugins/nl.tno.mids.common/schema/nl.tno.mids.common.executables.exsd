@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<schema targetNamespace="nl.tno.mids.common" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="nl.tno.mids.common" id="nl.tno.mids.common.executables" name="MIDS Executables"/>
+      </appinfo>
+      <documentation>
+         MIDS uses some external executables. This extension point allows providing bundled versions of these executables.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="provider"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The id of the extension point.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  The id of the extension. Not used.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  The name of the extension. Not used.
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="provider">
+      <annotation>
+         <documentation>
+            A MIDS exectuables provider.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The class that implements the executables provider.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn="nl.tno.mids.common.MidsExecutablesProvider:"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="plugin" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The full name of the OSGi plugin that provides the provider class.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;extension point=&quot;nl.tno.mids.common.executables&quot;&gt;
+   &lt;provider plugin=&quot;my.company.mids.executables&quot; class=&quot;my.company.mids.executables.MidsExecutablesProvider&quot;/&gt;
+&lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         Copyright (c) TNO
+      </documentation>
+   </annotation>
+
+</schema>

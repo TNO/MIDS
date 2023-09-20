@@ -1,0 +1,63 @@
+group CI1:
+  event CI1__func091__evt_evtcb__C17;
+  event CI1__func091__evt_ret;
+  event CI1__func121__evt_evtcb__C17;
+  event CI1__func121__evt_ret;
+  event I10__func002__evtunsub_evtunsubh__C7;
+  event I10__func002__evtunsub_ret;
+  event I10__func004__evtunsub_evtunsubh__C7;
+  event I10__func004__evtunsub_ret;
+  event I10__func006__evtunsub_evtunsubh__C7;
+  event I10__func006__evtunsub_ret;
+  event I10__func007__evtunsub_evtunsubh__C7;
+  event I10__func007__evtunsub_ret;
+  event I10__func008__evtunsub_evtunsubh__C7;
+  event I10__func008__evtunsub_ret;
+  event I10__func009__evtunsub_evtunsubh__C7;
+  event I10__func009__evtunsub_ret;
+  event I10__func010__evtunsub_evtunsubh__C7;
+  event I10__func010__evtunsub_ret;
+  event I10__func038__evtunsub_evtunsubh__C7;
+  event I10__func038__evtunsub_ret;
+  event I10__func081__evtunsub_evtunsubh__C7;
+  event I10__func081__evtunsub_ret;
+  event I10__func087__evtunsub_evtunsubh__C7;
+  event I10__func087__evtunsub_ret;
+  event I10__func090__evtunsub_evtunsubh__C7;
+  event I10__func090__evtunsub_ret;
+  event I10__func158__evtunsub_evtunsubh__C7;
+  event I10__func158__evtunsub_ret;
+  event I10__func159__evtunsub_evtunsubh__C7;
+  event I10__func159__evtunsub_ret;
+  event I10__func165__fcncb_ret;
+  event I24__func036__evtunsub_evtunsubh__C14;
+  event I24__func036__evtunsub_ret;
+  event I24__func126__evtunsub_evtunsubh__C14;
+  event I24__func126__evtunsub_ret;
+  event I24__func130__evtunsub_evtunsubh__C14;
+  event I24__func130__evtunsub_ret;
+  event I44__func157__evtunsub_evtunsubh__C34;
+  event I44__func157__evtunsub_ret;
+  event I48__func033__blk_sync__C37;
+  automaton C7_I10__func165__sync_ret_fcncb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C7.I10__func165__sync_ret_fcncb__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge CI1__func091__evt_evtcb__C17 goto loc3;
+    location loc3:
+      marked;
+      edge CI1__func091__evt_ret goto loc4;
+    location loc4:
+      marked;
+      edge I10__func165__fcncb_ret goto loc1;
+  end
+end
+group C37:
+  event I48__func033__sync_ret_blk_ret__CI1;
+end
+group C7:
+  event I10__func165__sync_ret_fcncb__CI1;
+end

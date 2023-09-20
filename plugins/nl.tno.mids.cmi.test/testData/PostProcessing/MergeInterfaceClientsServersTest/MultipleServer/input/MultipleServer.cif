@@ -1,0 +1,23 @@
+automaton MultipleServer:
+  event Interface__doThat__fcn_sync__ServerA;
+  event Interface__doThat__fcn_sync__ServerB;
+  location loc1: 
+    initial; 
+    marked;
+    edge Interface__doThat__fcn_sync__ServerA goto loc2;
+  location loc2: 
+    marked false; 
+    edge ServerA.Interface__doThat__sync_ret_fcncb__MultipleServer goto loc3;
+  location loc3: 
+    marked false; 
+    edge Interface__doThat__fcn_sync__ServerB goto loc4;
+  location loc4:
+    marked false;
+    edge ServerB.Interface__doThat__sync_ret_fcncb__MultipleServer goto loc1;
+end
+group ServerA:
+  event Interface__doThat__sync_ret_fcncb__MultipleServer;
+end
+group ServerB:
+  event Interface__doThat__sync_ret_fcncb__MultipleServer;
+end

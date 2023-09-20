@@ -1,0 +1,6 @@
+-input
+input/extraction.tmsc
+-output
+output_actual
+-post-processing
+ExcludeInternalTransitions

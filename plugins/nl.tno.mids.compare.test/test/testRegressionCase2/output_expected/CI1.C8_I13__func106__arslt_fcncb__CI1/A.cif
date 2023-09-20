@@ -1,0 +1,31 @@
+group C8:
+  event I13__func106__arslt_fcncb__CI1;
+end
+group CI1:
+  event I13__func106__fcncb_ret;
+  event CI1__func133__evt_evtcb__C17;
+  event CI1__func133__evt_ret;
+  event I28__func108__evt_evtcb__C17;
+  event I28__func108__evt_ret;
+  automaton C8_I13__func106__arslt_fcncb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C8.I13__func106__arslt_fcncb__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I28__func108__evt_evtcb__C17 goto loc3;
+    location loc3:
+      marked;
+      edge I28__func108__evt_ret goto loc4;
+    location loc4:
+      marked;
+      edge CI1__func133__evt_evtcb__C17 goto loc5;
+    location loc5:
+      marked;
+      edge CI1__func133__evt_ret goto loc6;
+    location loc6:
+      marked;
+      edge I13__func106__fcncb_ret goto loc1;
+  end
+end

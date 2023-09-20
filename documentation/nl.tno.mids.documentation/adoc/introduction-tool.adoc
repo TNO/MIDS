@@ -1,0 +1,38 @@
+/////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+//
+// This program and the accompanying materials are made available
+// under the terms of the MIT License which is available at
+// https://opensource.org/licenses/MIT
+//
+// SPDX-License-Identifier: MIT
+/////////////////////////////////////////////////////////////////////////
+
+include::_initCommon.adoc[]
+
+[[mids-tool]]
+=== MIDS tool
+
+MIDS is an Integrated Development Environment (IDE) based on the http://eclipse.org[Eclipse^] IDE.
+Within Eclipse, the files to work with are part of a project.
+The available projects are shown in the _Project Explorer_.
+
+TIP: MIDS provides its own Eclipse perspective configuring all recommended views to be visible.
+This perspective is set by default, but can also be manually set as described in the http://help.eclipse.org/2021-12/topic/org.eclipse.platform.doc.user/tasks/tasks-9f.htm[Eclipse documentation^].
+
+image::{imgsdir}/tool-project-explorer.png[]
+
+Each project is simply a directory on the hard disk, and can be expanded to show the files and directories it contains.
+
+One way to work with files and directories is to right click on them, showing a menu with various _commands_.
+
+image::{imgsdir}/tool-file-popup-menu.png[]
+
+For instance, it is possible to remove or rename a file, create a new file in a directory, etc.
+Most of this is standard Eclipse functionality.
+MIDS does provide some additional commands, specific to the functionality it provides.
+Such commands are explained in more detail in other parts of this user guide.
+
+Another way to work with files is to open them in an _editor_.
+By double clicking a file, it is opened in the default editor that is associated with that file.
+The specific editors available in MIDS are explained in other parts of this user guide.

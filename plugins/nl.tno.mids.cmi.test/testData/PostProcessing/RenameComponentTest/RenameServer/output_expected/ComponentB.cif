@@ -1,0 +1,19 @@
+automaton ComponentB:
+  event Interface__FunctionCall__arslt_fcncb__ComponentClient;
+  event pc2__abc__fcn;
+  event pc3__abc__fcn;
+  location loc1:
+    initial;
+    marked;
+    edge pc3__abc__fcn goto loc2;
+    edge ComponentClient.Interface__FunctionCall__fcn_async__ComponentB goto loc3;
+  location loc2:
+    marked false;
+    edge Interface__FunctionCall__arslt_fcncb__ComponentClient goto loc1;
+  location loc3:
+    marked false;
+    edge pc2__abc__fcn goto loc1;
+end
+group ComponentClient:
+  event Interface__FunctionCall__fcn_async__ComponentB;
+end

@@ -1,0 +1,23 @@
+a#mids-userguide img {
+    background-image: url(../../images/mids32.png);
+}
+
+a#mids-userguide:hover img {
+    background-image: url(../../images/mids32.png);
+}
+
+a#mids-tutorials img {
+    background-image: url(../../images/mids32.png);
+}
+
+a#mids-tutorials:hover img {
+    background-image: url(../../images/mids32.png);
+}
+
+a#mids-release-notes img {
+    background-image: url(../../images/mids32.png);
+}
+
+a#mids-release-notes:hover img {
+    background-image: url(../../images/mids32.png);
+}

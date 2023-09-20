@@ -1,0 +1,12 @@
+digraph diffautomaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	4 [label=<s4> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<<font color="#000000">C7.I10__func009__evt_evtcb__CI1</font>> id="1-0-2"];
+	2 -> 3 [label=<<font color="#00cc00">CI1.I10__func027__fcn_sync__C7</font>> color="#00cc00" id="2-0-3"];
+	3 -> 4 [label=<<font color="#00cc00">CI1.I10__func027__fcn_ret</font>> color="#00cc00" id="3-0-4"];
+	4 -> 1 [label=<<font color="#00cc00">CI1.I10__func009__evtcb_ret</font>> color="#00cc00" id="4-0-1"];
+}

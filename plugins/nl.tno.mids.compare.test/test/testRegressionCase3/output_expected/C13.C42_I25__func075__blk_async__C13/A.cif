@@ -1,0 +1,23 @@
+group C42:
+  event I25__func075__blk_async__C13;
+end
+group C13:
+  event I25__func075__arslt_blk_ret__C42;
+  event I25__func075__arslt_ret;
+  event I25__func075__async_ret;
+  automaton C42_I25__func075__blk_async__C13:
+    location loc1:
+      initial;
+      marked;
+      edge C42.I25__func075__blk_async__C13 goto loc2;
+    location loc2:
+      marked;
+      edge I25__func075__arslt_blk_ret__C42 goto loc3;
+    location loc3:
+      marked;
+      edge I25__func075__arslt_ret goto loc4;
+    location loc4:
+      marked;
+      edge I25__func075__async_ret goto loc1;
+  end
+end

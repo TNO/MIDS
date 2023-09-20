@@ -1,0 +1,23 @@
+group C29:
+  event I25__func152__blk_async__C13;
+end
+group C13:
+  event I25__func152__async_ret;
+  event I56__func152__fcn_ret;
+  event I56__func152__fcn_sync__C13;
+  automaton C29_I25__func152__blk_async__C13:
+    location loc1:
+      initial;
+      marked;
+      edge C29.I25__func152__blk_async__C13 goto loc2;
+    location loc2:
+      marked;
+      edge I56__func152__fcn_sync__C13 goto loc3;
+    location loc3:
+      marked;
+      edge I56__func152__fcn_ret goto loc4;
+    location loc4:
+      marked;
+      edge I25__func152__async_ret goto loc1;
+  end
+end

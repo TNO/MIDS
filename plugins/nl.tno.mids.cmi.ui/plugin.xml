@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<plugin>
+
+   <extension
+         id="nl.tno.mids.cmi.ui.fragment"
+         point="org.eclipse.e4.workbench.model">
+      <fragment
+            uri="fragment.e4xmi">
+      </fragment>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="nl.tno.mids.cmi.ui.selectedOptionFiles">
+         <with
+               variable="selection">
+            <iterate
+                  ifEmpty="false"
+                  operator="and">
+               <adapt
+                     type="org.eclipse.core.resources.IFile">
+               </adapt>
+               <test
+                     property="org.eclipse.core.resources.name"
+                     value="*.txt">
+               </test>
+            </iterate>
+         </with>
+      </definition>
+      <definition
+            id="nl.tno.mids.cmi.ui.selectedTmscFiles">
+         <with
+               variable="selection">
+            <iterate
+                  ifEmpty="false"
+                  operator="and">
+               <adapt
+                     type="org.eclipse.core.resources.IFile">
+               </adapt>
+               <or>
+                  <test
+                        property="org.eclipse.core.resources.name"
+                        value="*.tmsc">
+                  </test>
+                  <test
+                        property="org.eclipse.core.resources.name"
+                        value="*.tmscz">
+                  </test>
+               </or>
+            </iterate>
+         </with>
+      </definition>
+   </extension>
+
+   <extension-point id="nl.tno.mids.cmi.ui.postprocessing"
+                    name="MIDS CMI Post-processing UI"
+                    schema="schema/nl.tno.mids.cmi.ui.postprocessing.exsd"/>
+
+   <extension
+         point="nl.tno.mids.cmi.ui.postprocessing">
+      <provider
+            plugin="nl.tno.mids.cmi.ui"
+            class="nl.tno.mids.cmi.ui.postprocessing.ExcludeInternalTransitionsUIProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi.ui"
+            class="nl.tno.mids.cmi.ui.postprocessing.InjectDomainKnowledgeUIProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi.ui"
+            class="nl.tno.mids.cmi.ui.postprocessing.ModifyRepetitionsUIProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi.ui"
+            class="nl.tno.mids.cmi.ui.postprocessing.PrefixCloseUIProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi.ui"
+            class="nl.tno.mids.cmi.ui.postprocessing.HideActionsUIProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi.ui"
+            class="nl.tno.mids.cmi.ui.postprocessing.FilterClientServerInteractionsUIProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi.ui"
+            class="nl.tno.mids.cmi.ui.postprocessing.AddAsyncPatternConstraintsUIProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi.ui"
+            class="nl.tno.mids.cmi.ui.postprocessing.MergeComponentsUIProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi.ui"
+            class="nl.tno.mids.cmi.ui.postprocessing.MergeInterfaceClientsServersUIProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi.ui"
+            class="nl.tno.mids.cmi.ui.postprocessing.RenameComponentUIProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi.ui"
+            class="nl.tno.mids.cmi.ui.postprocessing.RenameFunctionsUIProvider">
+      </provider>
+   </extension>
+
+</plugin>

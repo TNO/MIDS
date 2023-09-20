@@ -1,0 +1,15 @@
+group C5:
+  event I6__func095__arslt_blk_ret__C13;
+end
+group C13:
+  event I6__func095__blk_async__C5;
+  automaton C13_I6__func095__blk_async__C5:
+    location loc1:
+      initial;
+      marked;
+      edge I6__func095__blk_async__C5 goto loc2;
+    location loc2:
+      marked;
+      edge C5.I6__func095__arslt_blk_ret__C13 goto loc1;
+  end
+end

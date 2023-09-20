@@ -1,0 +1,71 @@
+group C17:
+  event CI1__func176__trig_trigh__CI1;
+end
+group CI1:
+  event I11__func076__blk;
+  event I11__func076__blk_ret;
+  event I11__func076__sync;
+  event I11__func076__sync_ret;
+  event CI1__func176__trigh_ret;
+  event I55__func064__blk;
+  event I55__func064__blk_ret;
+  event I55__func064__sync;
+  event I55__func064__sync_ret;
+  event I55__func097__evt;
+  event I55__func097__evt_ret;
+  event I55__func141__blk;
+  event I55__func141__blk_ret;
+  event I55__func141__sync;
+  event I55__func141__sync_ret;
+  automaton C17_CI1__func176__trig_trigh__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C17.CI1__func176__trig_trigh__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I55__func141__blk goto loc3;
+    location loc3:
+      marked;
+      edge I55__func141__sync goto loc4;
+    location loc4:
+      marked;
+      edge I55__func097__evt goto loc5;
+    location loc5:
+      marked;
+      edge I55__func097__evt_ret goto loc6;
+    location loc6:
+      marked;
+      edge I55__func141__sync_ret goto loc7;
+    location loc7:
+      marked;
+      edge I55__func141__blk_ret goto loc8;
+    location loc8:
+      marked;
+      edge I55__func064__blk goto loc9;
+    location loc9:
+      marked;
+      edge I55__func064__sync goto loc10;
+    location loc10:
+      marked;
+      edge I55__func064__sync_ret goto loc11;
+    location loc11:
+      marked;
+      edge I55__func064__blk_ret goto loc12;
+    location loc12:
+      marked;
+      edge I11__func076__blk goto loc13;
+    location loc13:
+      marked;
+      edge I11__func076__sync goto loc14;
+    location loc14:
+      marked;
+      edge I11__func076__sync_ret goto loc15;
+    location loc15:
+      marked;
+      edge I11__func076__blk_ret goto loc16;
+    location loc16:
+      marked;
+      edge CI1__func176__trigh_ret goto loc1;
+  end
+end

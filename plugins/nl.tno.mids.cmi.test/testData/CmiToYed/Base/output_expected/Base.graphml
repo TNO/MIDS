@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graphml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd" xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key for="node" id="ng" yfiles.type="nodegraphics"/>
+  <key for="edge" id="eg" yfiles.type="edgegraphics"/>
+  <key attr.name="description" attr.type="string" for="node" id="dn"/>
+  <graph edgedefault="directed" id="cif:">
+    <node id="cif:Client" yfiles.foldertype="group">
+      <data key="dn">Runtime component Client</data>
+      <data key="ng">
+        <y:ProxyAutoBoundsNode>
+          <y:Realizers active="0">
+            <y:GroupNode>
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#000000" fontStyle="bolditalic" modelName="internal" modelPosition="t" textColor="#ffffff">      Runtime component Client</y:NodeLabel>
+              <y:Fill color="#eeeeee"/>
+              <y:Shape type="rectangle"/>
+              <y:State closed="false"/>
+            </y:GroupNode>
+            <y:GroupNode>
+              <y:Geometry height="30.0" width="197.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#000000" fontStyle="bolditalic" modelName="internal" modelPosition="t" textColor="#ffffff">      Runtime component Client</y:NodeLabel>
+              <y:Fill color="#cccccc"/>
+              <y:Shape type="rectangle"/>
+              <y:State closed="true"/>
+            </y:GroupNode>
+          </y:Realizers>
+        </y:ProxyAutoBoundsNode>
+      </data>
+      <graph edgedefault="directed" id="cif:Client:">
+        <node id="cif:Client:Client_IServer__f__blk_sync__Server" yfiles.foldertype="folder">
+          <data key="dn">Serv. frag. Client_IServer__f__blk_sync__Server</data>
+          <data key="ng">
+            <y:ProxyAutoBoundsNode>
+              <y:Realizers active="1">
+                <y:GroupNode>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#40bb40" fontStyle="bold" modelName="internal" modelPosition="t" textColor="#ffffff">      Serv. frag. Client_IServer__f__blk_sync__Server</y:NodeLabel>
+                  <y:Fill color="#eeeeee"/>
+                  <y:Shape type="rectangle"/>
+                  <y:State closed="false"/>
+                </y:GroupNode>
+                <y:GroupNode>
+                  <y:Geometry height="30.0" width="312.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#40bb40" fontStyle="bold" modelName="internal" modelPosition="t" textColor="#ffffff">      Serv. frag. Client_IServer__f__blk_sync__Server</y:NodeLabel>
+                  <y:Fill color="#cccccc"/>
+                  <y:Shape type="rectangle"/>
+                  <y:State closed="true"/>
+                </y:GroupNode>
+              </y:Realizers>
+            </y:ProxyAutoBoundsNode>
+          </data>
+          <graph edgedefault="directed" id="cif:Client:Client_IServer__f__blk_sync__Server:">
+            <node id="cif:Client:Client_IServer__f__blk_sync__Server::loc0">
+              <data key="dn">location loc1</data>
+              <data key="ng">
+                <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+                  <y:StyleProperties>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+                    <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
+                    <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TRANSACTION"/>
+                  </y:StyleProperties>
+                  <y:Geometry height="30.0" width="63.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="content" modelName="internal" modelPosition="c">loc1</y:NodeLabel>
+                  <y:Fill color="#ffffff"/>
+                </y:GenericNode>
+              </data>
+            </node>
+            <node id="cif:Client:Client_IServer__f__blk_sync__Server::loc0::init">
+              <data key="dn">&lt;init&gt;</data>
+              <data key="ng">
+                <y:ShapeNode>
+                  <y:Geometry height="1" width="1"/>
+                  <y:BorderStyle hasColor="false"/>
+                  <y:Fill transparent="true"/>
+                </y:ShapeNode>
+              </data>
+            </node>
+            <edge source="cif:Client:Client_IServer__f__blk_sync__Server::loc0::init" target="cif:Client:Client_IServer__f__blk_sync__Server::loc0">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+            <edge source="cif:Client:Client_IServer__f__blk_sync__Server::loc0" target="cif:Client:Client_IServer__f__blk_sync__Server::loc1">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                  <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;IServer:f&lt;br&gt;from Client blocking call &lt;br&gt;to Server sync handler &lt;/html&gt;</y:EdgeLabel>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+            <node id="cif:Client:Client_IServer__f__blk_sync__Server::loc1">
+              <data key="dn">location loc2</data>
+              <data key="ng">
+                <y:ShapeNode>
+                  <y:Shape type="roundrectangle"/>
+                  <y:Geometry height="30.0" width="63.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="content" modelName="internal" modelPosition="c">loc2</y:NodeLabel>
+                  <y:Fill color="#ffffff"/>
+                </y:ShapeNode>
+              </data>
+            </node>
+            <edge source="cif:Client:Client_IServer__f__blk_sync__Server::loc1" target="cif:Client:Client_IServer__f__blk_sync__Server::loc0">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                  <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;IServer:f&lt;br&gt;from Server sync handler return&lt;br&gt;to Client blocking call return&lt;/html&gt;</y:EdgeLabel>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+          </graph>
+        </node>
+        <node id="cif:Client:Client_IServer__g__trig_trigh__Server" yfiles.foldertype="folder">
+          <data key="dn">Serv. frag. Client_IServer__g__trig_trigh__Server</data>
+          <data key="ng">
+            <y:ProxyAutoBoundsNode>
+              <y:Realizers active="1">
+                <y:GroupNode>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#40bb40" fontStyle="bold" modelName="internal" modelPosition="t" textColor="#ffffff">      Serv. frag. Client_IServer__g__trig_trigh__Server</y:NodeLabel>
+                  <y:Fill color="#eeeeee"/>
+                  <y:Shape type="rectangle"/>
+                  <y:State closed="false"/>
+                </y:GroupNode>
+                <y:GroupNode>
+                  <y:Geometry height="30.0" width="316.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#40bb40" fontStyle="bold" modelName="internal" modelPosition="t" textColor="#ffffff">      Serv. frag. Client_IServer__g__trig_trigh__Server</y:NodeLabel>
+                  <y:Fill color="#cccccc"/>
+                  <y:Shape type="rectangle"/>
+                  <y:State closed="true"/>
+                </y:GroupNode>
+              </y:Realizers>
+            </y:ProxyAutoBoundsNode>
+          </data>
+          <graph edgedefault="directed" id="cif:Client:Client_IServer__g__trig_trigh__Server:">
+            <node id="cif:Client:Client_IServer__g__trig_trigh__Server::loc0">
+              <data key="dn">location loc1</data>
+              <data key="ng">
+                <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+                  <y:StyleProperties>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+                    <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
+                    <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TRANSACTION"/>
+                  </y:StyleProperties>
+                  <y:Geometry height="30.0" width="63.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="content" modelName="internal" modelPosition="c">loc1</y:NodeLabel>
+                  <y:Fill color="#ffffff"/>
+                </y:GenericNode>
+              </data>
+            </node>
+            <node id="cif:Client:Client_IServer__g__trig_trigh__Server::loc0::init">
+              <data key="dn">&lt;init&gt;</data>
+              <data key="ng">
+                <y:ShapeNode>
+                  <y:Geometry height="1" width="1"/>
+                  <y:BorderStyle hasColor="false"/>
+                  <y:Fill transparent="true"/>
+                </y:ShapeNode>
+              </data>
+            </node>
+            <edge source="cif:Client:Client_IServer__g__trig_trigh__Server::loc0::init" target="cif:Client:Client_IServer__g__trig_trigh__Server::loc0">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+            <edge source="cif:Client:Client_IServer__g__trig_trigh__Server::loc0" target="cif:Client:Client_IServer__g__trig_trigh__Server::loc1">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                  <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;IServer:g&lt;br&gt;from Client trigger &lt;br&gt;to Server trigger handler &lt;/html&gt;</y:EdgeLabel>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+            <node id="cif:Client:Client_IServer__g__trig_trigh__Server::loc1">
+              <data key="dn">location loc2</data>
+              <data key="ng">
+                <y:ShapeNode>
+                  <y:Shape type="roundrectangle"/>
+                  <y:Geometry height="30.0" width="63.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="content" modelName="internal" modelPosition="c">loc2</y:NodeLabel>
+                  <y:Fill color="#ffffff"/>
+                </y:ShapeNode>
+              </data>
+            </node>
+            <edge source="cif:Client:Client_IServer__g__trig_trigh__Server::loc1" target="cif:Client:Client_IServer__g__trig_trigh__Server::loc0">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                  <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;IServer:g&lt;br&gt;on Client trigger return&lt;/html&gt;</y:EdgeLabel>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+          </graph>
+        </node>
+        <node id="cif:Client:Server_IClient__h__evt_evtcb__Client" yfiles.foldertype="folder">
+          <data key="dn">Serv. frag. Server_IClient__h__evt_evtcb__Client</data>
+          <data key="ng">
+            <y:ProxyAutoBoundsNode>
+              <y:Realizers active="1">
+                <y:GroupNode>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#4080cc" fontStyle="bold" modelName="internal" modelPosition="t" textColor="#ffffff">      Serv. frag. Server_IClient__h__evt_evtcb__Client</y:NodeLabel>
+                  <y:Fill color="#eeeeee"/>
+                  <y:Shape type="rectangle"/>
+                  <y:State closed="false"/>
+                </y:GroupNode>
+                <y:GroupNode>
+                  <y:Geometry height="30.0" width="315.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#4080cc" fontStyle="bold" modelName="internal" modelPosition="t" textColor="#ffffff">      Serv. frag. Server_IClient__h__evt_evtcb__Client</y:NodeLabel>
+                  <y:Fill color="#cccccc"/>
+                  <y:Shape type="rectangle"/>
+                  <y:State closed="true"/>
+                </y:GroupNode>
+              </y:Realizers>
+            </y:ProxyAutoBoundsNode>
+          </data>
+          <graph edgedefault="directed" id="cif:Client:Server_IClient__h__evt_evtcb__Client:">
+            <node id="cif:Client:Server_IClient__h__evt_evtcb__Client::loc0">
+              <data key="dn">location loc1</data>
+              <data key="ng">
+                <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+                  <y:StyleProperties>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+                    <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
+                    <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TRANSACTION"/>
+                  </y:StyleProperties>
+                  <y:Geometry height="30.0" width="63.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="content" modelName="internal" modelPosition="c">loc1</y:NodeLabel>
+                  <y:Fill color="#ffffff"/>
+                </y:GenericNode>
+              </data>
+            </node>
+            <node id="cif:Client:Server_IClient__h__evt_evtcb__Client::loc0::init">
+              <data key="dn">&lt;init&gt;</data>
+              <data key="ng">
+                <y:ShapeNode>
+                  <y:Geometry height="1" width="1"/>
+                  <y:BorderStyle hasColor="false"/>
+                  <y:Fill transparent="true"/>
+                </y:ShapeNode>
+              </data>
+            </node>
+            <edge source="cif:Client:Server_IClient__h__evt_evtcb__Client::loc0::init" target="cif:Client:Server_IClient__h__evt_evtcb__Client::loc0">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+            <edge source="cif:Client:Server_IClient__h__evt_evtcb__Client::loc0" target="cif:Client:Server_IClient__h__evt_evtcb__Client::loc1">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                  <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;IClient:h&lt;br&gt;from Server event raise call &lt;br&gt;to Client event callback &lt;/html&gt;</y:EdgeLabel>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+            <node id="cif:Client:Server_IClient__h__evt_evtcb__Client::loc1">
+              <data key="dn">location loc2</data>
+              <data key="ng">
+                <y:ShapeNode>
+                  <y:Shape type="roundrectangle"/>
+                  <y:Geometry height="30.0" width="63.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="content" modelName="internal" modelPosition="c">loc2</y:NodeLabel>
+                  <y:Fill color="#ffffff"/>
+                </y:ShapeNode>
+              </data>
+            </node>
+            <edge source="cif:Client:Server_IClient__h__evt_evtcb__Client::loc1" target="cif:Client:Server_IClient__h__evt_evtcb__Client::loc0">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                  <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;IClient:h&lt;br&gt;on Client event callback return&lt;/html&gt;</y:EdgeLabel>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+          </graph>
+        </node>
+      </graph>
+    </node>
+    <edge source="cif:Server:Client_IServer__f__blk_sync__Server::loc1" target="cif:Client:Client_IServer__f__blk_sync__Server::loc1">
+      <data key="eg">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#4080cc" type="dashed" width="3.0"/>
+          <y:Arrows source="none" target="arrow"/>
+          <y:BendStyle smoothed="true"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;&lt;div color="gray"&gt;[response]&lt;/div&gt;IServer:f&lt;br&gt;from Server sync handler return&lt;br&gt;to Client blocking call return&lt;/html&gt;</y:EdgeLabel>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge source="cif:Server:Server_IClient__h__evt_evtcb__Client::loc0" target="cif:Client:Server_IClient__h__evt_evtcb__Client::loc0">
+      <data key="eg">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#40bb40" type="dashed" width="3.0"/>
+          <y:Arrows source="none" target="arrow"/>
+          <y:BendStyle smoothed="true"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;&lt;div color="gray"&gt;[request]&lt;/div&gt;IClient:h&lt;br&gt;from Server event raise call &lt;br&gt;to Client event callback &lt;/html&gt;</y:EdgeLabel>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <node id="cif:Server" yfiles.foldertype="group">
+      <data key="dn">Runtime component Server</data>
+      <data key="ng">
+        <y:ProxyAutoBoundsNode>
+          <y:Realizers active="0">
+            <y:GroupNode>
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#000000" fontStyle="bolditalic" modelName="internal" modelPosition="t" textColor="#ffffff">      Runtime component Server</y:NodeLabel>
+              <y:Fill color="#eeeeee"/>
+              <y:Shape type="rectangle"/>
+              <y:State closed="false"/>
+            </y:GroupNode>
+            <y:GroupNode>
+              <y:Geometry height="30.0" width="200.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#000000" fontStyle="bolditalic" modelName="internal" modelPosition="t" textColor="#ffffff">      Runtime component Server</y:NodeLabel>
+              <y:Fill color="#cccccc"/>
+              <y:Shape type="rectangle"/>
+              <y:State closed="true"/>
+            </y:GroupNode>
+          </y:Realizers>
+        </y:ProxyAutoBoundsNode>
+      </data>
+      <graph edgedefault="directed" id="cif:Server:">
+        <node id="cif:Server:Client_IServer__f__blk_sync__Server" yfiles.foldertype="folder">
+          <data key="dn">Serv. frag. Client_IServer__f__blk_sync__Server</data>
+          <data key="ng">
+            <y:ProxyAutoBoundsNode>
+              <y:Realizers active="1">
+                <y:GroupNode>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#40bb40" fontStyle="bold" modelName="internal" modelPosition="t" textColor="#ffffff">      Serv. frag. Client_IServer__f__blk_sync__Server</y:NodeLabel>
+                  <y:Fill color="#eeeeee"/>
+                  <y:Shape type="rectangle"/>
+                  <y:State closed="false"/>
+                </y:GroupNode>
+                <y:GroupNode>
+                  <y:Geometry height="30.0" width="312.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#40bb40" fontStyle="bold" modelName="internal" modelPosition="t" textColor="#ffffff">      Serv. frag. Client_IServer__f__blk_sync__Server</y:NodeLabel>
+                  <y:Fill color="#cccccc"/>
+                  <y:Shape type="rectangle"/>
+                  <y:State closed="true"/>
+                </y:GroupNode>
+              </y:Realizers>
+            </y:ProxyAutoBoundsNode>
+          </data>
+          <graph edgedefault="directed" id="cif:Server:Client_IServer__f__blk_sync__Server:">
+            <node id="cif:Server:Client_IServer__f__blk_sync__Server::loc0">
+              <data key="dn">location loc1</data>
+              <data key="ng">
+                <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+                  <y:StyleProperties>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+                    <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
+                    <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TRANSACTION"/>
+                  </y:StyleProperties>
+                  <y:Geometry height="30.0" width="63.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="content" modelName="internal" modelPosition="c">loc1</y:NodeLabel>
+                  <y:Fill color="#ffffff"/>
+                </y:GenericNode>
+              </data>
+            </node>
+            <node id="cif:Server:Client_IServer__f__blk_sync__Server::loc0::init">
+              <data key="dn">&lt;init&gt;</data>
+              <data key="ng">
+                <y:ShapeNode>
+                  <y:Geometry height="1" width="1"/>
+                  <y:BorderStyle hasColor="false"/>
+                  <y:Fill transparent="true"/>
+                </y:ShapeNode>
+              </data>
+            </node>
+            <edge source="cif:Server:Client_IServer__f__blk_sync__Server::loc0::init" target="cif:Server:Client_IServer__f__blk_sync__Server::loc0">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+            <edge source="cif:Server:Client_IServer__f__blk_sync__Server::loc0" target="cif:Server:Client_IServer__f__blk_sync__Server::loc1">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                  <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;IServer:f&lt;br&gt;from Client blocking call &lt;br&gt;to Server sync handler &lt;/html&gt;</y:EdgeLabel>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+            <node id="cif:Server:Client_IServer__f__blk_sync__Server::loc1">
+              <data key="dn">location loc2</data>
+              <data key="ng">
+                <y:ShapeNode>
+                  <y:Shape type="roundrectangle"/>
+                  <y:Geometry height="30.0" width="63.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="content" modelName="internal" modelPosition="c">loc2</y:NodeLabel>
+                  <y:Fill color="#ffffff"/>
+                </y:ShapeNode>
+              </data>
+            </node>
+            <edge source="cif:Server:Client_IServer__f__blk_sync__Server::loc1" target="cif:Server:Client_IServer__f__blk_sync__Server::loc0">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                  <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;IServer:f&lt;br&gt;from Server sync handler return&lt;br&gt;to Client blocking call return&lt;/html&gt;</y:EdgeLabel>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+          </graph>
+        </node>
+        <node id="cif:Server:Client_IServer__g__trig_trigh__Server" yfiles.foldertype="folder">
+          <data key="dn">Serv. frag. Client_IServer__g__trig_trigh__Server</data>
+          <data key="ng">
+            <y:ProxyAutoBoundsNode>
+              <y:Realizers active="1">
+                <y:GroupNode>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#40bb40" fontStyle="bold" modelName="internal" modelPosition="t" textColor="#ffffff">      Serv. frag. Client_IServer__g__trig_trigh__Server</y:NodeLabel>
+                  <y:Fill color="#eeeeee"/>
+                  <y:Shape type="rectangle"/>
+                  <y:State closed="false"/>
+                </y:GroupNode>
+                <y:GroupNode>
+                  <y:Geometry height="30.0" width="316.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#40bb40" fontStyle="bold" modelName="internal" modelPosition="t" textColor="#ffffff">      Serv. frag. Client_IServer__g__trig_trigh__Server</y:NodeLabel>
+                  <y:Fill color="#cccccc"/>
+                  <y:Shape type="rectangle"/>
+                  <y:State closed="true"/>
+                </y:GroupNode>
+              </y:Realizers>
+            </y:ProxyAutoBoundsNode>
+          </data>
+          <graph edgedefault="directed" id="cif:Server:Client_IServer__g__trig_trigh__Server:">
+            <node id="cif:Server:Client_IServer__g__trig_trigh__Server::loc0">
+              <data key="dn">location loc1</data>
+              <data key="ng">
+                <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+                  <y:StyleProperties>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+                    <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
+                    <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TRANSACTION"/>
+                  </y:StyleProperties>
+                  <y:Geometry height="30.0" width="63.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="content" modelName="internal" modelPosition="c">loc1</y:NodeLabel>
+                  <y:Fill color="#ffffff"/>
+                </y:GenericNode>
+              </data>
+            </node>
+            <node id="cif:Server:Client_IServer__g__trig_trigh__Server::loc0::init">
+              <data key="dn">&lt;init&gt;</data>
+              <data key="ng">
+                <y:ShapeNode>
+                  <y:Geometry height="1" width="1"/>
+                  <y:BorderStyle hasColor="false"/>
+                  <y:Fill transparent="true"/>
+                </y:ShapeNode>
+              </data>
+            </node>
+            <edge source="cif:Server:Client_IServer__g__trig_trigh__Server::loc0::init" target="cif:Server:Client_IServer__g__trig_trigh__Server::loc0">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+            <edge source="cif:Server:Client_IServer__g__trig_trigh__Server::loc0" target="cif:Server:Client_IServer__g__trig_trigh__Server::loc1">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                  <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;IServer:g&lt;br&gt;from Client trigger &lt;br&gt;to Server trigger handler &lt;/html&gt;</y:EdgeLabel>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+            <node id="cif:Server:Client_IServer__g__trig_trigh__Server::loc1">
+              <data key="dn">location loc2</data>
+              <data key="ng">
+                <y:ShapeNode>
+                  <y:Shape type="roundrectangle"/>
+                  <y:Geometry height="30.0" width="63.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="content" modelName="internal" modelPosition="c">loc2</y:NodeLabel>
+                  <y:Fill color="#ffffff"/>
+                </y:ShapeNode>
+              </data>
+            </node>
+            <edge source="cif:Server:Client_IServer__g__trig_trigh__Server::loc1" target="cif:Server:Client_IServer__g__trig_trigh__Server::loc0">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                  <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;IServer:g&lt;br&gt;on Server trigger handler return&lt;/html&gt;</y:EdgeLabel>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+          </graph>
+        </node>
+        <node id="cif:Server:Server_IClient__h__evt_evtcb__Client" yfiles.foldertype="folder">
+          <data key="dn">Serv. frag. Server_IClient__h__evt_evtcb__Client</data>
+          <data key="ng">
+            <y:ProxyAutoBoundsNode>
+              <y:Realizers active="1">
+                <y:GroupNode>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#4080cc" fontStyle="bold" modelName="internal" modelPosition="t" textColor="#ffffff">      Serv. frag. Server_IClient__h__evt_evtcb__Client</y:NodeLabel>
+                  <y:Fill color="#eeeeee"/>
+                  <y:Shape type="rectangle"/>
+                  <y:State closed="false"/>
+                </y:GroupNode>
+                <y:GroupNode>
+                  <y:Geometry height="30.0" width="315.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#4080cc" fontStyle="bold" modelName="internal" modelPosition="t" textColor="#ffffff">      Serv. frag. Server_IClient__h__evt_evtcb__Client</y:NodeLabel>
+                  <y:Fill color="#cccccc"/>
+                  <y:Shape type="rectangle"/>
+                  <y:State closed="true"/>
+                </y:GroupNode>
+              </y:Realizers>
+            </y:ProxyAutoBoundsNode>
+          </data>
+          <graph edgedefault="directed" id="cif:Server:Server_IClient__h__evt_evtcb__Client:">
+            <node id="cif:Server:Server_IClient__h__evt_evtcb__Client::loc0">
+              <data key="dn">location loc1</data>
+              <data key="ng">
+                <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+                  <y:StyleProperties>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+                    <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
+                    <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
+                    <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TRANSACTION"/>
+                  </y:StyleProperties>
+                  <y:Geometry height="30.0" width="63.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="content" modelName="internal" modelPosition="c">loc1</y:NodeLabel>
+                  <y:Fill color="#ffffff"/>
+                </y:GenericNode>
+              </data>
+            </node>
+            <node id="cif:Server:Server_IClient__h__evt_evtcb__Client::loc0::init">
+              <data key="dn">&lt;init&gt;</data>
+              <data key="ng">
+                <y:ShapeNode>
+                  <y:Geometry height="1" width="1"/>
+                  <y:BorderStyle hasColor="false"/>
+                  <y:Fill transparent="true"/>
+                </y:ShapeNode>
+              </data>
+            </node>
+            <edge source="cif:Server:Server_IClient__h__evt_evtcb__Client::loc0::init" target="cif:Server:Server_IClient__h__evt_evtcb__Client::loc0">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+            <edge source="cif:Server:Server_IClient__h__evt_evtcb__Client::loc0" target="cif:Server:Server_IClient__h__evt_evtcb__Client::loc1">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                  <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;IClient:h&lt;br&gt;from Server event raise call &lt;br&gt;to Client event callback &lt;/html&gt;</y:EdgeLabel>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+            <node id="cif:Server:Server_IClient__h__evt_evtcb__Client::loc1">
+              <data key="dn">location loc2</data>
+              <data key="ng">
+                <y:ShapeNode>
+                  <y:Shape type="roundrectangle"/>
+                  <y:Geometry height="30.0" width="63.0"/>
+                  <y:NodeLabel alignment="left" autoSizePolicy="content" modelName="internal" modelPosition="c">loc2</y:NodeLabel>
+                  <y:Fill color="#ffffff"/>
+                </y:ShapeNode>
+              </data>
+            </node>
+            <edge source="cif:Server:Server_IClient__h__evt_evtcb__Client::loc1" target="cif:Server:Server_IClient__h__evt_evtcb__Client::loc0">
+              <data key="eg">
+                <y:PolyLineEdge>
+                  <y:Arrows source="none" target="arrow"/>
+                  <y:BendStyle smoothed="true"/>
+                  <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;IClient:h&lt;br&gt;on Server event raise call return&lt;/html&gt;</y:EdgeLabel>
+                </y:PolyLineEdge>
+              </data>
+            </edge>
+          </graph>
+        </node>
+      </graph>
+    </node>
+    <edge source="cif:Client:Client_IServer__f__blk_sync__Server::loc0" target="cif:Server:Client_IServer__f__blk_sync__Server::loc0">
+      <data key="eg">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#40bb40" type="dashed" width="3.0"/>
+          <y:Arrows source="none" target="arrow"/>
+          <y:BendStyle smoothed="true"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;&lt;div color="gray"&gt;[request]&lt;/div&gt;IServer:f&lt;br&gt;from Client blocking call &lt;br&gt;to Server sync handler &lt;/html&gt;</y:EdgeLabel>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge source="cif:Client:Client_IServer__g__trig_trigh__Server::loc0" target="cif:Server:Client_IServer__g__trig_trigh__Server::loc0">
+      <data key="eg">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#40bb40" type="dashed" width="3.0"/>
+          <y:Arrows source="none" target="arrow"/>
+          <y:BendStyle smoothed="true"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#eeeeeedd">&lt;html&gt;&lt;div color="gray"&gt;[request]&lt;/div&gt;IServer:g&lt;br&gt;from Client trigger &lt;br&gt;to Server trigger handler &lt;/html&gt;</y:EdgeLabel>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+  </graph>
+</graphml>

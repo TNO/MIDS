@@ -1,0 +1,39 @@
+group C4:
+  event I4__func053__sync_ret_blk_ret__CI1;
+  event I4__func080__sync_ret_blk_ret__CI1;
+end
+group CI1:
+  event I4__func053__blk_sync__C4;
+  event I4__func080__blk_sync__C4;
+  event I5__func103__blk;
+  event I5__func103__blk_ret;
+  event I5__func103__sync;
+  event I5__func103__sync_ret;
+  automaton CI1_I5__func103__blk:
+    location loc1:
+      initial;
+      marked;
+      edge I5__func103__blk goto loc2;
+    location loc2:
+      marked;
+      edge I5__func103__sync goto loc3;
+    location loc3:
+      marked;
+      edge I4__func080__blk_sync__C4 goto loc4;
+    location loc4:
+      marked;
+      edge C4.I4__func080__sync_ret_blk_ret__CI1 goto loc5;
+    location loc5:
+      marked;
+      edge I4__func053__blk_sync__C4 goto loc6;
+    location loc6:
+      marked;
+      edge C4.I4__func053__sync_ret_blk_ret__CI1 goto loc7;
+    location loc7:
+      marked;
+      edge I5__func103__sync_ret goto loc8;
+    location loc8:
+      marked;
+      edge I5__func103__blk_ret goto loc1;
+  end
+end

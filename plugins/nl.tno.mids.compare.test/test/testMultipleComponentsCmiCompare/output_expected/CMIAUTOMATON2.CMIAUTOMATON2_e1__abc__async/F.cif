@@ -1,0 +1,31 @@
+group CMIAUTOMATON2:
+  event e1__abc__async;
+  event e2__abc__async_ret;
+  event e2__abc__blk;
+  event e3__abc__async_ret;
+  automaton CMIAUTOMATON2_e1__abc__async:
+    location loc1:
+      initial;
+      marked;
+      edge e1__abc__async goto loc2;
+    location loc2:
+      marked;
+      edge e2__abc__blk goto loc3;
+      edge e2__abc__async_ret goto loc4;
+    location loc3:
+      marked;
+      edge e3__abc__async_ret goto loc5;
+    location loc4:
+      marked;
+      edge e1__abc__async goto loc6;
+    location loc5:
+      marked;
+      edge e1__abc__async goto loc7;
+    location loc6:
+      marked;
+      edge e2__abc__async_ret goto loc4;
+    location loc7:
+      marked;
+      edge e2__abc__blk goto loc3;
+  end
+end

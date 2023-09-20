@@ -1,0 +1,23 @@
+group C9:
+  event I14__func045__sync_ret_blk_ret__CI1;
+end
+group CI1:
+  event I11__func045__fcn_sync__CI1;
+  event I11__func045__sync_ret_fcncb__CI1;
+  event I14__func045__blk_sync__C9;
+  automaton CI1_I11__func045__fcn_sync__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge I11__func045__fcn_sync__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I14__func045__blk_sync__C9 goto loc3;
+    location loc3:
+      marked;
+      edge C9.I14__func045__sync_ret_blk_ret__CI1 goto loc4;
+    location loc4:
+      marked;
+      edge I11__func045__sync_ret_fcncb__CI1 goto loc1;
+  end
+end

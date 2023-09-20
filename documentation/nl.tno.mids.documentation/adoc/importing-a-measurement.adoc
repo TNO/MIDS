@@ -1,0 +1,18 @@
+/////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+//
+// This program and the accompanying materials are made available
+// under the terms of the MIT License which is available at
+// https://opensource.org/licenses/MIT
+//
+// SPDX-License-Identifier: MIT
+/////////////////////////////////////////////////////////////////////////
+
+include::_initCommon.adoc[]
+
+[[import]]
+== Importing a measurement
+
+MIDS provides <<cmi,Constructive Model Inference>> to automatically infer models from execution traces.
+CMI works on execution traces, in the form of Timed Message Sequence Charts (TMSCs). 
+The details of how to produce a TMSC from your company's proprietary logging format, are beyond the scope of this documentation.  

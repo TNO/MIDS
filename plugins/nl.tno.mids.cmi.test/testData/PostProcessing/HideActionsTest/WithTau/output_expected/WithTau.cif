@@ -1,0 +1,13 @@
+automaton WithTau:
+  event pc1__abc__fcn;
+  event pc2__abc__fcn;
+  event pc3__abc__fcn;
+  location loc1:
+    initial;
+    marked;
+    edge pc1__abc__fcn goto loc2;
+  location loc2:
+    marked;
+    edge pc2__abc__fcn goto loc1;
+    edge pc3__abc__fcn goto loc2;
+end

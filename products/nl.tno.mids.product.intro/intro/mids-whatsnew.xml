@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<introContent>
+  <extensionContent id="nl.tno.mids.whatsnew" name="mids" alt-style="css/mids.properties" style="css/mids.css" path="whatsnew/@">
+    <group id="mids" style-id="content-group">
+      <link url="http://org.eclipse.ui.intro/showHelpTopic?id=/nl.tno.mids.documentation/target/eclipse-help/mids.html%23release-notes"
+            label="Read the MIDS Release Notes" id="mids-release-notes" style-id="content-link">
+        <text>Find out about the major new features in this release of the Model Inference and Differencing Suite</text>
+      </link>
+    </group>
+  </extensionContent>
+</introContent>

@@ -1,0 +1,8 @@
+digraph automaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="doublecircle"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<C18.I30__func163__sync_ret_fcncb__CI1> id="1-0-2"];
+	2 -> 1 [label=<CI1.I30__func163__fcncb_ret> id="2-0-1"];
+}

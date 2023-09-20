@@ -1,0 +1,15 @@
+digraph diffautomaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="circle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	3 [label=<s3> shape="circle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	4 [label=<s4> shape="circle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	5 [label=<s5> shape="circle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<<font color="#00cc00">CMIAUTOMATON.e1__abc__async</font>> color="#00cc00" id="1-0-2"];
+	2 -> 3 [label=<<font color="#00cc00">repetition entry</font>> color="#00cc00" id="2-0-3"];
+	3 -> 4 [label=<<font color="#00cc00">CMIAUTOMATON.e2__abc__fcn <font color="#00cc00">(repeated 8 times)</font></font>> color="#00cc00" id="3-0-4"];
+	3 -> 5 [label=<<font color="#00cc00">repetition exit</font>> color="#00cc00" id="3-1-5"];
+	4 -> 3 [label=<<font color="#00cc00">CMIAUTOMATON.e2__abc__fcn_ret</font>> color="#00cc00" id="4-0-3"];
+	5 -> 1 [label=<<font color="#00cc00">CMIAUTOMATON.e1__abc__async_ret</font>> color="#00cc00" id="5-0-1"];
+}

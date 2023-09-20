@@ -1,0 +1,13 @@
+group CI1:
+  event I30__func162__trig_ret;
+  event I30__func162__trig_trigh__C20;
+  automaton CI1_I30__func162__trig_trigh__C20:
+    location loc1:
+      initial;
+      marked;
+      edge I30__func162__trig_trigh__C20 goto loc2;
+    location loc2:
+      marked;
+      edge I30__func162__trig_ret goto loc1;
+  end
+end

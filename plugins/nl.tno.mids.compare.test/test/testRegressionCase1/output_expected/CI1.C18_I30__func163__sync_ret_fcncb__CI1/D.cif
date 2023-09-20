@@ -1,0 +1,36 @@
+group CI1:
+  event CI1__func174__evt_evtcb__C17;
+  event CI1__func174__evt_ret;
+  event I30__func163__fcncb_ret;
+  automaton C18_I30__func163__sync_ret_fcncb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C18.I30__func163__sync_ret_fcncb__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge CI1__func174__evt_evtcb__C17 goto loc3;
+      edge I30__func163__fcncb_ret goto loc4;
+    location loc3:
+      marked;
+      edge CI1__func174__evt_ret goto loc5;
+    location loc4:
+      marked;
+      edge C18.I30__func163__sync_ret_fcncb__CI1 goto loc6;
+    location loc5:
+      marked;
+      edge I30__func163__fcncb_ret goto loc7;
+    location loc6:
+      marked;
+      edge I30__func163__fcncb_ret goto loc4;
+    location loc7:
+      marked;
+      edge C18.I30__func163__sync_ret_fcncb__CI1 goto loc8;
+    location loc8:
+      marked;
+      edge CI1__func174__evt_evtcb__C17 goto loc3;
+  end
+end
+group C18:
+  event I30__func163__sync_ret_fcncb__CI1;
+end

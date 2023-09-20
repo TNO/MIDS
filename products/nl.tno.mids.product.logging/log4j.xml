@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC
+  "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="eclipseRoot" class="org.eclipse.lsat.common.log4j.eclipse.EclipseLogAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n\tlogged at %l" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="warn" />
+        </filter>
+    </appender>
+
+    <appender name="stdoutRoot" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p %c - %m\n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMax" value="info" />
+        </filter>
+    </appender>
+
+    <appender name="eclipseMIDS" class="org.eclipse.lsat.common.log4j.eclipse.EclipseLogAppender">
+        <param name="bundleId" value="nl.tno.mids.product.logging" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n\tlogged at %l" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="info" />
+        </filter>
+    </appender>
+
+    <appender name="stdoutMIDS" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p %c - %m\n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMax" value="debug" />
+        </filter>
+    </appender>
+
+    <logger name="nl.esi.pps.common.emf.ecore.resource" additivity="false">
+        <level value="info" />
+        <appender-ref ref="eclipseMIDS" />
+        <appender-ref ref="stdoutMIDS" />
+    </logger>
+
+    <logger name="nl.tno" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="eclipseMIDS" />
+        <appender-ref ref="stdoutMIDS" />
+    </logger>
+
+    <root>
+        <priority value="info" />
+        <appender-ref ref="eclipseRoot" />
+        <appender-ref ref="stdoutRoot" />
+    </root>
+</log4j:configuration>

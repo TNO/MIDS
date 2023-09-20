@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<schema targetNamespace="nl.tno.mids.cmi.ui" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="nl.tno.mids.cmi.ui" id="nl.tno.mids.cmi.ui.postprocessing" name="MIDS CMI Post-processing UI"/>
+      </appinfo>
+      <documentation>
+         MIDS CMI supports post-processing operations. This extension point allows contributing UI to configure such operations.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="provider"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The id of the extension point.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  The id of the extension. Not used.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  The name of the extension. Not used.
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="provider">
+      <annotation>
+         <documentation>
+            A CMI post-processing operation UI provider.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The class that implements the post-processing operation UI provider.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn="nl.tno.mids.cmi.ui.postprocessing.PostProcessingOperationUIProvider:"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="plugin" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The full name of the OSGi plugin that provides the provider class.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;extension point=&quot;nl.tno.mids.cmi.ui.postprocessing&quot;&gt;
+   &lt;provider plugin=&quot;my.company.cmi.postprocessing.ui&quot; class=&quot;my.company.cmi.postprocessing.ui.MyOperationUIProvider&quot;/&gt;
+&lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         Copyright (c) TNO
+      </documentation>
+   </annotation>
+
+</schema>

@@ -1,0 +1,11 @@
+automaton CMIAUTOMATON:
+  event e1__abc__async;
+  event e2__abc__async_ret;
+  location loc1:
+    initial;
+    marked;
+    edge e1__abc__async goto loc2;
+  location loc2:
+    marked;
+    edge e2__abc__async_ret goto loc1;
+end

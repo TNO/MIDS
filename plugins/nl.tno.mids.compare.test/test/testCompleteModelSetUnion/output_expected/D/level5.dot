@@ -1,0 +1,6 @@
+digraph "D"{
+rankdir="BT"
+1 [label=<A<sub><font point-size="10">4</font></sub> (3)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">4</font></sub> (5)>, style="filled", fillcolor="lightgray"]
+1 -> 2 [label=<  <font color="limegreen">+2</font>  >]
+}

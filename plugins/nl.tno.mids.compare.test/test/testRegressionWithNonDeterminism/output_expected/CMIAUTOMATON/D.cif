@@ -1,0 +1,29 @@
+automaton CMIAUTOMATON:
+  event e1__abc__fcn;
+  event e2__abc__fcn;
+  event e3__abc__fcn;
+  event e4__abc__fcn;
+  location loc1:
+    initial;
+    marked;
+    edge e1__abc__fcn goto loc2;
+  location loc2:
+    marked;
+    edge e2__abc__fcn goto loc1;
+    edge e4__abc__fcn goto loc3;
+    edge e3__abc__fcn goto loc4;
+  location loc3:
+    marked;
+    edge e1__abc__fcn goto loc5;
+  location loc4:
+    marked;
+    edge e1__abc__fcn goto loc6;
+  location loc5:
+    marked;
+    edge e2__abc__fcn goto loc3;
+    edge e4__abc__fcn goto loc3;
+  location loc6:
+    marked;
+    edge e2__abc__fcn goto loc4;
+    edge e3__abc__fcn goto loc4;
+end

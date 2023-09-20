@@ -1,0 +1,24 @@
+digraph diffautomaton {
+	1 [label=<s1> shape="doublecircle"];
+	4 [label=<s4> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	2 [label=<s2> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle"];
+	5 [label=<s5> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	6 [label=<s6> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1 [color="#ff4040"];
+	__init4 [label=<> shape="none"];
+	__init4 -> 4 [color="#00cc00"];
+	1 -> 2 [label=<<font color="#ff4040">CMIAUTOMATON.e1__abc__fcn</font>> color="#ff4040" id="1-0-2"];
+	1 -> 3 [label=<<font color="#000000">CMIAUTOMATON.e1__abc__fcn</font>> id="1-1-3"];
+	4 -> 5 [label=<<font color="#00cc00">CMIAUTOMATON.e1__abc__fcn</font>> color="#00cc00" id="4-0-5"];
+	2 -> 1 [label=<<font color="#ff4040">CMIAUTOMATON.e2__abc__fcn</font>> color="#ff4040" id="2-0-1"];
+	2 -> 6 [label=<<font color="#00cc00">CMIAUTOMATON.e2__abc__fcn</font>> color="#00cc00" id="2-1-6"];
+	2 -> 6 [label=<<font color="#00cc00">CMIAUTOMATON.e4__abc__fcn</font>> color="#00cc00" id="2-2-6"];
+	3 -> 1 [label=<<font color="#000000">CMIAUTOMATON.e3__abc__fcn</font>> id="3-0-1"];
+	3 -> 1 [label=<<font color="#00cc00">CMIAUTOMATON.e2__abc__fcn</font>> color="#00cc00" id="3-1-1"];
+	5 -> 4 [label=<<font color="#00cc00">CMIAUTOMATON.e2__abc__fcn</font>> color="#00cc00" id="5-0-4"];
+	5 -> 6 [label=<<font color="#00cc00">CMIAUTOMATON.e4__abc__fcn</font>> color="#00cc00" id="5-1-6"];
+	5 -> 1 [label=<<font color="#00cc00">CMIAUTOMATON.e3__abc__fcn</font>> color="#00cc00" id="5-2-1"];
+	6 -> 2 [label=<<font color="#00cc00">CMIAUTOMATON.e1__abc__fcn</font>> color="#00cc00" id="6-0-2"];
+}

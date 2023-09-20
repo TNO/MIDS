@@ -1,0 +1,21 @@
+group CI1:
+  event I47__func097__evt;
+  event I47__func097__evt_ret;
+  event I47__func149__fcn_sync__CI1;
+  event I47__func149__sync_ret_fcncb__CI1;
+  automaton CI1_I47__func149__fcn_sync__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge I47__func149__fcn_sync__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I47__func097__evt goto loc3;
+    location loc3:
+      marked;
+      edge I47__func097__evt_ret goto loc4;
+    location loc4:
+      marked;
+      edge I47__func149__sync_ret_fcncb__CI1 goto loc1;
+  end
+end

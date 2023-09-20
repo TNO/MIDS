@@ -1,0 +1,29 @@
+group C5:
+  event I6__func096__arslt_blk_ret__C13;
+end
+group C13:
+  event I6__func096__blk_async__C5;
+  event I52__func098__evtcb;
+  event I52__func098__evtcb_ret;
+  automaton C13_I52__func098__evtcb:
+    location loc1:
+      initial;
+      marked;
+      edge I52__func098__evtcb goto loc2;
+    location loc2:
+      marked;
+      edge I6__func096__blk_async__C5 goto loc3;
+    location loc3:
+      marked;
+      edge C5.I6__func096__arslt_blk_ret__C13 goto loc4;
+    location loc4:
+      marked;
+      edge I6__func096__blk_async__C5 goto loc5;
+    location loc5:
+      marked;
+      edge C5.I6__func096__arslt_blk_ret__C13 goto loc6;
+    location loc6:
+      marked;
+      edge I52__func098__evtcb_ret goto loc1;
+  end
+end

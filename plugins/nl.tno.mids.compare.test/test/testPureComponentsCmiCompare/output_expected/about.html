@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>About</title>
+        <link href="assets/bootstrap.min.css" rel="stylesheet">
+        <style>
+            .btn-xs,
+            .btn-group-xs > .btn {
+                padding: 1px 1px;
+                font-size: 10px;
+            }
+
+            .verticalText {
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="container-fluid bcontent mb-3 mt-3">
+                <h3 align="center">About</h3>
+            </div>
+            <div class="row container-fluid justify-content-center">
+                <div class="col-md-8 text-left">
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <div class="row container-fluid justify-content-center">
+                                <ul>
+                                    <li>Tool version: 0.9.0</li>
+                                    <li>Compare started: Fri, 1 Jan 2021 00:00:00 GMT</li>
+                                    <li>Compare finished: Fri, 1 Jan 2021 00:00:00 GMT</li>
+                                    <li>Compare duration: 0ms</li>
+                                    <li>Input model type: CMI models</li>
+                                    <li>Entity type: Selected based on input: component, components</li>
+                                    <li>CMI compare mode: Automatic choice (service fragments if possible, otherwise components or protocols as appropriate)</li>
+                                    <li>Comparison algorithm: Dynamic</li>
+                                    <li>Extended lattice: full</li>
+                                    <li>Apply structural comparison post-processing: false</li>
+                                    <li>Color scheme: Intuitive color scheme (green -> red)</li>
+                                    <li>Timeout for generating SVGs: 1m</li>
+                                    <li>Union/intersection size limit: 2147483647 states</li>
+                                    <li>Structural comparison size limit: 2147483647 states</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row container-fluid justify-content-center">
+                <div class="col-8 btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown">Model Sets</button>
+                    <div class="dropdown-menu">
+<a href="javascript:showSelected('model')" class="dropdown-item">model</a>
+<a href="javascript:showSelected('model_variant')" class="dropdown-item">model_variant</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row container-fluid justify-content-center">
+            <div id="info-model" class="col-md-8 model-set-info" style="display:none">
+<div class="card bg-light mb-3">
+<div class="card-header"><div class="row"><span class="text-center">model</span></div></div>
+<div class="card-body">
+-
+</div>
+</div>
+</div>
+
+<div id="info-model_variant" class="col-md-8 model-set-info" style="display:none">
+<div class="card bg-light mb-3">
+<div class="card-header"><div class="row"><span class="text-center">model_variant</span></div></div>
+<div class="card-body">
+-
+</div>
+</div>
+</div>
+
+            </div>
+        </div>
+        <script src="assets/jquery-3.6.0.slim.min.js"></script>
+        <script src="assets/bootstrap.bundle.min.js"></script>
+        <script>
+        // Hides all model set information.
+        var hideAll = function () {
+            var diffs = document.getElementsByClassName("model-set-info");
+
+            for (var i = 0; i < diffs.length; i++) {
+                    diffs[i].style.display = "none";
+            }
+            $('[data-bs-toggle="popover"]').popover("hide")
+        };
+
+        // Shows the information for the given model set.
+        var showSingle = function (id) {
+            document.getElementById(id).style.display = "block";
+        };
+
+        // Shows the information for only the given model set.
+        var showSelected = function (name) {
+            hideAll();
+            showSingle("info-" + name);
+        };
+
+        $(function () {
+            $('[data-bs-toggle="popover"]').popover()
+        })
+        </script>
+    </body>
+</html>

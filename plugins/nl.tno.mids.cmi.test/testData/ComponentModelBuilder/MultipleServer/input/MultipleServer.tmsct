@@ -1,0 +1,61 @@
+executor Client as Client
+executor Server1 as Server1
+executor Server2 as Server2
+executor Server3 as Server3
+executor Trigger as Trigger
+
+interface IClient {
+    operation h
+}
+
+interface IServer {
+    operation f
+}
+
+interface ITrigger {
+    operation g
+}
+
+component ClientComp
+function "h notify handle" as h_notify_handle implements IClient.h { execType: evtcb }
+function "f call" as f_call implements IServer.f { execType: blk }
+function "g trigger handle" as g_trigger_handle implements ITrigger.g { execType: trigh }
+
+component ServerComp
+function "f call handle" as f_call_handle implements IServer.f { execType: sync }
+function "h notify" as h_notify implements IClient.h { execType: evt }
+
+component TriggerComp
+function "g trigger" as g_trigger implements ITrigger.g { execType: trig }
+
+1 Trigger TriggerComp > g_trigger !M1
+1.1 Trigger TriggerComp < g_trigger
+1.2 Client ClientComp > g_trigger_handle ?M1
+2 Client ClientComp > f_call !M2
+2.1 Server1 ServerComp > f_call_handle ?M2
+2.5 Server1 ServerComp < f_call_handle !M3
+2.6 Client ClientComp < f_call ?M3
+3 Client ClientComp > f_call !M4
+3.1 Server2 ServerComp > f_call_handle ?M4
+3.5 Server2 ServerComp < f_call_handle !M5
+3.6 Client ClientComp < f_call ?M5
+4 Client ClientComp > f_call !M6
+4.1 Server3 ServerComp > f_call_handle ?M6
+4.5 Server3 ServerComp < f_call_handle !M7
+4.6 Client ClientComp < f_call ?M7
+5 Client ClientComp < g_trigger_handle
+
+7 Server1 ServerComp > h_notify !M8
+7.1 Server1 ServerComp < h_notify
+7.2 Client ClientComp > h_notify_handle ?M8
+7.3 Client ClientComp < h_notify_handle
+
+8 Server2 ServerComp > h_notify !M9
+8.1 Server2 ServerComp < h_notify
+8.2 Client ClientComp > h_notify_handle ?M9
+8.3 Client ClientComp < h_notify_handle
+
+9 Server3 ServerComp > h_notify !M10
+9.1 Server3 ServerComp < h_notify
+9.2 Client ClientComp > h_notify_handle ?M10
+9.3 Client ClientComp < h_notify_handle

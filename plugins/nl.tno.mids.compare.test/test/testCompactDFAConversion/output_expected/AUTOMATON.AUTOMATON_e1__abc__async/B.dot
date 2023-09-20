@@ -1,0 +1,10 @@
+digraph automaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<AUTOMATON.e1__abc__async> id="1-0-2"];
+	2 -> 3 [label=<AUTOMATON.e2__abc__blk> id="2-0-3"];
+	3 -> 1 [label=<AUTOMATON.e3__abc__async_ret> id="3-0-1"];
+}

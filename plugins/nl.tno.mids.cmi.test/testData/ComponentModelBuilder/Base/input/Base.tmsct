@@ -1,0 +1,41 @@
+executor Client as Client
+executor Server as Server
+
+interface IClient {
+    operation h
+}
+
+interface IServer {
+    operation f
+    operation g
+}
+
+component ClientComp
+function "h notify handle" as h_notify_handle implements IClient.h { execType: evtcb }
+function "f call" as f_call implements IServer.f { execType: blk }
+function "g trigger" as g_trigger implements IServer.g { execType: trig }
+
+component ServerComp
+function "f call handle" as f_call_handle implements IServer.f { execType: sync }
+function "g trigger handle" as g_trigger_handle implements IServer.g { execType: trigh }
+function "h notify" as h_notify implements IClient.h { execType: evt }
+
+/* The trace itself. */
+
+// Blocking call/return example.
+1 Client ClientComp > f_call !M1
+1.12 Server ServerComp > f_call_handle ?M1
+3.5 Server ServerComp < f_call_handle !M2
+3.6 Client ClientComp < f_call ?M2
+
+// Trigger example.
+5 Client ClientComp > g_trigger !M3
+5.03 Client ClientComp < g_trigger
+5.13 Server ServerComp > g_trigger_handle ?M3
+5.83 Server ServerComp < g_trigger_handle
+
+// Notify example.
+7 Server ServerComp > h_notify !M4
+7.03 Server ServerComp < h_notify
+7.12 Client ClientComp > h_notify_handle ?M4
+7.59 Client ClientComp < h_notify_handle

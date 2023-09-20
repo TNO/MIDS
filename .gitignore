@@ -1,0 +1,10 @@
+/.classpath
+/.metadata/
+/.settings/
+/**/bin/
+/**/target/
+/**/xtend-gen/**/*.xtendbin
+/**/xtend-gen/**/*._trace
+/**/*.orig
+/**/.META-INF_MANIFEST.MF
+/**/.polyglot.*

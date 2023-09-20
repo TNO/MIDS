@@ -1,0 +1,22 @@
+group CMIAUTOMATON:
+  event e1__abc__async;
+  event e1__abc__async_ret;
+  event e2__abc__fcn;
+  event e2__abc__fcn_ret;
+  automaton CMIAUTOMATON_e1__abc__async:
+    disc int[0..10] cnt;
+    location loc1:
+      initial;
+      marked;
+      edge e1__abc__async goto loc2;
+    location loc2:
+      edge tau goto loc3;
+    location loc3:
+      edge e2__abc__fcn when cnt < 10 goto loc4;
+      edge tau when cnt = 10 do cnt := 0 goto loc5;
+    location loc4:
+      edge e2__abc__fcn_ret do cnt := cnt + 1 goto loc3;
+    location loc5:
+      edge e1__abc__async_ret goto loc1;
+  end
+end

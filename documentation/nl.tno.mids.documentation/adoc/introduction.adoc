@@ -1,0 +1,38 @@
+/////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+//
+// This program and the accompanying materials are made available
+// under the terms of the MIT License which is available at
+// https://opensource.org/licenses/MIT
+//
+// SPDX-License-Identifier: MIT
+/////////////////////////////////////////////////////////////////////////
+
+include::_initCommon.adoc[]
+
+The Model Inference and Differencing Suite (MIDS) can be used to infer software behavior models from existing software components.
+The models provide insight into the current software behavior.
+They can also be used to bootstrap the introduction of Model-Driven Engineering (MDE), reducing the need for laborious and error-prone manual modelling.
+Furthermore, the software behavior (models) of different software versions can be compared to find differences, detect regressions and reduce risks for software changes, such as patches and redesigns.
+MIDS allows performing all this in a single integrated environment.
+The ultimate goal is to improve the efficiency of software development and re-engineering, and reduce risks for software evolution.
+
+The documentation in this user manual is split into several chapters, together explaining how to work with MIDS:
+
+<<mids-concepts>>::
+Introduction to the concepts that are used within MIDS and a first overview of the tool.
+
+<<install>>::
+Discusses how to install and update the tool.
+
+<<import>>::
+Discusses Timed Message Sequence Charts (TMSCs), the input required for MIDS.
+
+<<cmi>>::
+Discusses Constructive Model Inference (CMI) to infer software behavior (models).
+
+<<change-impact-analysis>>::
+Discusses change impact analysis by comparing software behaviors of different software versions.
+
+<<release-notes>>::
+The release notes of the various MIDS releases.

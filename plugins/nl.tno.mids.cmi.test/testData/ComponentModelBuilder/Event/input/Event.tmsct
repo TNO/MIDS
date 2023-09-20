@@ -1,0 +1,32 @@
+executor Client as Client
+executor Server as Server
+
+interface IServer {
+    operation f
+}
+
+component ClientComp
+function "f notify handle" as f_notify_handle implements IServer.f { execType: evtcb }
+function "f subscribe" as f_subscribe implements IServer.f { execType: evtsub }
+function "f unsubscribe" as f_unsubscribe implements IServer.f { execType: evtunsub }
+
+component ServerComp
+function "f subscribe handle" as f_subscribe_handle implements IServer.f { execType: evtsubh }
+function "f unsubscribe handle" as f_unsubscribe_handle implements IServer.f { execType: evtunsubh }
+function "f notify" as f_notify implements IServer.f { execType: evt }
+
+/* The trace itself. */
+1 Client ClientComp > f_subscribe !M1
+1.12 Server ServerComp > f_subscribe_handle ?M1
+1.22 Server ServerComp < f_subscribe_handle
+1.32 Client ClientComp < f_subscribe
+
+2 Server ServerComp > f_notify !M2
+2.03 Server ServerComp < f_notify
+2.12 Client ClientComp > f_notify_handle ?M2
+2.59 Client ClientComp < f_notify_handle
+
+3 Client ClientComp > f_unsubscribe !M3
+3.12 Server ServerComp > f_unsubscribe_handle ?M3
+3.22 Server ServerComp < f_unsubscribe_handle
+3.32 Client ClientComp < f_unsubscribe

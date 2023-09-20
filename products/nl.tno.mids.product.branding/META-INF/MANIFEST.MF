@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MIDS Product Branding
+Bundle-SymbolicName: nl.tno.mids.product.branding;singleton:=true
+Bundle-Version: 0.9.0.qualifier
+Bundle-Vendor: TNO
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: org.eclipse.equinox.app,
+ org.eclipse.ui,
+ org.eclipse.ui.intro
+Automatic-Module-Name: nl.tno.mids.product.branding
+Bundle-ActivationPolicy: lazy

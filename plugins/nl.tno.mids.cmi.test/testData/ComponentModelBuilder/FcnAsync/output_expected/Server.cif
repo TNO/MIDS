@@ -1,0 +1,29 @@
+automaton Server:
+  event IServer__f__arslt_fcncb__Client;
+  event IServer__f__arslt_ret;
+  event IServer__f__async_ret;
+  event IServer__g__trigh_ret;
+  location loc1:
+    initial;
+    marked;
+    edge Client.IServer__f__fcn_async__Server goto loc2;
+    edge Trigger.IServer__g__trig_trigh__Server goto loc3;
+  location loc2:
+    marked false;
+    edge IServer__f__async_ret goto loc1;
+  location loc3:
+    marked false;
+    edge IServer__f__arslt_fcncb__Client goto loc5;
+  location loc4:
+    marked false;
+    edge IServer__g__trigh_ret goto loc1;
+  location loc5:
+    marked false;
+    edge IServer__f__arslt_ret goto loc4;
+end
+group Client:
+  event IServer__f__fcn_async__Server;
+end
+group Trigger:
+  event IServer__g__trig_trigh__Server;
+end

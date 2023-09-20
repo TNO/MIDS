@@ -1,0 +1,63 @@
+executor Client as Client
+executor Server as Server
+
+interface IServer {
+    operation f
+}
+
+component ClientComp
+function "f call" as f_call implements IServer.f { execType: blk }
+
+component ServerComp
+function "f call handle" as f_call_handle implements IServer.f { execType: sync }
+
+/* The trace itself. */
+1 Client ClientComp > f_call !M1
+1.1 Server ServerComp > f_call_handle ?M1
+1.5 Server ServerComp < f_call_handle !M2
+1.6 Client ClientComp < f_call ?M2
+
+2 Client ClientComp > f_call !M3
+2.1 Server ServerComp > f_call_handle ?M3
+2.5 Server ServerComp < f_call_handle !M4
+2.6 Client ClientComp < f_call ?M4
+
+3 Client ClientComp > f_call !M5
+3.1 Server ServerComp > f_call_handle ?M5
+3.5 Server ServerComp < f_call_handle !M6
+3.6 Client ClientComp < f_call ?M6
+
+4 Client ClientComp > f_call !M7
+4.1 Server ServerComp > f_call_handle ?M7
+4.5 Server ServerComp < f_call_handle !M8
+4.6 Client ClientComp < f_call ?M8
+
+5 Client ClientComp > f_call !M9
+5.1 Server ServerComp > f_call_handle ?M9
+5.5 Server ServerComp < f_call_handle !M10
+5.6 Client ClientComp < f_call ?M10
+
+6 Client ClientComp > f_call !M11
+6.1 Server ServerComp > f_call_handle ?M11
+6.5 Server ServerComp < f_call_handle !M12
+6.6 Client ClientComp < f_call ?M12
+
+7 Client ClientComp > f_call !M13
+7.1 Server ServerComp > f_call_handle ?M13
+7.5 Server ServerComp < f_call_handle !M14
+7.6 Client ClientComp < f_call ?M14
+
+8 Client ClientComp > f_call !M15
+8.1 Server ServerComp > f_call_handle ?M15
+8.5 Server ServerComp < f_call_handle !M16
+8.6 Client ClientComp < f_call ?M16
+
+9 Client ClientComp > f_call !M17
+9.1 Server ServerComp > f_call_handle ?M17
+9.5 Server ServerComp < f_call_handle !M18
+9.6 Client ClientComp < f_call ?M18
+
+10 Client ClientComp > f_call !M19
+10.1 Server ServerComp > f_call_handle ?M19
+10.5 Server ServerComp < f_call_handle !M20
+10.6 Client ClientComp < f_call ?M20

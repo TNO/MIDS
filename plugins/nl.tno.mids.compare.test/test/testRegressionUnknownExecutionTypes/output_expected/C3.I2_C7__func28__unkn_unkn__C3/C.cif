@@ -1,0 +1,58 @@
+group C3:
+  event C7__func19__unkn;
+  event C7__func19__unkn_ret;
+  event C7__func20__unkn;
+  event C7__func20__unkn_ret;
+  event C7__func22__unkn_unkn__C6;
+  event C7__func23__unkn_unkn__C6;
+  event C7__func24__unkn_unkn__C6;
+  event C7__func25__unkn_unkn__C6;
+  event C7__func28__unkn_ret_unkn_ret__I2;
+  automaton I2_C7__func28__unkn_unkn__C3:
+    location loc1:
+      initial;
+      marked;
+      edge I2.C7__func28__unkn_unkn__C3 goto loc2;
+    location loc2:
+      marked;
+      edge C7__func20__unkn goto loc3;
+    location loc3:
+      marked;
+      edge C7__func24__unkn_unkn__C6 goto loc4;
+      edge C7__func23__unkn_unkn__C6 goto loc5;
+      edge C7__func25__unkn_unkn__C6 goto loc6;
+      edge C7__func22__unkn_unkn__C6 goto loc7;
+    location loc4:
+      marked;
+      edge C6.C7__func24__unkn_ret_unkn_ret__C3 goto loc8;
+    location loc5:
+      marked;
+      edge C6.C7__func23__unkn_ret_unkn_ret__C3 goto loc8;
+    location loc6:
+      marked;
+      edge C6.C7__func25__unkn_ret_unkn_ret__C3 goto loc8;
+    location loc7:
+      marked;
+      edge C6.C7__func22__unkn_ret_unkn_ret__C3 goto loc8;
+    location loc8:
+      marked;
+      edge C7__func19__unkn goto loc9;
+    location loc9:
+      marked;
+      edge C7__func19__unkn_ret goto loc10;
+    location loc10:
+      marked;
+      edge C7__func20__unkn_ret goto loc11;
+    location loc11:
+      marked;
+  end
+end
+group C6:
+  event C7__func22__unkn_ret_unkn_ret__C3;
+  event C7__func23__unkn_ret_unkn_ret__C3;
+  event C7__func24__unkn_ret_unkn_ret__C3;
+  event C7__func25__unkn_ret_unkn_ret__C3;
+end
+group I2:
+  event C7__func28__unkn_unkn__C3;
+end

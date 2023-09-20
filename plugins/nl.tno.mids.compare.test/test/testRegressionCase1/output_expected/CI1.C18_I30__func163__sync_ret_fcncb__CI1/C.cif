@@ -1,0 +1,16 @@
+group CI1:
+  event CI1__func174__evt_evtcb__C17;
+  event CI1__func174__evt_ret;
+  event I30__func163__fcncb_ret;
+  automaton C18_I30__func163__sync_ret_fcncb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C18.I30__func163__sync_ret_fcncb__CI1 goto loc2;
+    location loc2:
+      marked;
+  end
+end
+group C18:
+  event I30__func163__sync_ret_fcncb__CI1;
+end

@@ -1,0 +1,23 @@
+group C17:
+  event I27__func166__trig_trigh__CI1;
+end
+group CI1:
+  event I27__func166__trigh_ret;
+  event I45__func166__fcn_async__C34;
+  event I45__func166__fcn_ret;
+  automaton C17_I27__func166__trig_trigh__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C17.I27__func166__trig_trigh__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I45__func166__fcn_async__C34 goto loc3;
+    location loc3:
+      marked;
+      edge I45__func166__fcn_ret goto loc4;
+    location loc4:
+      marked;
+      edge I27__func166__trigh_ret goto loc1;
+  end
+end

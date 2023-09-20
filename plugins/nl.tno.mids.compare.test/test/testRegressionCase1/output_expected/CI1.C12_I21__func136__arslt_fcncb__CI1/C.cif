@@ -1,0 +1,60 @@
+group CI1:
+  event I10__func100__fcn_async__C6;
+  event I10__func100__fcn_ret;
+  event I11__func011__blk;
+  event I11__func011__blk_ret;
+  event I11__func011__sync;
+  event I11__func011__sync_ret;
+  event I16__func048__blk;
+  event I16__func048__blk_ret;
+  event I16__func048__sync;
+  event I16__func048__sync_ret;
+  event I19__func077__blk;
+  event I19__func077__blk_ret;
+  event I19__func077__sync;
+  event I19__func077__sync_ret;
+  event I21__func059__fcn_async__C12;
+  event I21__func059__fcn_ret;
+  event I21__func136__fcn_async__C12;
+  event I21__func136__fcn_ret;
+  event I21__func136__fcncb_ret;
+  event I35__func054__blk_sync__C25;
+  automaton C12_I21__func136__arslt_fcncb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C12.I21__func136__arslt_fcncb__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I21__func059__fcn_async__C12 goto loc3;
+    location loc3:
+      marked;
+      edge I21__func059__fcn_ret goto loc4;
+    location loc4:
+      marked;
+      edge I21__func136__fcn_async__C12 goto loc5;
+      edge I10__func100__fcn_async__C6 goto loc6;
+      edge I21__func136__fcncb_ret goto loc1;
+      edge I11__func011__blk goto loc7;
+    location loc5:
+      marked;
+      edge I21__func136__fcn_ret goto loc8;
+    location loc6:
+      marked;
+      edge I10__func100__fcn_ret goto loc8;
+    location loc7:
+      marked;
+      edge I11__func011__sync goto loc9;
+    location loc8:
+      marked;
+      edge I21__func136__fcncb_ret goto loc1;
+    location loc9:
+      marked;
+  end
+end
+group C12:
+  event I21__func136__arslt_fcncb__CI1;
+end
+group C25:
+  event I35__func054__sync_ret_blk_ret__CI1;
+end

@@ -1,0 +1,23 @@
+digraph "CMIAUTOMATON2.CMIAUTOMATON2_e1__abc__async"{
+rankdir="BT"
+1 [label=<A<sub><font point-size="10">2</font></sub> (3)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">2</font></sub> (3)>, style="filled", fillcolor="lightgray"]
+3 [label=<C<sub><font point-size="10">2</font></sub> (4)>, style="filled", fillcolor="lightgray"]
+4 [label=<D<sub><font point-size="10">2</font></sub> (2)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+5 [label=<E<sub><font point-size="10">2</font></sub> (8)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+6 [label=<F<sub><font point-size="10">2</font></sub> (9)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+7 [label=<G<sub><font point-size="10">2</font></sub> (9)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+8 [label=<H<sub><font point-size="10">2</font></sub> (12)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+1 -> 5 [label=<  ?  >]
+1 -> 6 [label=<  ?  >]
+2 -> 5 [label=<  ?  >]
+2 -> 7 [label=<  ?  >]
+3 -> 6 [label=<  ?  >]
+3 -> 7 [label=<  ?  >]
+4 -> 1 [label=<  ?  >]
+4 -> 2 [label=<  ?  >]
+4 -> 3 [label=<  ?  >]
+5 -> 8 [label=<  ?  >]
+6 -> 8 [label=<  ?  >]
+7 -> 8 [label=<  ?  >]
+}

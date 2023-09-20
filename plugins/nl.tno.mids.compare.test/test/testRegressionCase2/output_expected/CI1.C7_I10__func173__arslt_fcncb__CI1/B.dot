@@ -1,0 +1,31 @@
+digraph automaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle"];
+	4 [label=<s4> shape="doublecircle"];
+	5 [label=<s5> shape="doublecircle"];
+	6 [label=<s6> shape="doublecircle"];
+	7 [label=<s7> shape="doublecircle"];
+	8 [label=<s8> shape="doublecircle"];
+	9 [label=<s9> shape="doublecircle"];
+	10 [label=<s10> shape="doublecircle"];
+	11 [label=<s11> shape="doublecircle"];
+	12 [label=<s12> shape="doublecircle"];
+	13 [label=<s13> shape="doublecircle"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<C7.I10__func173__arslt_fcncb__CI1> id="1-0-2"];
+	2 -> 3 [label=<CI1.CI1__func174__evt_evtcb__C17> id="2-0-3"];
+	2 -> 4 [label=<CI1.I10__func005__fcn_async__C7> id="2-1-4"];
+	3 -> 5 [label=<CI1.CI1__func174__evt_ret> id="3-0-5"];
+	4 -> 6 [label=<CI1.I10__func005__fcn_ret> id="4-0-6"];
+	5 -> 1 [label=<CI1.I10__func173__fcncb_ret> id="5-0-1"];
+	6 -> 7 [label=<CI1.CI1__func122__evt_evtcb__C17> id="6-0-7"];
+	7 -> 8 [label=<CI1.CI1__func122__evt_ret> id="7-0-8"];
+	8 -> 9 [label=<CI1.CI1__func174__evt_evtcb__C17> id="8-0-9"];
+	9 -> 10 [label=<CI1.CI1__func174__evt_ret> id="9-0-10"];
+	10 -> 11 [label=<CI1.CI1__func119__evt_evtcb__C17> id="10-0-11"];
+	11 -> 12 [label=<CI1.CI1__func119__evt_ret> id="11-0-12"];
+	12 -> 13 [label=<CI1.CI1__func185__evt_evtcb__C17> id="12-0-13"];
+	13 -> 5 [label=<CI1.CI1__func185__evt_ret> id="13-0-5"];
+}

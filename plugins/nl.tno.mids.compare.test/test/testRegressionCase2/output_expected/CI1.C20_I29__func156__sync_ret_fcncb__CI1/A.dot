@@ -1,0 +1,38 @@
+digraph automaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle"];
+	4 [label=<s4> shape="doublecircle"];
+	5 [label=<s5> shape="doublecircle"];
+	6 [label=<s6> shape="doublecircle"];
+	7 [label=<s7> shape="doublecircle"];
+	8 [label=<s8> shape="doublecircle"];
+	9 [label=<s9> shape="doublecircle"];
+	10 [label=<s10> shape="doublecircle"];
+	11 [label=<s11> shape="doublecircle"];
+	12 [label=<s12> shape="doublecircle"];
+	13 [label=<s13> shape="doublecircle"];
+	14 [label=<s14> shape="doublecircle"];
+	15 [label=<s15> shape="doublecircle"];
+	16 [label=<s16> shape="doublecircle"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<C20.I29__func156__sync_ret_fcncb__CI1> id="1-0-2"];
+	2 -> 3 [label=<CI1.I29__func104__fcn_sync__C20> id="2-0-3"];
+	3 -> 4 [label=<CI1.I29__func104__fcn_ret> id="3-0-4"];
+	4 -> 5 [label=<CI1.I11__func011__blk> id="4-0-5"];
+	4 -> 1 [label=<CI1.I29__func156__fcncb_ret> id="4-1-1"];
+	5 -> 6 [label=<CI1.I11__func011__sync> id="5-0-6"];
+	6 -> 7 [label=<CI1.I9__func055__blk_sync__C7> id="6-0-7"];
+	7 -> 8 [label=<C7.I9__func055__sync_ret_blk_ret__CI1> id="7-0-8"];
+	8 -> 9 [label=<CI1.I17__func026__blk_sync__C10> id="8-0-9"];
+	9 -> 10 [label=<C10.I17__func026__sync_ret_blk_ret__CI1> id="9-0-10"];
+	10 -> 11 [label=<CI1.I11__func011__sync_ret> id="10-0-11"];
+	11 -> 12 [label=<CI1.I11__func011__blk_ret> id="11-0-12"];
+	12 -> 1 [label=<CI1.I29__func156__fcncb_ret> id="12-0-1"];
+	12 -> 13 [label=<CI1.I10__C33__fcn_async__C7> id="12-1-13"];
+	13 -> 14 [label=<CI1.I10__C33__fcn_ret> id="13-0-14"];
+	14 -> 15 [label=<CI1.CI1__func112__evt_evtcb__C17> id="14-0-15"];
+	15 -> 16 [label=<CI1.CI1__func112__evt_ret> id="15-0-16"];
+	16 -> 1 [label=<CI1.I29__func156__fcncb_ret> id="16-0-1"];
+}

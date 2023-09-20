@@ -1,0 +1,505 @@
+group C17:
+  event CI1__func030__trig_trigh__CI1;
+end
+group C32:
+  event I41__func056__sync_ret_blk_ret__CI1;
+  event I41__func092__sync_ret_blk_ret__CI1;
+end
+group C40:
+  event I51__func052__sync_ret_blk_ret__CI1;
+end
+group CI1:
+  event CI1__func030__trigh_ret;
+  event I41__func056__blk_sync__C32;
+  event I41__func092__blk_sync__C32;
+  event I51__func052__blk_sync__C40;
+  automaton C17_CI1__func030__trig_trigh__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C17.CI1__func030__trig_trigh__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I51__func052__blk_sync__C40 goto loc3;
+    location loc3:
+      marked;
+      edge C40.I51__func052__sync_ret_blk_ret__CI1 goto loc4;
+    location loc4:
+      marked;
+      edge I41__func092__blk_sync__C32 goto loc5;
+    location loc5:
+      marked;
+      edge C32.I41__func092__sync_ret_blk_ret__CI1 goto loc6;
+    location loc6:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc7;
+    location loc7:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc8;
+    location loc8:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc9;
+    location loc9:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc10;
+    location loc10:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc11;
+    location loc11:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc12;
+    location loc12:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc13;
+    location loc13:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc14;
+    location loc14:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc15;
+    location loc15:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc16;
+    location loc16:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc17;
+    location loc17:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc18;
+    location loc18:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc19;
+    location loc19:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc20;
+    location loc20:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc21;
+    location loc21:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc22;
+    location loc22:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc23;
+    location loc23:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc24;
+    location loc24:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc25;
+    location loc25:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc26;
+    location loc26:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc27;
+    location loc27:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc28;
+    location loc28:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc29;
+    location loc29:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc30;
+    location loc30:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc31;
+    location loc31:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc32;
+    location loc32:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc33;
+    location loc33:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc34;
+    location loc34:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc35;
+    location loc35:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc36;
+    location loc36:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc37;
+    location loc37:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc38;
+    location loc38:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc39;
+    location loc39:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc40;
+    location loc40:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc41;
+    location loc41:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc42;
+    location loc42:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc43;
+    location loc43:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc44;
+    location loc44:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc45;
+    location loc45:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc46;
+    location loc46:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc47;
+    location loc47:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc48;
+    location loc48:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc49;
+    location loc49:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc50;
+    location loc50:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc51;
+    location loc51:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc52;
+    location loc52:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc53;
+    location loc53:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc54;
+    location loc54:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc55;
+    location loc55:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc56;
+    location loc56:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc57;
+    location loc57:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc58;
+    location loc58:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc59;
+    location loc59:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc60;
+    location loc60:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc61;
+    location loc61:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc62;
+    location loc62:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc63;
+    location loc63:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc64;
+    location loc64:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc65;
+    location loc65:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc66;
+    location loc66:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc67;
+    location loc67:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc68;
+    location loc68:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc69;
+    location loc69:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc70;
+    location loc70:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc71;
+    location loc71:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc72;
+    location loc72:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc73;
+    location loc73:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc74;
+    location loc74:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc75;
+    location loc75:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc76;
+    location loc76:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc77;
+    location loc77:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc78;
+    location loc78:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc79;
+    location loc79:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc80;
+    location loc80:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc81;
+    location loc81:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc82;
+    location loc82:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc83;
+    location loc83:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc84;
+    location loc84:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc85;
+    location loc85:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc86;
+    location loc86:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc87;
+    location loc87:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc88;
+    location loc88:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc89;
+    location loc89:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc90;
+    location loc90:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc91;
+    location loc91:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc92;
+    location loc92:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc93;
+    location loc93:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc94;
+    location loc94:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc95;
+    location loc95:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc96;
+    location loc96:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc97;
+    location loc97:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc98;
+    location loc98:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc99;
+    location loc99:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc100;
+    location loc100:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc101;
+    location loc101:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc102;
+    location loc102:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc103;
+    location loc103:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc104;
+    location loc104:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc105;
+    location loc105:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc106;
+    location loc106:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc107;
+    location loc107:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc108;
+    location loc108:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc109;
+    location loc109:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc110;
+    location loc110:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc111;
+    location loc111:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc112;
+    location loc112:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc113;
+    location loc113:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc114;
+    location loc114:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc115;
+    location loc115:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc116;
+    location loc116:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc117;
+    location loc117:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc118;
+    location loc118:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc119;
+    location loc119:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc120;
+    location loc120:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc121;
+    location loc121:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc122;
+    location loc122:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc123;
+    location loc123:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc124;
+    location loc124:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc125;
+    location loc125:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc126;
+    location loc126:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc127;
+    location loc127:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc128;
+    location loc128:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc129;
+    location loc129:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc130;
+    location loc130:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc131;
+    location loc131:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc132;
+    location loc132:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc133;
+    location loc133:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc134;
+    location loc134:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc135;
+    location loc135:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc136;
+    location loc136:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc137;
+    location loc137:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc138;
+    location loc138:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc139;
+    location loc139:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc140;
+    location loc140:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc141;
+    location loc141:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc142;
+    location loc142:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc143;
+    location loc143:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc144;
+    location loc144:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc145;
+    location loc145:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc146;
+    location loc146:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc147;
+    location loc147:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc148;
+    location loc148:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc149;
+    location loc149:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc150;
+    location loc150:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc151;
+    location loc151:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc152;
+    location loc152:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc153;
+    location loc153:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc154;
+    location loc154:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc155;
+    location loc155:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc156;
+    location loc156:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc157;
+    location loc157:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc158;
+    location loc158:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc159;
+    location loc159:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc160;
+    location loc160:
+      marked;
+      edge I41__func056__blk_sync__C32 goto loc161;
+    location loc161:
+      marked;
+      edge C32.I41__func056__sync_ret_blk_ret__CI1 goto loc162;
+    location loc162:
+      marked;
+      edge CI1__func030__trigh_ret goto loc1;
+  end
+end

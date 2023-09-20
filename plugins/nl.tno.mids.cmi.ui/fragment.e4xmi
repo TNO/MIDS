@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmlns:ui="http://www.eclipse.org/ui/2010/UIModel/application/ui" xmi:id="_4-k9QDFbEeqQf-bSXFIWTg">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_7n5I4DFbEeqQf-bSXFIWTg" featurename="menuContributions" parentElementId="org.eclipse.e4.legacy.ide.application">
+    <elements xsi:type="menu:MenuContribution" xmi:id="_BPPL4DFcEeqQf-bSXFIWTg" elementId="nl.tno.mids.cmi.ui.menucontribution.0" positionInParent="before=additions" parentId="popup">
+      <children xsi:type="menu:Menu" xmi:id="_lOK6YL7gEeqw4bFf2txz1w" elementId="nl.tno.mids.cmi.ui.menu.constructCifModels" label="Construct CIF Models" iconURI="platform:/plugin/nl.tno.mids.cmi.ui/icons/cif-icon.png" tooltip="Construct CIF models from TMSCs">
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_EJn5YDFcEeqQf-bSXFIWTg" elementId="nl.tno.mids.cmi.ui.directmenuitem.constructComponentModelsFromTmsc" label="Construct component models" iconURI="platform:/plugin/nl.tno.mids.cmi.ui/icons/cif-icon.png" tooltip="Constructs automata corresponding to component behavior in the TMSC" contributionURI="bundleclass://nl.tno.mids.cmi.ui/nl.tno.mids.cmi.ui.CmiFromTmscHandler">
+          <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_H-YsgMBLEeqITda6p9CJTA" coreExpressionId="nl.tno.mids.cmi.ui.selectedTmscFiles"/>
+        </children>
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_IYnCEOkWEeq819I7e_4XKg" elementId="nl.tno.mids.cmi.ui.directmenuitem.constructComponentModelsFromOptionsFile" label="Construct component models" iconURI="platform:/plugin/nl.tno.mids.cmi.ui/icons/cif-icon.png" tooltip="Constructs automata corresponding to component behavior in the TMSC" contributionURI="bundleclass://nl.tno.mids.cmi.ui/nl.tno.mids.cmi.ui.CmiFromOptionsFileHandler">
+          <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_I9TDgOkWEeq819I7e_4XKg" coreExpressionId="nl.tno.mids.cmi.ui.selectedOptionFiles"/>
+        </children>
+      </children>
+    </elements>
+  </fragments>
+</fragment:ModelFragments>

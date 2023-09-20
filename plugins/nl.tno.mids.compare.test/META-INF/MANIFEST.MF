@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MIDS Compare Tests
+Bundle-SymbolicName: nl.tno.mids.compare.test;singleton:=true
+Bundle-Version: 0.9.0.qualifier
+Bundle-Vendor: TNO
+Automatic-Module-Name: nl.tno.mids.compare.test
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: nl.tno.mids.compare;bundle-version="0.1.0",
+ org.apache.commons.io;bundle-version="2.6.0",
+ org.eclipse.core.runtime;bundle-version="3.15.300",
+ nl.tno.mids.automatalib.distribution;bundle-version="0.10.0",
+ nl.tno.mids.cmi;bundle-version="0.9.0",
+ org.junit.jupiter.api;bundle-version="5.4.0",
+ nl.tno.mids.common.unittest,
+ nl.tno.mids.automatalib.extensions,
+ org.eclipse.escet.common.java;bundle-version="0.1.0",
+ org.eclipse.escet.cif.metamodel;bundle-version="0.1.0",
+ nl.tno.mids.cif.extensions,
+ org.eclipse.escet.cif.io,
+ org.eclipse.escet.common.app.framework,
+ nl.tno.mids.gltsdiff.distribution;bundle-version="0.1.0",
+ org.junit.jupiter.params;bundle-version="5.6.0",
+ org.apache.commons.cli,
+ org.apache.commons.math3;bundle-version="3.6.1",
+ nl.tno.mids.gltsdiff.extensions;bundle-version="0.9.0"
+Bundle-ActivationPolicy: lazy

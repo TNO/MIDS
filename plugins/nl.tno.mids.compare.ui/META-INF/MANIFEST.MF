@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MIDS Compare UI
+Bundle-SymbolicName: nl.tno.mids.compare.ui;singleton:=true
+Bundle-Version: 0.9.0.qualifier
+Bundle-Vendor: TNO
+Automatic-Module-Name: nl.tno.mids.compare.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: javax.inject,
+ org.eclipse.e4.core.di.annotations,
+ org.eclipse.e4.ui.services,
+ org.eclipse.jface,
+ org.eclipse.core.resources,
+ nl.tno.mids.compare,
+ org.eclipse.core.jobs,
+ org.eclipse.core.expressions,
+ nl.esi.pps.common.core.runtime
+Bundle-ActivationPolicy: lazy

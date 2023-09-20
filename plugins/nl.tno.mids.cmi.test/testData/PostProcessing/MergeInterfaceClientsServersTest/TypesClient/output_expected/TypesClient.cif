@@ -1,0 +1,60 @@
+automaton TypesClient:
+  event Interface__FCN_call__fcn_handler__Interface_untraced;
+  event Interface__FCN_call__fcn_ret;
+  event Interface__FCN_call__fcncb_ret;
+  event Interface__blocking_call__blk_handler__Interface_untraced;
+  event Interface__library_call__lib_handler__Interface_untraced;
+  event Interface__requestwait__req_handler__Interface_untraced;
+  event Interface__requestwait__req_ret;
+  event Interface__requestwait__wait;
+  event Interface__subscribe__evtsub_evtsubh__Interface_untraced;
+  event Interface__subscribe__evtsub_ret;
+  event Interface__trigger__trig_trigh__Interface_untraced;
+  event Interface__unsubscribe__evtunsub_evtunsubh__Interface_untraced;
+  event Interface__unsubscribe__evtunsub_ret;
+  location loc1:
+    initial;
+    marked;
+    edge Interface__FCN_call__fcn_handler__Interface_untraced goto loc2;
+    edge Interface__blocking_call__blk_handler__Interface_untraced goto loc5;
+    edge Interface__library_call__lib_handler__Interface_untraced goto loc1;
+    edge Interface__requestwait__req_handler__Interface_untraced goto loc6;
+    edge Interface__subscribe__evtsub_evtsubh__Interface_untraced goto loc9;
+    edge Interface__trigger__trig_trigh__Interface_untraced goto loc10;
+    edge Interface__unsubscribe__evtunsub_evtunsubh__Interface_untraced goto loc11;
+  location loc2:
+    marked false;
+    edge Interface__FCN_call__fcn_ret goto loc3;
+  location loc3:
+    marked false;
+    edge Interface_untraced.Interface__FCN_call__handler_ret_fcncb__TypesClient goto loc4;
+  location loc4:
+    marked false;
+    edge Interface__FCN_call__fcncb_ret goto loc1;
+  location loc5:
+    marked false;
+    edge Interface_untraced.Interface__blocking_call__handler_ret_blk_ret__TypesClient goto loc1;
+  location loc6:
+    marked false;
+    edge Interface__requestwait__req_ret goto loc7;
+  location loc7:
+    marked false;
+    edge Interface__requestwait__wait goto loc8;
+  location loc8:
+    marked false;
+    edge Interface_untraced.Interface__requestwait__handler_ret_wait_ret__TypesClient goto loc1;
+  location loc9:
+    marked false;
+    edge Interface__subscribe__evtsub_ret goto loc1;
+  location loc10:
+    marked false;
+    edge Interface__trigger__trig_trigh__Interface_untraced goto loc1;
+  location loc11:
+    marked false;
+    edge Interface__unsubscribe__evtunsub_ret goto loc1;
+end
+group Interface_untraced:
+  event Interface__FCN_call__handler_ret_fcncb__TypesClient;
+  event Interface__blocking_call__handler_ret_blk_ret__TypesClient;
+  event Interface__requestwait__handler_ret_wait_ret__TypesClient;
+end

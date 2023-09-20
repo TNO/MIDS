@@ -1,0 +1,16 @@
+automaton ComponentA:
+  event int1__de__fcn;
+  event pc1__abc__fcn;
+  event pc3__abc__fcn;
+  location loc1:
+    initial;
+    marked;
+    edge int1__de__fcn goto loc2;
+    edge pc3__abc__fcn goto loc3;
+  location loc2:
+    marked false;
+    edge pc1__abc__fcn goto loc1;
+  location loc3:
+    marked false;
+    edge pc3__abc__fcn goto loc1;
+end

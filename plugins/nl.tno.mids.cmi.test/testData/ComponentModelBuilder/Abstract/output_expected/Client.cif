@@ -1,0 +1,19 @@
+automaton Client:
+  event IServer__f__call_handler__Server;
+  event IServer__g__unkn_unkn__Server;
+  location loc1:
+    initial;
+    marked;
+    edge IServer__f__call_handler__Server goto loc2;
+    edge IServer__g__unkn_unkn__Server goto loc3;
+  location loc2:
+    marked false;
+    edge Server.IServer__f__handler_ret_call_ret__Client goto loc1;
+  location loc3:
+    marked false;
+    edge Server.IServer__g__unkn_ret_unkn_ret__Client goto loc1;
+end
+group Server:
+  event IServer__f__handler_ret_call_ret__Client;
+  event IServer__g__unkn_ret_unkn_ret__Client;
+end

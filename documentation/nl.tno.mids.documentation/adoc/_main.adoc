@@ -1,0 +1,56 @@
+/////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+//
+// This program and the accompanying materials are made available
+// under the terms of the MIT License which is available at
+// https://opensource.org/licenses/MIT
+//
+// SPDX-License-Identifier: MIT
+/////////////////////////////////////////////////////////////////////////
+
+include::_initCommon.adoc[]
+
+// Enable custom style in _main-docinfo.html
+:docinfo:
+
+= MIDS User Guide
+:sectnums:
+
+include::introduction.adoc[]
+
+ifdef::user-guide-web[]
+TIP: The User Guide can also be downloaded as a PDF from link:mids-user-guide.pdf[here^].
+endif::user-guide-web[]
+
+<<<
+
+== Introduction
+
+include::introduction-concepts.adoc[]
+
+include::introduction-tool.adoc[]
+
+<<<
+
+[[install]]
+== Installation
+
+include::installation.adoc[]
+
+include::update.adoc[]
+
+<<<
+
+include::importing-a-measurement.adoc[]
+
+<<<
+
+include::constructive-model-inference.adoc[]
+
+<<<
+
+include::change-impact-analysis.adoc[]
+
+<<<
+
+include::release-notes.adoc[]

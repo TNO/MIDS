@@ -1,0 +1,6 @@
+digraph modelSetLattice{
+rankdir="BT"
+1 [label=<A (2)>, style="filled", fillcolor="lightgray"]
+2 [label=<B (2)>, style="filled", fillcolor="lightgray"]
+3 [label=<C (2)>, style="filled", fillcolor="lightgray"]
+}

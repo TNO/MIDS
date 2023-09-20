@@ -1,0 +1,31 @@
+automaton Client:
+  event i_IClient__h__evtcb_ret;
+  event i_IClient__j__blk;
+  event i_IClient__j__blk_ret;
+  event i_IServer__g__trig_ret;
+  event r_IClient__h__evt_evtcb__Server;
+  event r_IServer__f__sync_ret_blk_ret__Server;
+  event s_IServer__f__blk_sync__Server;
+  event s_IServer__g__trig_trigh__Server;
+  location loc1:
+    initial;
+    marked;
+    edge r_IClient__h__evt_evtcb__Server goto loc2;
+    edge s_IServer__f__blk_sync__Server goto loc5;
+    edge s_IServer__g__trig_trigh__Server goto loc6;
+  location loc2:
+    marked false;
+    edge i_IClient__j__blk goto loc3;
+  location loc3:
+    marked false;
+    edge i_IClient__j__blk_ret goto loc4;
+  location loc4:
+    marked false;
+    edge i_IClient__h__evtcb_ret goto loc1;
+  location loc5:
+    marked false;
+    edge r_IServer__f__sync_ret_blk_ret__Server goto loc1;
+  location loc6:
+    marked false;
+    edge i_IServer__g__trig_ret goto loc1;
+end

@@ -1,0 +1,47 @@
+automaton Server:
+  event i_IClient__h__evt_ret;
+  event i_IConnector__i__fcn_ret;
+  event i_IConnector__i__fcncb_ret;
+  event i_IServer__g__trigh_ret;
+  event i_IServer__k__blk;
+  event i_IServer__k__blk_ret;
+  event r_IConnector__i__sync_ret_fcncb__Connector;
+  event r_IServer__f__blk_sync__Client;
+  event r_IServer__g__trig_trigh__Client;
+  event s_IClient__h__evt_evtcb__Client;
+  event s_IConnector__i__fcn_sync__Connector;
+  event s_IServer__f__sync_ret_blk_ret__Client;
+  location loc1:
+    initial;
+    marked;
+    edge r_IConnector__i__sync_ret_fcncb__Connector goto loc2;
+    edge r_IServer__f__blk_sync__Client goto loc7;
+    edge r_IServer__g__trig_trigh__Client goto loc8;
+  location loc2:
+    marked false;
+    edge i_IServer__k__blk goto loc3;
+  location loc3:
+    marked false;
+    edge i_IServer__k__blk_ret goto loc4;
+  location loc4:
+    marked false;
+    edge s_IClient__h__evt_evtcb__Client goto loc5;
+  location loc5:
+    marked false;
+    edge i_IClient__h__evt_ret goto loc6;
+  location loc6:
+    marked false;
+    edge i_IConnector__i__fcncb_ret goto loc1;
+  location loc7:
+    marked false;
+    edge s_IServer__f__sync_ret_blk_ret__Client goto loc1;
+  location loc8:
+    marked false;
+    edge s_IConnector__i__fcn_sync__Connector goto loc9;
+  location loc9:
+    marked false;
+    edge i_IConnector__i__fcn_ret goto loc10;
+  location loc10:
+    marked false;
+    edge i_IServer__g__trigh_ret goto loc1;
+end

@@ -1,0 +1,19 @@
+automaton Protocol_Client_Server:
+  location loc1:
+    initial;
+    marked;
+    edge Client.IServer__f__blk_sync__Server goto loc2;
+    edge Client.IServer__g__trig_trigh__Server goto loc1;
+    edge Server.IClient__h__evt_evtcb__Client goto loc1;
+  location loc2:
+    marked;
+    edge Server.IServer__f__sync_ret_blk_ret__Client goto loc1;
+end
+group Client:
+  event IServer__f__blk_sync__Server;
+  event IServer__g__trig_trigh__Server;
+end
+group Server:
+  event IClient__h__evt_evtcb__Client;
+  event IServer__f__sync_ret_blk_ret__Client;
+end

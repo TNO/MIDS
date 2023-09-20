@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MIDS PPS Extensions
+Bundle-SymbolicName: nl.tno.mids.pps.extensions;singleton:=true
+Bundle-Version: 0.9.0.qualifier
+Bundle-Vendor: TNO
+Automatic-Module-Name: nl.tno.mids.pps.extensions
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: org.eclipse.lsat.common.xtend,
+ nl.esi.pps.tmsc,
+ org.eclipse.core.runtime;bundle-version="3.18.0",
+ org.eclipse.core.resources;bundle-version="3.13.700",
+ nl.esi.pps.common.emf.ecore,
+ org.eclipse.escet.common.java;bundle-version="0.1.0",
+ org.slf4j.api,
+ org.apache.commons.io,
+ nl.esi.pps.common.core.runtime
+Export-Package: nl.tno.mids.pps.extensions.cmi,
+ nl.tno.mids.pps.extensions.info,
+ nl.tno.mids.pps.extensions.queries,
+ nl.tno.mids.pps.extensions.util
+Bundle-ActivationPolicy: lazy

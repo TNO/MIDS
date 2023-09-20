@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<plugin>
+
+   <extension
+         id="nl.tno.mids.common.eclipse.ui.fragment"
+         point="org.eclipse.e4.workbench.model">
+      <fragment
+            apply="always"
+            uri="fragment.e4xmi">
+      </fragment>
+   </extension>
+     
+   
+    <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="nl.tno.mids.common.eclipse.ui.multipleFilesOrFolders">
+         <or>
+            <reference definitionId="nl.tno.mids.common.eclipse.ui.multipleFiles"/>
+            <reference definitionId="nl.tno.mids.common.eclipse.ui.multipleFolders"/>
+        </or>
+        </definition>
+      <definition
+            id="nl.tno.mids.common.eclipse.ui.singleSelection">
+         <with variable="selection">
+            <count value="1"/> <!-- count eq 1 -->
+         </with>
+        </definition>
+      <definition
+            id="nl.tno.mids.common.eclipse.ui.isFile">
+         <with variable="selection">
+            <iterate ifEmpty="false">
+               <adapt type="org.eclipse.core.resources.IFile"/>
+            </iterate>
+         </with>
+        </definition>
+      <definition
+            id="nl.tno.mids.common.eclipse.ui.multipleFiles">
+         <with variable="selection">
+            <count value="(1-"/> <!-- count gt 1 -->
+            <iterate ifEmpty="false">
+               <adapt type="org.eclipse.core.resources.IFile"/>
+            </iterate>
+         </with>
+        </definition>
+        <definition
+            id="nl.tno.mids.common.eclipse.ui.multipleFolders">
+         <with variable="selection">
+            <count value="(1-"/> <!-- count gt 1 -->
+            <iterate ifEmpty="false">
+               <adapt type="org.eclipse.core.resources.IFolder"/>
+            </iterate>
+         </with>
+        </definition>
+   </extension>
+</plugin>

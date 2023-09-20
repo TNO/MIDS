@@ -1,0 +1,77 @@
+group C7:
+  event I9__func055__sync_ret_blk_ret__CI1;
+end
+group C10:
+  event I17__func026__sync_ret_blk_ret__CI1;
+end
+group C20:
+  event I29__func156__sync_ret_fcncb__CI1;
+end
+group CI1:
+  event I9__func055__blk_sync__C7;
+  event I10__C33__fcn_async__C7;
+  event I10__C33__fcn_ret;
+  event I11__func011__blk;
+  event I11__func011__blk_ret;
+  event I11__func011__sync;
+  event I11__func011__sync_ret;
+  event I17__func026__blk_sync__C10;
+  event CI1__func112__evt_evtcb__C17;
+  event CI1__func112__evt_ret;
+  event I29__func104__fcn_ret;
+  event I29__func104__fcn_sync__C20;
+  event I29__func156__fcncb_ret;
+  automaton C20_I29__func156__sync_ret_fcncb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C20.I29__func156__sync_ret_fcncb__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I29__func104__fcn_sync__C20 goto loc3;
+    location loc3:
+      marked;
+      edge I29__func104__fcn_ret goto loc4;
+    location loc4:
+      marked;
+      edge I11__func011__blk goto loc5;
+      edge I29__func156__fcncb_ret goto loc1;
+    location loc5:
+      marked;
+      edge I11__func011__sync goto loc6;
+    location loc6:
+      marked;
+      edge I9__func055__blk_sync__C7 goto loc7;
+    location loc7:
+      marked;
+      edge C7.I9__func055__sync_ret_blk_ret__CI1 goto loc8;
+    location loc8:
+      marked;
+      edge I17__func026__blk_sync__C10 goto loc9;
+    location loc9:
+      marked;
+      edge C10.I17__func026__sync_ret_blk_ret__CI1 goto loc10;
+    location loc10:
+      marked;
+      edge I11__func011__sync_ret goto loc11;
+    location loc11:
+      marked;
+      edge I11__func011__blk_ret goto loc12;
+    location loc12:
+      marked;
+      edge I29__func156__fcncb_ret goto loc1;
+      edge I10__C33__fcn_async__C7 goto loc13;
+    location loc13:
+      marked;
+      edge I10__C33__fcn_ret goto loc14;
+    location loc14:
+      marked;
+      edge CI1__func112__evt_evtcb__C17 goto loc15;
+    location loc15:
+      marked;
+      edge CI1__func112__evt_ret goto loc16;
+    location loc16:
+      marked;
+      edge I29__func156__fcncb_ret goto loc1;
+  end
+end

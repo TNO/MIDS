@@ -1,0 +1,24 @@
+/////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+//
+// This program and the accompanying materials are made available
+// under the terms of the MIT License which is available at
+// https://opensource.org/licenses/MIT
+//
+// SPDX-License-Identifier: MIT
+/////////////////////////////////////////////////////////////////////////
+
+:idprefix:
+:idseparator: -
+
+:listing-caption: Listing
+
+:source-highlighter: coderay
+
+// Enable experimental features, for 'kbd' macro.
+:experimental:
+
+// Keep these at the end, as otherwise somehow the :docinfo: in _main.adoc doesn't work anymore...
+ifndef::docsdir[:docsdir: adoc]
+ifndef::imgsdir[:imgsdir: images]
+ifndef::sourcesdir[:sourcesdir: ../sources]

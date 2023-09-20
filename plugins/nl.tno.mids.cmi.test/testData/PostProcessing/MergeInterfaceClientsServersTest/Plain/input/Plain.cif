@@ -1,0 +1,45 @@
+automaton Plain:
+  event C7__func3__sync_ret_fcncb__DUMMY;
+  location loc1: 
+    initial; 
+    marked; 
+    edge C9.C7__func3__fcn_sync__DUMMY goto loc2; 
+    edge C9.C11__doThat__fcn_sync__DUMMY goto loc8;
+    edge C9.C11__handleThis_Not_toBeRenamed_Event__handler_sync__DUMMY goto loc9;
+  location loc2: 
+    marked; 
+    edge C9.C11__doThat__fcn_sync__DUMMY goto loc3;
+  location loc3: 
+    marked; 
+    edge C9.C11__doThat__sync_ret_fcncb__DUMMY goto loc4;
+  location loc4: 
+    marked; 
+    edge C7__func3__sync_ret_fcncb__DUMMY goto loc5; 
+  location loc5: 
+    marked; 
+    edge C9.C11__handleThis_Not_toBeRenamed_Event__handler_sync__DUMMY goto loc6; 
+  location loc6: 
+    marked; 
+    edge C9.C11__handleThis_Not_toBeRenamed_Event__handler_ret_call_ret__DUMMY goto loc7; 
+  location loc7: 
+    marked; 
+    edge C9.C11__handleThis_Not_toBeRenamed_Event__trig_trigh__DUMMY goto loc1;
+  location loc8: 
+    marked; 
+    edge C9.C11__doThat__sync_ret_fcncb__DUMMY goto loc1; 
+  location loc9: 
+    marked; 
+    edge C9.C11__handleThis_Not_toBeRenamed_Event__handler_ret_call_ret__DUMMY goto loc10;
+  location loc10: 
+    marked; 
+    edge C9.C11__handleThis_Not_toBeRenamed_Event__call_evt__DUMMY goto loc1;
+end
+group C9:
+  event C7__func3__fcn_sync__DUMMY;
+  event C11__doThat__fcn_sync__DUMMY;
+  event C11__doThat__sync_ret_fcncb__DUMMY;
+  event C11__handleThis_Not_toBeRenamed_Event__call_evt__DUMMY;
+  event C11__handleThis_Not_toBeRenamed_Event__handler_ret_call_ret__DUMMY;
+  event C11__handleThis_Not_toBeRenamed_Event__handler_sync__DUMMY;
+  event C11__handleThis_Not_toBeRenamed_Event__trig_trigh__DUMMY;
+end

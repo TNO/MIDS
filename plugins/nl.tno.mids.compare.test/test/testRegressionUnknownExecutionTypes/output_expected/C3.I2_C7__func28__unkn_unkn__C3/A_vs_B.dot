@@ -1,0 +1,30 @@
+digraph diffautomaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle"];
+	4 [label=<s4> shape="doublecircle"];
+	5 [label=<s5> shape="doublecircle"];
+	6 [label=<s6> shape="doublecircle"];
+	7 [label=<s7> shape="doublecircle"];
+	8 [label=<s8> shape="doublecircle"];
+	9 [label=<s9> shape="doublecircle"];
+	10 [label=<s10> shape="doublecircle"];
+	11 [label=<s11> shape="doublecircle" fillcolor="#ff4040" fontcolor="#ffffff" style="filled"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<<font color="#000000">I2.C7__func28__unkn_unkn__C3</font>> id="1-0-2"];
+	2 -> 3 [label=<<font color="#000000">C3.C7__func20__unkn</font>> id="2-0-3"];
+	3 -> 4 [label=<<font color="#000000">C3.C7__func24__unkn_unkn__C6</font>> id="3-0-4"];
+	3 -> 5 [label=<<font color="#000000">C3.C7__func23__unkn_unkn__C6</font>> id="3-1-5"];
+	3 -> 6 [label=<<font color="#000000">C3.C7__func25__unkn_unkn__C6</font>> id="3-2-6"];
+	3 -> 7 [label=<<font color="#000000">C3.C7__func22__unkn_unkn__C6</font>> id="3-3-7"];
+	4 -> 8 [label=<<font color="#000000">C6.C7__func24__unkn_ret_unkn_ret__C3</font>> id="4-0-8"];
+	5 -> 8 [label=<<font color="#000000">C6.C7__func23__unkn_ret_unkn_ret__C3</font>> id="5-0-8"];
+	6 -> 8 [label=<<font color="#000000">C6.C7__func25__unkn_ret_unkn_ret__C3</font>> id="6-0-8"];
+	7 -> 8 [label=<<font color="#000000">C6.C7__func22__unkn_ret_unkn_ret__C3</font>> id="7-0-8"];
+	8 -> 9 [label=<<font color="#000000">C3.C7__func19__unkn</font>> id="8-0-9"];
+	9 -> 10 [label=<<font color="#000000">C3.C7__func19__unkn_ret</font>> id="9-0-10"];
+	10 -> 11 [label=<<font color="#ff4040">C3.C7__func20__unkn_ret</font>> color="#ff4040" id="10-0-11"];
+	10 -> 1 [label=<<font color="#00cc00">C3.C7__func20__unkn_ret</font>> color="#00cc00" id="10-1-1"];
+	11 -> 1 [label=<<font color="#ff4040">C3.C7__func28__unkn_ret_unkn_ret__I2</font>> color="#ff4040" id="11-0-1"];
+}

@@ -1,0 +1,19 @@
+automaton MultipleServer:
+  event Interface__doThat__fcn_handler__Interface_untraced;
+  location loc1:
+    initial;
+    marked;
+    edge Interface__doThat__fcn_handler__Interface_untraced goto loc2;
+  location loc2:
+    marked false;
+    edge Interface_untraced.Interface__doThat__handler_ret_fcncb__MultipleServer goto loc3;
+  location loc3:
+    marked false;
+    edge Interface__doThat__fcn_handler__Interface_untraced goto loc4;
+  location loc4:
+    marked false;
+    edge Interface_untraced.Interface__doThat__handler_ret_fcncb__MultipleServer goto loc1;
+end
+group Interface_untraced:
+  event Interface__doThat__handler_ret_fcncb__MultipleServer;
+end

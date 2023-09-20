@@ -1,0 +1,4 @@
+-input
+testData/testOptions/dummy.tmscz
+-output
+path/to/cmi

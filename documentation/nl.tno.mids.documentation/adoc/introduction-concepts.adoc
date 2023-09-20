@@ -1,0 +1,65 @@
+/////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+//
+// This program and the accompanying materials are made available
+// under the terms of the MIT License which is available at
+// https://opensource.org/licenses/MIT
+//
+// SPDX-License-Identifier: MIT
+/////////////////////////////////////////////////////////////////////////
+
+include::_initCommon.adoc[]
+
+[[mids-concepts]]
+=== MIDS concepts
+
+Many complex cyber-physical systems have software with a component-based service-oriented architecture.
+Together the components implement the full functionality of the system.
+Some components are services that provide a service to one or more other components.
+The different components are connected through interfaces, over which they communicate which each other.
+
+image::{imgsdir}/concepts-components-interfaces.png[]
+
+To fully realize the vision of a component-based architecture, clear contracts for the interfaces between components must be established.
+The contracts typically consist of several parts.
+The part that is commonly available is the syntax of the interactions, the function or method signatures, including names, arguments and types.
+This is often specified in e.g. header files (such as for C/C++) or in an interface description language (IDL).
+However, the behavioral protocol of allowed functional interactions is just as important, and is often not available.
+The protocol can be extended to include data relations (the effect of function parameters and return values).
+Finally, other extensions such as timing and resource usage can be included, to completely specify a contract.
+
+image::{imgsdir}/concepts-components-contract.png[]
+
+Using behavioral models of the components, the behavior of different components can be analyzed, compared, optimized, etc.
+Since strict interfaces are defined, the environment of the component can be abstracted away.
+Analysis can then be restricted to the externally observable behavior of the component over the interfaces via which it communicates.
+By using a separate model for each component, the behavior of each component can be analyzed and qualified in isolation.
+This compositionality allows individual teams within a company to work on a single component, without the need to have models of all other components.
+Also, compositionality makes it feasible to check certain properties, for which it is not computationally infeasible to check them on a whole system at once.
+By restricting analysis to the behavior of the component over the interfaces via which it communicates, also (many of the) internal details of the implementation of the component can be abstracted away.
+
+The software for components can be developed using Model-Based Engineering (MBE), also called Model-Driven Engineering (MDE).
+For components developed using formal MDE tooling, interface models are available that formally describe the protocol of the interface, to which clients and servers must adhere.
+Design models may also be available that formally define the implementation (or realization) of the component, including all internal details.
+However, in most companies, not all components are not (yet) developed using the MDE methodology.
+To be able to analyze components developed using traditional software engineering methodologies, models must be obtained for the behavior of such components.
+
+The vision of MIDS is to provide an environment that facilitates (software) domain experts to obtain such models, and work with them.
+More concretely, MIDS allows to automatically infer models from existing software, using <<cmi,Constructive Model Inference>> (CMI).
+CMI uses dynamic information obtained from a running system, in the form of execution traces.
+By combining resulting behavioral models, as well as by injecting domain knowledge, a more complete behavioral model can be obtained.
+
+The analyses that can be performed on the behavioral models can be applied for various uses, including but not limited to:
+
+* Legacy replacement (or 'drop-in' replacement), where the implementation of a component is replaced by a new implementation.
+  The new implementation must be compatible with the legacy implementation, and must still communicate with its clients and servers in a proper way.
+  The model can also be used to compare the behavior of the legacy and new implementations, to see whether or not they have the same behavior, and if not, where they differ.
+  This helps to reduce risks for redesigns.
+* A behavioral model of an existing system can give insight into the normal and abnormal behavior of a component.
+* The software before and after a software change (e.g. patch, redesign) can be compared to ensure only the expected changes were made and no regressions were introduced.
+  This reduces risks for software changes.
+* Information on behavior observed during tests can be compared against behavior observed during production, to find out whether all production behavior is covered by tests.
+  In case not all production behavior is covered by tests, the information can help to provide information about what tests to add.
+* Information on behavior exposed by a component can be compared against behavior observed during test or production runs, to see what implemented behavior is never used during testing or in practice.
+* Erroneous behavior (e.g. a failing test case) can be compared with correct behavior (e.g. preceding successful runs of the same test suite), to determine where exactly deviations occur, to analyze regressions and flaky tests.
+// Extend to all supported use cases, benefits, etc. Maybe a separate section?

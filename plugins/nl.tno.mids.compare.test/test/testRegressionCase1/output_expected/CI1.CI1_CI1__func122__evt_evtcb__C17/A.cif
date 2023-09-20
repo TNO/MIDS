@@ -1,0 +1,13 @@
+group CI1:
+  event CI1__func122__evt_evtcb__C17;
+  event CI1__func122__evt_ret;
+  automaton CI1_CI1__func122__evt_evtcb__C17:
+    location loc1:
+      initial;
+      marked;
+      edge CI1__func122__evt_evtcb__C17 goto loc2;
+    location loc2:
+      marked;
+      edge CI1__func122__evt_ret goto loc1;
+  end
+end

@@ -1,0 +1,15 @@
+group C17:
+  event CI1__func188__evtunsub_evtunsubh__CI1;
+end
+group CI1:
+  event CI1__func188__evtunsubh_ret;
+  automaton C17_CI1__func188__evtunsub_evtunsubh__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C17.CI1__func188__evtunsub_evtunsubh__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge CI1__func188__evtunsubh_ret goto loc1;
+  end
+end

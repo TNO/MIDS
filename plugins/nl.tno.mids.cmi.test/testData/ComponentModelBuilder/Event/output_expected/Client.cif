@@ -1,0 +1,25 @@
+automaton Client:
+  event IServer__f__evtcb_ret;
+  event IServer__f__evtsub_evtsubh__Server;
+  event IServer__f__evtsub_ret;
+  event IServer__f__evtunsub_evtunsubh__Server;
+  event IServer__f__evtunsub_ret;
+  location loc1:
+    initial;
+    marked;
+    edge IServer__f__evtsub_evtsubh__Server goto loc2;
+    edge Server.IServer__f__evt_evtcb__Client goto loc3;
+    edge IServer__f__evtunsub_evtunsubh__Server goto loc4;
+  location loc2:
+    marked false;
+    edge IServer__f__evtsub_ret goto loc1;
+  location loc3:
+    marked false;
+    edge IServer__f__evtcb_ret goto loc1;
+  location loc4:
+    marked false;
+    edge IServer__f__evtunsub_ret goto loc1;
+end
+group Server:
+  event IServer__f__evt_evtcb__Client;
+end

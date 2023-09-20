@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Model set variant differences</title>
+        <link href="assets/bootstrap.min.css" rel="stylesheet">
+        <script src="assets/bootstrap.bundle.min.js"></script>
+        <style>
+            .verticalText {
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
+            }
+            
+            .variant-label {
+                min-width: 24px;
+                max-width: 40px;
+                min-height: 24px;
+            }
+
+            #table td {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                white-space: nowrap;
+            }
+
+            #table td div {
+                margin: 0 1px 1px 0;
+            }
+
+            #table tr td:first-of-type {
+                padding: 0 8px 0 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="container-fluid bcontent mb-3 mt-3 row">
+                <div class="col">
+                    <h3>Model set variant differences</h3>
+                    <h5>Shows a quantitative view of the differences between model sets.</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3 mb-3">
+                    <table id="table" class="table table-sm" style="width:auto !important">
+                        <tbody>
+                            
+<tr>
+<td rowspan="2" colspan="2"></td>
+<td colspan="2" class="text-center"><h6>Model set</h6></td>
+</tr>
+<tr>
+<td class="text-center" style="width:50px"><span class="verticalText">version1</span></td>
+<td class="text-center" style="width:50px"><span class="verticalText">version2</span></td>
+</tr>
+
+                            <tr>
+<td rowspan="3" class="align-middle"><div class="verticalText"><h6>Model set</h6></div></td>
+</tr>
+<tr class="align-middle">
+<td>version1</td>
+<td><div class="text-center" style="background-color: hsl(0, 0%, 50%); color: rgb(255, 255, 255)">=</div></td>
+<td><div class="text-center" style="background-color: hsl(55, 100%, 57%); color: rgb(0, 0, 0)">1</div></td>
+</tr>
+<tr class="align-middle">
+<td>version2</td>
+<td><div class="text-center" style="background-color: hsl(0, 0%, 100%); color: rgb(0, 0, 0)"></div></td>
+<td><div class="text-center" style="background-color: hsl(0, 0%, 50%); color: rgb(255, 255, 255)">=</div></td>
+</tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3 mb-3">
+                    <h6>Legend</h6>
+                    <table class="table table-sm" style="width:auto !important">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="text-center variant-label" style="width:40px; background-color: hsl(0, 0%, 50%); color: rgb(255, 255, 255">=</div>
+                                </td>
+                                <td>Model set compared to itself</td>
+                            </tr>
+<tr>
+<td><div class="text-center variant-label" style="background-color: rgb(105, 186, 124); color: rgb(255, 255, 255)">0</div></td>
+<td>0 entities with different behavior</td>
+</tr>
+<tr>
+<td><div class="text-center variant-label" style="background-color: rgb(255, 237, 36); color: rgb(0, 0, 0)">1</div></td>
+<td>1 entity with different behavior</td>
+</tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

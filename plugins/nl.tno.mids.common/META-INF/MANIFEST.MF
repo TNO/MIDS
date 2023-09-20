@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MIDS Common Functionality
+Bundle-SymbolicName: nl.tno.mids.common;singleton:=true
+Bundle-Version: 0.9.0.qualifier
+Bundle-Vendor: TNO
+Automatic-Module-Name: nl.tno.mids.common
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.core.runtime
+Export-Package: nl.tno.mids.common

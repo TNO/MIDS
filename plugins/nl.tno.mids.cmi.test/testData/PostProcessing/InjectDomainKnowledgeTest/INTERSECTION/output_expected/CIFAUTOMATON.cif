@@ -1,0 +1,12 @@
+automaton CIFAUTOMATON:
+  event I2__func4__blk;
+  event I2__func4__blk_ret;
+  event INJECTED__initialize__sync;
+  event INPUT__initialize__sync;
+  location loc1:
+    initial;
+    marked;
+    edge I2__func4__blk goto loc2;
+  location loc2:
+    marked;
+end

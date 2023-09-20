@@ -1,0 +1,13 @@
+automaton Server:
+  event IServer__f__sync_ret_wait_ret__Client;
+  location loc1:
+    initial;
+    marked;
+    edge Client.IServer__f__req_sync__Server goto loc2;
+  location loc2:
+    marked false;
+    edge IServer__f__sync_ret_wait_ret__Client goto loc1;
+end
+group Client:
+  event IServer__f__req_sync__Server;
+end

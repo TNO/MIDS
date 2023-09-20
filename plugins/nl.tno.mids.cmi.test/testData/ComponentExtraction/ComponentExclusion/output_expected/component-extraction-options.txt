@@ -1,0 +1,6 @@
+-input
+input/extraction.tmsc
+-output
+output_actual
+-component-exclusion
+Client.*

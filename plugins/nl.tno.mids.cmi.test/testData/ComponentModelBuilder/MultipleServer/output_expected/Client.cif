@@ -1,0 +1,53 @@
+automaton Client:
+  event IClient__h__evtcb_ret;
+  event IServer__f__blk_sync__Server1;
+  event IServer__f__blk_sync__Server2;
+  event IServer__f__blk_sync__Server3;
+  event ITrigger__g__trigh_ret;
+  location loc1:
+    initial;
+    marked;
+    edge Trigger.ITrigger__g__trig_trigh__Client goto loc2;
+    edge Server1.IClient__h__evt_evtcb__Client goto loc3;
+    edge Server2.IClient__h__evt_evtcb__Client goto loc3;
+    edge Server3.IClient__h__evt_evtcb__Client goto loc3;
+  location loc2:
+    marked false;
+    edge IServer__f__blk_sync__Server1 goto loc4;
+  location loc3:
+    marked false;
+    edge IClient__h__evtcb_ret goto loc1;
+  location loc4:
+    marked false;
+    edge Server1.IServer__f__sync_ret_blk_ret__Client goto loc6;
+  location loc5:
+    marked false;
+    edge ITrigger__g__trigh_ret goto loc1;
+  location loc6:
+    marked false;
+    edge IServer__f__blk_sync__Server2 goto loc7;
+  location loc7:
+    marked false;
+    edge Server2.IServer__f__sync_ret_blk_ret__Client goto loc8;
+  location loc8:
+    marked false;
+    edge IServer__f__blk_sync__Server3 goto loc9;
+  location loc9:
+    marked false;
+    edge Server3.IServer__f__sync_ret_blk_ret__Client goto loc5;
+end
+group Server1:
+  event IClient__h__evt_evtcb__Client;
+  event IServer__f__sync_ret_blk_ret__Client;
+end
+group Server2:
+  event IClient__h__evt_evtcb__Client;
+  event IServer__f__sync_ret_blk_ret__Client;
+end
+group Server3:
+  event IClient__h__evt_evtcb__Client;
+  event IServer__f__sync_ret_blk_ret__Client;
+end
+group Trigger:
+  event ITrigger__g__trig_trigh__Client;
+end

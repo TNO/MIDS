@@ -1,0 +1,26 @@
+event h;
+event x;
+event a;
+event b;
+event c;
+event y;
+event i;
+automaton aut:
+  location loc1:
+    initial;
+    edge h goto loc2;
+  location loc2:
+    edge h goto loc3;
+  location loc3:
+    edge i goto loc3;
+    edge tau goto loc4;
+    edge x goto loc5;
+  location loc4;
+  location loc5:
+    edge a goto loc6;
+    edge b goto loc5;
+    edge c goto loc5;
+    edge y goto loc3;
+  location loc6:
+    edge a goto loc5;
+end

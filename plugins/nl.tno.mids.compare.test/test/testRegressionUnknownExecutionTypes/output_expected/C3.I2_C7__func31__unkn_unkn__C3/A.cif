@@ -1,0 +1,35 @@
+group C4:
+  event C7__func26__unkn_ret_unkn_ret__C3;
+end
+group C5:
+  event C7__func27__unkn_ret_unkn_ret__C3;
+end
+group I2:
+  event C7__func31__unkn_unkn__C3;
+end
+group C3:
+  event C7__func31__unkn_ret_unkn_ret__I2;
+  event C7__func26__unkn_unkn__C4;
+  event C7__func27__unkn_unkn__C5;
+  automaton I2_C7__func31__unkn_unkn__C3:
+    location loc1:
+      initial;
+      marked;
+      edge I2.C7__func31__unkn_unkn__C3 goto loc2;
+    location loc2:
+      marked;
+      edge C7__func27__unkn_unkn__C5 goto loc3;
+    location loc3:
+      marked;
+      edge C5.C7__func27__unkn_ret_unkn_ret__C3 goto loc4;
+    location loc4:
+      marked;
+      edge C7__func26__unkn_unkn__C4 goto loc5;
+    location loc5:
+      marked;
+      edge C4.C7__func26__unkn_ret_unkn_ret__C3 goto loc6;
+    location loc6:
+      marked;
+      edge C7__func31__unkn_ret_unkn_ret__I2 goto loc1;
+  end
+end

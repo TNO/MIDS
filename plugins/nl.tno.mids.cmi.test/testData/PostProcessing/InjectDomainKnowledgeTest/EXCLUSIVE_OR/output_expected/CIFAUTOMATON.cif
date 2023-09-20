@@ -1,0 +1,32 @@
+automaton CIFAUTOMATON:
+  event I2__func4__blk;
+  event I2__func4__blk_ret;
+  event INJECTED__initialize__sync;
+  event INPUT__initialize__sync;
+  location loc1:
+    initial;
+    marked false;
+    edge I2__func4__blk goto loc2;
+  location loc2:
+    marked false;
+    edge INJECTED__initialize__sync goto loc3;
+    edge INPUT__initialize__sync goto loc6;
+  location loc3:
+    marked;
+    edge I2__func4__blk_ret goto loc4;
+  location loc4:
+    marked;
+    edge I2__func4__blk goto loc5;
+  location loc5:
+    marked;
+    edge INJECTED__initialize__sync goto loc3;
+  location loc6:
+    marked;
+    edge I2__func4__blk_ret goto loc7;
+  location loc7:
+    marked;
+    edge I2__func4__blk goto loc8;
+  location loc8:
+    marked;
+    edge INPUT__initialize__sync goto loc6;
+end

@@ -1,0 +1,24 @@
+executor Client as Client
+executor Server as Server
+
+interface IServer {
+    operation f
+    operation g
+}
+
+component ClientComp
+function "f call" as f_call implements IServer.f { execType: fcn }
+function "f callback" as f_callback implements IServer.f { execType: fcncb }
+
+
+component ServerComp
+function "f call handle" as f_call_handle implements IServer.f { execType: sync }
+
+/* The trace itself. */
+
+1 Client ClientComp > f_call !M1
+1.02 Client ClientComp < f_call
+1.12 Server ServerComp > f_call_handle ?M1
+5.23 Server ServerComp < f_call_handle !M3
+5.53 Client ClientComp > f_callback ?M3
+5.63 Client ClientComp < f_callback

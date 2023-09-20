@@ -1,0 +1,53 @@
+automaton C1:
+  event I4__addSomeNumber__sync_ret_blk_ret__C10;
+  event I4__dividedSomeNumber__sync_ret_blk_ret__C10;
+  event I4__func1__blk_ret_sync_ret__C10;
+  event I4__multiplySomeNumber__sync_ret_blk_ret__C10;
+  event I4__subtractSomeNumber__sync_ret_blk_ret__C10;
+  location loc1:
+    initial;
+    marked;
+    edge C10.I4__func1__blk_sync__C1 goto loc2;
+  location loc2:
+    marked;
+    edge I4__addSomeNumber__sync_ret_blk_ret__C10 goto loc3;
+    edge I4__multiplySomeNumber__sync_ret_blk_ret__C10 goto loc11;
+  location loc3:
+    marked;
+    edge I4__addSomeNumber__sync_ret_blk_ret__C10 goto loc4;
+    edge I4__subtractSomeNumber__sync_ret_blk_ret__C10 goto loc3;
+  location loc4:
+    marked;
+    edge I4__addSomeNumber__sync_ret_blk_ret__C10 goto loc5;
+    edge I4__multiplySomeNumber__sync_ret_blk_ret__C10 goto loc10;
+  location loc5:
+    marked;
+    edge I4__addSomeNumber__sync_ret_blk_ret__C10 goto loc6;
+    edge I4__subtractSomeNumber__sync_ret_blk_ret__C10 goto loc5;
+  location loc6:
+    marked;
+    edge I4__addSomeNumber__sync_ret_blk_ret__C10 goto loc7;
+    edge I4__multiplySomeNumber__sync_ret_blk_ret__C10 goto loc9;
+  location loc7:
+    marked;
+    edge I4__addSomeNumber__sync_ret_blk_ret__C10 goto loc8;
+    edge I4__subtractSomeNumber__sync_ret_blk_ret__C10 goto loc7;
+  location loc8:
+    marked;
+    edge I4__func1__blk_ret_sync_ret__C10 goto loc1;
+  location loc9:
+    marked;
+    edge I4__dividedSomeNumber__sync_ret_blk_ret__C10 goto loc9;
+    edge I4__multiplySomeNumber__sync_ret_blk_ret__C10 goto loc8;
+  location loc10:
+    marked;
+    edge I4__dividedSomeNumber__sync_ret_blk_ret__C10 goto loc10;
+    edge I4__multiplySomeNumber__sync_ret_blk_ret__C10 goto loc6;
+  location loc11:
+    marked;
+    edge I4__dividedSomeNumber__sync_ret_blk_ret__C10 goto loc11;
+    edge I4__multiplySomeNumber__sync_ret_blk_ret__C10 goto loc4;
+end
+group C10:
+  event I4__func1__blk_sync__C1;
+end

@@ -1,0 +1,43 @@
+executor Client as Client
+executor ServerL1 as ServerL1
+executor ServerL2 as ServerL2
+
+interface IServerL1 {
+    operation f
+}
+
+interface IServerL2 {
+    operation i
+    operation j
+}
+
+
+component ClientComp requires IServerL1
+function "f call" as f_call implements IServerL1.f { execType: blk }
+
+component ServerL1Comp provides IServerL1 requires IServerL2
+function "f call handle" as f_call_handle implements IServerL1.f { execType: sync }
+function "i call" as i_call implements IServerL2.i { execType: blk }
+function "j call" as j_call implements IServerL2.j { execType: blk }
+
+component ServerL2Comp provides IServerL2
+function "i call handle" as i_call_handle implements IServerL2.i { execType: sync }
+function "j call handle" as j_call_handle implements IServerL2.j { execType: sync }
+
+/* The trace itself. */
+1 Client ClientComp > f_call !M1
+2 ServerL1 ServerL1Comp > f_call_handle ?M1
+3 ServerL1 ServerL1Comp > i_call !M2
+4 ServerL2 ServerL2Comp > i_call_handle ?M2
+5 ServerL2 ServerL2Comp < i_call_handle !M3
+6 ServerL1 ServerL1Comp < i_call ?M3
+7 ServerL1 ServerL1Comp > j_call !M4
+8 ServerL2 ServerL2Comp > j_call_handle ?M4
+9 ServerL2 ServerL2Comp < j_call_handle !M5
+10 ServerL1 ServerL1Comp < j_call ?M5
+11 ServerL1 ServerL1Comp > i_call !M6
+12 ServerL2 ServerL2Comp > i_call_handle ?M6
+13 ServerL2 ServerL2Comp < i_call_handle !M7
+14 ServerL1 ServerL1Comp < i_call ?M7
+15 ServerL1 ServerL1Comp < f_call_handle !M8
+16 Client ClientComp < f_call ?M8

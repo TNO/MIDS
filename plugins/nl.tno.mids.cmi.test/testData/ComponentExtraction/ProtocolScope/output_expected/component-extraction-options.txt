@@ -1,0 +1,8 @@
+-input
+input/extraction.tmsc
+-output
+output_actual
+-protocol
+Client,Server
+-protocol-scope
+Connector

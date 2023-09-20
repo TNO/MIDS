@@ -1,0 +1,172 @@
+executor Client as Client
+executor Server as Server
+executor Trigger as Trigger
+
+interface IServer {
+    operation f1
+    operation f2
+    operation g1
+    operation g2
+    operation h1
+    operation h2
+}
+
+interface ITrigger {
+    operation t
+}
+
+component ClientComp
+function "f1 call" as f1_call implements IServer.f1 { execType: blk }
+function "f2 call" as f2_call implements IServer.f2 { execType: blk }
+function "g1 call" as g1_call implements IServer.g1 { execType: blk }
+function "g2 call" as g2_call implements IServer.g2 { execType: blk }
+function "h1 call" as h1_call implements IServer.h1 { execType: blk }
+function "h2 call" as h2_call implements IServer.h2 { execType: blk }
+function "t trigger handle" as t_trigger_handle implements ITrigger.t { execType: trigh }
+
+component ServerComp
+function "f1 call handle" as f1_call_handle implements IServer.f1 { execType: sync }
+function "f2 call handle" as f2_call_handle implements IServer.f2 { execType: sync }
+function "g1 call handle" as g1_call_handle implements IServer.g1 { execType: sync }
+function "g2 call handle" as g2_call_handle implements IServer.g2 { execType: sync }
+function "h1 call handle" as h1_call_handle implements IServer.h1 { execType: sync }
+function "h2 call handle" as h2_call_handle implements IServer.h2 { execType: sync }
+
+component TriggerComp
+function "t trigger" as t_trigger implements ITrigger.t { execType: trig }
+
+1 Trigger TriggerComp > t_trigger !M1
+1.1 Trigger TriggerComp < t_trigger
+1.2 Client ClientComp > t_trigger_handle ?M1
+1.3 Client ClientComp > f1_call !M2
+1.4 Server ServerComp > f1_call_handle ?M2
+1.5 Server ServerComp < f1_call_handle !M3
+1.6 Client ClientComp < f1_call ?M3
+1.7 Client ClientComp > g1_call !M4
+1.8 Server ServerComp > g1_call_handle ?M4
+1.9 Server ServerComp < g1_call_handle !M5
+2 Client ClientComp < g1_call ?M5
+2.1 Client ClientComp > h1_call !M6
+2.2 Server ServerComp > h1_call_handle ?M6
+2.3 Server ServerComp < h1_call_handle !M7
+2.4 Client ClientComp < h1_call ?M7
+2.5 Client ClientComp < t_trigger_handle
+
+11 Trigger TriggerComp > t_trigger !M11
+11.1 Trigger TriggerComp < t_trigger
+11.2 Client ClientComp > t_trigger_handle ?M11
+11.3 Client ClientComp > f1_call !M12
+11.4 Server ServerComp > f1_call_handle ?M12
+11.5 Server ServerComp < f1_call_handle !M13
+11.6 Client ClientComp < f1_call ?M13
+11.7 Client ClientComp > g1_call !M14
+11.8 Server ServerComp > g1_call_handle ?M14
+11.9 Server ServerComp < g1_call_handle !M15
+12 Client ClientComp < g1_call ?M15
+12.1 Client ClientComp > h2_call !M16
+12.2 Server ServerComp > h2_call_handle ?M16
+12.3 Server ServerComp < h2_call_handle !M17
+12.4 Client ClientComp < h2_call ?M17
+12.5 Client ClientComp < t_trigger_handle
+
+21 Trigger TriggerComp > t_trigger !M21
+21.1 Trigger TriggerComp < t_trigger
+21.2 Client ClientComp > t_trigger_handle ?M21
+21.3 Client ClientComp > f1_call !M22
+21.4 Server ServerComp > f1_call_handle ?M22
+21.5 Server ServerComp < f1_call_handle !M23
+21.6 Client ClientComp < f1_call ?M23
+21.7 Client ClientComp > g2_call !M24
+21.8 Server ServerComp > g2_call_handle ?M24
+21.9 Server ServerComp < g2_call_handle !M25
+22 Client ClientComp < g2_call ?M25
+22.1 Client ClientComp > h1_call !M26
+22.2 Server ServerComp > h1_call_handle ?M26
+22.3 Server ServerComp < h1_call_handle !M27
+22.4 Client ClientComp < h1_call ?M27
+22.5 Client ClientComp < t_trigger_handle
+
+31 Trigger TriggerComp > t_trigger !M31
+31.1 Trigger TriggerComp < t_trigger
+31.2 Client ClientComp > t_trigger_handle ?M31
+31.3 Client ClientComp > f1_call !M32
+31.4 Server ServerComp > f1_call_handle ?M32
+31.5 Server ServerComp < f1_call_handle !M33
+31.6 Client ClientComp < f1_call ?M33
+31.7 Client ClientComp > g2_call !M34
+31.8 Server ServerComp > g2_call_handle ?M34
+31.9 Server ServerComp < g2_call_handle !M35
+32 Client ClientComp < g2_call ?M35
+32.1 Client ClientComp > h2_call !M36
+32.2 Server ServerComp > h2_call_handle ?M36
+32.3 Server ServerComp < h2_call_handle !M37
+32.4 Client ClientComp < h2_call ?M37
+32.5 Client ClientComp < t_trigger_handle
+
+41 Trigger TriggerComp > t_trigger !M41
+41.1 Trigger TriggerComp < t_trigger
+41.2 Client ClientComp > t_trigger_handle ?M41
+41.3 Client ClientComp > f2_call !M42
+41.4 Server ServerComp > f2_call_handle ?M42
+41.5 Server ServerComp < f2_call_handle !M43
+41.6 Client ClientComp < f2_call ?M43
+41.7 Client ClientComp > g1_call !M44
+41.8 Server ServerComp > g1_call_handle ?M44
+41.9 Server ServerComp < g1_call_handle !M45
+42 Client ClientComp < g1_call ?M45
+42.1 Client ClientComp > h1_call !M46
+42.2 Server ServerComp > h1_call_handle ?M46
+42.3 Server ServerComp < h1_call_handle !M47
+42.4 Client ClientComp < h1_call ?M47
+42.5 Client ClientComp < t_trigger_handle
+
+51 Trigger TriggerComp > t_trigger !M51
+51.1 Trigger TriggerComp < t_trigger
+51.2 Client ClientComp > t_trigger_handle ?M51
+51.3 Client ClientComp > f2_call !M52
+51.4 Server ServerComp > f2_call_handle ?M52
+51.5 Server ServerComp < f2_call_handle !M53
+51.6 Client ClientComp < f2_call ?M53
+51.7 Client ClientComp > g1_call !M54
+51.8 Server ServerComp > g1_call_handle ?M54
+51.9 Server ServerComp < g1_call_handle !M55
+52 Client ClientComp < g1_call ?M55
+52.1 Client ClientComp > h2_call !M56
+52.2 Server ServerComp > h2_call_handle ?M56
+52.3 Server ServerComp < h2_call_handle !M57
+52.4 Client ClientComp < h2_call ?M57
+52.5 Client ClientComp < t_trigger_handle
+
+61 Trigger TriggerComp > t_trigger !M61
+61.1 Trigger TriggerComp < t_trigger
+61.2 Client ClientComp > t_trigger_handle ?M61
+61.3 Client ClientComp > f2_call !M62
+61.4 Server ServerComp > f2_call_handle ?M62
+61.5 Server ServerComp < f2_call_handle !M63
+61.6 Client ClientComp < f2_call ?M63
+61.7 Client ClientComp > g2_call !M64
+61.8 Server ServerComp > g2_call_handle ?M64
+61.9 Server ServerComp < g2_call_handle !M65
+62 Client ClientComp < g2_call ?M65
+62.1 Client ClientComp > h1_call !M66
+62.2 Server ServerComp > h1_call_handle ?M66
+62.3 Server ServerComp < h1_call_handle !M67
+62.4 Client ClientComp < h1_call ?M67
+62.5 Client ClientComp < t_trigger_handle
+
+71 Trigger TriggerComp > t_trigger !M71
+71.1 Trigger TriggerComp < t_trigger
+71.2 Client ClientComp > t_trigger_handle ?M71
+71.3 Client ClientComp > f2_call !M72
+71.4 Server ServerComp > f2_call_handle ?M72
+71.5 Server ServerComp < f2_call_handle !M73
+71.6 Client ClientComp < f2_call ?M73
+71.7 Client ClientComp > g2_call !M74
+71.8 Server ServerComp > g2_call_handle ?M74
+71.9 Server ServerComp < g2_call_handle !M75
+72 Client ClientComp < g2_call ?M75
+72.1 Client ClientComp > h2_call !M76
+72.2 Server ServerComp > h2_call_handle ?M76
+72.3 Server ServerComp < h2_call_handle !M77
+72.4 Client ClientComp < h2_call ?M77
+72.5 Client ClientComp < t_trigger_handle

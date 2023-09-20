@@ -1,0 +1,9 @@
+automaton C5:
+  event I1__func2__req_sync__C7;
+  event I1__func2__wait;
+  location loc1:
+    initial;
+    marked;
+    edge I1__func2__req_sync__C7 goto loc1;
+    edge I1__func2__wait goto loc1;
+end

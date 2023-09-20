@@ -1,0 +1,120 @@
+automaton C1:
+  event I4__func1__blk_ret_sync_ret__C10;
+  event I4__addSomeNumber__sync_ret_blk_ret__C10;
+  event I4__dividedSomeNumber__sync_ret_blk_ret__C10;
+  event I4__multiplySomeNumber__sync_ret_blk_ret__C10;
+  event I4__subtractSomeNumber__sync_ret_blk_ret__C10;
+  location loc1: 
+    initial; 
+    marked; 
+    edge C10.I4__func1__blk_sync__C1 goto loc2; 
+
+  //Split 1
+  location loc2: 
+    marked; 
+    edge I4__addSomeNumber__sync_ret_blk_ret__C10 goto loc3; 
+    edge I4__multiplySomeNumber__sync_ret_blk_ret__C10 goto loc7; 
+  
+  //Split 1 Route 1 
+  location loc3: 
+    marked; 
+    edge I4__subtractSomeNumber__sync_ret_blk_ret__C10 goto loc4; 
+  location loc4: 
+    marked; 
+    edge I4__subtractSomeNumber__sync_ret_blk_ret__C10 goto loc5; 
+  location loc5: 
+    marked; 
+    edge I4__subtractSomeNumber__sync_ret_blk_ret__C10 goto loc6; 
+  location loc6:
+    marked;
+    edge I4__addSomeNumber__sync_ret_blk_ret__C10 goto loc11; 
+
+  //Split 1 Route 2
+  location loc7: 
+    marked; 
+    edge I4__dividedSomeNumber__sync_ret_blk_ret__C10 goto loc8; 
+  location loc8: 
+    marked; 
+    edge I4__dividedSomeNumber__sync_ret_blk_ret__C10 goto loc9; 
+  location loc9: 
+    marked; 
+    edge I4__dividedSomeNumber__sync_ret_blk_ret__C10 goto loc10; 
+  location loc10: 
+    marked; 
+    edge I4__multiplySomeNumber__sync_ret_blk_ret__C10 goto loc11; 
+
+  //Split 2
+  location loc11: 
+    marked; 
+    edge I4__addSomeNumber__sync_ret_blk_ret__C10 goto loc12; 
+    edge I4__multiplySomeNumber__sync_ret_blk_ret__C10 goto loc16;
+
+  //Split 2 Route 1
+  location loc12: 
+    marked; 
+    edge I4__subtractSomeNumber__sync_ret_blk_ret__C10 goto loc13; 
+  location loc13: 
+    marked; 
+    edge I4__subtractSomeNumber__sync_ret_blk_ret__C10 goto loc14; 
+  location loc14: 
+    marked; 
+    edge I4__subtractSomeNumber__sync_ret_blk_ret__C10 goto loc15; 
+  location loc15: 
+    marked;
+    edge I4__addSomeNumber__sync_ret_blk_ret__C10 goto loc20; 
+
+  //Split 2 Route 2
+  location loc16: 
+    marked; 
+    edge I4__dividedSomeNumber__sync_ret_blk_ret__C10 goto loc17; 
+  location loc17: 
+    marked; 
+    edge I4__dividedSomeNumber__sync_ret_blk_ret__C10 goto loc18; 
+  location loc18: 
+    marked; 
+    edge I4__dividedSomeNumber__sync_ret_blk_ret__C10 goto loc19; 
+  location loc19: 
+    marked; 
+    edge I4__multiplySomeNumber__sync_ret_blk_ret__C10 goto loc20; 
+
+  //Split 3
+  location loc20: 
+    marked; 
+    edge I4__addSomeNumber__sync_ret_blk_ret__C10 goto loc21; 
+    edge I4__multiplySomeNumber__sync_ret_blk_ret__C10 goto loc25; 
+
+  //Split 3 Route 1
+  location loc21: 
+    marked; 
+    edge I4__subtractSomeNumber__sync_ret_blk_ret__C10 goto loc22; 
+  location loc22: 
+    marked; 
+    edge I4__subtractSomeNumber__sync_ret_blk_ret__C10 goto loc23; 
+  location loc23: 
+    marked; 
+    edge I4__subtractSomeNumber__sync_ret_blk_ret__C10 goto loc24; 
+  location loc24: 
+    marked;
+    edge I4__addSomeNumber__sync_ret_blk_ret__C10 goto loc29; 
+
+  //Split 3 Route 2
+  location loc25: 
+    marked; 
+    edge I4__dividedSomeNumber__sync_ret_blk_ret__C10 goto loc26; 
+  location loc26: 
+    marked; 
+    edge I4__dividedSomeNumber__sync_ret_blk_ret__C10 goto loc27; 
+  location loc27: 
+    marked; 
+    edge I4__dividedSomeNumber__sync_ret_blk_ret__C10 goto loc28; 
+  location loc28: 
+    marked; 
+    edge I4__multiplySomeNumber__sync_ret_blk_ret__C10 goto loc29; 
+
+  location loc29: 
+    marked; 
+    edge I4__func1__blk_ret_sync_ret__C10 goto loc1; 
+end
+group C10: 
+  event I4__func1__blk_sync__C1; 
+end

@@ -1,0 +1,11 @@
+automaton Connector:
+  event r_IConnector__i__fcn_sync__Server;
+  event s_IConnector__i__sync_ret_fcncb__Server;
+  location loc1:
+    initial;
+    marked;
+    edge r_IConnector__i__fcn_sync__Server goto loc2;
+  location loc2:
+    marked false;
+    edge s_IConnector__i__sync_ret_fcncb__Server goto loc1;
+end

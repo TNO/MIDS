@@ -1,0 +1,10 @@
+automaton C5:
+  disc bool C5_I1__func2__req_sync__C7_async_var = false;
+  event I1__func2__req_sync__C7;
+  event I1__func2__wait;
+  location loc1:
+    initial;
+    marked;
+    edge I1__func2__req_sync__C7 when C5_I1__func2__req_sync__C7_async_var = false do C5_I1__func2__req_sync__C7_async_var := true goto loc1;
+    edge I1__func2__wait when C5_I1__func2__req_sync__C7_async_var = true do C5_I1__func2__req_sync__C7_async_var := false goto loc1;
+end

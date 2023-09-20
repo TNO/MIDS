@@ -1,0 +1,4 @@
+automaton AUTOMATON:
+    location loc1:
+        initial;
+end

@@ -1,0 +1,13 @@
+group C13:
+  event I52__func068__fcn_async__C43;
+  event I52__func068__fcn_ret;
+  automaton C13_I52__func068__fcn_async__C43:
+    location loc1:
+      initial;
+      marked;
+      edge I52__func068__fcn_async__C43 goto loc2;
+    location loc2:
+      marked;
+      edge I52__func068__fcn_ret goto loc1;
+  end
+end

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<plugin>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="MIDS v0.9">
+         <property
+               name="appName"
+               value="MIDS">
+         </property>
+         <property
+               name="aboutText"
+               value="Model Inference and Differencing Suite">
+         </property>
+         <property
+               name="introTitle"
+               value="Welcome to the Model Inference and Differencing Suite">
+         </property>
+         <property
+               name="aboutImage"
+               value="images/mids_lg.png">
+         </property>
+         <property
+               name="windowImages"
+               value="images/mids16.png,images/mids32.png,images/mids48.png,images/mids256.png">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="9C9696">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="2,225,485,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="2,245,485,10">
+         </property>
+         <property
+               name="introBrandingImage"
+               value="product:images/intro-mids-bw.png">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro">
+      <introProductBinding
+            introId="org.eclipse.ui.intro.universal"
+            productId="nl.tno.mids.product.branding.product">
+      </introProductBinding>
+   </extension>
+</plugin>

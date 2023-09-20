@@ -1,0 +1,15 @@
+group C38:
+  event I38__func181__blk_sync__C13;
+end
+group C13:
+  event I38__func181__sync_ret_blk_ret__C38;
+  automaton C38_I38__func181__blk_sync__C13:
+    location loc1:
+      initial;
+      marked;
+      edge C38.I38__func181__blk_sync__C13 goto loc2;
+    location loc2:
+      marked;
+      edge I38__func181__sync_ret_blk_ret__C38 goto loc1;
+  end
+end

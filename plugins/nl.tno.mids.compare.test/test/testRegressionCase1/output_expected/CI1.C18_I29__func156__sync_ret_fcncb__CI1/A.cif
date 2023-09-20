@@ -1,0 +1,23 @@
+group C18:
+  event I29__func156__sync_ret_fcncb__CI1;
+end
+group CI1:
+  event I29__func104__fcn_ret;
+  event I29__func104__fcn_sync__C18;
+  event I29__func156__fcncb_ret;
+  automaton C18_I29__func156__sync_ret_fcncb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C18.I29__func156__sync_ret_fcncb__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I29__func104__fcn_sync__C18 goto loc3;
+    location loc3:
+      marked;
+      edge I29__func104__fcn_ret goto loc4;
+    location loc4:
+      marked;
+      edge I29__func156__fcncb_ret goto loc1;
+  end
+end

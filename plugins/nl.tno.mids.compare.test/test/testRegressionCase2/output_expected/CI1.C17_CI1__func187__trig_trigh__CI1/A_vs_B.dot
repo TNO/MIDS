@@ -1,0 +1,17 @@
+digraph diffautomaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle" fillcolor="#ff4040" fontcolor="#ffffff" style="filled"];
+	4 [label=<s4> shape="doublecircle" fillcolor="#ff4040" fontcolor="#ffffff" style="filled"];
+	5 [label=<s5> shape="doublecircle" fillcolor="#ff4040" fontcolor="#ffffff" style="filled"];
+	6 [label=<s6> shape="doublecircle" fillcolor="#ff4040" fontcolor="#ffffff" style="filled"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<<font color="#000000">C17.CI1__func187__trig_trigh__CI1</font>> id="1-0-2"];
+	2 -> 3 [label=<<font color="#ff4040">CI1.I6__func095__blk_async__C5</font>> color="#ff4040" id="2-0-3"];
+	2 -> 1 [label=<<font color="#00cc00">CI1.CI1__func187__trigh_ret</font>> color="#00cc00" id="2-1-1"];
+	3 -> 4 [label=<<font color="#ff4040">C5.I6__func095__arslt_blk_ret__CI1</font>> color="#ff4040" id="3-0-4"];
+	4 -> 5 [label=<<font color="#ff4040">CI1.I43__func186__fcn_async__C34</font>> color="#ff4040" id="4-0-5"];
+	5 -> 6 [label=<<font color="#ff4040">CI1.I43__func186__fcn_ret</font>> color="#ff4040" id="5-0-6"];
+	6 -> 1 [label=<<font color="#ff4040">CI1.CI1__func187__trigh_ret</font>> color="#ff4040" id="6-0-1"];
+}

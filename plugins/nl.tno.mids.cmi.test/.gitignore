@@ -1,0 +1,5 @@
+**/input/**/*.tmsc
+**/output_actual/
+**/output_expected/**/*.dot
+**/output_expected/**/*.svg
+**/src-gen/

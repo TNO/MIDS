@@ -1,0 +1,11 @@
+digraph "C3.I2_C7__func28__unkn_unkn__C3"{
+rankdir="BT"
+1 [label=<A<sub><font point-size="10">1</font></sub> (15)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">1</font></sub> (14)>, style="filled", fillcolor="lightgray"]
+3 [label=<C<sub><font point-size="10">1</font></sub> (14)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+4 [label=<D<sub><font point-size="10">1</font></sub> (43)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+1 -> 4 [label=<  <font color="limegreen">+29</font> <font color="red">-1</font>  >]
+2 -> 4 [label=<  <font color="limegreen">+30</font> <font color="red">-1</font>  >]
+3 -> 1 [label=<  <font color="limegreen">+1</font>  >]
+3 -> 2 [label=<  <font color="limegreen">+1</font> <font color="red">-1</font>  >]
+}

@@ -1,0 +1,74 @@
+group C17:
+  event CI1__func171__trig_trigh__CI1;
+end
+group C26:
+  event I36__func051__sync_ret_blk_ret__CI1;
+end
+group C30:
+  event I39__func189__sync_ret_blk_ret__CI1;
+end
+group CI1:
+  event I10__func169__fcn_async__C7;
+  event I10__func169__fcn_ret;
+  event I11__func045__fcn_ret;
+  event I11__func045__fcn_sync__CI1;
+  event CI1__func171__trigh_ret;
+  event I31__func028__fcn_ret;
+  event I31__func028__fcn_sync__C21;
+  event I32__func015__fcn_ret;
+  event I32__func015__fcn_sync__C20;
+  event I36__func051__blk_sync__C26;
+  event I39__func189__blk_sync__C30;
+  automaton C17_CI1__func171__trig_trigh__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C17.CI1__func171__trig_trigh__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I39__func189__blk_sync__C30 goto loc3;
+    location loc3:
+      marked;
+      edge C30.I39__func189__sync_ret_blk_ret__CI1 goto loc4;
+    location loc4:
+      marked;
+      edge I36__func051__blk_sync__C26 goto loc5;
+    location loc5:
+      marked;
+      edge C26.I36__func051__sync_ret_blk_ret__CI1 goto loc6;
+    location loc6:
+      marked;
+      edge I11__func045__fcn_sync__CI1 goto loc7;
+      edge I32__func015__fcn_sync__C20 goto loc8;
+    location loc7:
+      marked;
+      edge I11__func045__fcn_ret goto loc9;
+    location loc8:
+      marked;
+      edge I32__func015__fcn_ret goto loc10;
+    location loc9:
+      marked;
+      edge I10__func169__fcn_async__C7 goto loc11;
+    location loc10:
+      marked;
+      edge I32__func015__fcn_sync__C20 goto loc12;
+    location loc11:
+      marked;
+      edge I10__func169__fcn_ret goto loc13;
+    location loc12:
+      marked;
+      edge I32__func015__fcn_ret goto loc14;
+    location loc13:
+      marked;
+      edge I32__func015__fcn_sync__C20 goto loc8;
+    location loc14:
+      marked;
+      edge I31__func028__fcn_sync__C21 goto loc15;
+    location loc15:
+      marked;
+      edge I31__func028__fcn_ret goto loc16;
+    location loc16:
+      marked;
+      edge CI1__func171__trigh_ret goto loc1;
+  end
+end

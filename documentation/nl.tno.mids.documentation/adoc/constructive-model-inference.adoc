@@ -1,0 +1,389 @@
+/////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+//
+// This program and the accompanying materials are made available
+// under the terms of the MIT License which is available at
+// https://opensource.org/licenses/MIT
+//
+// SPDX-License-Identifier: MIT
+/////////////////////////////////////////////////////////////////////////
+
+include::_initCommon.adoc[]
+
+[[cmi]]
+== Constructive Model Inference
+
+Passive learning allows inferring models from (execution) traces.
+If execution traces are available, access to the actual system is not required.
+Since the inputs for passive learning are execution traces, the learned models are models of the executed behavior.
+To obtain a model of the complete behavior of a component or system, one needs traces that cover all different parts of the system behavior.
+For instance, one could combine traces from normal execution scenarios with traces from test cases that cover exceptional behavior.
+
+MIDS supports the Constructive Model Inference (CMI) method of learning models.
+Contrary to existing heuristic-based approaches, this method uses domain knowledge about the system, e.g. its architecture, communication patterns, middleware, deployment and conventions.
+This knowledge is used to interpret execution traces and construct models that capture one's intuition of the system, and can be easily understood and relied upon, without configuring complex parameters.
+Models can be constructed at different levels of abstraction, e.g. system, component, and interface models.
+
+The inferred models provide valuable insight into the current software behavior.
+They can can be used to bootstrap the transition to Model-Driven Engineering (MDE).
+The insights they provide are also useful when making changes to the software, as it is difficult to make changes to software without understand how it behaves.
+Furthermore, after you have made your changes, the models can be automatically compared, allowing for <<change-impact-analysis,change impact analysis>>.
+
+=== Event naming scheme
+
+For every start/end of a function call on a component, we have an event in our models.
+The events are named using our naming scheme. 
+The following is an overview of the scheme:
+
+[%header,cols="1,1,1,1,1",stripes="none"]
+|===
+| Component identity 
+| Method  
+| Type of call/handler
+| Return 
+| Other side
+
+| <component identity> `.`
+| <interface name> `\__` <function name> `_`
+| `_blk`
+| [silver]_none_ (function start)
+| [silver]_none_ (internal event)
+
+2.19+|
+|`_lib`
+|`_ret` (function end)
+|`__` <component identity>
+
+|`_req`
+2.18+|
+
+|`_wait`
+
+|`_fcn`
+
+|`_fcncb`
+
+|`_sync`
+
+|`_async`
+
+|`_arslt`
+
+|`_evtsub`
+
+|`_evtsubh`
+
+|`_evtunsub`
+
+|`_evtunsubh`
+
+|`_evt`
+
+|`_evtcb`
+
+|`_trig`
+
+|`_trigh`
+
+|`_call`
+
+|`_handler`
+
+|`_unkn`
+
+|===
+
+The name always starts with the name of the first component involved.
+This is the component that declares the event. It represents one of two options:
+
+* The component on which the internal event occurs.
+* The source component of a communicating event.
+
+The name of the interface and function are added to uniquely know the identity of the software function.
+They are separated by a double underscore.
+The type of call or handler is added, after an additional underscore to separate it from the function name.
+The following options are present:
+
+[horizontal]
+`_blk`:: A blocking call.
+`_lib`:: A library call.
+`_req`:: A request call.
+`_wait`:: A wait call.
+`_fcn`:: An FCN call.
+`_fcncb`:: An FCN callback handler.
+`_sync`:: A synchronous handler.
+`_async`:: An asynchronous handler.
+`_arslt`:: An asynchronous result call for an asynchronous handler.
+`_evtsub`:: An event subscription call.
+`_evtsubh`:: An event subscription handler.
+`_evtunsub`:: An event unsubscription call.
+`_evtunsubh`:: An event unsubscription handler.
+`_evt`:: An event raise call.
+`_evtcb`:: An event callback handler.
+`_trig`:: A trigger call.
+`_trigh`:: A trigger handler.
+`_call`:: An abstract call.
+`_handler`:: An abstract handler.
+`_unkn`:: An unknown call/handler, e.g. due to this host being untraced.
+
+For every function call there is the start and end of that function call. 
+The end of a function call gets an additional `_ret` (for "`return`") added to its name.
+In case the event represents communication to another component, the following applies:
+
+* The type of the other side and `_ret` if applicable, are also added for the other side.
+* The identity of the component on the other side is added, if it does not involve communication to itself (e.g. multiple servers deployed on a single OS process or thread).
+It is separated from the event type by a double underscore.
+* If two runtime components (OS processes/threads) are involved, the order is chronological.
+That is, the first component starts the communication.
+The first type and `_ret` apply to that component.
+The second type and `_ret` apply to the receiving component, the second component identity is the receiving component.
+The name reads from left to right chronologically, as: "`this component calls this function in this way and it is handled in this way by the other component`".
+
+For two events connected by a dependency, the CIF event will be the same for both events, to ensure they synchronize.
+E.g. `Component1.SomeInterface\__some_function__blk_sync__Component2`.
+
+For more information about the communication patterns, see link:https://doi.org/10.1007/978-3-031-19756-7_13[this scientific paper] (primarily Section 4.1).
+
+=== Inferring models
+
+In order to perform CMI, you can use the `mids-cmi` command-line tool.
+
+The CMI tool has a number of configurable options.
+The tool provides a list of available options if used with the `-h` or `-help` option.
+
+The first parameter configures which trace data is used to infer models.
+Providing the input path is required to perform CMI.
+
+Input file (`-i` or `-input`)::
+Constructive Model Inference takes a <<import,TMSC>>, i.e. a `.tmscz` file, as input.
+
+This means the basic command to run the CMI tool is `mids-cmi -i some-folder/input.tmscz` or `mids-cmi -input some-folder/input.tmscz`.
+By default, the CMI tool will put the resulting models in a folder called `cmi` next to the input TMSC file.
+If such a folder does not exist, it will be created by the tool.
+
+To customize the CMI process and the output, a number of other options are available.
+The other available options are:
+
+Output folder (`-o` or `-output`)::
+The output of CMI is stored in the location specified.
+If the provided path does not describe an existing folder, a new folder will be created.
+Specify this option to override the default output folder location.
+
+Save yEd diagrams (`-y` or `-yed`)::
+By default, only CIF files are written for the inferred models.
+If the _Save yEd diagrams_ option is enabled, in addition to CIF models, yEd visualizations of the final models are also generated.
+These can be used to inspect the models, to get insight into the software behavior.
+yEd can be downloaded at https://www.yworks.com/products/yed.
+
+Infer protocol between two components (`-p` or `-protocol`)::
+The output of model inference is either component models or a single protocol model.
+By default, one or more component models are created.
+If this option is enabled, the output is instead a single protocol model representing communication between a pair of components.
+If protocol inference is chosen, two components have to be selected as communicating parties in the protocol.
+Components can be selected by providing the two component names as argument of the option, separated by a comma.
+Note that computing the protocol can be very memory-intensive and time-consuming.
+Protocol models are always prefix-closed.
+
+Additional protocol scope components (`-ps` or `-protocolscope`)::
+If the option to infer a protocol is chosen, extra context components can be added to the scope of the protocol computation, as a comma separated list of component names.
+These additional components will not be directly present in the final protocol, but will be taken into account to determine the allowed order of events in the protocol.
+Note that adding extra components increases the memory and time requirements of the computation.
+If component models are being inferred rather than a protocol, this option will be ignored.
+
+Do not convert events on untraced components to synchronous functions (`-u` or `-no-untraced-synchronous`)::
+By default for each component that is untraced, superfluous events and dependencies that link the start and end of a synchronous function are removed.
+This reduces the size of the models makes further analysis easier.
+If combining the dependency information to form a single event is undesired, this option can be used to disable it.
+
+Do not synchronize dependent (`-d` or `-no-sync-dependent`)::
+As part of the transformation of TMSC events to CIF events, the component initiating the event has to be identified.
+By default, for communicating events information from the source and target of the corresponding dependency is combined into a single CIF event.
+Otherwise, only local information is used for the CIF event.
+If this behavior is undesired, this option can be used to disable it.
+Note that unless you want to use explicit middleware models, disabling the synchronization is not recommended.
+
+Save single model (`-s` or `-single-model`)::
+By default, each component model created by Constructive Model Inference is stored in a separate CIF model.
+If this option is selected, a single CIF model containing all components is created instead.
+When inferring a protocol model rather than component models, this option is ignored. 
+Additionally, if the option to generate yEd diagrams is enabled, this option has no effect on that, as always only a single diagram is constructed for all components.
+
+Component exclusion regex (`-ce` or `-component-exclusion`)::
+Component inclusion regex (`-ci` or `-component-inclusion`)::
+Filtering can be applied by including and/or excluding components based on their name.
+A filter consists of a Java regular expression provided as argument to the option, which will be matched against all component names.
+For a component exclusion filter, components matching the pattern will be rejected.
+For a component inclusion filter, components not matching the pattern will be rejected.
+Models for components removed by filtering are discarded and will not be processed further or stored.
+There can be at most one exclusion filter and one inclusion filter defined.
+
+Perform post-processing operation (`-c` or `-post-processing`)::
+Furthermore, post-processing operations can be applied to the inferred models.
+Each operation added will be applied to the models in the order they are listed on the command line.
+Each operation can require a certain precondition or result in a certain postcondition with regard to the existence or lack of data and/or tau events in the inferred models.
+If a precondition for an operation is not satisfied, the operation may fail, e.g. when an operation requires tau events to be present, but they are not present.
+Operations may also eliminate certain concepts automatically, if they don't support them. E.g. data may be eliminated if an operation only works for models without data.
+Note that as part of post-processing the number of models may increase or decrease.
++
+To add a post-processing operation, its name and any required arguments must be supplied.
+It is possible to add multiple operations by supplying the option multiple times.
+For most operations, it is possible to configure to which components they are applied with filtering.
+Filtering is defined by adding `<filter-mode,filter-pattern>` before the operation name.
+Filter mode has to be either `inclusion` or `exclusion`, and the `filter-pattern` has to be a Java regular expression for matching component names.
+During processing, each component name is matched against the `filter-pattern` provided.
+If the `filter-mode` is `inclusion`, the operation is applied to components that match the pattern, and not applied to those that do not.
+If the `filter-mode` is `exclusion`, the filtering is reversed.
+As a basic example, if the argument `ModifyRepetitions(data,0,0,false,0)` is supplied, the ModifyRepetitions operation is applied to all models with the provided arguments.
+If `<inclusion,ABC.\*>ModifyRepetitions(data,0,0,false,0)` is supplied instead, the operation is only applied to the components with names that fit the pattern `ABC.*`, i.e. that start with `ABC`.
+In contrast, if `<exclusion,ABC.*>ModifyRepetitions(data,0,0,false,0)` is supplied, the operation is only applied to components with names that do not fit the pattern.
++
+The following post-processing operations are available:
+
+AddAsynchronousPatternConstraints:::
+Add constraints that enforce that asynchronous replies happen after the corresponding request, and that each asynchronous request results in a corresponding reply before the same request is made again.
+Also allows such constraints to be visualized in the yEd diagrams.
+This operation requires no configuration.
+This operation can be selectively applied based on filtering.
+
+ExcludeInternalTransitions:::
+Remove transitions from the models that do not represent a communication between two components.
+For the purpose of this transformation, events on transitions to and from the initial state (the start and end of service fragments) will always be considered communication.
+Note that this means transitions with those events will not be removed, even elsewhere in the state machine.
+This operation requires no configuration.
+This operation can be selectively applied based on filtering.
+
+FilterClientServerInteractions(`component1`, `component2`):::
+Remove all service fragments that are not involved in communication between two specified components.
+The operation has to be configured with two components, which should communicate for the output to be useful.
+This operation can _not_ be selectively applied based on filtering.
+
+HideActions(`pattern`):::
+Remove all actions fitting a given Java regular expression pattern from the models.
+This operation has to be configured with a pattern to define actions that should be hidden.
+In order to keep models consistent, events on transitions to and from the initial state (the start and end of service fragments) will never be hidden.
+Note that this means transitions with those events will not be removed, even elsewhere in the state machine.
+This operation can be selectively applied based on filtering.
+
+InjectDomainKnowledge(`operator`, `model-path`):::
+Combine inferred models with a domain knowledge model.
+This operation can be configured by providing a path to the domain knowledge model, which must be a CIF model, and selecting the operator that will be used to add the domain knowledge to the inferred models.
++
+WARNING: Injecting unsuitable domain knowledge can cause following operations to malfunction and fail.
++
+The available operations are `intersection`, `union`, `difference-left`, `difference-right`, `exclusive-or` and `parallel-composition`.
+Suppose we have the domain knowledge model `/domain.cif`:
++
+--
+* `InjectDomainKnowledge(intersection,some-folder/domain.cif)` would compute the behavior present in both the CMI model and the domain knowledge model.
+* `InjectDomainKnowledge(union,some-folder/domain.cif)` would compute the behavior present in either the CMI model or the domain knowledge model, or in both.
+* `InjectDomainKnowledge(difference-left,some-folder/domain.cif)` would compute the behavior present in the domain knowledge model, but not in the CMI model.
+* `InjectDomainKnowledge(difference-right,some-folder/domain.cif)` would compute the behavior present in the CMI model, but not in the domain knowledge model.
+* `InjectDomainKnowledge(exclusive-or,some-folder/domain.cif)` would compute the behavior present in either the CMI model and the domain knowledge model, but not in both.
+* `InjectDomainKnowledge(parallel-composition,some-folder/domain.cif)` would compute the behavior created by executing the CMI model and the domain knowledge model in parallel, synchronizing on common labels.
+--
+This operation can be selectively applied based on filtering.
+
+MergeComponents:::
+Merge multiple runtime components, for instance multiple instances of the same executable, into a single runtime component.
+E.g. merge `SomeComponent1`, `SomeComponent2`, etc into `SomeComponent`, ignoring the details of what is handled by which instance of the component (e.g., OS process or thread).
+Variants of a component are considered part of the same instance, so e.g. `SomeComponent_1` and `SomeComponent_2` would be merged into `SomeComponent` as well.
+Additionally, untraced components are never merged with traced components.
+This operation has to be configured with a Java regular expression pattern to match component names of components that should be merged, and to determine the name of the merged component.
+For instance, `(?<name>\\w+XX)\\d+` will match components `abcXX1`, `abcXX2`, `defXX34`, `defXX71`, etc.
+And `abcXX1` and `abcXX2` will be merged to `abcXX`, while `defXX34` and `defXX71` will be merged to `defXX`.
+If filtering is used with this operation, only components included in the filtered models will be merged together.
+References to the merged components are updated in all models, even if they are not in the filtered set.
+
+MergeInterfaceClientsServers(`interface-name`, `merge-clients`, `merge-servers`):::
+Event names contain the identify of the client and server, as well as the client call type (blocking call, library call, FCN call, request/wait calls) and server handling type (synchronous, asynchronous).
+This can be useful to understand the communication between components.
+However, when comparing behavior, it may be useful to hide such details, and focus on the behavior of the component itself, rather than such details of the environment.
+This can reduce the number of (irrelevant) differences.
++
+This transformation hides the client/server component identities, replacing them with the interface name, which then serves as the 'merged' single identity of the various clients/servers.
+It also hides the client call type and server handling type, replacing it with an abstract type (call, handler), which then serves as the 'merged' single type for all call/handler types.
+This transformation can be applied to either all interfaces or a specific one, and for communications with clients only, for communication with servers only, or for both.
+If an interface name is provided, only that interface will be merged.
+If the interface name is empty, all interfaces will be merged.
+The boolean options `merge-clients` and `merge-servers` enable or disable the merging of clients and servers respectively.
+So the operation configuration `MergeInterfaceClientsServers(ABC,true,false)` would merge clients of the `ABC` interface, while `MergeInterfaceClientsServers(ABC,false,true)` would merge the servers of the `ABC` interface.
+The configuration `MergeInterfaceClientsServers(,true,true)` merges all clients and servers for all interfaces.
+Given that certain details are abstracted away, the result of this transformation can no longer be used to compose component models and form a system model.
+This operation can be selectively applied based on filtering.
+
+ModifyRepetitions(`mode`, `lower-threshold`, `upper-threshold`, `make-infinite`, `max-repeats`):::
+Detect repetitions in inferred models and modify their representations.
+This operation can be configured by selecting which repetitions it will apply to, and how each repetition will be processed.
+The `mode` determines how repetitions are encoded in the models, either using edges only (`plain`) or using variables and edges with guards and updates (`data`).
+Repetitions can be selected based on a minimum and maximum number of repetitions.
+If a threshold is set to 0, it will be ignored.
+Repetitions can be modified by changing the number of repetitions, either to infinite, by setting `make-infinite` to `true`, or limiting to a given maximum (`max-repeats`).
+Note that if `max-repeats` is 0, it will not be used as a limit, and if `make-infinite` is enabled, `max-repeats` must be 0.
+This operation can be selectively applied based on filtering.
+
+PrefixClose:::
+Extend the language described by inferred models with all prefixes. 
+This post-processing is required for change impact analysis based on the inferred models.
+This operation requires no configuration.
+This operation can be selectively applied based on filtering.
+
+RenameComponent(`old-name`, `new-name`):::
+Renames any component based on a specified old name and new name.
+This rename fails if it causes clashes with other existing component names.
+This operation can _not_ be selectively applied based on filtering.
+
+RenameFunctions(`functionMappings`):::
+Renames functions based on a mapping of old names to new names.
+Function mappings have to be provided in the form `<old-interface>:<old-function>\-><new-interface>:<new-function>`.
+For example, `OldInterface:old_function\->NewInterface:new_function` renames the `old_function` function of the `OldInterface` interface to the `new_function` function of the `NewInterface` interface.
+Multiple function mappings can be provided, separated by either commas or newlines.
+Note that the operation does not check whether the new function name already exists.
+If multiple mappings are provided for the same function, only the first mapping will be applied.
+This operation can _not_ be selectively applied based on filtering.
+
+Options file (`-f` or `-options-file`)::
+In addition to command line options, settings can be provided in an options file.
+An options file should be a text file contain one or more CMI options.
+Each option and each argument should be on a separate line.
+As an exception, the options file option itself will be ignored if used in an options file.
+At the end of each run, the CMI tool produces a `component-extraction-options.txt` file containing the settings for that run, which can be used to repeat the run.
+Option values defined on the command line take precedence over values defined in the options file.
+
+Additionally, it is possible to configure the JVM used to run the tool by using the `-vmargs` option, followed by the desired JVM options. 
+For example, the `-Xmx` option can be used to increase the available memory space, which may be needed when importing large datasets.
+By adding `-vmargs -Xmx20G` to the command line the memory the tool can use will be set to 20 gigabytes.
+JVM options can only be added on the command line, not as part of an options file.
+Additionally, any options after the `-vmargs` option will be interpreted as a JVM option, so they must be added at the end of the command line.
+For information on which JVM options are available, please consult the documentation of the JVM in question.
+
+=== Model inference in the MIDS UI
+
+It is possible to perform Constructive Model Inference in the MIDS UI for a TMSC, i.e. a `.tmscz` file, that is present in the workspace.
+Right click the TMSC file and choose _Construct CIF Models_ and then _Construct component models_.
+
+image::{imgsdir}/cmi-component-menu.png[]
+
+The construction process can also be configured through the same options that are available for the command-line interface.
+These can be configured in the dialog that is shown.
+
+image::{imgsdir}/cmi-component-dialog.png[]
+
+A separate dialog is available to configure post-processing operations.
+
+image::{imgsdir}/cmi-dialog-postprocessing.png[]
+
+In case a sequence of operations is defined where the preconditions of an operation are not met, or one operation directly affects or removes features added by another, warnings will be given.
+Note that the warnings are computed statically, and since post-processing operations may be applied to only some of the components, some warnings may be false positive.
+
+=== Model inference report
+
+Constructive Model Inference produces a file `component_extraction_report.txt` containing a brief report of the model inference process.
+This file for example includes the running time of the model inference process.
+
+=== Repeat inference process
+
+Constructive Model Inference produces a `component-extraction-options.txt` file as part of its output.
+This file can be used to repeat the inference with the same settings.
+Right click the options file, select _Construct CIF models_ and then choose _Construct component models_.
+
+image::{imgsdir}/cmi-component-repeat.png[]

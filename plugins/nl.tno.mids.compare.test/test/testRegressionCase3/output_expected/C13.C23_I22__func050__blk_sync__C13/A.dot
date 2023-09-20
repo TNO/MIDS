@@ -1,0 +1,28 @@
+digraph automaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle"];
+	4 [label=<s4> shape="doublecircle"];
+	5 [label=<s5> shape="doublecircle"];
+	6 [label=<s6> shape="doublecircle"];
+	7 [label=<s7> shape="doublecircle"];
+	8 [label=<s8> shape="doublecircle"];
+	9 [label=<s9> shape="doublecircle"];
+	10 [label=<s10> shape="doublecircle"];
+	11 [label=<s11> shape="doublecircle"];
+	12 [label=<s12> shape="doublecircle"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<C23.I22__func050__blk_sync__C13> id="1-0-2"];
+	2 -> 3 [label=<C13.I54__func140__blk> id="2-0-3"];
+	3 -> 4 [label=<C13.I54__func140__sync> id="3-0-4"];
+	4 -> 5 [label=<C13.I54__func140__sync_ret> id="4-0-5"];
+	5 -> 6 [label=<C13.I54__func140__blk_ret> id="5-0-6"];
+	6 -> 7 [label=<C13.I54__func063__blk> id="6-0-7"];
+	7 -> 8 [label=<C13.I54__func063__sync> id="7-0-8"];
+	8 -> 9 [label=<C13.I8__func013__blk> id="8-0-9"];
+	9 -> 10 [label=<C13.I8__func013__blk_ret> id="9-0-10"];
+	10 -> 11 [label=<C13.I54__func063__sync_ret> id="10-0-11"];
+	11 -> 12 [label=<C13.I54__func063__blk_ret> id="11-0-12"];
+	12 -> 1 [label=<C13.I22__func050__sync_ret_blk_ret__C23> id="12-0-1"];
+}

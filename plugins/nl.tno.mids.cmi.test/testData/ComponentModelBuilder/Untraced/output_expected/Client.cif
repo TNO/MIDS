@@ -1,0 +1,11 @@
+automaton Client:
+  event IServer__f__blk;
+  event IServer__f__blk_ret;
+  location loc1:
+    initial;
+    marked;
+    edge IServer__f__blk goto loc2;
+  location loc2:
+    marked false;
+    edge IServer__f__blk_ret goto loc1;
+end

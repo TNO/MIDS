@@ -1,0 +1,11 @@
+group CMIAUTOMATON:
+  event e1__abc__async;
+  event e1__abc__async_ret;
+  event e2__abc__fcn;
+  event e2__abc__fcn_ret;
+  automaton CMIAUTOMATON_e1__abc__async:
+    location loc1:
+      initial;
+      marked;
+  end
+end

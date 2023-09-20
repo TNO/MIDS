@@ -1,0 +1,19 @@
+automaton INCL01:
+  event EXCL01__doThis__fcn_sync__EXCL01;
+  event INCL01_DUMMY01__doThis__fcn_sync__INCL02;
+  event INCL01__doThis__fcn_ret_sync_ret__INCL02;
+  location loc1:
+    initial;
+    marked;
+    edge INCL01_DUMMY01__doThis__fcn_sync__INCL02 goto loc1;
+    edge INCL02.INCL01__doThis__fcn_sync__INCL01 goto loc2;
+  location loc2:
+    marked;
+    edge EXCL01__doThis__fcn_sync__EXCL01 goto loc3;
+  location loc3:
+    marked;
+    edge INCL01__doThis__fcn_ret_sync_ret__INCL02 goto loc1;
+end
+group INCL02:
+  event INCL01__doThis__fcn_sync__INCL01;
+end

@@ -1,0 +1,37 @@
+automaton MultipleClient:
+  event C7__func3__sync_ret_call_ret__C7_untraced;
+  location loc1:
+    initial;
+    marked;
+    edge C11_untraced.C11__doThat__call_handler__C11_untraced goto loc2;
+    edge C11_untraced.C11__handleThis_Not_toBeRenamed_Event__handler_sync__C11_untraced goto loc3;
+    edge C7_untraced.C7__func3__call_handler__C7_untraced goto loc5;
+  location loc2:
+    marked;
+    edge C11_untraced.C11__doThat__handler_ret_call_ret__C11_untraced goto loc1;
+  location loc3:
+    marked;
+    edge C11_untraced.C11__handleThis_Not_toBeRenamed_Event__handler_ret_call_ret__C11_untraced goto loc4;
+  location loc4:
+    marked;
+    edge C11_untraced.C11__handleThis_Not_toBeRenamed_Event__call_evt__C11_untraced goto loc1;
+  location loc5:
+    marked;
+    edge C11_untraced.C11__doThat__call_handler__C11_untraced goto loc6;
+  location loc6:
+    marked;
+    edge C11_untraced.C11__doThat__handler_ret_call_ret__C11_untraced goto loc7;
+  location loc7:
+    marked;
+    edge C7__func3__sync_ret_call_ret__C7_untraced goto loc1;
+end
+group C11_untraced:
+  event C11__doThat__call_handler__C11_untraced;
+  event C11__doThat__handler_ret_call_ret__C11_untraced;
+  event C11__handleThis_Not_toBeRenamed_Event__call_evt__C11_untraced;
+  event C11__handleThis_Not_toBeRenamed_Event__handler_ret_call_ret__C11_untraced;
+  event C11__handleThis_Not_toBeRenamed_Event__handler_sync__C11_untraced;
+end
+group C7_untraced:
+  event C7__func3__call_handler__C7_untraced;
+end

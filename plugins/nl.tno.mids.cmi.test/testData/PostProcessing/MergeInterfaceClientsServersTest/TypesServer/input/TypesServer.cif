@@ -1,0 +1,83 @@
+automaton TypesServer:
+  event Interface__async_call__async_ret;
+  event Interface__async_call__arslt_blk_ret__Client;
+  event Interface__async_call__arslt_fcncb__Client;
+  event Interface__async_call__arslt_ret;
+  event Interface__async_call__arslt_wait_ret__Client;
+  event Interface__subscribe__evtsubh;
+  event Interface__sync_call__sync_ret_blk_ret__Client;
+  event Interface__sync_call__sync_ret_fcncb__Client;
+  event Interface__sync_call__sync_ret_wait_ret__Client;
+  event Interface__unsubscribe__evtunsubh;
+  event Interface__trigger__trigh;
+  location loc1:
+    initial;
+    marked;
+    edge Client.Interface__async_call__blk_async__TypesServer goto loc2;
+    edge Client.Interface__async_call__fcn_async__TypesServer goto loc5;
+    edge Client.Interface__async_call__req_async__TypesServer goto loc8;
+    edge Client.Interface__library_call__lib_sync__TypesServer goto loc1;
+    edge Client.Interface__subscribe__evtsub_evtsubh__TypesServer goto loc11;
+    edge Client.Interface__sync_call__blk_sync__TypesServer goto loc12;
+    edge Client.Interface__sync_call__fcn_sync__TypesServer goto loc13;
+    edge Client.Interface__sync_call__req_sync__TypesServer goto loc14;
+    edge Client.Interface__trigger__trig_trigh__TypesServer goto loc15;
+    edge Client.Interface__unsubscribe__evtunsub_evtunsubh__TypesServer goto loc16;
+  location loc2:
+    marked false;
+    edge Interface__async_call__async_ret goto loc3;
+  location loc3:
+    marked false;
+    edge Interface__async_call__arslt_blk_ret__Client goto loc4;
+  location loc4:
+    marked false;
+    edge Interface__async_call__arslt_ret goto loc1;
+  location loc5:
+    marked false;
+    edge Interface__async_call__async_ret goto loc6;
+  location loc6:
+    marked false;
+    edge Interface__async_call__arslt_fcncb__Client goto loc7;
+  location loc7:
+    marked false;
+    edge Interface__async_call__arslt_ret goto loc1;
+  location loc8:
+    marked false;
+    edge Interface__async_call__async_ret goto loc9;
+  location loc9:
+    marked false;
+    edge Interface__async_call__arslt_wait_ret__Client goto loc10;
+  location loc10:
+    marked false;
+    edge Interface__async_call__arslt_ret goto loc1;
+  location loc11:
+    marked false;
+    edge Interface__subscribe__evtsubh goto loc1;
+  location loc12:
+    marked false;
+    edge Interface__sync_call__sync_ret_blk_ret__Client goto loc1;
+  location loc13:
+    marked false;
+    edge Interface__sync_call__sync_ret_fcncb__Client goto loc1;
+  location loc14:
+    marked false;
+    edge Interface__sync_call__sync_ret_wait_ret__Client goto loc1;
+  location loc15:
+    marked false;
+    edge Interface__trigger__trigh goto loc1;
+  location loc16:
+    marked false;
+    edge Interface__unsubscribe__evtunsubh goto loc1;
+end
+group Client:
+  event Interface__async_call__blk_async__TypesServer;
+  event Interface__async_call__fcn_async__TypesServer;
+  event Interface__async_call__req_async__TypesServer;
+  event Interface__library_call__lib_sync__TypesServer;
+  event Interface__subscribe__evtsub_evtsubh__TypesServer;
+  event Interface__sync_call__blk_sync__TypesServer;
+  event Interface__sync_call__fcn_sync__TypesServer;
+  event Interface__sync_call__req_sync__TypesServer;
+  event Interface__trigger__trig_trigh__TypesServer;
+  event Interface__unsubscribe__evtunsub_evtunsubh__TypesServer;
+end

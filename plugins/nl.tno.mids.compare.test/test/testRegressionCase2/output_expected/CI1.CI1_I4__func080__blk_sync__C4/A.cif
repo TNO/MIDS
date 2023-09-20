@@ -1,0 +1,15 @@
+group C4:
+  event I4__func080__sync_ret_blk_ret__CI1;
+end
+group CI1:
+  event I4__func080__blk_sync__C4;
+  automaton CI1_I4__func080__blk_sync__C4:
+    location loc1:
+      initial;
+      marked;
+      edge I4__func080__blk_sync__C4 goto loc2;
+    location loc2:
+      marked;
+      edge C4.I4__func080__sync_ret_blk_ret__CI1 goto loc1;
+  end
+end

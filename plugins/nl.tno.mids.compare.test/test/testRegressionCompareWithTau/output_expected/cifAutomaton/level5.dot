@@ -1,0 +1,6 @@
+digraph "cifAutomaton"{
+rankdir="BT"
+1 [label=<A<sub><font point-size="10">1</font></sub> (4)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">1</font></sub> (5)>, style="filled", fillcolor="lightgray"]
+1 -> 2 [label=<  <font color="limegreen">+1</font>  >]
+}

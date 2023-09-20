@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>nl.tno.mids</groupId>
+    <artifactId>nl.tno.mids.root</artifactId>
+    <version>0.9.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>releng/nl.tno.mids.releng.target</module>
+        <module>plugins</module>
+        <module>documentation</module>
+        <module>features</module>
+        <module>products</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.release>11</maven.compiler.release>
+        <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <tycho.version>2.7.5</tycho.version>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.bsiag.geneclipsetoc</groupId>
+                    <artifactId>geneclipsetoc-maven-plugin</artifactId>
+                    <version>1.0.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctor-maven-plugin</artifactId>
+                    <version>2.2.2</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoctorj-pdf</artifactId>
+                            <version>2.3.4</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoctorj-diagram</artifactId>
+                            <version>2.2.4</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.jruby</groupId>
+                            <artifactId>jruby-complete</artifactId>
+                            <version>9.2.20.1</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoctorj</artifactId>
+                            <version>2.5.7</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <requires>
+                            <require>asciidoctor-diagram</require>
+                        </requires>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-packaging-plugin</artifactId>
+                    <version>${tycho.version}</version>
+                </plugin>
+
+                <!-- Eclipse M2E lifecycle mappings. Does not influence the Maven build itself. -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-clean-plugin</artifactId>
+                                        <versionRange>[2.5,)</versionRange>
+                                        <goals>
+                                            <goal>clean</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <!-- Configure Tycho. -->
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-maven-plugin</artifactId>
+                <version>${tycho.version}</version>
+
+                <!-- Enable extensions for POM-less build. -->
+                <extensions>true</extensions>
+            </plugin>
+
+            <!-- Configure target platform. -->
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho.version}</version>
+                <configuration>
+                    <!-- Configure target platform file. -->
+                    <target>
+                        <file>
+                            ${maven.multiModuleProjectDirectory}/releng/nl.tno.mids.releng.target/nl.tno.mids.releng.target.target
+                        </file>
+                    </target>
+
+                    <!-- Let JustJ handle the execution environment. -->
+                    <!-- See https://www.eclipse.org/justj/?page=documentation for more information. -->
+                    <executionEnvironment>org.eclipse.justj.openjdk.hotspot.jre.full-11</executionEnvironment>
+
+                    <!-- Configure environments. -->
+                    <!-- Determines which environment specific bundles will be in target platform. -->
+                    <!-- Also determines the products to build. -->
+                    <environments>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                    </environments>
+                </configuration>
+            </plugin>
+
+            <!-- Configure Tycho extras. -->
+            <plugin>
+                <groupId>org.eclipse.tycho.extras</groupId>
+                <artifactId>tycho-p2-extras-plugin</artifactId>
+                <version>${tycho.version}</version>
+            </plugin>
+
+            <!-- Configure Tycho Java compiler. -->
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-compiler-plugin</artifactId>
+                <version>${tycho.version}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- Configure Tycho bundle/feature sources. -->
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-source-plugin</artifactId>
+                <version>${tycho.version}</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                    <excludes>
+                        <plugin id="nl.tno.mids.automatalib.distribution"/>
+                    </excludes>
+                    <missingSourcesAction>FAIL</missingSourcesAction>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>plugin-source</id>
+                        <goals>
+                            <goal>plugin-source</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>feature-source</id>
+                        <goals>
+                            <goal>feature-source</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- The following is needed for generated source features that are part of an update site. -->
+            <!-- Tycho will warn about this if not configured. -->
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-p2-plugin</artifactId>
+                <version>${tycho.version}</version>
+                <executions>
+                    <execution>
+                        <!-- Don't attach (default) metadata before the source-feature execution. -->
+                        <id>default-p2-metadata-default</id>
+                        <configuration>
+                            <attachP2Metadata>false</attachP2Metadata>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- Do attach metadata after the source-feature execution. -->
+                        <id>attach-p2-metadata</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>p2-metadata</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

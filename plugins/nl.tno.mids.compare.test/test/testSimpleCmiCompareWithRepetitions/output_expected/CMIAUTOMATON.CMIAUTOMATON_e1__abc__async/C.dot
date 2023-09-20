@@ -1,0 +1,5 @@
+digraph automaton {
+	1 [label=<s1> shape="doublecircle"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+}

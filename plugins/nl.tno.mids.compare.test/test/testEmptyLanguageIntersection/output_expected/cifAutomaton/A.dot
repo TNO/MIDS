@@ -1,0 +1,8 @@
+digraph automaton {
+	1 [label=<s1> shape="circle"];
+	2 [label=<s2> shape="doublecircle"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<CIFAUTOMATON.e1> id="1-0-2"];
+	2 -> 1 [label=<CIFAUTOMATON.e2> id="2-0-1"];
+}

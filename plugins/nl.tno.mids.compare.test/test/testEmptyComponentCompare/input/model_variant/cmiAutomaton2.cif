@@ -1,0 +1,4 @@
+automaton CMIAUTOMATON2:
+  location loc1:
+    initial;
+end

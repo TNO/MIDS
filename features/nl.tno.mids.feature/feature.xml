@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<feature
+      id="nl.tno.mids.feature"
+      label="MIDS Feature"
+      version="0.9.0.qualifier"
+      provider-name="TNO">
+
+   <description>
+      MIDS feature
+   </description>
+
+   <copyright >
+      Copyright (c) TNO
+   </copyright>
+
+   <license url="https://opensource.org/license/mit/">
+     MIT License
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.escet.cif.feature" version="0.1.0" match="greaterOrEqual"/>
+      <import feature="nl.esi.pps.common.emf.feature" version="0.1.0" match="greaterOrEqual"/>
+      <import feature="nl.esi.pps.tmsc.ui.feature" version="0.1.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="nl.tno.mids.documentation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="nl.tno.mids.automatalib.distribution"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="nl.tno.mids.automatalib.extensions"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="nl.tno.mids.compare"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="nl.tno.mids.cif.extensions"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="nl.tno.mids.cmi"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="nl.tno.mids.common.eclipse.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="nl.tno.mids.pps.extensions"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="nl.tno.mids.compare.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="nl.tno.mids.cmi.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="nl.tno.mids.common"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="nl.tno.mids.gltsdiff.distribution"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="nl.tno.mids.gltsdiff.extensions"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

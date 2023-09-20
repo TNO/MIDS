@@ -1,0 +1,38 @@
+group C36:
+  event I46__func094__arslt_fcncb__CI1;
+end
+group CI1:
+  event I21__func136__fcn_async__C12;
+  event I21__func136__fcn_ret;
+  event I30__func164__trig_ret;
+  event I30__func164__trig_trigh__C18;
+  event I46__func094__fcncb_ret;
+  event I47__func149__fcn_ret;
+  event I47__func149__fcn_sync__CI1;
+  automaton C36_I46__func094__arslt_fcncb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C36.I46__func094__arslt_fcncb__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I30__func164__trig_trigh__C18 goto loc3;
+    location loc3:
+      marked;
+      edge I30__func164__trig_ret goto loc4;
+    location loc4:
+      marked;
+      edge I21__func136__fcn_async__C12 goto loc5;
+      edge I46__func094__fcncb_ret goto loc1;
+      edge I47__func149__fcn_sync__CI1 goto loc6;
+    location loc5:
+      marked;
+      edge I21__func136__fcn_ret goto loc7;
+    location loc6:
+      marked;
+      edge I47__func149__fcn_ret goto loc7;
+    location loc7:
+      marked;
+      edge I46__func094__fcncb_ret goto loc1;
+  end
+end

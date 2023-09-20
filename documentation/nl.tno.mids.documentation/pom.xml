@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>nl.tno.mids</groupId>
+    <artifactId>nl.tno.mids.documentation.root</artifactId>
+    <version>0.9.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>nl.tno.mids.documentation</artifactId>
+  <packaging>eclipse-plugin</packaging>
+
+  <properties>
+    <!-- By default deployment is skipped, but documentation should be deployed. -->
+    <maven.deploy.skip>false</maven.deploy.skip>
+  </properties>
+
+  <!-- This plugin contains all user documentation, but only packages the 
+    eclipse help documentation. -->
+  <!-- The reason for this is that we want to share documentation and the 
+    version of this plugin needs to be updated also if the shared documentation 
+    changes -->
+  <build>
+    <defaultGoal>package</defaultGoal>
+    <plugins>
+      <plugin>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctor-maven-plugin</artifactId>
+        <configuration>
+          <!-- Attributes common to all output formats -->
+          <sourceDirectory>adoc</sourceDirectory>
+          <sourceDocumentName>_main.adoc</sourceDocumentName>
+          <attributes>
+            <asciimath />
+            <attribute-missing>warn</attribute-missing>
+            <attribute-undefined>warn</attribute-undefined>
+            <source-highlighter>coderay</source-highlighter>
+            <coderay-css>style</coderay-css>
+            <revnumber>${qualifiedVersion}</revnumber>
+            <last-update-label>false</last-update-label>
+            <doctype>book</doctype>
+            <icons>font</icons>
+            <sectnums />
+          </attributes>
+        </configuration>
+
+        <!-- Rendering the Eclipse help pages -->
+        <executions>
+          <execution>
+            <id>eclipse-help-to-html</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+            <configuration>
+              <outputFile>${project.build.directory}/eclipse-help/mids.html</outputFile>
+              <backend>html5</backend>
+              <attributes>
+                <imagesdir>../..</imagesdir>
+                <sourcesdir>../sources</sourcesdir>
+                <sectanchors>true</sectanchors>
+                <user-guide-html />
+              </attributes>
+            </configuration>
+          </execution>
+
+          <!-- Rendering the user guide -->
+          <execution>
+            <id>user-guide-to-pdf</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+            <configuration>
+              <outputFile>${project.build.directory}/user-guide/mids-user-guide.pdf</outputFile>
+              <backend>pdf</backend>
+              <attributes>
+                <imgsdir>${basedir}/images</imgsdir>
+                <sourcesdir>${basedir}/sources</sourcesdir>
+                <numbered />
+                <toc />
+                <toclevels>3</toclevels>
+                <pagenums />
+              </attributes>
+            </configuration>
+          </execution>
+
+          <!-- Rendering the user guide web -->
+          <execution>
+            <id>user-guide-to-web</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+            <configuration>
+              <outputFile>${project.build.directory}/user-guide/index.html</outputFile>
+              <backend>html5</backend>
+              <attributes>
+                <imagesdir>../..</imagesdir>
+                <sourcesdir>../sources</sourcesdir>
+                <sectanchors>true</sectanchors>
+                <toc>left</toc>
+                <toclevels>3</toclevels>
+                <user-guide-html />
+                <user-guide-web />
+              </attributes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>com.bsiag.geneclipsetoc</groupId>
+        <artifactId>geneclipsetoc-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>geneclipsetoc</goal>
+            </goals>
+            <configuration>
+              <outputTocFile>${project.build.directory}/eclipse-help/toc.xml</outputTocFile>
+              <sourceFolder>${basedir}</sourceFolder>
+              <pages>
+                <page>target/eclipse-help/mids.html</page>
+              </pages>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Only package the eclipse help contents -->
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-packaging-plugin</artifactId>
+        <configuration>
+          <additionalFileSets>
+            <fileSet>
+              <!-- Putting it in the same dir within the jar ensures us that 
+                doc will work in runtime instance and RCP -->
+              <prefix>target/eclipse-help/</prefix>
+              <directory>${project.build.directory}/eclipse-help/</directory>
+              <includes>
+                <include>**/*</include>
+              </includes>
+            </fileSet>
+          </additionalFileSets>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>user-guide-web-zip</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <descriptors>
+                <descriptor>${basedir}/assembly.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <!--This plugin's configuration is used to store Eclipse m2e settings 
+          only. It has no influence on the Maven build itself. -->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctor-maven-plugin</artifactId>
+                    <versionRange>[1.5.2,)</versionRange>
+                    <goals>
+                      <goal>process-asciidoc</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>com.bsiag.geneclipsetoc</groupId>
+                    <artifactId>geneclipsetoc-maven-plugin</artifactId>
+                    <versionRange>[1.0.2,)</versionRange>
+                    <goals>
+                      <goal>geneclipsetoc</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+</project>

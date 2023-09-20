@@ -1,0 +1,15 @@
+group I2:
+  event C7__func32__unkn_unkn__C3;
+end
+group C3:
+  event C7__func32__unkn_ret_unkn_ret__I2;
+  automaton I2_C7__func32__unkn_unkn__C3:
+    location loc1:
+      initial;
+      marked;
+      edge I2.C7__func32__unkn_unkn__C3 goto loc2;
+    location loc2:
+      marked;
+      edge C7__func32__unkn_ret_unkn_ret__I2 goto loc1;
+  end
+end

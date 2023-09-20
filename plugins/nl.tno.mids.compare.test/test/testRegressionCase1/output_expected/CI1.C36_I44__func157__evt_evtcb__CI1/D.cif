@@ -1,0 +1,36 @@
+group CI1:
+  event CI1__func154__evt_evtcb__C17;
+  event CI1__func154__evt_ret;
+  event I44__func157__evtcb_ret;
+  automaton C36_I44__func157__evt_evtcb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C36.I44__func157__evt_evtcb__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I44__func157__evtcb_ret goto loc3;
+      edge CI1__func154__evt_evtcb__C17 goto loc4;
+    location loc3:
+      marked;
+      edge C36.I44__func157__evt_evtcb__CI1 goto loc5;
+    location loc4:
+      marked;
+      edge CI1__func154__evt_ret goto loc6;
+    location loc5:
+      marked;
+      edge I44__func157__evtcb_ret goto loc3;
+    location loc6:
+      marked;
+      edge I44__func157__evtcb_ret goto loc7;
+    location loc7:
+      marked;
+      edge C36.I44__func157__evt_evtcb__CI1 goto loc8;
+    location loc8:
+      marked;
+      edge CI1__func154__evt_evtcb__C17 goto loc4;
+  end
+end
+group C36:
+  event I44__func157__evt_evtcb__CI1;
+end

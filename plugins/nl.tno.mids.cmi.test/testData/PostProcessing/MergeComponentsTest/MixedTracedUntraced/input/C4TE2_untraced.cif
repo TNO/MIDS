@@ -1,0 +1,13 @@
+automaton C4TE2_untraced: 
+  event C3__ExecuteThis__sync_ret_blk_ret__C1;
+  location loc1: 
+    initial; 
+    marked; 
+    edge C1.C3__ExecuteThis__blk_sync__C4TE2_untraced goto loc2; 
+  location loc2: 
+    marked; 
+    edge C3__ExecuteThis__sync_ret_blk_ret__C1 goto loc1; 
+end
+group C1:
+  event C3__ExecuteThis__blk_sync__C4TE2_untraced;
+end

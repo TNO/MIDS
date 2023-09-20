@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MIDS CIF Extensions
+Bundle-SymbolicName: nl.tno.mids.cif.extensions;singleton:=true
+Bundle-Version: 0.9.0.qualifier
+Bundle-Vendor: TNO
+Automatic-Module-Name: nl.tno.mids.cif.extensions
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: nl.esi.pps.common.emf.ecore,
+ org.eclipse.xtend.lib,
+ org.eclipse.escet.cif.metamodel,
+ org.eclipse.escet.cif.common,
+ org.eclipse.escet.common.app.framework,
+ org.eclipse.escet.cif.explorer,
+ com.google.guava,
+ org.eclipse.escet.cif.io,
+ org.eclipse.escet.setext.runtime,
+ org.eclipse.escet.cif.parser,
+ org.eclipse.escet.cif.typechecker,
+ org.eclipse.escet.common.typechecker,
+ org.eclipse.escet.cif.merger,
+ org.eclipse.escet.cif.cif2cif,
+ org.eclipse.escet.common.java,
+ org.eclipse.escet.common.emf,
+ org.eclipse.escet.cif.metamodel.java,
+ org.apache.commons.lang;bundle-version="2.6.0"
+Export-Package: nl.tno.mids.cif.extensions,
+ nl.tno.mids.cif.extensions.mrr,
+ nl.tno.mids.cif.extensions.mrr.cif,
+ nl.tno.mids.cif.extensions.mrr.data
+Bundle-ActivationPolicy: lazy
+

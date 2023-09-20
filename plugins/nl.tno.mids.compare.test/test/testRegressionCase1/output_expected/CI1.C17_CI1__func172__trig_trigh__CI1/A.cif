@@ -1,0 +1,40 @@
+group C17:
+  event CI1__func172__trig_trigh__CI1;
+end
+group CI1:
+  event I5__func084__blk;
+  event I5__func084__blk_ret;
+  event I5__func084__sync;
+  event I5__func084__sync_ret;
+  event CI1__func172__trigh_ret;
+  event I43__func088__fcn_ret;
+  event I43__func088__fcn_sync__C36;
+  automaton C17_CI1__func172__trig_trigh__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C17.CI1__func172__trig_trigh__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I5__func084__blk goto loc3;
+      edge I43__func088__fcn_sync__C36 goto loc4;
+    location loc3:
+      marked;
+      edge I5__func084__sync goto loc5;
+    location loc4:
+      marked;
+      edge I43__func088__fcn_ret goto loc6;
+    location loc5:
+      marked;
+      edge I5__func084__sync_ret goto loc7;
+    location loc6:
+      marked;
+      edge I5__func084__blk goto loc3;
+    location loc7:
+      marked;
+      edge I5__func084__blk_ret goto loc8;
+    location loc8:
+      marked;
+      edge CI1__func172__trigh_ret goto loc1;
+  end
+end

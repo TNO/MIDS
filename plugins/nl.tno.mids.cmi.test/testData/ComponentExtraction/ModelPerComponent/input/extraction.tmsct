@@ -1,0 +1,63 @@
+executor Client as Client
+executor Connector as Connector
+executor Server as Server
+
+interface IClient {
+    operation h
+    operation j
+}
+
+interface IConnector {
+    operation i
+}
+
+interface IServer {
+    operation f
+    operation g
+    operation k
+}
+
+component ClientComp
+function "h notify handle" as h_notify_handle implements IClient.h { execType: evtcb }
+function "f call" as f_call implements IServer.f { execType: blk }
+function "g trigger" as g_trigger implements IServer.g { execType: trig }
+function "j call" as j_call implements IClient.j { execType: blk }
+
+component ConnectorComp
+function "i call handle" as i_call_handle implements IConnector.i { execType: sync }
+
+component ServerComp
+function "f call handle" as f_call_handle implements IServer.f { execType: sync }
+function "g trigger handle" as g_trigger_handle implements IServer.g { execType: trigh }
+function "h notify" as h_notify implements IClient.h { execType: evt }
+function "i call" as i_call implements IConnector.i { execType: fcn }
+function "i callback" as i_callback implements IConnector.i { execType: fcncb }
+function "k call" as k_call implements IServer.k { execType: blk }
+
+/* The trace itself. */
+1 Client ClientComp > f_call !M1
+1.1 Server ServerComp > f_call_handle ?M1
+1.2 Server ServerComp < f_call_handle !M2
+1.3 Client ClientComp < f_call ?M2
+
+2 Client ClientComp > g_trigger !M3
+2.1 Client ClientComp < g_trigger
+2.2 Server ServerComp > g_trigger_handle ?M3
+2.3 Server ServerComp > i_call !M4
+2.4 Server ServerComp < i_call
+2.5 Server ServerComp < g_trigger_handle
+
+3 Connector ConnectorComp > i_call_handle ?M4
+3.1 Connector ConnectorComp < i_call_handle !M5
+
+4 Server ServerComp > i_callback ?M5
+4.1 Server ServerComp > k_call
+4.2 Server ServerComp < k_call
+4.3 Server ServerComp > h_notify !M6
+4.4 Server ServerComp < h_notify
+4.5 Server ServerComp < i_callback
+
+5 Client ClientComp > h_notify_handle ?M6
+5.1 Client ClientComp > j_call
+5.2 Client ClientComp < j_call
+5.3 Client ClientComp < h_notify_handle

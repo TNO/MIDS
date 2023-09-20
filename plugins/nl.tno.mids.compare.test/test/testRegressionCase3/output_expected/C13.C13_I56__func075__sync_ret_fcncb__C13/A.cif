@@ -1,0 +1,13 @@
+group C13:
+  event I56__func075__fcncb_ret;
+  event I56__func075__sync_ret_fcncb__C13;
+  automaton C13_I56__func075__sync_ret_fcncb__C13:
+    location loc1:
+      initial;
+      marked;
+      edge I56__func075__sync_ret_fcncb__C13 goto loc2;
+    location loc2:
+      marked;
+      edge I56__func075__fcncb_ret goto loc1;
+  end
+end

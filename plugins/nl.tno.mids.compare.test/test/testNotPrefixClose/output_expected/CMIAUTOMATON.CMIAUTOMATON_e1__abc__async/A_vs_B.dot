@@ -1,0 +1,9 @@
+digraph diffautomaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="circle"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<<font color="#000000">CMIAUTOMATON.e1__abc__async</font>> id="1-0-2"];
+	2 -> 1 [label=<<font color="#000000">CMIAUTOMATON.e2__abc__async_ret</font>> id="2-0-1"];
+	2 -> 2 [label=<<font color="#00cc00">CMIAUTOMATON.e3__abc__blk</font>> color="#00cc00" id="2-1-2"];
+}

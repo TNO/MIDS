@@ -1,0 +1,16 @@
+group CI1:
+  event I10__func009__evtcb_ret;
+  event I10__func027__fcn_ret;
+  event I10__func027__fcn_sync__C7;
+  automaton C7_I10__func009__evt_evtcb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C7.I10__func009__evt_evtcb__CI1 goto loc2;
+    location loc2:
+      marked;
+  end
+end
+group C7:
+  event I10__func009__evt_evtcb__CI1;
+end

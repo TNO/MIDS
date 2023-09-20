@@ -1,0 +1,23 @@
+automaton C4TE2:
+  event Interface__Action__sync_blk__Server;
+  event C3__ExecuteThis__sync_ret_blk_ret__C1; 
+  location loc1: 
+    initial; 
+    marked; 
+    edge C1.C3__ExecuteThis__blk_sync__C4TE2 goto loc2;
+  location loc2:
+    marked;
+    edge Interface__Action__sync_blk__Server goto loc3;
+  location loc3:
+    marked;
+    edge SERVER.Interface__Action__sync_ret_blk_ret__C4TE2 goto loc4;
+  location loc4: 
+    marked; 
+    edge C3__ExecuteThis__sync_ret_blk_ret__C1 goto loc1; 
+end
+group C1:
+  event C3__ExecuteThis__blk_sync__C4TE2; 
+end
+group SERVER:
+  event Interface__Action__sync_ret_blk_ret__C4TE2;
+end

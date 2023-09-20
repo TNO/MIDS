@@ -1,0 +1,11 @@
+digraph "CI1.C20_I29__func104__sync_ret_fcncb__CI1"{
+rankdir="BT"
+1 [label=<A<sub><font point-size="10">69</font></sub> (13)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">69</font></sub> (25)>, style="filled", fillcolor="lightgray"]
+3 [label=<C<sub><font point-size="10">69</font></sub> (16)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+4 [label=<D<sub><font point-size="10">69</font></sub> (54)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+1 -> 4 [label=<  <font color="limegreen">+45</font> <font color="red">-4</font>  >]
+2 -> 4 [label=<  <font color="limegreen">+34</font> <font color="red">-5</font>  >]
+3 -> 1 [label=<  <font color="limegreen">+1</font> <font color="red">-4</font>  >]
+3 -> 2 [label=<  <font color="limegreen">+9</font>  >]
+}

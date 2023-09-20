@@ -1,0 +1,6 @@
+digraph "Protocol_C2_C1"{
+rankdir="BT"
+1 [label=<A<sub><font point-size="10">1</font></sub> (41)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">1</font></sub> (39)>, style="filled", fillcolor="lightgray"]
+2 -> 1 [label=<  <font color="limegreen">+2</font>  >]
+}

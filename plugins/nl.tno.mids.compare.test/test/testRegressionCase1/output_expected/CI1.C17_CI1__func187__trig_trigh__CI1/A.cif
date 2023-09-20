@@ -1,0 +1,33 @@
+group C5:
+  event I6__func095__arslt_blk_ret__CI1;
+end
+group C17:
+  event CI1__func187__trig_trigh__CI1;
+end
+group CI1:
+  event I6__func095__blk_async__C5;
+  event CI1__func187__trigh_ret;
+  event I43__func186__fcn_async__C36;
+  event I43__func186__fcn_ret;
+  automaton C17_CI1__func187__trig_trigh__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C17.CI1__func187__trig_trigh__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I6__func095__blk_async__C5 goto loc3;
+    location loc3:
+      marked;
+      edge C5.I6__func095__arslt_blk_ret__CI1 goto loc4;
+    location loc4:
+      marked;
+      edge I43__func186__fcn_async__C36 goto loc5;
+    location loc5:
+      marked;
+      edge I43__func186__fcn_ret goto loc6;
+    location loc6:
+      marked;
+      edge CI1__func187__trigh_ret goto loc1;
+  end
+end

@@ -1,0 +1,43 @@
+automaton C1:
+  event C1__Do_SomethingLocal__blk_sync__C1;
+  event C1__Do_SomethingLocal__sync_ret_blk_ret__C1;
+  event C3__ExecuteThis__blk_sync__C4TE;
+  event C3__ExecuteThis__blk_sync__C6TE;
+  location loc1:
+    initial;
+    marked;
+    edge C1__Do_SomethingLocal__blk_sync__C1 goto loc2;
+  location loc2:
+    marked;
+    edge C3__ExecuteThis__blk_sync__C4TE goto loc3;
+  location loc3:
+    marked;
+    edge C4TE.C3__ExecuteThis__sync_ret_blk_ret__C1 goto loc4;
+  location loc4:
+    marked;
+    edge C3__ExecuteThis__blk_sync__C4TE goto loc5;
+  location loc5:
+    marked;
+    edge C4TE.C3__ExecuteThis__sync_ret_blk_ret__C1 goto loc6;
+  location loc6:
+    marked;
+    edge C3__ExecuteThis__blk_sync__C6TE goto loc7;
+  location loc7:
+    marked;
+    edge C6TE.C3__ExecuteThis__sync_ret_blk_ret__C1 goto loc8;
+  location loc8:
+    marked;
+    edge C3__ExecuteThis__blk_sync__C6TE goto loc9;
+  location loc9:
+    marked;
+    edge C6TE.C3__ExecuteThis__sync_ret_blk_ret__C1 goto loc10;
+  location loc10:
+    marked;
+    edge C1__Do_SomethingLocal__sync_ret_blk_ret__C1 goto loc1;
+end
+group C4TE:
+  event C3__ExecuteThis__sync_ret_blk_ret__C1;
+end
+group C6TE:
+  event C3__ExecuteThis__sync_ret_blk_ret__C1;
+end

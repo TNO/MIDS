@@ -1,0 +1,19 @@
+automaton WithTau:
+  event pc1__abc__fcn;
+  event pc2__abc__fcn;
+  event pc3__abc__fcn;
+  event pc1__hide_this;
+  location loc1:
+    initial;
+    marked;
+    edge pc1__abc__fcn goto loc2;
+  location loc2:
+    edge tau goto loc3;
+  location loc3:
+    marked;
+    edge pc1__hide_this goto loc_to_be_hidden;
+    edge pc2__abc__fcn goto loc1;
+  location loc_to_be_hidden:
+    marked;
+    edge pc3__abc__fcn goto loc3;
+end

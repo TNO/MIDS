@@ -1,0 +1,11 @@
+digraph "CMIAUTOMATON.CMIAUTOMATON_e1__abc__async"{
+rankdir="BT"
+1 [label=<A<sub><font point-size="10">1</font></sub> (7)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">1</font></sub> (7)>, style="filled", fillcolor="lightgray"]
+3 [label=<C<sub><font point-size="10">1</font></sub> (1)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+4 [label=<D<sub><font point-size="10">1</font></sub> (60)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+1 -> 4 [label=<  <font color="limegreen">+58</font> <font color="red">-5</font>  >]
+2 -> 4 [label=<  <font color="limegreen">+58</font> <font color="red">-5</font>  >]
+3 -> 1 [label=<  <font color="limegreen">+6</font>  >]
+3 -> 2 [label=<  <font color="limegreen">+6</font>  >]
+}

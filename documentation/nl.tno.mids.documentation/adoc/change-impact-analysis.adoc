@@ -1,0 +1,280 @@
+/////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+//
+// This program and the accompanying materials are made available
+// under the terms of the MIT License which is available at
+// https://opensource.org/licenses/MIT
+//
+// SPDX-License-Identifier: MIT
+/////////////////////////////////////////////////////////////////////////
+
+include::_initCommon.adoc[]
+
+[[change-impact-analysis]]
+== Change impact analysis
+
+To reduce risks for software evolution it is important to understand (the impact of) software changes.
+By comparing the software behavior before and after a redesign or patch, one can classify these changes as expected (qualified) and unexpected (regression).
+This way, identified regressions can be addressed early, improving confidence in the new software, reducing risks.
+
+MIDS allows automatically comparing software behavior models.
+Starting at a high abstraction level, differences of interest can be inspected in more detail at lower abstraction levels, by moving through the six levels of the comparison results.
+Each step is supported by visualizations that allow engineers and architects to easily find (un)expected differences.
+
+MIDS can perform a behavioral comparison of multiple sets of models.
+For instance, a model set for behavior before a software change (e.g. redesign, patch) can be compared to a model set capturing the behavior after the software change.
+Another example is comparing the software behavior for difference products being produced during a single system execution.
+
+=== Preparing for comparison
+
+A set of models consists of one or more CIF models in a directory.
+Multiple directories, each being a model set, can be compared.
+
+The input models may contain (some) data depending on the model type, which is indicated by the *Model type* option as explained below in the next section.
+General CIF models (indicated by the `CIF` model type) are allowed to contain discrete variables.
+CMI models (indicated by the `CMI` model type) on the other hand may not contain any discrete variables other than the ones introduced by `ModifyRepetitions`.
+In particular this means that variables added by `AddAsynchronousPatternConstraints` post-processing are unsupported for CMI models.
+
+The name of a model set directory serves as the name of the model set.
+A directory can be renamed by right clicking on it and selecting _Refactor_ and then _Rename..._.
+Multiple directories can be given similar names by selecting all of them and choosing _Bulk Rename..._.
+
+=== Starting a comparison
+
+In order to perform a compare, you can use the `mids-compare` command-line tool.
+
+The compare tool has a number of configurable options.
+The tool provides a list of available options if used with the `-h` or `-help` option.
+
+The first parameter configures which data should be compared.
+Providing the input path is required for every compare tool run.
+
+Input folder (`-i` or `-input`)::
+An input folder must be selected that contains the model sets to be compared.
+
+This means the basic command to run the compare tool is `mids-compare -i some-folder/input-data` or `mids-compare -input some-folder/input-data`.
+If the output folder of the tool is not configured, the folder `some-folder/output/` will be used to store the results of the comparison.
+This folder will be created if it does not already exist, and will be emptied if it does already exist.
+
+To customize the compare process and the output, a number of other options are available.
+The other available options are:
+
+Output folder (`-o` or `-output`)::
+An output folder can be selected that will contain the results of the comparison.
+Specify this option to override the default output folder location.
+It is not allowed to specify an output folder that is contained in the input folder.
+
+Model type (`-t` or `-type`)::
+The type of models that are taken as input for Change Impact Analysis.
+Available types that can be selected are `CMI` and `CIF`.
+By default the input is set to `CMI`, i.e. the models produced by Constructive Model Inference.
+However, any set of CIF models can be taken as input, including ones that are not produced by CMI.
+Select `CIF` as model type for this.
+The entire CIF specification is considered a single entity to compare against the other CIF models.
+There is currently no option to compare for instance each automaton separately.
+
+CMI compare mode (`-m` or `-mode`)::
+If the selected model type is `CMI`, the compare mode can be selected from `automatic`, `components`, `protocols` or `service-fragments`.
+By default automatic mode is used.
+Automatic mode compares service fragments of components, protocols, or entire components, depending on what is present.
+To compare components, the CMI option _Save single model_ (`-s` or `-single-model`) should not be used, as comparing CIF models with multiple components is not supported.
+However, comparing service fragments from multiple components is supported.
+When a compare mode other than automatic is chosen, the input models will be compared according to the chosen mode if possible.
+If the selected model type is `CIF`, the value of this option will be ignored.
+
+Entity type (`-e` or `-entity-type`)::
+The type of entity that is represented by the models.
+This affects only how the entities are referenced in error messages and output files.
+The entity type can be provided as the name of a singular entity, or as the singular and the plural form separated by a comma.
+The tool assumes the provided entity type is lower case and will change the first character to upper case as needed.
+If the chosen entity type should always be written with an upper case first character, it should be provided as such.
+Additionally, if no plural is provided, `s` is appended to the singular form to create the plural.
+Both singular and plural names may contain any character except commas.
+For example, entity type can be configured as `component` or `entity,entities`.
+If no entity type is selected using this option, an entity type will be selected by the tool.
+When the model type is `CIF`, the entity type chosen is always `entity`.
+When the model type is `CMI`, the entity type corresponds to the model type.  
+
+Color scheme (`-c` or `-color`)::
+The output of the comparison will include a matrix that shows differences between model sets (more on that later, in the upcoming section about compare output, on level 3).
+This matrix uses colors to highlight any parts with significant differences.
+This options configures the matrix color scheme to use.
+Available choices are `intuitive` and `large-range`, where `intuitive` is the default selection.
+The intuitive color scheme uses a reduced range of colors selected to best match intuition.
+The reduced range does result in the disadvantage that small differences can be hard to discern, because the colors used are very similar.
+The large range color scheme addresses this issue by using a larger range of colors, making it possible to separate values more, at the cost of using less intuitive colors.
+
+Skip post-processing level 6 compare results (`-p` or `-no-post-process`)::
+By default, the difference state machines shown in level 6 are post-processed to increase their readability.
+Intuitively, post-processing searches for state-machine patterns that may be simplified.
+Enabling this option will disable such post-processing, which may improve performance but may also reduce the quality of the compare results.
+
+Compare algorithm (`-a` or `-algorithm`)::
+The calculation of difference state machines involves comparing the structures of two state machines and determining their difference.
+More details will be provided in the upcoming section about compare output, on level 6.
+There are several algorithms available for doing these comparisons.
+The different available algorithms make a trade-off between computational intensity and quality of the results:
++
+--
+* The `heavyweight` algorithm outputs a high-quality result, but requires a lot of computational resources.
+This algorithm is only recommended when the input models are relatively small (say, less than 50 states each).
+* The `lightweight` algorithm is much cheaper in terms of computational intensity, at the cost of quality.
+This algorithm is recommended when the input models are mostly large.
+* The `dynamic` algorithm applies either the `lightweight` or the `heavyweight` algorithm, depending on the sizes of each individual comparison.
+This algorithm is recommended if the input models are a mix of both small and large input models.
+* The `walkinshaw` algorithm applies the link:https://doi.org/10.1145/2430545.2430549[algorithms by Walkinshaw].
+It is between the `lightweight` and `heavyweight` algorithms in terms of computational intensity and quality.
+* The `bruteforce` algorithm give an optimal result that is sometimes better than the results of the `heavyweight` algorithm.
+But it is also much more computationally intensive (in the worst case) since it explores all the possible ways in which the differences between two state machines can be represented, to select the minimal one.
+--
++
+The default algorithm selected is `dynamic`.
+
+Extend lattice (`-x` or `-extend-lattice`)::
+During the computation of the level 2 and level 5 lattices, the compare tool can compute models and model sets to complete the lattices.
+This option can be used to configure that behavior, by using the argument `none`, `partial` or `full`.
+By default or if the argument `partial` is chosen, lattices are completed but the computed model sets and models are only shown in levels 2 and 5 respectively.
+If the argument `none` is chosen, the lattices are not completed and no computed models or model sets are present in any level.
+In contrast, if the argument `full` is chosen, lattices are completed and the computed models and model sets are shown in all levels.
+Note that the union/intersection size limit option can be used to further configure lattice completion.
+
+SVG generation timeout in seconds (`-ts` or `-timeout-svg`)::
+The comparison process will generate SVG files.
+This option configures the timeout (in seconds) for generating such files.
+If generation takes longer than the configured value, it will be halted and a warning will be produced to indicate the problem.
+The default value of the timeout is 60 seconds.
+
+Union/intersection size limit (`-l5` or `-size-limit-level5`)::
+The compare process calculates additional ('computed') model variants from existing model variants using state machine union and intersection operations.
+This option indicates the maximum size of models (measured in number of states) to be considered for union and intersection computations.
+The default value for the union/intersection size limit is 100 states.
+Models that have more states will not considered for union and intersection.
+As this may lead to incomplete information, this is presented differently in levels 2 and 5 (see below).
+If the option for extending lattices is used with the argument `none`, the value set for this option is not used.
+
+Structural compare size limit (`-l6` or `-size-limit-level6`)::
+This option indicates the maximum size of models (measured in number of states) to be considered for structural comparison.
+Models that have more states will not be structurally compared.
+This may lead to incomplete information in levels 5 and 6 (see below).
+The default value for the structural compare size limit is 5000 states.
+
+Options file (`-f` or `-options-file`)::
+In addition to command line options, settings can be provided in an options file.
+An options file should be a text file contain one or more compare tool options.
+Each option and each argument should be on a separate line.
+As an exception, the options file option itself will be ignored if used in an options file.
+At the end of each run, the compare tool produces a `compare-options.txt` file containing the settings for that run, which can be used to repeat the run.
+Option values defined on the command line take precedence over values defined in the options file.
+
+Additionally, it is possible to configure the JVM used to run the tool by using the `-vmargs` option, followed by the desired JVM options. 
+For example, the `-Xmx` option can be used to increase the available memory space, which may be needed when importing large datasets.
+By adding `-vmargs -Xmx20G` to the command line the memory the tool can use will be set to 20 gigabytes.
+JVM options can only be added on the command line, not as part of an options file.
+Additionally, any options after the `-vmargs` option will be interpreted as a JVM option, so they must be added at the end of the command line.
+For information on which JVM options are available, please consult the documentation of the JVM in question.
+
+==== Comparison in the MIDS UI
+
+In order to perform a compare in the MIDS UI, you can use the right click _Compare CIF models_ action in the MIDS UI on a directory that contains all model sets that should be compared.
+
+image::{imgsdir}/compare-menu.png[]
+
+This action will show a dialog with configuration options for the comparison.
+
+image::{imgsdir}/compare-dialog.png[]
+
+The available options are the same as for the command-line tool.
+
+=== Compare output
+The output of the compare tool is centered around the `index.html` file.
+
+TIP: When performing a compare in the MIDS UI, it is recommended to use a modern external browser to view the `index.html` file, as the browser integrated in the MIDS tooling is outdated and limited in functionality.
+
+This file contains an overview of the comparison results, presented as six different levels.
+The first three focus on model sets, while the last three focus on individual models within the model sets.
+For both model sets and models, there are three levels: variants, variant relations and variant differences.
+
+For readability purposes, in the following text, we will assume the items compared are entities.
+Wherever entities are mentioned, the same also applies to other entity types such as components or service fragments.
+
+By default, CMI produces a model per entity, either as a single file or as a file per entity.
+In either case the compare tool will consider entity models, and model sets will contain models for different entities.
+
+If the input models contain component models that consist of service fragments, these will be split if the chosen compare mode is `service-fragments` or `automatic`. 
+In that case the compare tool will consider service fragment models, and model sets will contain models for service fragments of different components.
+Effectively, this increases the level of detail of the compare output, as differences are shown per service fragment, i.e. a part of a component, rather than for the whole component.
+
+Below each of the six levels is explained in more detail.
+
+==== Level 1: Model set variants
+At the highest level, we look at differences between entire model sets.
+
+This level shows which model sets are equal to which other model sets, as indicated by model set variants.
+Two model sets that have the same variant contain the same behavior for all entities, while two model sets with different variants have at least one difference in entity behavior.
+
+This is primarily relevant when comparing a larger number of model sets that each represent an instance of a repeated process, because it shows which model sets contain exceptional behavior.
+This level allows to get an overview of the model sets and their behavior, and identify patterns over the various model sets.
+
+==== Level 2: Model set variant relations
+In the next level, we look at the relations between the model set variants that have been identified.
+
+In particular, we observe some model sets may contain behavior that is an extension of the behavior in another model set.
+By connecting model set variants that have this relation, we can create a (partial) lattice of variants.
+An arrow from one model set variant to another indicates that the behavior of the first model set variant is completely contained in the latter model set variant, i.e. the latter extends the former.
+
+Additionally, we can compute additional ('computed') model set variants such that the lattice is completed.
+These computed model sets are indicated in the lattice by diamond shapes, while variants based on input model sets are indicated by ellipses.
+
+On the edges between the model set variants, the size of the difference is shown as the number of added entities (e.g. +5 in green) and changed entities (e.g. ~5 in blue).
+
+This level allows to relate the model set variants to each other, to determine which to investigate in more detail.
+
+Model set variants that contain models that are too large (see the _Union/intersection size limit_ option) will not be related to the other model set variants.
+Their shapes get a dashed border to indicate incomplete information.
+
+==== Level 3: Model set variant differences
+The third level shows a more detailed view of the differences between model sets, in the form of a matrix that shows for each model set pair how many entities are different between them.
+The cells of the matrix are colored based on the number of differences, to better emphasize where significant similarities and differences can be found.
+
+This level allows to find patterns on the behavior of larger amounts of model sets.
+
+==== Level 4: Model variants
+In this level, we look at differences in the behavior of entities in different model sets.
+The differences are displayed as a table showing for each combination of entity and model set which variant of the entity, if any, is present in the model set.
+By comparing the entity behavior variants present in various model sets, we can identify which model sets have different behavior for that entity and how many variants there are.
+
+This level allows to find out which entities have different behavior at all.
+It also allows to find patterns on the behavior of an entity over the different model sets.
+
+One can click on any variant in the table to see the state machine model corresponding to that variant.
+
+==== Level 5: Model variant relations
+In this level, the relations between the behavioral variants of entities are shown.
+
+Entity variants are considered related when the behavior of one variant is an extension of the behavior of another.
+By connecting entity variants that have this relation, we can create a (partial) lattice of variants.
+An arrow from one entity variant to another indicates that the behavior of the first entity variant is completely contained in the latter entity variant, i.e. the latter extends the former.
+
+Additionally, we can compute additional ('computed') entity variants such that the lattice is completed.
+These computed entity variants are indicated in the lattice by diamond shapes, while variants based on input entity variants are indicated by ellipses.
+
+On the edges between the model variants, the size of the difference is shown as the number of added transitions (e.g. +5 in green) and removed transitions (e.g. -5 in red).
+The _Structural compare size limit_ option may limit the computation of structural differences, leading to a lack of information.
+If the information is not computed, a question mark (?) is shown on the edge instead.
+
+This level allows to relate the variants of an entity to each other, to determine which to investigate in more detail.
+
+Model variants that are too large (see the _Union/intersection size limit_ option) will not be related to the other model variants.
+Their shapes get a dashed border to indicate incomplete information.
+
+==== Level 6: Model variant differences
+This level shows the differences between specific entity variants.
+These variants are presented in a table, and one can click on _diff_ to see the differences between two variants indicated by the row and column of the table.
+
+The differences are represented using a state machine view of the model.
+In this view, one of the variants serves as a base (the one indicated in the row of the table), and coloring indicates where states and transitions have to be added, changed or removed to reach the second variant (the one indicated in the column of the table).
+Clicking on an edge in the state machine opens a side panel containing additional information about that edge.
+The panel can be closed by using the close button in the top right corner, or by clicking the edge again.
+
+Depending on the comparison settings, differences are available only between variants directly related in the variant lattice (level 5), or additionally between all input variants.
+The _Structural compare size limit_ option may limit the computation of structural differences, leading to some comparisons being skipped and their results not being available.

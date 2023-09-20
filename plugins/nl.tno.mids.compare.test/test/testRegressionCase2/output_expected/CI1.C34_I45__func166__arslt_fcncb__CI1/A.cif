@@ -1,0 +1,23 @@
+group C34:
+  event I45__func166__arslt_fcncb__CI1;
+end
+group CI1:
+  event I27__func167__evt_evtcb__C17;
+  event I27__func167__evt_ret;
+  event I45__func166__fcncb_ret;
+  automaton C34_I45__func166__arslt_fcncb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C34.I45__func166__arslt_fcncb__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I27__func167__evt_evtcb__C17 goto loc3;
+    location loc3:
+      marked;
+      edge I27__func167__evt_ret goto loc4;
+    location loc4:
+      marked;
+      edge I45__func166__fcncb_ret goto loc1;
+  end
+end

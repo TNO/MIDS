@@ -1,0 +1,12 @@
+digraph automaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle"];
+	4 [label=<s4> shape="doublecircle"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<I2.C7__func30__unkn_unkn__C3> id="1-0-2"];
+	2 -> 3 [label=<C3.C7__func27__unkn_unkn__C5> id="2-0-3"];
+	3 -> 4 [label=<C5.C7__func27__unkn_ret_unkn_ret__C3> id="3-0-4"];
+	4 -> 1 [label=<C3.C7__func30__unkn_ret_unkn_ret__I2> id="4-0-1"];
+}

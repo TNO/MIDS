@@ -1,0 +1,15 @@
+group C17:
+  event I27__func167__evtsub_evtsubh__CI1;
+end
+group CI1:
+  event I27__func167__evtsubh_ret;
+  automaton C17_I27__func167__evtsub_evtsubh__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C17.I27__func167__evtsub_evtsubh__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I27__func167__evtsubh_ret goto loc1;
+  end
+end

@@ -1,0 +1,26 @@
+group CI1:
+  event CI1__func122__evt_evtcb__C17;
+  event CI1__func122__evt_ret;
+  event CI1__func129__evt_evtcb__C17;
+  event CI1__func129__evt_ret;
+  event I10__func005__fcn_async__C7;
+  event I10__func005__fcn_ret;
+  event I24__func105__fcncb_ret;
+  automaton C14_I24__func105__arslt_fcncb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C14.I24__func105__arslt_fcncb__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge CI1__func129__evt_evtcb__C17 goto loc3;
+    location loc3:
+      marked;
+      edge CI1__func129__evt_ret goto loc4;
+    location loc4:
+      marked;
+  end
+end
+group C14:
+  event I24__func105__arslt_fcncb__CI1;
+end

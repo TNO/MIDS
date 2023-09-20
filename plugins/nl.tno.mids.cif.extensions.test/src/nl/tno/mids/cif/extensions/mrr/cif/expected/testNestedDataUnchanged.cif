@@ -1,0 +1,22 @@
+event a;
+event b;
+automaton aut:
+  disc int[0..3] cnt;
+  disc int[0..3] cnt2;
+  disc int[0..2] cnt3;
+  location loc1:
+    initial;
+    edge tau goto loc2;
+  location loc2:
+    edge tau when cnt3 < 2 goto loc3;
+    edge tau when cnt3 = 2 do cnt3 := 0 goto loc4;
+  location loc3:
+    edge a when cnt < 3 do cnt := cnt + 1 goto loc3;
+    edge tau when cnt = 3 do cnt := 0 goto loc5;
+  location loc4;
+  location loc5:
+    edge tau goto loc6;
+  location loc6:
+    edge b when cnt2 < 3 do cnt2 := cnt2 + 1 goto loc6;
+    edge tau when cnt2 = 3 do cnt2 := 0, cnt3 := cnt3 + 1 goto loc2;
+end

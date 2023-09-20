@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<plugin>
+   <extension-point id="nl.tno.mids.pps.extensions.cmi.preparers"
+                    name="MIDS CMI Preparers"
+                    schema="schema/nl.tno.mids.pps.extensions.cmi.preparers.exsd"/>
+
+   <extension point="nl.tno.mids.pps.extensions.cmi.preparers">
+      <preparer
+         plugin="nl.tno.mids.pps.extensions"
+         class="nl.tno.mids.pps.extensions.cmi.AnnotatedTextPreparer"/>
+   </extension>
+
+</plugin>

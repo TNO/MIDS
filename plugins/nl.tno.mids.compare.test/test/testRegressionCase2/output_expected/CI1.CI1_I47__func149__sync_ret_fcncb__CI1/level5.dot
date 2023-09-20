@@ -1,0 +1,6 @@
+digraph "CI1.CI1_I47__func149__sync_ret_fcncb__CI1"{
+rankdir="BT"
+1 [label=<A<sub><font point-size="10">111</font></sub> (9)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">111</font></sub> (10)>, style="filled", fillcolor="lightgray"]
+1 -> 2 [label=<  <font color="limegreen">+1</font>  >]
+}

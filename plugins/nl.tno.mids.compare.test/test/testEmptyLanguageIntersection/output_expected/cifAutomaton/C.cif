@@ -1,0 +1,24 @@
+automaton cifAutomaton:
+  location loc1:
+    initial;
+    marked false;
+    edge CIFAUTOMATON.e2 goto loc2;
+    edge CIFAUTOMATON.e1 goto loc3;
+  location loc2:
+    marked;
+    edge CIFAUTOMATON.e3 goto loc4;
+  location loc3:
+    marked;
+    edge CIFAUTOMATON.e2 goto loc5;
+  location loc4:
+    marked false;
+    edge CIFAUTOMATON.e2 goto loc2;
+  location loc5:
+    marked false;
+    edge CIFAUTOMATON.e1 goto loc3;
+end
+group CIFAUTOMATON:
+  event e1;
+  event e2;
+  event e3;
+end

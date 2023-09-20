@@ -1,0 +1,13 @@
+group CI1:
+  event I12__func114__fcn_async__C7;
+  event I12__func114__fcn_ret;
+  automaton CI1_I12__func114__fcn_async__C7:
+    location loc1:
+      initial;
+      marked;
+      edge I12__func114__fcn_async__C7 goto loc2;
+    location loc2:
+      marked;
+      edge I12__func114__fcn_ret goto loc1;
+  end
+end

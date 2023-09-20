@@ -1,0 +1,32 @@
+executor Client as Client
+executor Server as Server
+executor Trigger as Trigger
+
+interface IServer {
+    operation f
+    operation g
+}
+
+component ClientComp
+function "f call" as f_call implements IServer.f { execType: blk }
+
+
+component ServerComp
+function "f call handle" as f_call_handle implements IServer.f { execType: async }
+function "f call return" as f_call_return implements IServer.f { execType: arslt }
+function "g trigger handle" as g_trigger_handle implements IServer.g { execType: trigh }
+
+component TriggerComp
+function "g trigger" as g_trigger implements IServer.g { execType: trig }
+
+/* The trace itself. */
+1 Client ClientComp > f_call !M1
+1.12 Server ServerComp > f_call_handle ?M1
+1.22 Server ServerComp < f_call_handle
+5 Trigger TriggerComp > g_trigger !M2
+5.03 Trigger TriggerComp < g_trigger
+5.13 Server ServerComp > g_trigger_handle ?M2
+5.23 Server ServerComp > f_call_return !M3
+5.23 Server ServerComp < f_call_return
+5.83 Server ServerComp < g_trigger_handle
+5.93 Client ClientComp < f_call ?M3

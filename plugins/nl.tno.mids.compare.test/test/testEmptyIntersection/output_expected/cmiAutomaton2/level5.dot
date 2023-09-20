@@ -1,0 +1,11 @@
+digraph "cmiAutomaton2"{
+rankdir="BT"
+1 [label=<A<sub><font point-size="10">2</font></sub> (4)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">2</font></sub> (4)>, style="filled", fillcolor="lightgray"]
+3 [label=<C<sub><font point-size="10">2</font></sub> (3)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+4 [label=<D<sub><font point-size="10">2</font></sub> (11)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+1 -> 4 [label=<  <font color="limegreen">+8</font> <font color="red">-1</font>  >]
+2 -> 4 [label=<  <font color="limegreen">+8</font> <font color="red">-1</font>  >]
+3 -> 1 [label=<  <font color="limegreen">+1</font>  >]
+3 -> 2 [label=<  <font color="limegreen">+1</font>  >]
+}

@@ -1,0 +1,11 @@
+automaton C7:
+  event I1__func2__arslt_fcncb__C5;
+  location loc1:
+    initial;
+    marked;
+    edge C5.I1__func2__fcn_async__C7 goto loc1;
+    edge I1__func2__arslt_fcncb__C5 goto loc1;
+end
+group C5:
+  event I1__func2__fcn_async__C7;
+end

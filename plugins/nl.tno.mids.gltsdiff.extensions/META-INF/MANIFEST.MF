@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MIDS gLTSdiff Extensions
+Bundle-SymbolicName: nl.tno.mids.gltsdiff.extensions;singleton:=true
+Bundle-Version: 0.9.0.qualifier
+Bundle-Vendor: TNO
+Automatic-Module-Name: nl.tno.mids.gltsdiff.extensions
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-ActivationPolicy: lazy
+Require-Bundle: nl.tno.mids.gltsdiff.distribution;bundle-version="1.0.1"
+Export-Package: nl.tno.mids.gltsdiff.extensions

@@ -1,0 +1,23 @@
+digraph diffautomaton {
+	1 [label=<s1> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	2 [label=<s2> shape="doublecircle"];
+	4 [label=<s4> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	5 [label=<s5> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	6 [label=<s6> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	7 [label=<s7> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	8 [label=<s8> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1 [color="#ff4040"];
+	__init3 [label=<> shape="none"];
+	__init3 -> 3 [color="#00cc00"];
+	1 -> 2 [label=<<font color="#000000">C18.I30__func163__sync_ret_fcncb__CI1</font>> id="1-0-2"];
+	3 -> 4 [label=<<font color="#00cc00">C18.I30__func163__sync_ret_fcncb__CI1</font>> color="#00cc00" id="3-0-4"];
+	2 -> 1 [label=<<font color="#000000">CI1.I30__func163__fcncb_ret</font>> id="2-0-1"];
+	4 -> 5 [label=<<font color="#00cc00">CI1.CI1__func174__evt_evtcb__C17</font>> color="#00cc00" id="4-0-5"];
+	4 -> 1 [label=<<font color="#00cc00">CI1.I30__func163__fcncb_ret</font>> color="#00cc00" id="4-1-1"];
+	5 -> 6 [label=<<font color="#00cc00">CI1.CI1__func174__evt_ret</font>> color="#00cc00" id="5-0-6"];
+	6 -> 7 [label=<<font color="#00cc00">CI1.I30__func163__fcncb_ret</font>> color="#00cc00" id="6-0-7"];
+	7 -> 8 [label=<<font color="#00cc00">C18.I30__func163__sync_ret_fcncb__CI1</font>> color="#00cc00" id="7-0-8"];
+	8 -> 5 [label=<<font color="#00cc00">CI1.CI1__func174__evt_evtcb__C17</font>> color="#00cc00" id="8-0-5"];
+}

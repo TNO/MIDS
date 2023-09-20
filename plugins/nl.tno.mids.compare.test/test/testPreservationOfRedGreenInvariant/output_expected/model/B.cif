@@ -1,0 +1,19 @@
+automaton model:
+  event b;
+  event c;
+  event d;
+  location s1:
+    initial;
+    marked;
+    edge b goto s2;
+  location s2:
+    marked;
+    edge c goto s3;
+    edge b goto s4;
+  location s3:
+    marked;
+    edge d goto s1;
+  location s4:
+    marked;
+    edge c goto s3;
+end

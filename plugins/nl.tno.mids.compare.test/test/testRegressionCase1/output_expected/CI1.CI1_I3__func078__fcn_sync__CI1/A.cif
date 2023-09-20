@@ -1,0 +1,13 @@
+group CI1:
+  event I3__func078__fcn_sync__CI1;
+  event I3__func078__sync_ret_fcncb__CI1;
+  automaton CI1_I3__func078__fcn_sync__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge I3__func078__fcn_sync__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I3__func078__sync_ret_fcncb__CI1 goto loc1;
+  end
+end

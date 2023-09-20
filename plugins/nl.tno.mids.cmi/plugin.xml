@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<plugin>
+   <extension
+         id="nl.tno.mids.cmi.CmiApplication"
+         name="CMI Application"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="nl.tno.mids.cmi.CmiApplication">
+         </run>
+      </application>
+   </extension>
+
+   <extension-point id="nl.tno.mids.cmi.postprocessing"
+                    name="MIDS CMI Post-processing"
+                    schema="schema/nl.tno.mids.cmi.postprocessing.exsd"/>
+
+   <extension
+         point="nl.tno.mids.cmi.postprocessing">
+      <provider
+            plugin="nl.tno.mids.cmi"
+            class="nl.tno.mids.cmi.postprocessing.operations.ExcludeInternalTransitionsProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi"
+            class="nl.tno.mids.cmi.postprocessing.operations.InjectDomainKnowledgeProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi"
+            class="nl.tno.mids.cmi.postprocessing.operations.ModifyRepetitionsProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi"
+            class="nl.tno.mids.cmi.postprocessing.operations.PrefixCloseProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi"
+            class="nl.tno.mids.cmi.postprocessing.operations.HideActionsProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi"
+            class="nl.tno.mids.cmi.postprocessing.operations.FilterClientServerInteractionsProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi"
+            class="nl.tno.mids.cmi.postprocessing.operations.AddAsyncPatternConstraintsProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi"
+            class="nl.tno.mids.cmi.postprocessing.operations.MergeComponentsProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi"
+            class="nl.tno.mids.cmi.postprocessing.operations.MergeInterfaceClientsServersProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi"
+            class="nl.tno.mids.cmi.postprocessing.operations.RenameComponentProvider">
+      </provider>
+      <provider
+            plugin="nl.tno.mids.cmi"
+            class="nl.tno.mids.cmi.postprocessing.operations.RenameFunctionsProvider">
+      </provider>
+   </extension>
+
+</plugin>

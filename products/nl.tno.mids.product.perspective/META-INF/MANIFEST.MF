@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MIDS Perspective
+Bundle-SymbolicName: nl.tno.mids.product.perspective;singleton:=true
+Bundle-Version: 0.9.0.qualifier
+Bundle-Activator: nl.tno.mids.product.perspective.Activator
+Bundle-Vendor: TNO
+Require-Bundle: org.eclipse.ui,
+  org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: nl.tno.mids.product.perspective
+Export-Package: nl.tno.mids.product.perspective

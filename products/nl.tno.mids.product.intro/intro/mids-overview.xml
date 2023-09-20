@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<introContent>
+  <extensionContent id="nl.tno.mids.overview" name="mids" alt-style="css/mids.properties" style="css/mids.css" path="overview/@">
+    <group id="mids" style-id="content-group">
+      <link url="http://org.eclipse.ui.intro/showHelpTopic?id=/nl.tno.mids.documentation/target/eclipse-help/mids.html"
+            label="Read the MIDS User Guide" id="mids-userguide" style-id="content-link">
+        <text>Learn about using the Model Inference and Differencing Suite</text>
+      </link>
+    </group>
+  </extensionContent>
+</introContent>

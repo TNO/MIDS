@@ -1,0 +1,11 @@
+digraph "cifAutomaton"{
+rankdir="BT"
+0 [label=<- (1)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+1 [label=<A<sub><font point-size="10">1</font></sub> (3)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">1</font></sub> (3)>, style="filled", fillcolor="lightgray"]
+3 [label=<C<sub><font point-size="10">1</font></sub> (7)>, style="filled", shape="diamond", fillcolor="dimgray", fontcolor="white"]
+0 -> 1 [label=<  ?  >]
+0 -> 2 [label=<  ?  >]
+1 -> 3 [label=<  <font color="limegreen">+5</font> <font color="red">-1</font>  >]
+2 -> 3 [label=<  <font color="limegreen">+5</font> <font color="red">-1</font>  >]
+}

@@ -1,0 +1,91 @@
+group CI1:
+  event CI1__func155__evt_evtcb__C17;
+  event CI1__func155__evt_ret;
+  event I10__func159__evtcb_ret;
+  event I30__func164__trig_ret;
+  event I30__func164__trig_trigh__C18;
+  event I46__func094__fcn_async__C36;
+  event I46__func094__fcn_ret;
+  event I47__func149__fcn_ret;
+  event I47__func149__fcn_sync__CI1;
+  event I6__func095__blk_async__C5;
+  automaton C6_I10__func159__evt_evtcb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C6.I10__func159__evt_evtcb__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I6__func095__blk_async__C5 goto loc3;
+      edge I10__func159__evtcb_ret goto loc1;
+    location loc3:
+      marked;
+      edge C5.I6__func095__arslt_blk_ret__CI1 goto loc4;
+    location loc4:
+      marked;
+      edge CI1__func155__evt_evtcb__C17 goto loc5;
+      edge I46__func094__fcn_async__C36 goto loc6;
+    location loc5:
+      marked;
+      edge CI1__func155__evt_ret goto loc7;
+    location loc6:
+      marked;
+      edge I46__func094__fcn_ret goto loc8;
+    location loc7:
+      marked;
+      edge I30__func164__trig_trigh__C18 goto loc9;
+    location loc8:
+      marked;
+      edge CI1__func155__evt_evtcb__C17 goto loc10;
+    location loc9:
+      marked;
+      edge I30__func164__trig_ret goto loc11;
+    location loc10:
+      marked;
+      edge CI1__func155__evt_ret goto loc12;
+    location loc11:
+      marked;
+      edge I47__func149__fcn_sync__CI1 goto loc13;
+    location loc12:
+      marked;
+      edge I10__func159__evtcb_ret goto loc14;
+    location loc13:
+      marked;
+      edge I47__func149__fcn_ret goto loc15;
+    location loc14:
+      marked;
+      edge C6.I10__func159__evt_evtcb__CI1 goto loc16;
+    location loc15:
+      marked;
+      edge I10__func159__evtcb_ret goto loc17;
+    location loc16:
+      marked;
+      edge I6__func095__blk_async__C5 goto loc18;
+      edge I10__func159__evtcb_ret goto loc14;
+    location loc17:
+      marked;
+      edge C6.I10__func159__evt_evtcb__CI1 goto loc19;
+    location loc18:
+      marked;
+      edge C5.I6__func095__arslt_blk_ret__CI1 goto loc20;
+    location loc19:
+      marked;
+      edge I6__func095__blk_async__C5 goto loc21;
+      edge I10__func159__evtcb_ret goto loc17;
+    location loc20:
+      marked;
+      edge I46__func094__fcn_async__C36 goto loc6;
+    location loc21:
+      marked;
+      edge C5.I6__func095__arslt_blk_ret__CI1 goto loc22;
+    location loc22:
+      marked;
+      edge CI1__func155__evt_evtcb__C17 goto loc5;
+  end
+end
+group C5:
+  event I6__func095__arslt_blk_ret__CI1;
+end
+group C6:
+  event I10__func159__evt_evtcb__CI1;
+end

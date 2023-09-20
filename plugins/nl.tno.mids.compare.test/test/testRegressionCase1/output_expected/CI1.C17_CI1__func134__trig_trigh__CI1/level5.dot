@@ -1,0 +1,6 @@
+digraph "CI1.C17_CI1__func134__trig_trigh__CI1"{
+rankdir="BT"
+1 [label=<A<sub><font point-size="10">15</font></sub> (5)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">15</font></sub> (6)>, style="filled", fillcolor="lightgray"]
+1 -> 2 [label=<  <font color="limegreen">+1</font>  >]
+}

@@ -1,0 +1,15 @@
+group C36:
+  event I44__func157__evt_evtcb__CI1;
+end
+group CI1:
+  event I44__func157__evtcb_ret;
+  automaton C36_I44__func157__evt_evtcb__CI1:
+    location loc1:
+      initial;
+      marked;
+      edge C36.I44__func157__evt_evtcb__CI1 goto loc2;
+    location loc2:
+      marked;
+      edge I44__func157__evtcb_ret goto loc1;
+  end
+end

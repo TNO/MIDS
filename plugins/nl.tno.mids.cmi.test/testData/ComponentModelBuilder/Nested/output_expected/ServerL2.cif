@@ -1,0 +1,19 @@
+automaton ServerL2:
+  event IServerL2__i__sync_ret_blk_ret__ServerL1;
+  event IServerL2__j__sync_ret_blk_ret__ServerL1;
+  location loc1:
+    initial;
+    marked;
+    edge ServerL1.IServerL2__i__blk_sync__ServerL2 goto loc2;
+    edge ServerL1.IServerL2__j__blk_sync__ServerL2 goto loc3;
+  location loc2:
+    marked false;
+    edge IServerL2__i__sync_ret_blk_ret__ServerL1 goto loc1;
+  location loc3:
+    marked false;
+    edge IServerL2__j__sync_ret_blk_ret__ServerL1 goto loc1;
+end
+group ServerL1:
+  event IServerL2__i__blk_sync__ServerL2;
+  event IServerL2__j__blk_sync__ServerL2;
+end

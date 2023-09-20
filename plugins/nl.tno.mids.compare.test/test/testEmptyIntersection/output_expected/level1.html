@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Model set variants</title>
+        <link href="assets/bootstrap.min.css" rel="stylesheet">
+        <script src="assets/bootstrap.bundle.min.js"></script>
+        <style>
+            .verticalText {
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
+            }
+            
+            .variant-label {
+                min-width: 24px;
+                max-width: 40px;
+                min-height: 24px;
+            }
+
+            #table td {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                white-space: nowrap;
+            }
+
+            #table td div {
+                margin: 0 1px 1px 0;
+            }
+
+            #table tr td:first-of-type {
+                padding: 0 8px 0 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="container-fluid bcontent mb-3 mt-3 row">
+                <div class="col">
+                    <h3>Model set variants</h3>
+                    <h5>Shows which model sets are equal to which other model sets, as indicated by model set variants.</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mt-3 mb-3">
+                    <table id="table" class="table table-sm" style="width:auto !important">
+                        <tbody>
+                            <tr>
+                                <td rowspan="2" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <div><h6>Variant</h6></div>
+                                </td>
+                            </tr>
+                            <tr class="align-middle">
+<td rowspan='6'><h6 class='verticalText'>Model set</h6></td>
+</tr>
+<tr class="align-middle">
+<td>model</td>
+<td><div class="text-center variant-label" style="margin: 0 auto; background-color: rgb(204, 204, 255); color: rgb(0, 0, 0)">A</div></td>
+</tr>
+<tr class="align-middle">
+<td>model_other_variant</td>
+<td><div class="text-center variant-label" style="margin: 0 auto; background-color: rgb(153, 153, 255); color: rgb(0, 0, 0)">B</div></td>
+</tr>
+<tr class="align-middle">
+<td>model_variant</td>
+<td><div class="text-center variant-label" style="margin: 0 auto; background-color: rgb(102, 102, 255); color: rgb(255, 255, 255)">C</div></td>
+</tr>
+<tr class="align-middle">
+<td>computed_1</td>
+<td><div class="text-center variant-label" style="margin: 0 auto; background-color: rgb(51, 51, 255); color: rgb(255, 255, 255)">D</div></td>
+</tr>
+<tr class="align-middle">
+<td>computed_2</td>
+<td><div class="text-center variant-label" style="margin: 0 auto; background-color: rgb(0, 0, 255); color: rgb(255, 255, 255)">E</div></td>
+</tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mt-3 mb-3">
+                    <h6>Legend</h6>
+                    <table class="table table-sm" style="width:auto !important">
+                        <tbody>
+                            <tr>
+<td><div class="text-center variant-label" style="background-color: rgb(204, 204, 255); color: rgb(0, 0, 0)">A</div></td>
+<td>1st model set variant</td>
+</tr>
+<tr>
+<td><div class="text-center variant-label" style="background-color: rgb(153, 153, 255); color: rgb(0, 0, 0)">B</div></td>
+<td>2nd model set variant</td>
+</tr>
+<tr>
+<td><div class="text-center variant-label" style="background-color: rgb(102, 102, 255); color: rgb(255, 255, 255)">C</div></td>
+<td>3rd model set variant</td>
+</tr>
+<tr>
+<td><div class="text-center variant-label" style="background-color: rgb(51, 51, 255); color: rgb(255, 255, 255)">D</div></td>
+<td>4th model set variant</td>
+</tr>
+<tr>
+<td><div class="text-center variant-label" style="background-color: rgb(0, 0, 255); color: rgb(255, 255, 255)">E</div></td>
+<td>5th model set variant</td>
+</tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

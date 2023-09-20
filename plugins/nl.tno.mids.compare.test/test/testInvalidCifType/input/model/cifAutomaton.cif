@@ -1,0 +1,14 @@
+automaton CIFAUTOMATON:
+  event e1;
+  event e2;
+  // The next line causes a type check error.
+  disc bool test = 1;
+  location loc1:
+    initial;
+    marked;
+    edge e1 goto loc2;
+  location loc2:
+    marked;
+    edge e2 goto loc1;
+end
+

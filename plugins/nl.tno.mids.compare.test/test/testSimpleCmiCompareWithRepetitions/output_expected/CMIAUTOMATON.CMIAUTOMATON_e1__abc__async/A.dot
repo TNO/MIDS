@@ -1,0 +1,15 @@
+digraph automaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="circle"];
+	3 [label=<s3> shape="circle"];
+	4 [label=<s4> shape="circle"];
+	5 [label=<s5> shape="circle"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<CMIAUTOMATON.e1__abc__async> id="1-0-2"];
+	2 -> 3 [label=<repetition entry> id="2-0-3"];
+	3 -> 4 [label=<CMIAUTOMATON.e2__abc__fcn (repeated 8 times)> id="3-0-4"];
+	3 -> 5 [label=<repetition exit> id="3-1-5"];
+	4 -> 3 [label=<CMIAUTOMATON.e2__abc__fcn_ret> id="4-0-3"];
+	5 -> 1 [label=<CMIAUTOMATON.e1__abc__async_ret> id="5-0-1"];
+}

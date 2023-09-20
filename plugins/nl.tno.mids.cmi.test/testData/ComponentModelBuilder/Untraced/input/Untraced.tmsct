@@ -1,0 +1,18 @@
+executor Client as Client
+executor Server as Server
+
+interface IServer {
+    operation f
+}
+
+component ClientComp
+function "f call" as f_call implements IServer.f { execType: blk }
+
+component ServerComp
+function "f call handle" as f_call_handle implements IServer.f { execType: sync }
+
+1 Client ClientComp > f_call
+3.6 Client ClientComp < f_call 
+
+1.12 Server ServerComp > f_call_handle
+3.5 Server ServerComp < f_call_handle

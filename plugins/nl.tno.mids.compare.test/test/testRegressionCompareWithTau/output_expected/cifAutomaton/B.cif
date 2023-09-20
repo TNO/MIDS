@@ -1,0 +1,16 @@
+automaton CIFAUTOMATON:
+  event e1;
+  event e2;
+  event e3;
+  location loc1:
+    initial;
+    marked;
+    edge e1 goto loc2;
+  location loc2:
+    marked;
+    edge e2 goto loc3;
+    edge tau goto loc1;
+  location loc3:
+    marked;
+    edge e3 goto loc1;
+end

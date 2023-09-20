@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="MIDS" uid="nl.tno.mids.product" id="nl.tno.mids.product.branding.product" application="org.eclipse.ui.ide.workbench" version="0.9.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <aboutInfo>
+      <image path="/nl.tno.mids.product.branding/images/mids_lg.png"/>
+      <text>
+         Model Inference and Differencing Suite
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgs>-Declipse.p2.unsignedPolicy=allow
+-Djava.net.preferIPv4Stack=true
+-Dfile.encoding=UTF-8
+-Xmx12G
+-XX:+UseG1GC
+-XX:+UseStringDeduplication
+--add-modules=ALL-SYSTEM
+      </vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="/nl.tno.mids.product.branding/images/mids16.png" i32="/nl.tno.mids.product.branding/images/mids32.png" i48="/nl.tno.mids.product.branding/images/mids48.png" i256="/nl.tno.mids.product.branding/images/mids256.png"/>
+
+   <splash
+      location="nl.tno.mids.product.branding"
+      startupProgressRect="5,275,445,15"
+      startupMessageRect="7,252,445,20"
+      startupForegroundColor="000000" />
+   <launcher>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <license>
+        <text>
+   TNO
+All Rights Reserved.
+This work is protected by copyright laws and international treaties.
+         </text>
+   </license>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="nl.tno.mids.product.feature"/>
+      <feature id="org.eclipse.justj.openjdk.hotspot.jre.full" installMode="root"/>
+   </features>
+
+   <configurations>
+      <plugin id="org.apache.felix.scr" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+   </configurations>
+
+   <repositories>
+      <repository location="http://TBD/" enabled="true" />
+   </repositories>
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
+
+</product>

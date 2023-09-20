@@ -1,0 +1,11 @@
+automaton Trigger:
+  event ITrigger__t__trig_ret;
+  event ITrigger__t__trig_trigh__Client;
+  location loc1:
+    initial;
+    marked;
+    edge ITrigger__t__trig_trigh__Client goto loc2;
+  location loc2:
+    marked false;
+    edge ITrigger__t__trig_ret goto loc1;
+end

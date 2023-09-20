@@ -1,0 +1,15 @@
+automaton cmiAutomaton2:
+  location loc1:
+    initial;
+    marked;
+    edge CMIAUTOMATON2.e3__abc__fcn goto loc2;
+  location loc2:
+    marked;
+    edge CMIAUTOMATON2.e3__abc__fcncb goto loc1;
+end
+group CMIAUTOMATON2:
+  event e3__abc__fcn;
+  event e3__abc__fcncb;
+  event e4__abc__fcn;
+  event e5__abc__fcn;
+end

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Compare overview</title>
+    <link href="assets/bootstrap.min.css" rel="stylesheet">
+    <script src="assets/bootstrap.bundle.min.js"></script>
+    <style>
+        .var-diff-cell {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        sub {
+                font-size: 60%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container-fluid bcontent mb-3 mt-3">
+            <div class="row">
+                <div class="col">
+                    <h3>Compare overview</h3>
+                </div>
+                <div class="col" align="right">
+                    <a href="about.html" class="btn btn-secondary" target="_blank">About</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <div class="card bg-light mb-3">
+                    <div class="card-header">
+                        <div class="row">
+                            <span class="text-center">(Entity) model sets</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <h6 class="card-subtitle mb-2">Level 1</h6>
+                                <h6 class="card-subtitle text-muted">Variants</h6>
+                            </div>
+                            <div class="col-4">
+                                <h6 class="card-subtitle mb-2">Level 2</h6>
+                                <h6 class="card-subtitle text-muted">Variant relations</h6>
+                            </div>
+                            <div class="col-4">
+                                <h6 class="card-subtitle mb-2">Level 3</h6>
+                                <h6 class="card-subtitle text-muted">Variant differences</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <div class="col-12 border border-top-0 mb-2 mt-3"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <p class="card-text">Unique model set behavior variants</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="card-text">Behavior inclusion relations for variants</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="card-text">Differences between model sets (number of different models)</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <a href="level1.html" class="btn btn-primary" target="_blank">View</a>
+                            </div>
+                            <div class="col-4">
+                                <a href="level2.html" class="btn btn-primary" target="_blank">View</a>
+                            </div>
+                            <div class="col-4">
+                                <a href="level3.html" class="btn btn-primary" target="_blank">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 text-left">
+                <div class="card bg-light mb-3">
+                    <div class="card-header">
+                        <div class="row">
+                            <span class="text-center">(Entity) models</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <h6 class="card-subtitle mb-2">Level 4</h6>
+                                <h6 class="card-subtitle text-muted">Variants</h6>
+                            </div>
+                            <div class="col-4">
+                                <h6 class="card-subtitle mb-2">Level 5</h6>
+                                <h6 class="card-subtitle text-muted">Variant relations</h6>
+                            </div>
+                            <div class="col-4">
+                                <h6 class="card-subtitle mb-2">Level 6</h6>
+                                <h6 class="card-subtitle text-muted">Variant differences</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <div class="col-12 border border-top-0 mb-2 mt-3"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <p class="card-text">Unique model behavior variants</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="card-text">Behavior inclusion relations for variants</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="card-text">Diff two model variants (state machine diff)</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <a href="level4.html" class="btn btn-primary" target="_blank">View</a>
+                            </div>
+                            <div class="col-4">
+                                <div class="btn-group">
+                                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">View</button>
+                                     <div class="dropdown-menu">
+<a href="cifAutomaton/level5.html" class="dropdown-item" target="_blank">
+1: cifAutomaton</a>
+                                     </div>
+                                 </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">View</button>
+                                    <div class="dropdown-menu">
+<a href="javascript:showSelected('cifAutomaton')" class="dropdown-item">
+1: cifAutomaton</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="diff-of-cifAutomaton" class="col-md-12 diff-of-entity" style="display:none">
+                <div class="card bg-light mb-3">
+                    <div class="card-header">
+                        <div class="row">
+                            <span class="text-center">[Level 6] 1: cifAutomaton</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-12">
+                            <table class="table table-sm" style="width:auto !important">
+                                <tr>
+                                    <th class="var-diff-cell"></th><th scope="col" class="var-diff-cell">A<sub>1</sub></th>
+<th scope="col" class="var-diff-cell">B<sub>1</sub></th>
+<th scope="col" class="var-diff-cell">C<sub>1</sub></th>
+<th scope="col" class="var-diff-cell">D<sub>1</sub></th>
+
+                                </tr><tr>
+<th scope="row" class="var-diff-cell">A<sub>1</sub></th>
+<td class="var-diff-cell">-</td>
+<td class="var-diff-cell"><a href="cifAutomaton/A_vs_B.html" class="btn btn-link" target="_blank">diff</a></td>
+<td class="var-diff-cell">-</td>
+<td class="var-diff-cell"><a href="cifAutomaton/A_vs_D.html" class="btn btn-link" target="_blank">diff</a></td>
+</tr>
+<tr>
+<th scope="row" class="var-diff-cell">B<sub>1</sub></th>
+<td class="var-diff-cell">-</td>
+<td class="var-diff-cell">-</td>
+<td class="var-diff-cell">-</td>
+<td class="var-diff-cell"><a href="cifAutomaton/B_vs_D.html" class="btn btn-link" target="_blank">diff</a></td>
+</tr>
+<tr>
+<th scope="row" class="var-diff-cell">C<sub>1</sub></th>
+<td class="var-diff-cell"><a href="cifAutomaton/C_vs_A.html" class="btn btn-link" target="_blank">diff</a></td>
+<td class="var-diff-cell"><a href="cifAutomaton/C_vs_B.html" class="btn btn-link" target="_blank">diff</a></td>
+<td class="var-diff-cell">-</td>
+<td class="var-diff-cell">-</td>
+</tr>
+<tr>
+<th scope="row" class="var-diff-cell">D<sub>1</sub></th>
+<td class="var-diff-cell">-</td>
+<td class="var-diff-cell">-</td>
+<td class="var-diff-cell">-</td>
+<td class="var-diff-cell">-</td>
+</tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // hides all variant diff matrices.
+        var hideAll = function () {
+            var diffs = document.getElementsByClassName("diff-of-entity");
+            
+            for (var i = 0; i < diffs.length; i++) {
+                diffs[i].style.display = "none";
+            }
+        };
+        
+        // shows the given variant diff matrix.
+        var showSingle = function (id) {
+            document.getElementById(id).style.display = "block";
+        };
+        
+        // shows the matrix of the selected entity.
+        var showSelected = function (name) {
+            hideAll();
+            showSingle("diff-of-" + name);
+        };
+    </script>
+</body>
+</html>

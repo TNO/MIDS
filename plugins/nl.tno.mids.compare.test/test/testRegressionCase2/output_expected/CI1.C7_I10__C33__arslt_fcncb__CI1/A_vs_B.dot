@@ -1,0 +1,29 @@
+digraph diffautomaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle"];
+	4 [label=<s4> shape="doublecircle"];
+	5 [label=<s5> shape="doublecircle"];
+	6 [label=<s6> shape="doublecircle"];
+	7 [label=<s7> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	8 [label=<s8> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	9 [label=<s9> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	10 [label=<s10> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	11 [label=<s11> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	12 [label=<s12> shape="doublecircle" fillcolor="#00cc00" fontcolor="#ffffff" style="filled"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<<font color="#ff4040">C7.I10__C33__arslt_fcncb__CI1</font>> color="#ff4040" id="1-0-2"];
+	1 -> 7 [label=<<font color="#00cc00">C7.I10__C33__arslt_fcncb__CI1</font>> color="#00cc00" id="1-1-7"];
+	2 -> 3 [label=<<font color="#000000">CI1.CI1__func109__evt_evtcb__C17</font>> id="2-0-3"];
+	3 -> 4 [label=<<font color="#000000">CI1.CI1__func109__evt_ret</font>> id="3-0-4"];
+	4 -> 5 [label=<<font color="#000000">CI1.I10__func173__fcn_async__C7</font>> id="4-0-5"];
+	5 -> 6 [label=<<font color="#000000">CI1.I10__func173__fcn_ret</font>> id="5-0-6"];
+	6 -> 1 [label=<<font color="#000000">CI1.I10__C33__fcncb_ret</font>> id="6-0-1"];
+	7 -> 8 [label=<<font color="#00cc00">CI1.I6__func095__blk_async__C5</font>> color="#00cc00" id="7-0-8"];
+	8 -> 9 [label=<<font color="#00cc00">C5.I6__func095__arslt_blk_ret__CI1</font>> color="#00cc00" id="8-0-9"];
+	9 -> 10 [label=<<font color="#00cc00">CI1.I46__func093__fcn_async__C34</font>> color="#00cc00" id="9-0-10"];
+	10 -> 11 [label=<<font color="#00cc00">CI1.I46__func093__fcn_ret</font>> color="#00cc00" id="10-0-11"];
+	11 -> 12 [label=<<font color="#00cc00">CI1.CI1__func155__evt_evtcb__C17</font>> color="#00cc00" id="11-0-12"];
+	12 -> 2 [label=<<font color="#00cc00">CI1.CI1__func155__evt_ret</font>> color="#00cc00" id="12-0-2"];
+}

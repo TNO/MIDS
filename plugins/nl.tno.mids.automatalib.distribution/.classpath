@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry exported="true" kind="lib" path="lib/graphviz-awt-shapes-0.0.1.jar" sourcepath="lib/graphviz-awt-shapes-0.0.1-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jsr305-3.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jung-algorithms-2.1.1.jar" sourcepath="lib/jung-algorithms-2.1.1-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jung-api-2.1.1.jar" sourcepath="lib/jung-api-2.1.1-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jung-graph-impl-2.1.1.jar" sourcepath="lib/jung-graph-impl-2.1.1-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jung-visualization-2.1.1.jar" sourcepath="lib/jung-visualization-2.1.1-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/automata-distribution-0.10.0-bundle.jar" sourcepath="lib/automata-distribution-0.10.0-sources.jar"/>
+</classpath>

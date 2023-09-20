@@ -1,0 +1,6 @@
+digraph "CI1.C12_I21__func059__arslt_fcncb__CI1"{
+rankdir="BT"
+1 [label=<A<sub><font point-size="10">1</font></sub> (8)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">1</font></sub> (10)>, style="filled", fillcolor="lightgray"]
+1 -> 2 [label=<  <font color="limegreen">+2</font>  >]
+}

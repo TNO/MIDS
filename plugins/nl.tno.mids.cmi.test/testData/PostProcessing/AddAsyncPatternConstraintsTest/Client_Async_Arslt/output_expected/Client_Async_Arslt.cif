@@ -1,0 +1,15 @@
+automaton C5:
+  event I1__func2__blk_async__C7;
+  location loc1:
+    initial;
+    marked;
+    edge C7.C7__event__evt_evtcb__C5 goto loc2;
+  location loc2:
+    edge I1__func2__blk_async__C7 goto loc3;
+  location loc3:
+    edge C7.I1__func2__arslt_blk_ret__C5 goto loc1;
+end
+group C7:
+  event C7__event__evt_evtcb__C5;
+  event I1__func2__arslt_blk_ret__C5;
+end

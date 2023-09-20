@@ -1,0 +1,14 @@
+Release info:
+ - AutomataLib: https://github.com/LearnLib/automatalib/releases
+
+Dependency info (Automatalib)
+ - Automatalib 0.10.0: http://learnlib.github.io/automatalib/maven-site/0.10.0/automata-build-parent/automata-distribution/dependencies.html#Project_Transitive_Dependencies
+ 
+Download (binaries and sources):
+ - automatalib-distribution: http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22net.automatalib.distribution%22%20AND%20a%3A%22automata-distribution%22
+ - graphviz-awt-shapes:      http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.misberner.graphviz-awt-shapes%22%20AND%20a%3A%22graphviz-awt-shapes%22
+ - jsr305:                   http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.google.code.findbugs%22%20AND%20a%3A%22jsr305%22
+ - jung-algorithms:          http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22net.sf.jung%22%20AND%20a%3A%22jung-algorithms%22
+ - jung-api:                 http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22net.sf.jung%22%20AND%20a%3A%22jung-api%22
+ - jung-graph-impl:          http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22net.sf.jung%22%20AND%20a%3A%22jung-graph-impl%22
+ - jung-visualization:       http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22net.sf.jung%22%20AND%20a%3A%22jung-visualization%22

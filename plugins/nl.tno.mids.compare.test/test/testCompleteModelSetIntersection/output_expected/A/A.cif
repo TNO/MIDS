@@ -1,0 +1,10 @@
+automaton A:
+  event e1__abc__fcn;
+  event e2__abc__fcncb;
+  location loc1:
+    initial;
+    marked;
+    edge e1__abc__fcn goto loc2;
+  location loc2:
+    edge e2__abc__fcncb goto loc1;
+end

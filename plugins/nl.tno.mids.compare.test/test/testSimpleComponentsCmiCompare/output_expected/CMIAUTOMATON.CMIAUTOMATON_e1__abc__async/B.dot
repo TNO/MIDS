@@ -1,0 +1,10 @@
+digraph automaton {
+	1 [label=<s1> shape="doublecircle"];
+	2 [label=<s2> shape="doublecircle"];
+	3 [label=<s3> shape="doublecircle"];
+	__init1 [label=<> shape="none"];
+	__init1 -> 1;
+	1 -> 2 [label=<CMIAUTOMATON.e1__abc__async> id="1-0-2"];
+	2 -> 3 [label=<CMIAUTOMATON.e2__abc__fcn> id="2-0-3"];
+	3 -> 1 [label=<CMIAUTOMATON.e1__abc__async_ret> id="3-0-1"];
+}

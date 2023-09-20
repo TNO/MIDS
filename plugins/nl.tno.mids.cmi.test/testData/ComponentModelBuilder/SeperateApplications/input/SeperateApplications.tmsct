@@ -1,0 +1,54 @@
+executor Client1 as Client1
+executor Client2 as Client2
+executor Server1 as Server1
+executor Server2 as Server2
+
+interface IClient {
+    operation h
+}
+
+interface IServer {
+    operation f
+    operation g
+}
+
+component ClientComp
+function "h notify handle" as h_notify_handle implements IClient.h { execType: evtcb }
+function "f call" as f_call implements IServer.f { execType: blk }
+function "g trigger" as g_trigger implements IServer.g { execType: trig }
+
+component ServerComp
+function "f call handle" as f_call_handle implements IServer.f { execType: sync }
+function "g trigger handle" as g_trigger_handle implements IServer.g { execType: trigh }
+function "h notify" as h_notify implements IClient.h { execType: evt }
+
+/* The trace itself. */
+1 Client1 ClientComp > f_call !M1
+1.1 Server1 ServerComp > f_call_handle ?M1
+1.2 Server1 ServerComp < f_call_handle !M2
+1.3 Client1 ClientComp < f_call ?M2
+
+2 Client2 ClientComp > f_call !M3
+2.1 Server2 ServerComp > f_call_handle ?M3
+2.2 Server2 ServerComp < f_call_handle !M4
+2.3 Client2 ClientComp < f_call ?M4
+
+3 Client1 ClientComp > g_trigger !M5
+3.1 Client1 ClientComp < g_trigger
+3.2 Server1 ServerComp > g_trigger_handle ?M5
+3.3 Server1 ServerComp < g_trigger_handle
+
+4 Client2 ClientComp > g_trigger !M6
+4.1 Client2 ClientComp < g_trigger
+4.2 Server2 ServerComp > g_trigger_handle ?M6
+4.3 Server2 ServerComp < g_trigger_handle
+
+5 Server1 ServerComp > h_notify !M7
+5.1 Server1 ServerComp < h_notify
+5.2 Client1 ClientComp > h_notify_handle ?M7
+5.3 Client1 ClientComp < h_notify_handle
+
+6 Server2 ServerComp > h_notify !M8
+6.1 Server2 ServerComp < h_notify
+6.2 Client2 ClientComp > h_notify_handle ?M8
+6.3 Client2 ClientComp < h_notify_handle

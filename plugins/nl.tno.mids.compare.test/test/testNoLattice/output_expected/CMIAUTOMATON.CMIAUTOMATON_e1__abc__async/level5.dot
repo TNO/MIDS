@@ -1,0 +1,5 @@
+digraph "CMIAUTOMATON.CMIAUTOMATON_e1__abc__async"{
+rankdir="BT"
+1 [label=<A<sub><font point-size="10">1</font></sub> (3)>, style="filled", fillcolor="lightgray"]
+2 [label=<B<sub><font point-size="10">1</font></sub> (4)>, style="filled", fillcolor="lightgray"]
+}
