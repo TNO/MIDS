@@ -3,7 +3,7 @@
 MIDS provides:
 
 * Functionality to infer multi-level models of software behavior from execution logs, to get insight into the software behavior.
-* FUnctionality to compare behavioral models, for change impact analysis, to prevent regressions and reduce the risks for software changes.
+* Functionality to compare behavioral models, for change impact analysis, to prevent regressions and reduce the risks for software changes.
 
 ## License
 
