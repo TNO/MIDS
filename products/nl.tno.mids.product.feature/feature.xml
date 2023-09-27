@@ -39,6 +39,7 @@ SPDX-License-Identifier: MIT
       <import feature="org.eclipse.platform" version="4.22.0" match="compatible"/>
       <import feature="org.eclipse.emf.ecore.editor" version="2.0.0" match="compatible"/>
       <import feature="org.eclipse.escet.cif.feature" version="0.1.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.justj.openjdk.hotspot.jre.full" version="11" match="greaterOrEqual"/>
    </requires>
 
    <plugin
