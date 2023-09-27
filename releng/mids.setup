@@ -324,7 +324,7 @@
   <setupTask
       xsi:type="git:GitCloneTask"
       id="mids.git.clone"
-      remoteURI="ssh://git@github.com:TNO/MIDS.git">
+      remoteURI="git@github.com:TNO/MIDS.git">
     <description>MIDS</description>
   </setupTask>
   <setupTask
