@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<feature
+      id="nl.tno.mids.cmi.test.feature"
+      label="MIDS CMI Test Feature"
+      version="0.9.0.qualifier"
+      provider-name="TNO">
+
+   <description>
+      MIDS CMI Test Feature
+   </description>
+
+   <copyright>
+      Copyright (c) TNO
+   </copyright>
+
+   <license url="https://opensource.org/license/mit/">
+      MIT License
+   </license>
+
+   <includes
+         id="nl.tno.mids.feature"
+         version="0.0.0"/>
+
+   <plugin
+         id="nl.tno.mids.cmi.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="nl.tno.mids.common.unittest"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

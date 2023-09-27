@@ -25,6 +25,7 @@ SPDX-License-Identifier: MIT
 
   <modules>
     <module>nl.tno.mids.feature</module>
+    <module>nl.tno.mids.cmi.test.feature</module>
   </modules>
 
 </project>
