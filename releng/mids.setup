@@ -68,6 +68,22 @@
     </content>
   </setupTask>
   <setupTask
+      xsi:type="setup:VariableTask"
+      name="github.mids.user.name"
+      label="GitHub account full name">
+    <annotation
+        source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    <description></description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="github.mids.user.email"
+      label="GitHub account email address">
+    <annotation
+        source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    <description></description>
+  </setupTask>
+  <setupTask
       xsi:type="setup:CompoundTask"
       name="Global Preferences">
     <setupTask
@@ -325,6 +341,21 @@
       xsi:type="git:GitCloneTask"
       id="mids.git.clone"
       remoteURI="git@github.com:TNO/MIDS.git">
+    <configSections
+        name="user">
+      <properties
+          key="name"
+          value="${github.mids.user.name}"/>
+      <properties
+          key="email"
+          value="${github.mids.user.email}"/>
+    </configSections>
+    <configSections
+        name="core">
+      <properties
+          key="commentChar"
+          value=";"/>
+    </configSections>
     <description>MIDS</description>
   </setupTask>
   <setupTask
@@ -419,7 +450,7 @@
           xsi:type="predicates:AndPredicate">
         <operand
             xsi:type="workingsets:InclusionPredicate"
-            includedWorkingSet="//@setupTasks.10/@workingSets[name='MIDS']"/>
+            includedWorkingSet="//@setupTasks.12/@workingSets[name='MIDS']"/>
         <operand
             xsi:type="predicates:LocationPredicate"
             pattern=".*/documentation/.*"/>
@@ -434,7 +465,7 @@
             pattern=".*/features/.*"/>
         <operand
             xsi:type="workingsets:InclusionPredicate"
-            includedWorkingSet="//@setupTasks.10/@workingSets[name='MIDS']"/>
+            includedWorkingSet="//@setupTasks.12/@workingSets[name='MIDS']"/>
       </predicate>
     </workingSet>
     <workingSet
@@ -446,7 +477,7 @@
             pattern=".*/plugins/.*"/>
         <operand
             xsi:type="workingsets:InclusionPredicate"
-            includedWorkingSet="//@setupTasks.10/@workingSets[name='MIDS']"/>
+            includedWorkingSet="//@setupTasks.12/@workingSets[name='MIDS']"/>
       </predicate>
     </workingSet>
     <workingSet
@@ -458,7 +489,7 @@
             pattern="nl\.tno\.mids\..*"/>
         <operand
             xsi:type="workingsets:ExclusionPredicate"
-            excludedWorkingSet="//@setupTasks.10/@workingSets[name='Features'] //@setupTasks.10/@workingSets[name='Plugins'] //@setupTasks.10/@workingSets[name='Documentation'] //@setupTasks.10/@workingSets[name='Releng']"/>
+            excludedWorkingSet="//@setupTasks.12/@workingSets[name='Features'] //@setupTasks.12/@workingSets[name='Plugins'] //@setupTasks.12/@workingSets[name='Documentation'] //@setupTasks.12/@workingSets[name='Releng']"/>
       </predicate>
     </workingSet>
     <workingSet
