@@ -72,7 +72,7 @@ class AnnotatedTextPreparer extends CmiPreparer {
 
     /**
      * @param dependency The input dependency.
-     * @return {@code true} if {@code dependency} is a annotated text dependency, meaning that its source and target 
+     * @return {@code true} if {@code dependency} is an annotated text dependency, meaning that its source and target 
      *     events are both annotated with respect to {@link #isAnnotatedTextEvent}; {@code false} otherwise.
      */
     private static def boolean isAnnotatedTextDependency(Dependency dependency) {

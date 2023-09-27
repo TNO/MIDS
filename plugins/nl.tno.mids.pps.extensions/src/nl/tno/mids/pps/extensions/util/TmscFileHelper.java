@@ -62,7 +62,7 @@ public class TmscFileHelper {
      * 
      * @param tmscPath The path from which the TMSC is to be read.
      * @param warnings The warnings produced during the operation.
-     * @returnThe loaded and prepared {@link TMSC} that has been read.
+     * @return The loaded and prepared {@link TMSC} that has been read.
      * @throws IOException Thrown in case reading the TMSC fails.
      */
     public static ScopedTMSC loadAndPrepareTMSC(Path tmscPath, List<String> warnings)
