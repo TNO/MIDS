@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import nl.esi.pps.architecture.instantiated.Executor;
 import nl.esi.pps.tmsc.Dependency;
 import nl.esi.pps.tmsc.Event;
-import nl.esi.pps.tmsc.EventType;
+import nl.esi.pps.tmsc.ExitEvent;
 import nl.esi.pps.tmsc.TMSC;
 import nl.tno.mids.cmi.api.general.CmiGeneralEventQueries;
 import nl.tno.mids.cmi.api.info.ComponentInfo;
@@ -203,9 +203,7 @@ public class CifNamesUtil {
     {
       name.append(CifNamesUtil.getExecutionType(event).getPostfix());
       StringBuilder _xifexpression = null;
-      EventType _type = event.getType();
-      boolean _tripleEquals = (_type == EventType.EXIT);
-      if (_tripleEquals) {
+      if ((event instanceof ExitEvent)) {
         _xifexpression = name.append(EventFunctionExecutionSide.END.getPostfix());
       }
       _xblockexpression = _xifexpression;

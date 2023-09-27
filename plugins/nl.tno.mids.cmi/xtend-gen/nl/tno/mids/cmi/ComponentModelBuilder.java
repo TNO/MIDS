@@ -1,6 +1,5 @@
 package nl.tno.mids.cmi;
 
-import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -20,7 +19,7 @@ import net.automatalib.words.WordBuilder;
 import nl.esi.pps.architecture.instantiated.Executor;
 import nl.esi.pps.architecture.specified.Component;
 import nl.esi.pps.tmsc.Event;
-import nl.esi.pps.tmsc.EventType;
+import nl.esi.pps.tmsc.ExitEvent;
 import nl.esi.pps.tmsc.Lifeline;
 import nl.esi.pps.tmsc.TMSC;
 import nl.tno.mids.automatalib.extensions.cif.AutomataLibToCif;
@@ -28,8 +27,8 @@ import nl.tno.mids.automatalib.extensions.util.AutomataLibUtil;
 import nl.tno.mids.automatalib.extensions.util.IncrementalMutableDFATreeBuilder;
 import nl.tno.mids.cmi.utils.CifNamesUtil;
 import nl.tno.mids.cmi.utils.TimestampHelper;
-import nl.tno.mids.pps.extensions.queries.TmscDependencyQueries;
 import nl.tno.mids.pps.extensions.queries.TmscEventQueries;
+import nl.tno.mids.pps.extensions.queries.TmscExecutionQueries;
 import nl.tno.mids.pps.extensions.queries.TmscLifelineQueries;
 import org.eclipse.escet.cif.metamodel.cif.Specification;
 import org.eclipse.xtend.lib.annotations.Accessors;
@@ -92,8 +91,8 @@ public class ComponentModelBuilder {
               event = iterator.next();
               wordBuilder.append(CifNamesUtil.asCifName(event, tmsc, this.synchronous));
             }
-          } while((!(Objects.equal(event.getType(), EventType.EXIT) && 
-            (TmscDependencyQueries.getRoot(tmsc, event.getExecution()) == null))));
+          } while((!((event instanceof ExitEvent) && 
+            (TmscExecutionQueries.getRootInScope(tmsc, event.getExecution()) == null))));
           builder.insert(wordBuilder.toWord());
         }
       }

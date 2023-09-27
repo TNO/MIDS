@@ -1,6 +1,7 @@
 package nl.tno.mids.pps.extensions.cmi;
 
 import java.nio.file.Path;
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -15,7 +16,6 @@ import nl.esi.pps.tmsc.TmscFactory;
 import nl.esi.pps.tmsc.util.TmscQueries;
 import nl.tno.mids.pps.extensions.info.EventFunctionExecutionType;
 import nl.tno.mids.pps.extensions.queries.TmscLifelineQueries;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -66,7 +66,7 @@ public abstract class CmiPreparer {
         Executor _executor = lifeline.getExecutor();
         CmiPreparer.setComponentName(_executor, this.componentNameFor(lifeline));
       }
-      EList<Event> _events = scopedTmsc.getEvents();
+      Collection<Event> _events = scopedTmsc.getEvents();
       for (final Event event : _events) {
         {
           CmiPreparer.setFunctionName(event, this.functionNameFor(event));

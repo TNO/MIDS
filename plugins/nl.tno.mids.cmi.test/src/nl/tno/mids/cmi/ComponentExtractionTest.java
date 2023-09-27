@@ -34,9 +34,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledOnOs;
 import org.junit.jupiter.api.condition.OS;
 
+import nl.esi.pps.tmsc.FullScopeTMSC;
 import nl.esi.pps.tmsc.xtext.TmscXtextStandaloneSetup;
 import nl.esi.pps.tmsc.xtext.generator.TmscXtextToTmscTransformation;
-import nl.esi.pps.tmsc.xtext.generator.TmscXtextToTmscTransformation.Result;
 import nl.esi.pps.tmsc.xtext.tmscXtext.TmscXtextModel;
 import nl.tno.mids.cmi.postprocessing.PostProcessingFilterMode;
 import nl.tno.mids.cmi.postprocessing.PostProcessingOperationOptions;
@@ -172,11 +172,11 @@ class ComponentExtractionTest {
         List<EObject> fileContents = persistor.loadAll(URI.createFileURI(baseTmsctPath.toString()));
 
         TmscXtextModel tmsctModel = (TmscXtextModel)fileContents.get(0);
-        Result tmscResult = new TmscXtextToTmscTransformation().transform(tmsctModel);
+        FullScopeTMSC tmsc = new TmscXtextToTmscTransformation().transform(tmsctModel);
 
         ArrayList<EObject> tmscContents = new ArrayList<>(2);
-        tmscContents.add(tmscResult.getTmsc());
-        tmscContents.add(tmscResult.getArchitecture());
+        tmscContents.add(tmsc);
+        tmscContents.addAll(tmsc.getArchitectures());
 
         persistor.save(URIHelper.asURI(baseTmscPath.toFile()), Collections.EMPTY_MAP, tmscContents);
 

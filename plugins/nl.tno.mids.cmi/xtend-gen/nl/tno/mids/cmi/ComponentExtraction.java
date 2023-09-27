@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.function.BiConsumer;
-import nl.esi.pps.architecture.ArchitectureModel;
 import nl.esi.pps.tmsc.Event;
 import nl.esi.pps.tmsc.ScopedTMSC;
 import nl.esi.pps.tmsc.TMSC;
@@ -35,7 +34,6 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.escet.cif.metamodel.cif.Specification;
 import org.eclipse.escet.common.java.DateTimeUtils;
-import org.eclipse.escet.common.java.Pair;
 import org.eclipse.escet.common.java.Strings;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
@@ -79,11 +77,9 @@ public class ComponentExtraction {
       this.saveOptions(options);
       subMonitor.split(10);
       subMonitor.subTask(("Loading TMSC from " + tmscName));
-      final Pair<ScopedTMSC, ArchitectureModel> tmscAndArchitecture = TmscFileHelper.loadAndPrepareTMSC(tmscPath, warnings);
-      final ScopedTMSC tmsc = tmscAndArchitecture.left;
-      final ArchitectureModel architecture = tmscAndArchitecture.right;
+      final ScopedTMSC tmsc = TmscFileHelper.loadAndPrepareTMSC(tmscPath, warnings);
       subMonitor.subTask(("Pre-processing TMSC from " + tmscName));
-      this.preProcess(tmsc, architecture, tmscName, options, subMonitor.split(10));
+      this.preProcess(tmsc, tmscName, options, subMonitor.split(10));
       subMonitor.split(5);
       subMonitor.subTask("Calculation TMSC metrics");
       final TmscMetrics tmscMetrics = this.getTmscMetrics(tmsc);
@@ -221,7 +217,7 @@ public class ComponentExtraction {
     }
   }
   
-  private void preProcess(final TMSC tmsc, final ArchitectureModel architecture, final String tmscName, final ComponentExtractionOptions options, final IProgressMonitor monitor) {
+  private void preProcess(final TMSC tmsc, final String tmscName, final ComponentExtractionOptions options, final IProgressMonitor monitor) {
     try {
       final SubMonitor subMonitor = SubMonitor.convert(monitor, 3);
       subMonitor.subTask(("Excluding components: " + tmscName));
@@ -235,7 +231,7 @@ public class ComponentExtraction {
         subMonitor.subTask(("Saving pre-processed TMSC: " + tmscName));
         final Path targetFolder = this.createOutputFolder(options);
         final Path targetFile = targetFolder.resolve((tmscName + "-preprocessed.tmscz"));
-        TmscFileHelper.saveTMSC(tmsc, architecture, targetFile);
+        TmscFileHelper.saveTMSC(tmsc, targetFile);
       }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);

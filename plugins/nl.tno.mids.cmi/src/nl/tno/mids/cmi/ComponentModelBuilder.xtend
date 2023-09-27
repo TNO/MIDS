@@ -21,14 +21,14 @@ import net.automatalib.words.Word
 import net.automatalib.words.WordBuilder
 import nl.esi.pps.architecture.instantiated.Executor
 import nl.esi.pps.tmsc.Event
-import nl.esi.pps.tmsc.EventType
+import nl.esi.pps.tmsc.ExitEvent
 import nl.esi.pps.tmsc.Lifeline
 import nl.esi.pps.tmsc.TMSC
 import nl.tno.mids.automatalib.extensions.cif.AutomataLibToCif
 import nl.tno.mids.automatalib.extensions.util.AutomataLibUtil
 import nl.tno.mids.automatalib.extensions.util.IncrementalMutableDFATreeBuilder
-import nl.tno.mids.pps.extensions.queries.TmscDependencyQueries
 import nl.tno.mids.pps.extensions.queries.TmscEventQueries
+import nl.tno.mids.pps.extensions.queries.TmscExecutionQueries
 import nl.tno.mids.pps.extensions.queries.TmscLifelineQueries
 import org.eclipse.escet.cif.metamodel.cif.Specification
 import org.eclipse.xtend.lib.annotations.Accessors
@@ -77,8 +77,8 @@ class ComponentModelBuilder {
                 do {
                     event = iterator.next
                     wordBuilder.append(event.asCifName(tmsc, synchronous))
-                } while (!(event.type == EventType.EXIT &&
-                    TmscDependencyQueries.getRoot(tmsc, event.execution) === null))
+                } while (!(event instanceof ExitEvent &&
+                    TmscExecutionQueries.getRootInScope(tmsc, event.execution) === null))
                 builder.insert(wordBuilder.toWord)
             }
         } catch (NoSuchElementException cause) {

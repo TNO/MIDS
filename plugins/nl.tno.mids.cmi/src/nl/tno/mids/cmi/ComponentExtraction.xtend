@@ -22,7 +22,6 @@ import java.util.ArrayList
 import java.util.List
 import java.util.Locale
 import java.util.Map
-import nl.esi.pps.architecture.ArchitectureModel
 import nl.esi.pps.tmsc.Event
 import nl.esi.pps.tmsc.TMSC
 import nl.tno.mids.cif.extensions.CIFOperations
@@ -84,13 +83,11 @@ class ComponentExtraction {
         subMonitor.split(10)
         subMonitor.subTask("Loading TMSC from " + tmscName)
 
-        val tmscAndArchitecture = TmscFileHelper.loadAndPrepareTMSC(tmscPath, warnings)
-        val tmsc = tmscAndArchitecture.left
-        val architecture = tmscAndArchitecture.right
+        val tmsc = TmscFileHelper.loadAndPrepareTMSC(tmscPath, warnings)
 
         // Pre-processing.
         subMonitor.subTask("Pre-processing TMSC from " + tmscName)
-        preProcess(tmsc, architecture, tmscName, options, subMonitor.split(10))
+        preProcess(tmsc, tmscName, options, subMonitor.split(10))
 
         // Get TMSC metrics.
         subMonitor.split(5)
@@ -200,7 +197,7 @@ class ComponentExtraction {
         return targetFolder
     }
 
-    private def void preProcess(TMSC tmsc, ArchitectureModel architecture, String tmscName,
+    private def void preProcess(TMSC tmsc, String tmscName,
         ComponentExtractionOptions options, IProgressMonitor monitor) {
 
         val subMonitor = SubMonitor.convert(monitor, 3)
@@ -215,7 +212,7 @@ class ComponentExtraction {
             subMonitor.subTask("Saving pre-processed TMSC: " + tmscName)
             val targetFolder = createOutputFolder(options)
             val targetFile = targetFolder.resolve(tmscName + "-preprocessed.tmscz")
-            TmscFileHelper.saveTMSC(tmsc, architecture, targetFile)
+            TmscFileHelper.saveTMSC(tmsc, targetFile)
         }
     }
 

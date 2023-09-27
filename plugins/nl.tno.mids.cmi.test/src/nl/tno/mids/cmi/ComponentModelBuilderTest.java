@@ -39,7 +39,6 @@ import net.automatalib.words.Word;
 import nl.esi.pps.tmsc.FullScopeTMSC;
 import nl.esi.pps.tmsc.xtext.TmscXtextStandaloneSetup;
 import nl.esi.pps.tmsc.xtext.generator.TmscXtextToTmscTransformation;
-import nl.esi.pps.tmsc.xtext.generator.TmscXtextToTmscTransformation.Result;
 import nl.esi.pps.tmsc.xtext.tmscXtext.TmscXtextModel;
 import nl.tno.mids.cif.extensions.FileExtensions;
 import nl.tno.mids.common.unittest.FileCompare;
@@ -193,8 +192,7 @@ class ComponentModelBuilderTest {
         List<EObject> fileContent = persistor.loadAll(URI.createFileURI(baseTmsctPath.toString()));
 
         TmscXtextModel tmsctModel = (TmscXtextModel)fileContent.get(0);
-        Result tmscResult = new TmscXtextToTmscTransformation().transform(tmsctModel);
-        FullScopeTMSC tmsc = tmscResult.getTmsc();
+        FullScopeTMSC tmsc = new TmscXtextToTmscTransformation().transform(tmsctModel);
 
         CmiPreparers.findFor(tmsc).prepare(tmsc, "CMI", new ArrayList<>(), null);
 

@@ -15,7 +15,7 @@ import nl.esi.emf.properties.xtend.PersistedProperty
 import nl.esi.pps.architecture.instantiated.Executor
 import nl.esi.pps.tmsc.Dependency
 import nl.esi.pps.tmsc.Event
-import nl.esi.pps.tmsc.EventType
+import nl.esi.pps.tmsc.ExitEvent
 import nl.esi.pps.tmsc.TMSC
 import nl.tno.mids.cmi.api.general.CmiGeneralEventQueries
 import nl.tno.mids.cmi.api.info.ComponentInfo
@@ -201,7 +201,7 @@ class CifNamesUtil {
      */
     protected def static StringBuilder addEventPostFix(StringBuilder name, Event event) {
         name.append(event.executionType.postfix)
-        if (event.type === EventType.EXIT) {
+        if (event instanceof ExitEvent) {
             name.append(EventFunctionExecutionSide.END.getPostfix)
         }
     }

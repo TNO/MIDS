@@ -29,7 +29,7 @@ public class TmscLifelineQueries {
      *     {@link Execution executions} that are in scope of {@code scopeTmsc}; {@code false} otherwise.
      */
     public static boolean isEmpty(Lifeline lifeline, TMSC scopeTmsc) {
-        return lifeline.getExecutions().stream().noneMatch(exec -> TmscDependencyQueries.isInScope(scopeTmsc, exec));
+        return lifeline.getExecutions().stream().noneMatch(exec -> TmscExecutionQueries.isInScope(scopeTmsc, exec));
     }
 
     /**

@@ -66,12 +66,12 @@ public class TmscEventQueries {
         while (!todoExecutions.isEmpty()) {
             Execution todoExecution = todoExecutions.pop();
 
-            Preconditions.checkArgument(TmscDependencyQueries.isInScope(tmsc, todoExecution),
+            Preconditions.checkArgument(TmscExecutionQueries.isInScope(tmsc, todoExecution),
                     "Expected all given executions to be in scope of the given TMSC.");
 
-            collectedEvents.add(todoExecution.getSource());
-            collectedEvents.add(todoExecution.getTarget());
-            Iterables.addAll(todoExecutions, TmscDependencyQueries.getSubExecutions(tmsc, todoExecution));
+            collectedEvents.add(todoExecution.getEntry());
+            collectedEvents.add(todoExecution.getExit());
+            Iterables.addAll(todoExecutions, TmscExecutionQueries.getChildrenInScope(tmsc, todoExecution));
         }
 
         return collectedEvents;

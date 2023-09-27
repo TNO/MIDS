@@ -11,20 +11,16 @@
 package nl.tno.mids.pps.extensions.queries;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.eclipse.escet.common.java.Strings;
-import org.eclipse.lsat.common.xtend.Queries;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableList;
 
 import nl.esi.pps.tmsc.Dependency;
 import nl.esi.pps.tmsc.Event;
-import nl.esi.pps.tmsc.Execution;
 import nl.esi.pps.tmsc.FullScopeTMSC;
 import nl.esi.pps.tmsc.LifelineSegment;
 import nl.esi.pps.tmsc.Message;
@@ -114,76 +110,6 @@ public class TmscDependencyQueries {
         } else {
             throw new RuntimeException("Unknown TMSC type.");
         }
-    }
-
-    /**
-     * Gives the first parent execution of {@code execution} that is in scope of {@code tmsc}, or {@code null} if no
-     * such execution exists.
-     * 
-     * @param tmsc The TMSC whose scope is to be considered.
-     * @param execution The input execution for which to search for parent executions.
-     * @return The first parent execution of {@code execution} that is in scope of {@code tmsc}, or {@code null} if no
-     *     such execution exists.
-     */
-    public static Execution getParent(TMSC tmsc, Execution execution) {
-        Preconditions.checkNotNull(tmsc, "Expected a non-null TMSC.");
-        Preconditions.checkNotNull(execution, "Expected a non-null execution.");
-
-        Execution parent = execution.getFullScopeParent();
-
-        if (parent == null) {
-            return null;
-        } else if (isInScope(tmsc, parent)) {
-            return parent;
-        } else {
-            return getParent(tmsc, parent);
-        }
-    }
-
-    /**
-     * Gives the last (farthest away) parent execution of {@code execution} that is still in scope of {@code tmsc},
-     * i.e., its scoped root execution, or {@code null} if no such execution exists.
-     * 
-     * @param tmsc The TMSC whose scope is to be considered.
-     * @param execution The input execution for which to search for root executions.
-     * @return The scoped root execution of {@code execution} that is still in scope of {@code tmsc}, or {@code null} if
-     *     no such execution exists.
-     */
-    public static Execution getRoot(TMSC tmsc, Execution execution) {
-        Preconditions.checkNotNull(tmsc, "Expected a non-null TMSC.");
-        Preconditions.checkNotNull(execution, "Expected a non-null execution.");
-
-        Execution parent = getParent(tmsc, execution);
-
-        if (parent == null) {
-            return null;
-        }
-
-        Execution root = getRoot(tmsc, parent);
-
-        if (root != null) {
-            return root;
-        } else if (isInScope(tmsc, parent)) {
-            return parent;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Get a list of all sub-executions of {@code execution} that are in scope of {@code tmsc}.
-     * 
-     * @param tmsc The TMSC whose scope to consider.
-     * @param execution The execution whose sub-executions are to be found.
-     * @return The list of sub-executions of {@code execution} that are in scope of {@code tmsc}.
-     */
-    public static List<Execution> getSubExecutions(TMSC tmsc, Execution execution) {
-        Preconditions.checkNotNull(tmsc, "Expected a non-null TMSC.");
-        Preconditions.checkNotNull(execution, "Expected a non-null execution.");
-
-        return ImmutableList.copyOf(Queries.findNearest(
-                Queries.walkTree(Collections.singleton(execution), exec -> exec.getFullScopeSubExecutions()),
-                exec -> isInScope(tmsc, exec)));
     }
 
     /**

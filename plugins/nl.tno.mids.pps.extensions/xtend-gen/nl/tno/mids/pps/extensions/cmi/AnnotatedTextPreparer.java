@@ -17,7 +17,7 @@ import org.eclipse.escet.common.java.Strings;
 public class AnnotatedTextPreparer extends CmiPreparer {
   @Override
   public boolean appliesTo(final Dependency dependency) {
-    return AnnotatedTextUtils.isAnnotatedTextDependency(dependency);
+    return AnnotatedTextPreparer.isAnnotatedTextDependency(dependency);
   }
   
   @Override
@@ -94,6 +94,24 @@ public class AnnotatedTextPreparer extends CmiPreparer {
     throw new RuntimeException(_fmt);
   }
   
+  /**
+   * @param dependency The input dependency.
+   * @return {@code true} if {@code dependency} is a annotated text dependency, meaning that its source and target
+   *     events are both annotated with respect to {@link #isAnnotatedTextEvent}; {@code false} otherwise.
+   */
+  private static boolean isAnnotatedTextDependency(final Dependency dependency) {
+    return (AnnotatedTextPreparer.isAnnotatedTextEvent(dependency.getSource()) && AnnotatedTextPreparer.isAnnotatedTextEvent(dependency.getTarget()));
+  }
+  
+  /**
+   * @param event The input {@link Event}.
+   * @return {@code true} if {@code event} is an {@link #isSetExecType(Function) annotated} text
+   *     {@link Event event}, {@code false} otherwise.
+   */
+  private static boolean isAnnotatedTextEvent(final Event event) {
+    return AnnotatedTextPreparer.isSetExecType(event.getFunction());
+  }
+  
   private static String getExecType(final Function container) {
     final String key = "execType";
     final Object value = container.getProperties().get(key);
@@ -102,10 +120,22 @@ public class AnnotatedTextPreparer extends CmiPreparer {
   
   private static void setExecType(final Function container, final String value) {
     final String key = "execType";
-    if (value == null) {
+    container.getProperties().put(key, value);
+  }
+  
+  /**
+   * Returns whether the value of the '{@link nl.tno.mids.pps.extensions.cmi.AnnotatedTextPreparer#getExecType <em>execType</em>}' property is set on {@code container}.
+   */
+  private static boolean isSetExecType(final Function container) {
+    final String key = "execType";
+    return container.getProperties().containsKey(key);
+  }
+  
+  /**
+   * Unsets the value of the '{@link nl.tno.mids.pps.extensions.cmi.AnnotatedTextPreparer#getExecType <em>execType</em>}' property on {@code container}.
+   */
+  private static void unsetExecType(final Function container) {
+    final String key = "execType";
     container.getProperties().remove(key);
-    } else {
-        container.getProperties().put(key, value);
-    }
   }
 }

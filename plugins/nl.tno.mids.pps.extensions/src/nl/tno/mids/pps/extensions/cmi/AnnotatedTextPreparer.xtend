@@ -21,11 +21,11 @@ import org.eclipse.escet.common.java.Strings
 /** A CMI preparer for {@link TMSC TMSCs} based on textual syntax that contain information as annotations. */
 class AnnotatedTextPreparer extends CmiPreparer {
 
-    @PersistedProperty(Function)
+    @PersistedProperty(value = Function, unsettable = true)
     static val String execType
 
     override appliesTo(Dependency dependency) {
-        return AnnotatedTextUtils.isAnnotatedTextDependency(dependency)
+        return isAnnotatedTextDependency(dependency)
     }
 
     override protected scope(TMSC tmsc, String scopeName) {
@@ -68,5 +68,23 @@ class AnnotatedTextPreparer extends CmiPreparer {
             case "wait": return EventFunctionExecutionType.WAIT_CALL
         }
         throw new RuntimeException(Strings.fmt("Unknown annotated function type: %s.", event.function.execType))
+    }
+
+    /**
+     * @param dependency The input dependency.
+     * @return {@code true} if {@code dependency} is a annotated text dependency, meaning that its source and target 
+     *     events are both annotated with respect to {@link #isAnnotatedTextEvent}; {@code false} otherwise.
+     */
+    private static def boolean isAnnotatedTextDependency(Dependency dependency) {
+        return isAnnotatedTextEvent(dependency.source) && isAnnotatedTextEvent(dependency.target)
+    }
+
+    /**
+     * @param event The input {@link Event}.
+     * @return {@code true} if {@code event} is an {@link #isSetExecType(Function) annotated} text 
+     *     {@link Event event}, {@code false} otherwise.
+     */
+    private static def boolean isAnnotatedTextEvent(Event event) {
+        return isSetExecType(event.getFunction())
     }
 }
