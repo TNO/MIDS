@@ -4,7 +4,6 @@ import com.google.common.collect.Iterables;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Predicate;
 import nl.esi.emf.properties.PropertiesContainer;
 import nl.esi.pps.architecture.instantiated.Executor;
@@ -145,26 +144,24 @@ public abstract class CmiPreparer {
     final Function1<Dependency, Boolean> _function = (Dependency it) -> {
       return Boolean.valueOf((predicate.test(it.getSource()) && predicate.test(it.getTarget())));
     };
-    final Map<Boolean, List<Dependency>> scopeDependencies = IterableExtensions.<Boolean, Dependency>groupBy(tmsc.getDependencies(), _function);
-    final ScopedTMSC scopedTmsc = TmscQueries.createScopedTMSC(scopeDependencies.get(Boolean.valueOf(true)), scopeName);
+    final Iterable<Dependency> scopeDependencies = IterableExtensions.<Dependency>filter(tmsc.getDependencies(), _function);
+    final ScopedTMSC scopedTmsc = TmscQueries.createScopedTMSC(scopeDependencies, scopeName);
     EList<ScopedTMSC> _childScopes = tmsc.getChildScopes();
     _childScopes.add(scopedTmsc);
-    boolean _containsKey = scopeDependencies.containsKey(Boolean.valueOf(false));
-    boolean _not = (!_containsKey);
-    if (_not) {
+    int _size = scopedTmsc.getDependencies().size();
+    int _size_1 = tmsc.getDependencies().size();
+    boolean _equals = (_size == _size_1);
+    if (_equals) {
       return scopedTmsc;
     }
     final Function1<Lifeline, Iterable<LifelineSegment>> _function_1 = (Lifeline it) -> {
       return this.refineWithCompleteOrder(it, predicate);
     };
-    final Function1<LifelineSegment, Boolean> _function_2 = (LifelineSegment it) -> {
-      return Boolean.valueOf(it.isProjection());
-    };
-    final List<LifelineSegment> projections = IterableExtensions.<LifelineSegment>toList(IterableExtensions.<LifelineSegment>filter(IterableExtensions.<Lifeline, LifelineSegment>flatMap(tmsc.getLifelines(), _function_1), _function_2));
+    final List<LifelineSegment> lifelineSegments = IterableExtensions.<LifelineSegment>toList(IterableExtensions.<Lifeline, LifelineSegment>flatMap(tmsc.getLifelines(), _function_1));
     EList<Dependency> _dependencies = scopedTmsc.getDependencies();
-    Iterables.<Dependency>addAll(_dependencies, projections);
+    Iterables.<Dependency>addAll(_dependencies, lifelineSegments);
     EList<Dependency> _dependencies_1 = tmsc.getDependencies();
-    Iterables.<Dependency>addAll(_dependencies_1, projections);
+    Iterables.<Dependency>addAll(_dependencies_1, lifelineSegments);
     return scopedTmsc;
   }
   
@@ -172,32 +169,33 @@ public abstract class CmiPreparer {
     final Function1<Event, Boolean> _function = (Event it) -> {
       return Boolean.valueOf(predicate.test(it));
     };
-    final Function1<Pair<Event, Event>, LifelineSegment> _function_1 = (Pair<Event, Event> it) -> {
-      return this.findOrCreateLifelineSegement(it);
+    final Iterable<Event> acceptedEvents = IterableExtensions.<Event>filter(lifeline.getEvents(), _function);
+    final Function1<Pair<Event, Event>, Boolean> _function_1 = (Pair<Event, Event> it) -> {
+      return Boolean.valueOf(this.lifelineSegmentExists(it));
     };
-    return IterableExtensions.<Pair<Event, Event>, LifelineSegment>map(PairwiseIterable.<Event>of(IterableExtensions.<Event>filter(lifeline.getEvents(), _function)), _function_1);
+    final Function1<Pair<Event, Event>, LifelineSegment> _function_2 = (Pair<Event, Event> it) -> {
+      return this.createLifelineSegement(it);
+    };
+    return IterableExtensions.<Pair<Event, Event>, LifelineSegment>map(IterableExtensions.<Pair<Event, Event>>reject(PairwiseIterable.<Event>of(acceptedEvents), _function_1), _function_2);
   }
   
-  private LifelineSegment findOrCreateLifelineSegement(final Pair<Event, Event> eventPair) {
+  private boolean lifelineSegmentExists(final Pair<Event, Event> eventPair) {
     final Function1<LifelineSegment, Boolean> _function = (LifelineSegment it) -> {
       Event _target = it.getTarget();
       Event _right = eventPair.getRight();
       return Boolean.valueOf((_target == _right));
     };
-    final LifelineSegment lifelineSegment = IterableExtensions.<LifelineSegment>findFirst(Iterables.<LifelineSegment>filter(eventPair.getLeft().getFullScopeOutgoingDependencies(), LifelineSegment.class), _function);
-    LifelineSegment _elvis = null;
-    if (lifelineSegment != null) {
-      _elvis = lifelineSegment;
-    } else {
-      LifelineSegment _createLifelineSegment = CmiPreparer.m_tmsc.createLifelineSegment();
-      _elvis = _createLifelineSegment;
-    }
-    final Procedure1<LifelineSegment> _function_1 = (LifelineSegment it) -> {
+    return IterableExtensions.<LifelineSegment>exists(Iterables.<LifelineSegment>filter(eventPair.getLeft().getFullScopeOutgoingDependencies(), LifelineSegment.class), _function);
+  }
+  
+  private LifelineSegment createLifelineSegement(final Pair<Event, Event> eventPair) {
+    LifelineSegment _createLifelineSegment = CmiPreparer.m_tmsc.createLifelineSegment();
+    final Procedure1<LifelineSegment> _function = (LifelineSegment it) -> {
       it.setSource(eventPair.getLeft());
       it.setTarget(eventPair.getRight());
       it.setProjection(true);
     };
-    return ObjectExtensions.<LifelineSegment>operator_doubleArrow(_elvis, _function_1);
+    return ObjectExtensions.<LifelineSegment>operator_doubleArrow(_createLifelineSegment, _function);
   }
   
   private static String getComponentName(final Executor container) {

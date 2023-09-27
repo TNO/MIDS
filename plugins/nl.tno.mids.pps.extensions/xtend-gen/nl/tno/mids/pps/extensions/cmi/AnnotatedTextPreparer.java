@@ -20,7 +20,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 public class AnnotatedTextPreparer extends CmiPreparer {
   @Override
   public boolean appliesTo(final Dependency dependency) {
-    return AnnotatedTextPreparer.isAnnotatedTextDependency(dependency);
+    return (AnnotatedTextPreparer.isAnnotatedTextEvent(dependency.getSource()) || AnnotatedTextPreparer.isAnnotatedTextEvent(dependency.getTarget()));
   }
   
   @Override
@@ -96,15 +96,6 @@ public class AnnotatedTextPreparer extends CmiPreparer {
     }
     String _fmt = Strings.fmt("Unknown annotated function type: %s.", AnnotatedTextPreparer.getExecType(event.getFunction()));
     throw new RuntimeException(_fmt);
-  }
-  
-  /**
-   * @param dependency The input dependency.
-   * @return {@code true} if {@code dependency} is a annotated text dependency, meaning that its source and target
-   *     events are both annotated with respect to {@link #isAnnotatedTextEvent}; {@code false} otherwise.
-   */
-  private static boolean isAnnotatedTextDependency(final Dependency dependency) {
-    return (AnnotatedTextPreparer.isAnnotatedTextEvent(dependency.getSource()) && AnnotatedTextPreparer.isAnnotatedTextEvent(dependency.getTarget()));
   }
   
   /**

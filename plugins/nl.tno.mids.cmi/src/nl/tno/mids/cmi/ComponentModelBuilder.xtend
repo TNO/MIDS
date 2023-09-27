@@ -78,7 +78,7 @@ class ComponentModelBuilder {
                 do {
                     event = iterator.next
                     wordBuilder.append(event.asCifName(tmsc, synchronous))
-                } while (!isRootExitEventInScope(event, tmsc) && iterator.hasNext())
+                } while (!isRootExitEventInScope(event, tmsc))
                 builder.insert(wordBuilder.toWord)
             }
         } catch (NoSuchElementException cause) {

@@ -148,32 +148,36 @@ abstract class CmiPreparer {
      */
     protected final def ScopedTMSC scopeOnEvents(FullScopeTMSC tmsc, String scopeName, Predicate<? super Event> predicate) {
         // Split the dependencies in two sets, one in scope (true) and one outside scope (false).
-        val scopeDependencies = tmsc.dependencies.groupBy[predicate.test(source) && predicate.test(target)]
+        val scopeDependencies = tmsc.dependencies.filter[predicate.test(source) && predicate.test(target)]
         
         // Create a new TMSC scope named 'scopeName' and add all dependencies of 'tmsc' to it that satisfy 'predicate'.
-        val scopedTmsc = TmscQueries.createScopedTMSC(scopeDependencies.get(true), scopeName)
+        val scopedTmsc = TmscQueries.createScopedTMSC(scopeDependencies, scopeName)
         tmsc.childScopes += scopedTmsc
 
-        if (!scopeDependencies.containsKey(false)) {
+        if (scopedTmsc.dependencies.size == tmsc.dependencies.size) {
             // All dependencies are in scope; nothing more to do.
             return scopedTmsc
         }
         
-        // CMI TMSCs require a compete order, so create missing lifeline-segments and add them to the scope.
-        val projections = tmsc.lifelines.flatMap[refineWithCompleteOrder(predicate)].filter[projection].toList
-        scopedTmsc.dependencies += projections
-        tmsc.dependencies += projections
+        // CMI TMSCs require a compete order, so create missing life-line segments and add them to the scope.
+        val lifelineSegments = tmsc.lifelines.flatMap[refineWithCompleteOrder(predicate)].toList
+        scopedTmsc.dependencies += lifelineSegments
+        tmsc.dependencies += lifelineSegments
         
         return scopedTmsc
     }
     
     private def Iterable<LifelineSegment> refineWithCompleteOrder(Lifeline lifeline, Predicate<? super Event> predicate) {
-        return PairwiseIterable::of(lifeline.events.filter[predicate.test(it)]).map[findOrCreateLifelineSegement]
+        val acceptedEvents = lifeline.events.filter[predicate.test(it)]
+        return PairwiseIterable::of(acceptedEvents).reject[lifelineSegmentExists].map[createLifelineSegementFromPair]
     }
     
-    private def LifelineSegment findOrCreateLifelineSegement(Pair<Event, Event> eventPair) {
-        val lifelineSegment = eventPair.left.fullScopeOutgoingDependencies.filter(LifelineSegment).findFirst[target === eventPair.right]
-        return lifelineSegment ?: createLifelineSegment => [
+    private def boolean lifelineSegmentExists(Pair<Event, Event> eventPair) {
+        return eventPair.left.fullScopeOutgoingDependencies.filter(LifelineSegment).exists[target === eventPair.right]
+    }
+
+    private def LifelineSegment createLifelineSegmentFromPair(Pair<Event, Event> eventPair) {
+        return createLifelineSegment => [
             source = eventPair.left
             target = eventPair.right
             projection = true

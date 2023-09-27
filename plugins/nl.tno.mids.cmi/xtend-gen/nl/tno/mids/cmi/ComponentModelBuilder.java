@@ -91,7 +91,7 @@ public class ComponentModelBuilder {
               event = iterator.next();
               wordBuilder.append(CifNamesUtil.asCifName(event, tmsc, this.synchronous));
             }
-          } while(((!this.isRootExitEventInScope(event, tmsc)) && iterator.hasNext()));
+          } while((!this.isRootExitEventInScope(event, tmsc)));
           builder.insert(wordBuilder.toWord());
         }
       }

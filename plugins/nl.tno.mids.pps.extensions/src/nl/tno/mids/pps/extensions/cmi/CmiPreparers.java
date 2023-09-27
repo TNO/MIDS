@@ -41,8 +41,9 @@ public class CmiPreparers {
      */
     public static CmiPreparer findFor(TMSC tmsc) throws IllegalArgumentException {
         List<CmiPreparer> preparers = getRegisteredCmiPreparers();
-        Optional<CmiPreparer> preparer = tmsc.getDependencies().stream().map(d -> findFor(d, preparers))
-                .filter(Optional::isPresent).map(Optional::get).findFirst();
+
+        Optional<CmiPreparer> preparer = tmsc.getDependencies().stream().flatMap(
+                d -> preparers.stream().filter(p -> p.appliesTo(d))).findFirst();
 
         if (!preparer.isPresent()) {
             throw new IllegalArgumentException("Could not determine the CMI preparer to use for the TMSC.");
@@ -114,15 +115,5 @@ public class CmiPreparers {
         }
 
         return preparers;
-    }
-
-    /**
-     * Finds a CMI preparer for a dependency.
-     * 
-     * @param dependency The dependency for which to find a preparer.
-     * @return A preparer in case one was determined, or {@link Optional#empty} otherwise.
-     */
-    private static Optional<CmiPreparer> findFor(Dependency dependency, List<CmiPreparer> preparers) {
-        return preparers.stream().filter(p -> p.appliesTo(dependency)).findFirst();
     }
 }
