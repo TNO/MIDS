@@ -1,14 +1,17 @@
 package nl.tno.mids.pps.extensions.cmi;
 
-import java.util.function.Predicate;
 import nl.esi.pps.architecture.implemented.Function;
 import nl.esi.pps.tmsc.Dependency;
 import nl.esi.pps.tmsc.Event;
+import nl.esi.pps.tmsc.FullScopeTMSC;
 import nl.esi.pps.tmsc.Lifeline;
 import nl.esi.pps.tmsc.ScopedTMSC;
 import nl.esi.pps.tmsc.TMSC;
+import nl.esi.pps.tmsc.util.TmscQueries;
 import nl.tno.mids.pps.extensions.info.EventFunctionExecutionType;
 import org.eclipse.escet.common.java.Strings;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 /**
  * A CMI preparer for {@link TMSC TMSCs} based on textual syntax that contain information as annotations.
@@ -21,11 +24,12 @@ public class AnnotatedTextPreparer extends CmiPreparer {
   }
   
   @Override
-  protected ScopedTMSC scope(final TMSC tmsc, final String scopeName) {
-    final Predicate<Dependency> _function = (Dependency it) -> {
-      return true;
+  protected ScopedTMSC scope(final FullScopeTMSC tmsc, final String scopeName) {
+    ScopedTMSC _createScopedTMSC = TmscQueries.createScopedTMSC(tmsc.getDependencies(), scopeName);
+    final Procedure1<ScopedTMSC> _function = (ScopedTMSC it) -> {
+      it.setParentScope(tmsc);
     };
-    return this.scopeOnDependencies(tmsc, scopeName, _function);
+    return ObjectExtensions.<ScopedTMSC>operator_doubleArrow(_createScopedTMSC, _function);
   }
   
   @Override

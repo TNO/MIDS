@@ -37,6 +37,7 @@ import net.automatalib.automata.fsa.DFA;
 import net.automatalib.automata.fsa.impl.FastDFA;
 import net.automatalib.words.Word;
 import nl.esi.pps.tmsc.FullScopeTMSC;
+import nl.esi.pps.tmsc.provider.TmscEditPlugin;
 import nl.esi.pps.tmsc.xtext.TmscXtextStandaloneSetup;
 import nl.esi.pps.tmsc.xtext.generator.TmscXtextToTmscTransformation;
 import nl.esi.pps.tmsc.xtext.tmscXtext.TmscXtextModel;
@@ -188,7 +189,7 @@ class ComponentModelBuilderTest {
         Path baseActualPath = basePath.resolve("output_actual/");
         Path baseExpectedPath = basePath.resolve("output_expected/");
 
-        Persistor<EObject> persistor = new PersistorFactory().getPersistor();
+        Persistor<EObject> persistor = new PersistorFactory(TmscEditPlugin.createResourceSet()).getPersistor();
         List<EObject> fileContent = persistor.loadAll(URI.createFileURI(baseTmsctPath.toString()));
 
         TmscXtextModel tmsctModel = (TmscXtextModel)fileContent.get(0);

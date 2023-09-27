@@ -27,6 +27,7 @@ import com.google.common.base.Preconditions;
 import nl.esi.pps.tmsc.FullScopeTMSC;
 import nl.esi.pps.tmsc.ScopedTMSC;
 import nl.esi.pps.tmsc.TMSC;
+import nl.esi.pps.tmsc.provider.TmscEditPlugin;
 import nl.tno.mids.pps.extensions.cmi.CmiPreparer;
 import nl.tno.mids.pps.extensions.cmi.CmiPreparers;
 
@@ -43,7 +44,7 @@ public class TmscFileHelper {
      * @throws IOException Thrown in case reading the TMSC fails.
      */
     public static FullScopeTMSC loadTMSC(Path sourcePath) throws IOException {
-        Persistor<EObject> persistor = new PersistorFactory().getPersistor();
+        Persistor<EObject> persistor = new PersistorFactory(TmscEditPlugin.createResourceSet()).getPersistor();
         List<EObject> fileContent = persistor.loadAll(URI.createFileURI(sourcePath.toString()));
 
         Optional<FullScopeTMSC> tmsc = fileContent.stream().filter(obj -> obj instanceof FullScopeTMSC)
@@ -88,7 +89,7 @@ public class TmscFileHelper {
      * @throws IOException Thrown in case saving the TMSC fails.
      */
     public static void saveTMSC(TMSC tmsc, Path targetPath) throws IOException {
-        Persistor<EObject> persistor = new PersistorFactory().getPersistor();
+        Persistor<EObject> persistor = new PersistorFactory(TmscEditPlugin.createResourceSet()).getPersistor();
         ArrayList<EObject> contents = new ArrayList<>(tmsc.getFullScope().getArchitectures().size() + 1);
         contents.add(tmsc.getFullScope());
         contents.addAll(tmsc.getFullScope().getArchitectures());

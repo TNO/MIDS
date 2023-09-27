@@ -12,19 +12,22 @@ package nl.tno.mids.pps.extensions.cmi
 import java.nio.file.Path
 import java.util.List
 import java.util.function.Predicate
-import java.util.stream.Collectors
 import nl.esi.emf.properties.PropertiesContainer
 import nl.esi.emf.properties.xtend.PersistedProperty
 import nl.esi.pps.architecture.instantiated.Executor
 import nl.esi.pps.tmsc.Dependency
 import nl.esi.pps.tmsc.Event
+import nl.esi.pps.tmsc.FullScopeTMSC
 import nl.esi.pps.tmsc.Lifeline
+import nl.esi.pps.tmsc.LifelineSegment
 import nl.esi.pps.tmsc.ScopedTMSC
 import nl.esi.pps.tmsc.TMSC
 import nl.esi.pps.tmsc.TmscFactory
 import nl.esi.pps.tmsc.util.TmscQueries
 import nl.tno.mids.pps.extensions.info.EventFunctionExecutionType
 import nl.tno.mids.pps.extensions.queries.TmscLifelineQueries
+import org.apache.commons.lang3.tuple.Pair
+import org.eclipse.lsat.common.util.PairwiseIterable
 
 /**
  * A transformation for preparing {@link TMSC TMSCs} for CMI. This transformation determines and annotates all
@@ -60,7 +63,7 @@ abstract class CmiPreparer {
      *      not loaded from a file, in which case no additional files can be located.
      * @return The CMI {@link ScopedTMSC scope} that has been added to {@code tmsc}.
      */
-    def ScopedTMSC prepare(TMSC tmsc, String scopeName, List<String> warnings, Path tmscPath) {
+    def ScopedTMSC prepare(FullScopeTMSC tmsc, String scopeName, List<String> warnings, Path tmscPath) {
         if (tmsc.fullScope.childScopes.exists[it.name.equals(scopeName)]) {
             warnings.add("Removed existing scope named " + scopeName)
         }
@@ -98,7 +101,7 @@ abstract class CmiPreparer {
      * @param scopeName The name of the {@link ScopedTMSC scoped TMSC} to create.
      * @return The {@link ScopedTMSC scoped TMSC} containing only relevant information for CMI.
      */
-    protected def ScopedTMSC scope(TMSC tmsc, String scopeName)
+    protected def ScopedTMSC scope(FullScopeTMSC tmsc, String scopeName)
 
     /**
      * Determines a component name for {@code lifeline}.
@@ -134,27 +137,46 @@ abstract class CmiPreparer {
 
     /**
      * Helper method for creating a {@link ScopedTMSC scoped TMSC} named {@code scopeName} out of {@code tmsc} that
-     * contains all {@link Dependency dependencies} of {@code tmsc} that satisfy {@code predicate}.
+     * contains all {@link Dependency dependencies} of {@code tmsc} between the events that satisfy {@code predicate}.
      * 
-     * @param tmsc The {@link TMSC} to scope.
+     * @param tmsc The {@link FullScopeTMSC} to scope.
      * @param scopeName The name of the {@link ScopedTMSC scoped TMSC} to create.
-     * @param predicate The {@link Predicate predicate} that determines which {@link Dependency dependencies} are to be
+     * @param predicate The {@link Predicate predicate} that determines which {@link Event events} are to be
      *                  included in the scope to create.
-     * @return The {@link ScopedTMSC scoped TMSC} containing all {@link Dependency dependencies} that satisfy
-     *         {@code predicate}, which has also been added to the scopes of {@code tmsc}.
+     * @return The {@link ScopedTMSC scoped TMSC} containing all {@link Dependency dependencies} between the events 
+     *         that satisfy {@code predicate}, which has also been added to the scopes of {@code tmsc}.
      */
-    protected final def scopeOnDependencies(TMSC tmsc, String scopeName, Predicate<? super Dependency> predicate) {
-        val scopedDependencies = tmsc.dependencies.stream.filter(predicate).collect(Collectors.toList())
-
+    protected final def ScopedTMSC scopeOnEvents(FullScopeTMSC tmsc, String scopeName, Predicate<? super Event> predicate) {
+        // Split the dependencies in two sets, one in scope (true) and one outside scope (false).
+        val scopeDependencies = tmsc.dependencies.groupBy[predicate.test(source) && predicate.test(target)]
+        
         // Create a new TMSC scope named 'scopeName' and add all dependencies of 'tmsc' to it that satisfy 'predicate'.
-        val scopedTmsc = createScopedTMSC => [
-            // Add all dependencies at once for performance reasons.
-            dependencies.addAll(scopedDependencies)
-            name = TmscQueries.toEID(scopeName)
-            parentScope = tmsc
-        ]
+        val scopedTmsc = TmscQueries.createScopedTMSC(scopeDependencies.get(true), scopeName)
+        tmsc.childScopes += scopedTmsc
 
-        tmsc.childScopes.add(scopedTmsc)
-        scopedTmsc
+        if (!scopeDependencies.containsKey(false)) {
+            // All dependencies are in scope; nothing more to do.
+            return scopedTmsc
+        }
+        
+        // CMI TMSCs require a compete order, so create missing lifeline-segments and add them to the scope.
+        val projections = tmsc.lifelines.flatMap[refineWithCompleteOrder(predicate)].filter[projection].toList
+        scopedTmsc.dependencies += projections
+        tmsc.dependencies += projections
+        
+        return scopedTmsc
+    }
+    
+    private def Iterable<LifelineSegment> refineWithCompleteOrder(Lifeline lifeline, Predicate<? super Event> predicate) {
+        return PairwiseIterable::of(lifeline.events.filter[predicate.test(it)]).map[findOrCreateLifelineSegement]
+    }
+    
+    private def LifelineSegment findOrCreateLifelineSegement(Pair<Event, Event> eventPair) {
+        val lifelineSegment = eventPair.left.fullScopeOutgoingDependencies.filter(LifelineSegment).findFirst[target === eventPair.right]
+        return lifelineSegment ?: createLifelineSegment => [
+            source = eventPair.left
+            target = eventPair.right
+            projection = true
+        ]
     }
 }

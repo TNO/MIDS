@@ -24,6 +24,8 @@ import nl.esi.pps.tmsc.Event
 import nl.esi.pps.tmsc.ExitEvent
 import nl.esi.pps.tmsc.Lifeline
 import nl.esi.pps.tmsc.TMSC
+import nl.esi.pps.tmsc.compare.ArchitectureLifecycleStage
+import nl.esi.pps.tmsc.text.ETimestampFormat
 import nl.tno.mids.automatalib.extensions.cif.AutomataLibToCif
 import nl.tno.mids.automatalib.extensions.util.AutomataLibUtil
 import nl.tno.mids.automatalib.extensions.util.IncrementalMutableDFATreeBuilder
@@ -35,7 +37,6 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 import static extension nl.tno.mids.automatalib.extensions.util.AutomataLibUtil.*
 import static extension nl.tno.mids.cmi.utils.CifNamesUtil.*
-import static extension nl.tno.mids.cmi.utils.TimestampHelper.*
 
 class ComponentModelBuilder {
 
@@ -77,14 +78,18 @@ class ComponentModelBuilder {
                 do {
                     event = iterator.next
                     wordBuilder.append(event.asCifName(tmsc, synchronous))
-                } while (!(event instanceof ExitEvent &&
-                    TmscExecutionQueries.getRootInScope(tmsc, event.execution) === null))
+                } while (!isRootExitEventInScope(event, tmsc) && iterator.hasNext())
                 builder.insert(wordBuilder.toWord)
             }
         } catch (NoSuchElementException cause) {
-            throw new RuntimeException("Invalid stack at event " + event + "(" + event.component + ")@" +
-                event.timestamp.readable, cause)
+            throw new RuntimeException(
+                "Invalid stack at event " + ArchitectureLifecycleStage::INSTANTIATED.describe(event, false) + " @ " +
+                    ETimestampFormat::eINSTANCE.format(event.timestamp), cause)
         }
+    }
+    
+    def private boolean isRootExitEventInScope(Event event, TMSC tmsc) {
+        return event instanceof ExitEvent && TmscExecutionQueries.getRootInScope(tmsc, event.execution) === null
     }
 
     def void insert(String componentLabel, Word<String> word) {

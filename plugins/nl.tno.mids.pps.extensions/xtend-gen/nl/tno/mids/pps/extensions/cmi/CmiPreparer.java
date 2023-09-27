@@ -1,21 +1,27 @@
 package nl.tno.mids.pps.extensions.cmi;
 
+import com.google.common.collect.Iterables;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import nl.esi.emf.properties.PropertiesContainer;
 import nl.esi.pps.architecture.instantiated.Executor;
 import nl.esi.pps.tmsc.Dependency;
 import nl.esi.pps.tmsc.Event;
+import nl.esi.pps.tmsc.FullScopeTMSC;
 import nl.esi.pps.tmsc.Lifeline;
+import nl.esi.pps.tmsc.LifelineSegment;
 import nl.esi.pps.tmsc.ScopedTMSC;
 import nl.esi.pps.tmsc.TMSC;
 import nl.esi.pps.tmsc.TmscFactory;
 import nl.esi.pps.tmsc.util.TmscQueries;
 import nl.tno.mids.pps.extensions.info.EventFunctionExecutionType;
 import nl.tno.mids.pps.extensions.queries.TmscLifelineQueries;
+import org.apache.commons.lang3.tuple.Pair;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.lsat.common.util.PairwiseIterable;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -46,7 +52,7 @@ public abstract class CmiPreparer {
    *      not loaded from a file, in which case no additional files can be located.
    * @return The CMI {@link ScopedTMSC scope} that has been added to {@code tmsc}.
    */
-  public ScopedTMSC prepare(final TMSC tmsc, final String scopeName, final List<String> warnings, final Path tmscPath) {
+  public ScopedTMSC prepare(final FullScopeTMSC tmsc, final String scopeName, final List<String> warnings, final Path tmscPath) {
     ScopedTMSC _xblockexpression = null;
     {
       final Function1<ScopedTMSC, Boolean> _function = (ScopedTMSC it) -> {
@@ -90,7 +96,7 @@ public abstract class CmiPreparer {
    * @param scopeName The name of the {@link ScopedTMSC scoped TMSC} to create.
    * @return The {@link ScopedTMSC scoped TMSC} containing only relevant information for CMI.
    */
-  protected abstract ScopedTMSC scope(final TMSC tmsc, final String scopeName);
+  protected abstract ScopedTMSC scope(final FullScopeTMSC tmsc, final String scopeName);
   
   /**
    * Determines a component name for {@code lifeline}.
@@ -126,30 +132,72 @@ public abstract class CmiPreparer {
   
   /**
    * Helper method for creating a {@link ScopedTMSC scoped TMSC} named {@code scopeName} out of {@code tmsc} that
-   * contains all {@link Dependency dependencies} of {@code tmsc} that satisfy {@code predicate}.
+   * contains all {@link Dependency dependencies} of {@code tmsc} between the events that satisfy {@code predicate}.
    * 
-   * @param tmsc The {@link TMSC} to scope.
+   * @param tmsc The {@link FullScopeTMSC} to scope.
    * @param scopeName The name of the {@link ScopedTMSC scoped TMSC} to create.
-   * @param predicate The {@link Predicate predicate} that determines which {@link Dependency dependencies} are to be
+   * @param predicate The {@link Predicate predicate} that determines which {@link Event events} are to be
    *                  included in the scope to create.
-   * @return The {@link ScopedTMSC scoped TMSC} containing all {@link Dependency dependencies} that satisfy
-   *         {@code predicate}, which has also been added to the scopes of {@code tmsc}.
+   * @return The {@link ScopedTMSC scoped TMSC} containing all {@link Dependency dependencies} between the events
+   *         that satisfy {@code predicate}, which has also been added to the scopes of {@code tmsc}.
    */
-  protected final ScopedTMSC scopeOnDependencies(final TMSC tmsc, final String scopeName, final Predicate<? super Dependency> predicate) {
-    ScopedTMSC _xblockexpression = null;
-    {
-      final List<Dependency> scopedDependencies = tmsc.getDependencies().stream().filter(predicate).collect(Collectors.<Dependency>toList());
-      ScopedTMSC _createScopedTMSC = CmiPreparer.m_tmsc.createScopedTMSC();
-      final Procedure1<ScopedTMSC> _function = (ScopedTMSC it) -> {
-        it.getDependencies().addAll(scopedDependencies);
-        it.setName(TmscQueries.toEID(scopeName));
-        it.setParentScope(tmsc);
-      };
-      final ScopedTMSC scopedTmsc = ObjectExtensions.<ScopedTMSC>operator_doubleArrow(_createScopedTMSC, _function);
-      tmsc.getChildScopes().add(scopedTmsc);
-      _xblockexpression = scopedTmsc;
+  protected final ScopedTMSC scopeOnEvents(final FullScopeTMSC tmsc, final String scopeName, final Predicate<? super Event> predicate) {
+    final Function1<Dependency, Boolean> _function = (Dependency it) -> {
+      return Boolean.valueOf((predicate.test(it.getSource()) && predicate.test(it.getTarget())));
+    };
+    final Map<Boolean, List<Dependency>> scopeDependencies = IterableExtensions.<Boolean, Dependency>groupBy(tmsc.getDependencies(), _function);
+    final ScopedTMSC scopedTmsc = TmscQueries.createScopedTMSC(scopeDependencies.get(Boolean.valueOf(true)), scopeName);
+    EList<ScopedTMSC> _childScopes = tmsc.getChildScopes();
+    _childScopes.add(scopedTmsc);
+    boolean _containsKey = scopeDependencies.containsKey(Boolean.valueOf(false));
+    boolean _not = (!_containsKey);
+    if (_not) {
+      return scopedTmsc;
     }
-    return _xblockexpression;
+    final Function1<Lifeline, Iterable<LifelineSegment>> _function_1 = (Lifeline it) -> {
+      return this.refineWithCompleteOrder(it, predicate);
+    };
+    final Function1<LifelineSegment, Boolean> _function_2 = (LifelineSegment it) -> {
+      return Boolean.valueOf(it.isProjection());
+    };
+    final List<LifelineSegment> projections = IterableExtensions.<LifelineSegment>toList(IterableExtensions.<LifelineSegment>filter(IterableExtensions.<Lifeline, LifelineSegment>flatMap(tmsc.getLifelines(), _function_1), _function_2));
+    EList<Dependency> _dependencies = scopedTmsc.getDependencies();
+    Iterables.<Dependency>addAll(_dependencies, projections);
+    EList<Dependency> _dependencies_1 = tmsc.getDependencies();
+    Iterables.<Dependency>addAll(_dependencies_1, projections);
+    return scopedTmsc;
+  }
+  
+  private Iterable<LifelineSegment> refineWithCompleteOrder(final Lifeline lifeline, final Predicate<? super Event> predicate) {
+    final Function1<Event, Boolean> _function = (Event it) -> {
+      return Boolean.valueOf(predicate.test(it));
+    };
+    final Function1<Pair<Event, Event>, LifelineSegment> _function_1 = (Pair<Event, Event> it) -> {
+      return this.findOrCreateLifelineSegement(it);
+    };
+    return IterableExtensions.<Pair<Event, Event>, LifelineSegment>map(PairwiseIterable.<Event>of(IterableExtensions.<Event>filter(lifeline.getEvents(), _function)), _function_1);
+  }
+  
+  private LifelineSegment findOrCreateLifelineSegement(final Pair<Event, Event> eventPair) {
+    final Function1<LifelineSegment, Boolean> _function = (LifelineSegment it) -> {
+      Event _target = it.getTarget();
+      Event _right = eventPair.getRight();
+      return Boolean.valueOf((_target == _right));
+    };
+    final LifelineSegment lifelineSegment = IterableExtensions.<LifelineSegment>findFirst(Iterables.<LifelineSegment>filter(eventPair.getLeft().getFullScopeOutgoingDependencies(), LifelineSegment.class), _function);
+    LifelineSegment _elvis = null;
+    if (lifelineSegment != null) {
+      _elvis = lifelineSegment;
+    } else {
+      LifelineSegment _createLifelineSegment = CmiPreparer.m_tmsc.createLifelineSegment();
+      _elvis = _createLifelineSegment;
+    }
+    final Procedure1<LifelineSegment> _function_1 = (LifelineSegment it) -> {
+      it.setSource(eventPair.getLeft());
+      it.setTarget(eventPair.getRight());
+      it.setProjection(true);
+    };
+    return ObjectExtensions.<LifelineSegment>operator_doubleArrow(_elvis, _function_1);
   }
   
   private static String getComponentName(final Executor container) {

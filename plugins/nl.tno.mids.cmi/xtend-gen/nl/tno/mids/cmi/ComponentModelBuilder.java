@@ -17,16 +17,16 @@ import net.automatalib.automata.fsa.impl.FastDFAState;
 import net.automatalib.words.Word;
 import net.automatalib.words.WordBuilder;
 import nl.esi.pps.architecture.instantiated.Executor;
-import nl.esi.pps.architecture.specified.Component;
 import nl.esi.pps.tmsc.Event;
 import nl.esi.pps.tmsc.ExitEvent;
 import nl.esi.pps.tmsc.Lifeline;
 import nl.esi.pps.tmsc.TMSC;
+import nl.esi.pps.tmsc.compare.ArchitectureLifecycleStage;
+import nl.esi.pps.tmsc.text.ETimestampFormat;
 import nl.tno.mids.automatalib.extensions.cif.AutomataLibToCif;
 import nl.tno.mids.automatalib.extensions.util.AutomataLibUtil;
 import nl.tno.mids.automatalib.extensions.util.IncrementalMutableDFATreeBuilder;
 import nl.tno.mids.cmi.utils.CifNamesUtil;
-import nl.tno.mids.cmi.utils.TimestampHelper;
 import nl.tno.mids.pps.extensions.queries.TmscEventQueries;
 import nl.tno.mids.pps.extensions.queries.TmscExecutionQueries;
 import nl.tno.mids.pps.extensions.queries.TmscLifelineQueries;
@@ -91,24 +91,27 @@ public class ComponentModelBuilder {
               event = iterator.next();
               wordBuilder.append(CifNamesUtil.asCifName(event, tmsc, this.synchronous));
             }
-          } while((!((event instanceof ExitEvent) && 
-            (TmscExecutionQueries.getRootInScope(tmsc, event.getExecution()) == null))));
+          } while(((!this.isRootExitEventInScope(event, tmsc)) && iterator.hasNext()));
           builder.insert(wordBuilder.toWord());
         }
       }
     } catch (final Throwable _t) {
       if (_t instanceof NoSuchElementException) {
         final NoSuchElementException cause = (NoSuchElementException)_t;
-        Component _component = event.getComponent();
-        String _plus = ((("Invalid stack at event " + event) + "(") + _component);
-        String _plus_1 = (_plus + ")@");
-        String _readable = TimestampHelper.readable(event.getTimestamp());
-        String _plus_2 = (_plus_1 + _readable);
+        String _describe = ArchitectureLifecycleStage.INSTANTIATED.describe(event, false);
+        String _plus = ("Invalid stack at event " + _describe);
+        String _plus_1 = (_plus + " @ ");
+        String _format = ETimestampFormat.eINSTANCE.format(event.getTimestamp());
+        String _plus_2 = (_plus_1 + _format);
         throw new RuntimeException(_plus_2, cause);
       } else {
         throw Exceptions.sneakyThrow(_t);
       }
     }
+  }
+  
+  private boolean isRootExitEventInScope(final Event event, final TMSC tmsc) {
+    return ((event instanceof ExitEvent) && (TmscExecutionQueries.getRootInScope(tmsc, event.getExecution()) == null));
   }
   
   public void insert(final String componentLabel, final Word<String> word) {

@@ -13,8 +13,10 @@ import nl.esi.emf.properties.xtend.PersistedProperty
 import nl.esi.pps.architecture.implemented.Function
 import nl.esi.pps.tmsc.Dependency
 import nl.esi.pps.tmsc.Event
+import nl.esi.pps.tmsc.FullScopeTMSC
 import nl.esi.pps.tmsc.Lifeline
 import nl.esi.pps.tmsc.TMSC
+import nl.esi.pps.tmsc.util.TmscQueries
 import nl.tno.mids.pps.extensions.info.EventFunctionExecutionType
 import org.eclipse.escet.common.java.Strings
 
@@ -28,8 +30,11 @@ class AnnotatedTextPreparer extends CmiPreparer {
         return isAnnotatedTextDependency(dependency)
     }
 
-    override protected scope(TMSC tmsc, String scopeName) {
-        scopeOnDependencies(tmsc, scopeName, [true])
+    override protected scope(FullScopeTMSC tmsc, String scopeName) {
+        // Just add all the dependencies to the scope.
+        return TmscQueries.createScopedTMSC(tmsc.dependencies, scopeName) => [
+            parentScope = tmsc
+        ]
     }
 
     override protected componentNameFor(Lifeline lifeline) {
