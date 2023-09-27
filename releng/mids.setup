@@ -32,7 +32,7 @@
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Doomph.redirection.mids.git"
-      value="=https://TBD/mids.setup->${mids.git.clone.location|uri}/releng/mids.setup"
+      value="=https://raw.githubusercontent.com/TNO/MIDS/main/releng/mids.setup->${mids.git.clone.location|uri}/releng/mids.setup"
       vm="true">
     <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
   </setupTask>
@@ -324,7 +324,7 @@
   <setupTask
       xsi:type="git:GitCloneTask"
       id="mids.git.clone"
-      remoteURI="ssh://git@TBD/mids.git">
+      remoteURI="ssh://git@github.com:TNO/MIDS.git">
     <description>MIDS</description>
   </setupTask>
   <setupTask
