@@ -18,6 +18,12 @@
    <feature id="nl.tno.mids.cmi.test.feature.source">
       <category name="nl.tno.mids"/>
    </feature>
+   <feature id="nl.tno.mids.scripts.feature">
+      <category name="nl.tno.mids"/>
+   </feature>
+   <feature id="nl.tno.mids.scripts.feature.source">
+      <category name="nl.tno.mids"/>
+   </feature>
    <category-def name="nl.tno.mids" label="MIDS">
       <description>
          Model Inference and Differencing Suite

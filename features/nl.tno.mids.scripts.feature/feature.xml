@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<feature
+      id="nl.tno.mids.cmi.test.feature"
+      label="MIDS Scripts Feature"
+      version="0.9.0.qualifier"
+      provider-name="TNO">
+
+   <description>
+      MIDS Scripts Feature
+   </description>
+
+   <copyright>
+      Copyright (c) TNO and Contributors to the GitHub community
+   </copyright>
+
+   <license url="https://opensource.org/license/mit/">
+      MIT License
+   </license>
+
+</feature>

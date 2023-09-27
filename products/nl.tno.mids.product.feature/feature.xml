@@ -31,6 +31,10 @@ SPDX-License-Identifier: MIT
          id="nl.tno.mids.feature"
          version="0.0.0"/>
 
+   <includes
+         id="nl.tno.mids.scripts.feature"
+         version="0.0.0"/>
+
    <requires>
       <import feature="org.eclipse.platform" version="4.22.0" match="compatible"/>
       <import feature="org.eclipse.emf.ecore.editor" version="2.0.0" match="compatible"/>
