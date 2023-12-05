@@ -29,7 +29,6 @@ SPDX-License-Identifier: MIT
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-p2-repository-plugin</artifactId>
-                <version>${tycho.version}</version>
 
                 <configuration>
                     <!-- Custom update site name. -->
@@ -44,7 +43,6 @@ SPDX-License-Identifier: MIT
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-p2-director-plugin</artifactId>
-                <version>${tycho.version}</version>
 
                 <configuration>
                     <!-- Set archive format to use, per platform. -->
