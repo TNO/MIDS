@@ -1,6 +1,7 @@
 /.classpath
 /.metadata/
 /.settings/
+/workspace/
 /**/bin/
 /**/target/
 /**/xtend-gen/**/*.xtendbin
