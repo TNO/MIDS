@@ -100,7 +100,7 @@
       <setupTask
           xsi:type="setup:PreferenceTask"
           key="/instance/org.eclipse.compare/org.eclipse.compare.IgnoreWhitespace"
-          value="true"/>
+          value="false"/>
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
