@@ -42,11 +42,11 @@ SPDX-License-Identifier: MIT
          </property>
          <property
                name="startupMessageRect"
-               value="2,225,485,20">
+               value="4,94,405,20">
          </property>
          <property
                name="startupProgressRect"
-               value="2,245,485,10">
+               value="4,114,405,10">
          </property>
          <property
                name="introBrandingImage"
