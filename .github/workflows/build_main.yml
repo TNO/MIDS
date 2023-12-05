@@ -40,6 +40,11 @@ jobs:
         cache: maven
     - name: Install GraphViz
       run: sudo apt-get install -y graphviz
+    - name: Install mCRL2
+      run: |
+        sudo add-apt-repository ppa:mcrl2/release-ppa
+        sudo apt update
+        sudo apt-get install -y mcrl2
     - name: Build with Maven
       run: mvn verify --batch-mode --update-snapshots --fail-at-end --file pom.xml -Dmids.version.qualifier=$(./releng/versionQualifier.sh)
     - name: Attach Test Report
