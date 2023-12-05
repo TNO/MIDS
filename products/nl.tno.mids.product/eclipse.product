@@ -28,7 +28,7 @@
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/nl.tno.mids.product.branding/images/mids16.png" i32="/nl.tno.mids.product.branding/images/mids32.png" i48="/nl.tno.mids.product.branding/images/mids48.png" i256="/nl.tno.mids.product.branding/images/mids256.png"/>
+   <windowImages i16="/nl.tno.mids.product.branding/images/mids16.png" i32="/nl.tno.mids.product.branding/images/mids32.png" i48="/nl.tno.mids.product.branding/images/mids48.png" i64="/nl.tno.mids.product.branding/images/mids64.png" i128="/nl.tno.mids.product.branding/images/mids128.png" i256="/nl.tno.mids.product.branding/images/mids256.png"/>
 
    <splash
       location="nl.tno.mids.product.branding"
