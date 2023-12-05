@@ -21,6 +21,7 @@ SPDX-License-Identifier: MIT
 
     <artifactId>nl.tno.mids.product</artifactId>
     <packaging>eclipse-repository</packaging>
+    <name>MIDS Product</name>
 
     <build>
         <plugins>
@@ -35,7 +36,7 @@ SPDX-License-Identifier: MIT
                     <repositoryName>MIDS Update Site</repositoryName>
 
                     <!-- Custom archive file name (excluding file extension). -->
-                    <finalName>mids-${project.version}-updatesite</finalName>
+                    <finalName>${mids.binary.version.enduser}-updatesite</finalName>
                 </configuration>
             </plugin>
 
@@ -62,12 +63,12 @@ SPDX-License-Identifier: MIT
                             <!-- Undocumented, see https://dev.eclipse.org/mhonarc/lists/tycho-user/msg05560.html -->
                             <!-- But available, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=357503 -->
                             <!-- The 'os', 'ws' and 'arch' values are automatically added, as is the file extension. -->
-                            <archiveFileName>mids-${project.version}</archiveFileName>
+                            <archiveFileName>${mids.binary.version.enduser}</archiveFileName>
 
                             <!-- Add root folder, to prevent issues when extracting to current folder. -->
                             <rootFolders>
-                                <linux>mids-${project.version}</linux>
-                                <win32>mids-${project.version}</win32>
+                                <linux>${mids.binary.version.enduser}</linux>
+                                <win32>${mids.binary.version.enduser}</win32>
                             </rootFolders>
                         </product>
                     </products>
@@ -93,10 +94,6 @@ SPDX-License-Identifier: MIT
                         <goals>
                             <goal>archive-products</goal>
                         </goals>
-                        <!-- Archive after signing. -->
-                        <!-- By default, all are in 'package' phase, leading to signing after archiving. -->
-                        <!-- Declare archiving to occur in later phase. -->
-                        <phase>pre-integration-test</phase> <!-- Changed from default 'package' phase. -->
                     </execution>
                 </executions>
             </plugin>

@@ -26,7 +26,15 @@
    </feature>
    <category-def name="nl.tno.mids" label="MIDS">
       <description>
-         Model Inference and Differencing Suite
+         Model Inference and Differencing Suite (MIDS)
       </description>
    </category-def>
+   <repository-reference location="https://download.eclipse.org/escet/v0.7/update-site" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/justj/jres/11/updates/release/latest" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/lsat/nightly/update-site/" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/releases/2021-12/" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/tools/orbit/downloads/drops/R20211213173813/repository" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/trace4cps/nightly/update-site/" enabled="true" />
+   <repository-reference location="https://hallvard.github.io/plantuml/" enabled="true" />
+   <repository-reference location="https://tno.github.io/PPS/update-site/v0.20.0-RC5/" enabled="true" />
 </site>
