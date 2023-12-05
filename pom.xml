@@ -17,9 +17,8 @@ SPDX-License-Identifier: MIT
     <packaging>pom</packaging>
 
     <modules>
-        <module>releng/nl.tno.mids.releng.target</module>
+        <module>releng</module>
         <module>plugins</module>
-        <module>documentation</module>
         <module>features</module>
         <module>products</module>
     </modules>

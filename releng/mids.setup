@@ -460,18 +460,6 @@
       xsi:type="setup.workingsets:WorkingSetTask"
       prefix="nl.tno.mids.git-">
     <workingSet
-        name="Documentation">
-      <predicate
-          xsi:type="predicates:AndPredicate">
-        <operand
-            xsi:type="workingsets:InclusionPredicate"
-            includedWorkingSet="//@setupTasks.12/@workingSets[name='MIDS']"/>
-        <operand
-            xsi:type="predicates:LocationPredicate"
-            pattern=".*/documentation/.*"/>
-      </predicate>
-    </workingSet>
-    <workingSet
         name="Features">
       <predicate
           xsi:type="predicates:AndPredicate">
@@ -504,7 +492,7 @@
             pattern="nl\.tno\.mids\..*"/>
         <operand
             xsi:type="workingsets:ExclusionPredicate"
-            excludedWorkingSet="//@setupTasks.12/@workingSets[name='Features'] //@setupTasks.12/@workingSets[name='Plugins'] //@setupTasks.12/@workingSets[name='Documentation'] //@setupTasks.12/@workingSets[name='Releng']"/>
+            excludedWorkingSet="//@setupTasks.12/@workingSets[name='Features'] //@setupTasks.12/@workingSets[name='Plugins'] //@setupTasks.12/@workingSets[name='Releng']"/>
       </predicate>
     </workingSet>
     <workingSet
