@@ -1,0 +1,11 @@
+'mids.ico' created from 'mids256.png' using https://redketchup.io/icon-converter.
+
+Contains the following icons:
+- 16x16   BMP 8-bit/32-bit
+- 24x24   BMP       32-bit
+- 32x32   BMP 8-bit/32-bit
+- 48x48   BMP 8-bit/32-bit
+- 64x64   BMP       32-bit
+- 96x96   BMP       32-bit
+- 128x128 BMP       32-bit
+- 256x256 BMP       32-bit
