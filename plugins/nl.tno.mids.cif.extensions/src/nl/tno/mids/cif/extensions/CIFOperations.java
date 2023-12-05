@@ -137,6 +137,7 @@ public class CIFOperations {
             AppEnv.registerSimple();
             Options.set(GuiOption.class, GuiMode.OFF);
             CifReader cifReader = new CifReader().init("", "", false);
+            cifReader.suppressWarnings = true;
             Specification cifSpec = cifReader.read(cifSpecString);
             return cifSpec;
         } finally {
