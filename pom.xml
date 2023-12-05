@@ -49,9 +49,33 @@ SPDX-License-Identifier: MIT
 
         <!-- Dependency versions. -->
         <tycho.version>2.7.5</tycho.version>
+
+        <!-- The end-user readable version number. -->
+        <!-- The default is 'dev'. GitHub actions override this for releases only, to e.g. v0.1, v0.1-M1, v0.1-RC1. -->
+        <mids.version.enduser>dev</mids.version.enduser>
+
+        <!-- The version qualifier to use for all plugins/features/etc. -->
+        <!-- Remains 'dev' for non-GitHub-action builds. GitHub actions override the qualifier to e.g., -->
+        <!-- 'v20210609-141908-dev' for development builds, 'v20210609-141908-M1' for milestone releases, -->
+        <!-- 'v20210609-141908-RC1' for release candidates, and 'v20210609-141908' for final releases. -->
+        <mids.version.qualifier>dev</mids.version.qualifier>
+
+        <!-- The prefix to use for released binaries. -->
+        <mids.binary.prefix>mids</mids.binary.prefix>
+
+        <!-- The binary filename. -->
+        <mids.binary.version.enduser>${mids.binary.prefix}-${mids.version.enduser}</mids.binary.version.enduser>
     </properties>
 
+    <scm>
+        <connection>scm:git:git@github.com:TNO/MIDS.git</connection>
+        <developerConnection>scm:git:git@github.com:TNO/MIDS.git</developerConnection>
+        <url>https://github.com/TNO/MIDS</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <pluginRepositories>
+        <!-- com.bsiag.geneclipsetoc:geneclipsetoc-maven-plugin -->
         <pluginRepository>
             <id>geneclipsetoc-releases</id>
             <url>https://bsi-software.github.io/geneclipsetoc</url>
@@ -105,6 +129,15 @@ SPDX-License-Identifier: MIT
                         <requires>
                             <require>asciidoctor-diagram</require>
                         </requires>
+                        <!-- Attributes common to all documents. -->
+                        <attributes>
+                            <baseDir>${project.basedir}</baseDir>
+                            <attribute-missing>error</attribute-missing>
+                            <attribute-undefined>error</attribute-undefined>
+                            <revnumber>${mids.version.enduser}</revnumber>
+                            <last-update-label>false</last-update-label>
+                            <asciimath />
+                        </attributes>
                     </configuration>
                 </plugin>
 
@@ -163,7 +196,7 @@ SPDX-License-Identifier: MIT
         </pluginManagement>
 
         <plugins>
-            <!-- Enforce minimum Maven 3.5 -->
+            <!-- Enforce minimum Maven version. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
@@ -243,7 +276,24 @@ SPDX-License-Identifier: MIT
                 <artifactId>tycho-compiler-plugin</artifactId>
                 <version>${tycho.version}</version>
                 <configuration>
-                    <encoding>UTF-8</encoding>
+                    <encoding>${maven.compiler.encoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- Configure packaging of JARs. -->
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-packaging-plugin</artifactId>
+                <version>${tycho.version}</version>
+
+                <configuration>
+                    <!-- Use property-based fixed qualifier for all plugins/features/etc. -->
+                    <forceContextQualifier>${mids.version.qualifier}</forceContextQualifier>
+
+                    <!-- Disable Maven descriptors in JAR bundles. -->
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
                 </configuration>
             </plugin>
 
@@ -251,7 +301,6 @@ SPDX-License-Identifier: MIT
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-source-plugin</artifactId>
-                <version>${tycho.version}</version>
                 <configuration>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
@@ -303,5 +352,93 @@ SPDX-License-Identifier: MIT
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <!-- Add default about.html to (source) bundles if not already present. -->
+        <profile>
+            <id>add-plugin-default-abouts</id>
+            <activation>
+                <file>
+                    <missing>${basedir}/about.html</missing>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.eclipse.tycho</groupId>
+                        <artifactId>tycho-packaging-plugin</artifactId>
+                        <version>${tycho.version}</version>
+                        <configuration>
+                            <additionalFileSets>
+                                <fileSet>
+                                    <directory>${session.executionRootDirectory}/releng/nl.tno.mids.branding</directory>
+                                    <includes>
+                                        <include>about.html</include>
+                                    </includes>
+                                </fileSet>
+                            </additionalFileSets>
+                        </configuration>
+                    </plugin>
+                </plugins>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.eclipse.tycho</groupId>
+                            <artifactId>tycho-source-plugin</artifactId>
+                            <version>${tycho.version}</version>
+                            <configuration>
+                                <additionalFileSets>
+                                    <fileSet>
+                                        <directory>${session.executionRootDirectory}/releng/nl.tno.mids.branding</directory>
+                                        <includes>
+                                            <include>about.html</include>
+                                        </includes>
+                                    </fileSet>
+                                </additionalFileSets>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+
+        <!-- Add about.mappings file to JARs, with replacements. -->
+        <profile>
+            <id>about-mappings</id>
+            <activation>
+                <file>
+                    <exists>${basedir}/about.mappings</exists>
+                </file>
+            </activation>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>${basedir}</directory>
+                        <filtering>true</filtering>
+                        <includes>
+                            <include>about.mappings</include>
+                        </includes>
+                    </resource>
+                </resources>
+                <plugins>
+                    <plugin>
+                        <groupId>org.eclipse.tycho</groupId>
+                        <artifactId>tycho-packaging-plugin</artifactId>
+                        <version>${tycho.version}</version>
+                        <configuration>
+                            <additionalFileSets>
+                                <fileSet>
+                                    <directory>${project.build.outputDirectory}</directory>
+                                    <includes>
+                                        <include>about.mappings</include>
+                                    </includes>
+                                </fileSet>
+                            </additionalFileSets>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
