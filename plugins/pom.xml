@@ -43,6 +43,8 @@ SPDX-License-Identifier: MIT
     <module>nl.tno.mids.compare.test</module>
     <module>nl.tno.mids.compare.ui</module>
 
+    <module>nl.tno.mids.documentation</module>
+
     <module>nl.tno.mids.gltsdiff.distribution</module>
     <module>nl.tno.mids.gltsdiff.extensions</module>
 

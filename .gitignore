@@ -8,3 +8,5 @@
 /**/*.orig
 /**/.META-INF_MANIFEST.MF
 /**/.polyglot.*
+/**/.tycho-*
+/**/pom.tycho

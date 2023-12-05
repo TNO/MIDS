@@ -16,6 +16,19 @@ SPDX-License-Identifier: MIT
     <version>0.9.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <organization>
+        <name>TNO</name>
+        <url>https://www.tno.nl/en</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <comments>SPDX-License-Identifier: MIT</comments>
+        </license>
+    </licenses>
+
     <modules>
         <module>releng</module>
         <module>plugins</module>
@@ -24,23 +37,44 @@ SPDX-License-Identifier: MIT
     </modules>
 
     <properties>
-        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <!-- Java version. -->
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.release>11</maven.compiler.release>
+
+        <!-- Platform independent encoding. -->
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Dependency versions. -->
         <tycho.version>2.7.5</tycho.version>
     </properties>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>geneclipsetoc-releases</id>
+            <url>https://bsi-software.github.io/geneclipsetoc</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <pluginManagement>
             <plugins>
+                <!-- Eclipse help TOC generation plugin. -->
                 <plugin>
                     <groupId>com.bsiag.geneclipsetoc</groupId>
                     <artifactId>geneclipsetoc-maven-plugin</artifactId>
-                    <version>1.0.2</version>
+                    <version>1.0.3</version>
                 </plugin>
+
+                <!-- AsciiDoctor documentation build plugin. -->
                 <plugin>
                     <groupId>org.asciidoctor</groupId>
                     <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -73,11 +107,6 @@ SPDX-License-Identifier: MIT
                         </requires>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.eclipse.tycho</groupId>
-                    <artifactId>tycho-packaging-plugin</artifactId>
-                    <version>${tycho.version}</version>
-                </plugin>
 
                 <!-- Eclipse M2E lifecycle mappings. Does not influence the Maven build itself. -->
                 <plugin>
@@ -100,6 +129,32 @@ SPDX-License-Identifier: MIT
                                         <ignore></ignore>
                                     </action>
                                 </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.asciidoctor</groupId>
+                                        <artifactId>asciidoctor-maven-plugin</artifactId>
+                                        <versionRange>[1.5.2,)</versionRange>
+                                        <goals>
+                                            <goal>process-asciidoc</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>com.bsiag.geneclipsetoc</groupId>
+                                        <artifactId>geneclipsetoc-maven-plugin</artifactId>
+                                        <versionRange>[1.0.3,)</versionRange>
+                                        <goals>
+                                            <goal>geneclipsetoc</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>
                     </configuration>
@@ -108,6 +163,28 @@ SPDX-License-Identifier: MIT
         </pluginManagement>
 
         <plugins>
+            <!-- Enforce minimum Maven 3.5 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.4.1</version>
+                <executions>
+                    <execution>
+                        <id>enforce-maven</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>[3.6,)</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- Configure Tycho. -->
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
