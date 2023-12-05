@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MIDS
+Bundle-SymbolicName: nl.tno.mids.branding
+Bundle-Version: 0.9.0.qualifier
+Automatic-Module-Name: nl.tno.mids.branding
+Bundle-Vendor: TNO
