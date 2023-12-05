@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
-<target name="Generated from MIDS" sequenceNumber="86">
+<target name="Generated from MIDS" sequenceNumber="90">
   <locations>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="com.sun.jna.platform" version="0.0.0"/>
-      <unit id="com.sun.xml.bind" version="0.0.0"/>
-      <unit id="jakarta.xml.bind" version="0.0.0"/>
       <unit id="javax.xml.stream" version="0.0.0"/>
       <unit id="org.aopalliance" version="0.0.0"/>
       <unit id="org.apache.batik.ext.awt" version="0.0.0"/>
       <unit id="org.apache.batik.i18n" version="0.0.0"/>
       <unit id="org.apache.commons.collections" version="0.0.0"/>
+      <unit id="org.apache.commons.lang3" version="0.0.0"/>
       <unit id="org.apache.xalan" version="0.0.0"/>
+      <unit id="org.apache.xerces" version="0.0.0"/>
       <unit id="org.apache.xml.resolver" version="0.0.0"/>
       <unit id="org.apache.xml.serializer" version="0.0.0"/>
-      <unit id="org.eclipse.emf.ecore.editor.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.validation" version="0.0.0"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.jdt.annotation" version="0.0.0"/>
-      <unit id="org.eclipse.m2m.qvt.oml.runtime" version="0.0.0"/>
       <unit id="org.eclipse.ocl.pivot" version="0.0.0"/>
-      <unit id="org.eclipse.pde.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.tracecompass.lttng2.kernel.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.tracecompass.lttng2.ust.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-      <unit id="org.json" version="0.0.0"/>
       <repository location="https://download.eclipse.org/releases/2021-12/"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="0.0.0"/>
-      <repository location="https://download.eclipse.org/justj/jres/11/updates/release"/>
+      <unit id="nl.esi.pps.common.emf.codegen.ecore" version="0.0.0"/>
+      <unit id="nl.esi.pps.tmsc.ui.feature.feature.group" version="0.0.0"/>
+      <repository location="https://tno.github.io/PPS/update-site/v0.20.0-RC5/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.trace4cps.common.jfreechart.feature.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/trace4cps/nightly/update-site/"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="com.google.inject" version="0.0.0"/>
       <unit id="com.sun.jna" version="0.0.0"/>
-      <unit id="jakarta.activation" version="0.0.0"/>
-      <unit id="javax.activation" version="0.0.0"/>
+      <unit id="io.github.classgraph" version="0.0.0"/>
       <unit id="org.apache.batik.anim" version="0.0.0"/>
       <unit id="org.apache.batik.awt.util" version="0.0.0"/>
       <unit id="org.apache.batik.bridge" version="0.0.0"/>
@@ -48,33 +47,27 @@
       <unit id="org.apache.batik.script" version="0.0.0"/>
       <unit id="org.apache.batik.xml" version="0.0.0"/>
       <unit id="org.apache.commons.math3" version="0.0.0"/>
-      <unit id="org.glassfish.hk2.osgi-resource-locator" version="0.0.0"/>
       <unit id="org.knowm.xchart" version="0.0.0"/>
-      <unit id="org.slf4j.binding.log4j12" version="0.0.0"/>
       <unit id="org.slf4j.impl.log4j12" version="0.0.0"/>
       <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20211213173813/repository"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.lsat.common.emf.ui" version="0.0.0"/>
       <unit id="org.eclipse.lsat.common.emf.validation" version="0.0.0"/>
-      <unit id="org.eclipse.lsat.common.qvto.util" version="0.0.0"/>
       <unit id="org.eclipse.lsat.common.xtend" version="0.0.0"/>
       <repository location="https://download.eclipse.org/lsat/nightly/update-site/"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.escet.cif.feature.feature.group" version="0.0.0"/>
-      <unit id="tooling.org.eclipse.update.feature.default" version="0.0.0"/>
-      <unit id="tooling.osgi.bundle.default" version="0.0.0"/>
-      <unit id="tooling.source.default" version="0.0.0"/>
       <repository location="https://download.eclipse.org/escet/v0.7/update-site"/>
-    </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.trace4cps.common.jfreechart.feature.feature.group" version="0.0.0"/>
-      <repository location="https://download.eclipse.org/trace4cps/nightly/update-site/"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="net.sourceforge.plantuml.feature.feature.group" version="0.0.0"/>
       <repository location="https://hallvard.github.io/plantuml/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/justj/jres/11/updates/release/latest"/>
     </location>
   </locations>
 </target>

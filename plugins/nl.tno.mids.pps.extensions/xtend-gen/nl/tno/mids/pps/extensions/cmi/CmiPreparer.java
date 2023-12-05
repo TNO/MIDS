@@ -174,7 +174,7 @@ public abstract class CmiPreparer {
       return Boolean.valueOf(this.lifelineSegmentExists(it));
     };
     final Function1<Pair<Event, Event>, LifelineSegment> _function_2 = (Pair<Event, Event> it) -> {
-      return this.createLifelineSegement(it);
+      return this.createLifelineSegmentFromPair(it);
     };
     return IterableExtensions.<Pair<Event, Event>, LifelineSegment>map(IterableExtensions.<Pair<Event, Event>>reject(PairwiseIterable.<Event>of(acceptedEvents), _function_1), _function_2);
   }
@@ -188,7 +188,7 @@ public abstract class CmiPreparer {
     return IterableExtensions.<LifelineSegment>exists(Iterables.<LifelineSegment>filter(eventPair.getLeft().getFullScopeOutgoingDependencies(), LifelineSegment.class), _function);
   }
   
-  private LifelineSegment createLifelineSegement(final Pair<Event, Event> eventPair) {
+  private LifelineSegment createLifelineSegmentFromPair(final Pair<Event, Event> eventPair) {
     LifelineSegment _createLifelineSegment = CmiPreparer.m_tmsc.createLifelineSegment();
     final Procedure1<LifelineSegment> _function = (LifelineSegment it) -> {
       it.setSource(eventPair.getLeft());

@@ -18,7 +18,6 @@ import java.util.Optional;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.escet.common.java.Pair;
 import org.eclipse.lsat.common.emf.ecore.resource.Persistor;
 import org.eclipse.lsat.common.emf.ecore.resource.PersistorFactory;
 

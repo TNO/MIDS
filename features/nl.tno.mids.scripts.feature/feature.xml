@@ -9,7 +9,7 @@ https://opensource.org/licenses/MIT
 SPDX-License-Identifier: MIT
 -->
 <feature
-      id="nl.tno.mids.cmi.test.feature"
+      id="nl.tno.mids.scripts.feature"
       label="MIDS Scripts Feature"
       version="0.9.0.qualifier"
       provider-name="TNO">

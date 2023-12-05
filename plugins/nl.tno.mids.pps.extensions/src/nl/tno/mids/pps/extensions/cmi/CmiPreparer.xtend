@@ -169,7 +169,7 @@ abstract class CmiPreparer {
     
     private def Iterable<LifelineSegment> refineWithCompleteOrder(Lifeline lifeline, Predicate<? super Event> predicate) {
         val acceptedEvents = lifeline.events.filter[predicate.test(it)]
-        return PairwiseIterable::of(acceptedEvents).reject[lifelineSegmentExists].map[createLifelineSegementFromPair]
+        return PairwiseIterable::of(acceptedEvents).reject[lifelineSegmentExists].map[createLifelineSegmentFromPair]
     }
     
     private def boolean lifelineSegmentExists(Pair<Event, Event> eventPair) {
