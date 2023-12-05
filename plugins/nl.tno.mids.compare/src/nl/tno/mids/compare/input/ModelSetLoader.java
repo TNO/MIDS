@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.PathMatcher;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,60 +49,97 @@ public class ModelSetLoader {
      * @return The loaded model sets.
      */
     public static List<ModelSet> load(CompareOptions options, List<String> warnings) {
-        List<ModelSet> modelSets = new ArrayList<>();
+        // Get model set paths.
+        List<Path> modelSetPaths = new ArrayList<>();
         try (DirectoryStream<Path> compareRootStream = Files.newDirectoryStream(options.inputPath)) {
             for (Path modelSetPath: compareRootStream) {
-                BaseModelSetBuilder modelSetBuilder = options.modelType
-                        .getModelSetBuilder(modelSetPath.getFileName().toString(), options);
-                if (Files.isDirectory(modelSetPath)) {
-                    for (Path modelPath: collectCIFPaths(modelSetPath)) {
-                        String specificationName = modelPath.getFileName().toString();
-                        int ext = specificationName.lastIndexOf(".");
-                        if (ext > 0) {
-                            specificationName = specificationName.substring(0, ext);
-                        }
-                        try {
-                            Specification specification;
-
-                            AppEnv.registerApplication(new AppEnvData(null));
-                            NullAppStream stream = new NullAppStream();
-                            IOutputComponent output = new StreamOutputComponent(stream, stream);
-                            OutputProvider.register(output);
-                            try {
-                                specification = CIFOperations.loadCIFSpec(modelPath);
-                            } finally {
-                                AppEnv.unregisterApplication();
-                            }
-
-                            modelSetBuilder.add(specification, specificationName, warnings);
-                        } catch (SyntaxException e) {
-                            throw new RuntimeException("Parse error reading CIF file " + modelPath.toString() + ".", e);
-                        } catch (InvalidInputException e) {
-                            throw new RuntimeException(
-                                    "Type checker error reading CIF file " + modelPath.toString() + ".", e);
-                        }
-                    }
-
-                    modelSetBuilder.validate();
-
-                    List<Path> descriptionPaths = collectDescriptionPaths(modelSetPath);
-                    Map<Path, List<String>> modelSetDescriptions = new HashMap<>();
-                    for (Path descriptionPath: descriptionPaths) {
-                        try {
-                            modelSetDescriptions.put(descriptionPath, Files.readAllLines(descriptionPath));
-                        } catch (IOException e) {
-                            throw new RuntimeException("Error reading description file.", e);
-                        }
-                    }
-
-                    ModelSet modelSet = modelSetBuilder.createModelSet(modelSetDescriptions);
-                    modelSets.add(modelSet);
-                }
+                modelSetPaths.add(modelSetPath);
             }
         } catch (IOException | IllegalArgumentException | SecurityException e) {
-            throw new RuntimeException("Error collecting model sets.", e);
+            throw new RuntimeException("Error finding model sets.", e);
         }
 
+        // Sort model sets, using Java string sorting for the most consistent result across platforms.
+        modelSetPaths.sort(Comparator.comparing(p -> p.toString()));
+
+        // Get model sets.
+        List<ModelSet> modelSets = new ArrayList<>();
+        for (Path modelSetPath: modelSetPaths) {
+            // Create model set builder.
+            BaseModelSetBuilder modelSetBuilder = options.modelType
+                    .getModelSetBuilder(modelSetPath.getFileName().toString(), options);
+
+            // Skip files.
+            if (!Files.isDirectory(modelSetPath)) {
+                continue;
+            }
+
+            // Get model paths.
+            List<Path> modelPaths;
+            try {
+                modelPaths = collectCIFPaths(modelSetPath);
+            } catch (IOException e) {
+                throw new RuntimeException("Error collecting model paths at: " + modelSetPath, e);
+            }
+
+            // Load models.
+            for (Path modelPath: modelPaths) {
+                // Get specification name.
+                String specificationName = modelPath.getFileName().toString();
+                int ext = specificationName.lastIndexOf(".");
+                if (ext > 0) {
+                    specificationName = specificationName.substring(0, ext);
+                }
+
+                // Load specification.
+                Specification specification;
+                try {
+                    AppEnv.registerApplication(new AppEnvData(null));
+                    NullAppStream stream = new NullAppStream();
+                    IOutputComponent output = new StreamOutputComponent(stream, stream);
+                    OutputProvider.register(output);
+                    try {
+                        specification = CIFOperations.loadCIFSpec(modelPath);
+                    } finally {
+                        AppEnv.unregisterApplication();
+                    }
+                } catch (SyntaxException e) {
+                    throw new RuntimeException("Parse error reading CIF file " + modelPath.toString() + ".", e);
+                } catch (InvalidInputException e) {
+                    throw new RuntimeException("Type checker error reading CIF file " + modelPath.toString() + ".", e);
+                }
+
+                // Add model to model set.
+                modelSetBuilder.add(specification, specificationName, warnings);
+            }
+
+            // Validate model set.
+            modelSetBuilder.validate();
+
+            // Find model set descriptions.
+            List<Path> descriptionPaths;
+            try {
+                descriptionPaths = collectDescriptionPaths(modelSetPath);
+            } catch (IOException e) {
+                throw new RuntimeException("Error finding description files: " + modelSetPath, e);
+            }
+
+            // Read model set descriptions.
+            Map<Path, List<String>> modelSetDescriptions = new HashMap<>();
+            for (Path descriptionPath: descriptionPaths) {
+                try {
+                    modelSetDescriptions.put(descriptionPath, Files.readAllLines(descriptionPath));
+                } catch (IOException e) {
+                    throw new RuntimeException("Error reading description file: " + descriptionPath, e);
+                }
+            }
+
+            // Add model set.
+            ModelSet modelSet = modelSetBuilder.createModelSet(modelSetDescriptions);
+            modelSets.add(modelSet);
+        }
+
+        // Return the loaded model sets.
         return modelSets;
     }
 
