@@ -38,12 +38,14 @@ jobs:
         distribution: 'temurin'
         architecture: x64
         cache: maven
+    - name: Install GraphViz
+      run: sudo apt-get install -y graphviz
     - name: Build with Maven
       run: mvn verify --batch-mode --update-snapshots --fail-at-end --file pom.xml -Dmids.version.qualifier=$(./releng/versionQualifier.sh)
     - name: Attach Test Report
       if: success() || failure()
       uses: scacap/action-surefire-report@v1
-    - name: Attach Website
+    - name: Attach website
       uses: actions/upload-artifact@v3
       with:
         name: MIDS-website

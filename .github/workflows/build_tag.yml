@@ -37,9 +37,11 @@ jobs:
         distribution: 'temurin'
         architecture: x64
         cache: maven
+    - name: Install GraphViz
+      run: sudo apt-get install -y graphviz
     - name: Build with Maven
       run: mvn verify --batch-mode --update-snapshots --fail-at-end --file pom.xml -Dmids.version.enduser=$GITHUB_REF_NAME -Dmids.version.qualifier=$(./releng/versionQualifier.sh $GITHUB_REF_NAME)
-    - name: Attach Test Report
+    - name: Attach test report
       if: success() || failure()
       uses: scacap/action-surefire-report@v1
     - name: Release MIDS
