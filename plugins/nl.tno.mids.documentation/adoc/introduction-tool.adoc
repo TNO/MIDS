@@ -13,8 +13,11 @@ include::_initCommon.adoc[]
 [[mids-tool]]
 === MIDS tool
 
-MIDS is an Integrated Development Environment (IDE) based on the http://eclipse.org[Eclipse^] IDE.
-Within Eclipse, the files to work with are part of a project.
+The MIDS IDE is an Integrated Development Environment (IDE) based on the http://eclipse.org[Eclipse^] IDE.
+The MIDS IDE also comes bundled with command line scripts.
+For more information, as well as download links, see https://tno.github.io/MIDS/[^].
+
+Within the MIDS IDE, the files to work with are part of a project.
 The available projects are shown in the _Project Explorer_.
 
 TIP: MIDS provides its own Eclipse perspective configuring all recommended views to be visible.
@@ -35,4 +38,4 @@ Such commands are explained in more detail in other parts of this user guide.
 
 Another way to work with files is to open them in an _editor_.
 By double clicking a file, it is opened in the default editor that is associated with that file.
-The specific editors available in MIDS are explained in other parts of this user guide.
+The specific functionality available in MIDS is explained in other parts of this user guide.

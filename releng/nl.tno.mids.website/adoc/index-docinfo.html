@@ -1,0 +1,34 @@
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<style>
+.menu, .submenu, .menuitem, .menuref {
+    background-color: Menu;
+}
+
+.button {
+    border: 1px solid ButtonFace;
+    /*
+    Styling too similar to a real button is considered bad practice, see https://github.com/asciidoctor/asciidoctor/issues/1881#issuecomment-250702085
+    border: 2px outset ButtonFace;
+    background-color: ButtonFace;
+    */
+    padding-left: 0.5ex;
+    padding-right: 0.5ex;
+    font-weight: normal;
+    font-family: "Segoe UI","Open Sans","DejaVu Sans",sans-serif;
+    white-space: nowrap;
+}
+.button:before {
+    content: none !important;
+}
+.button:after {
+    content: none !important;
+}
+</style>

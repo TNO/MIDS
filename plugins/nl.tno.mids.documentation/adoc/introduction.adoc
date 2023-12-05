@@ -17,13 +17,12 @@ Furthermore, the software behavior (models) of different software versions can b
 MIDS allows performing all this in a single integrated environment.
 The ultimate goal is to improve the efficiency of software development and re-engineering, and reduce risks for software evolution.
 
+MIDS can be downloaded at https://tno.github.io/MIDS/[^].
+
 The documentation in this user manual is split into several chapters, together explaining how to work with MIDS:
 
 <<mids-concepts>>::
 Introduction to the concepts that are used within MIDS and a first overview of the tool.
-
-<<install>>::
-Discusses how to install and update the tool.
 
 <<import>>::
 Discusses Timed Message Sequence Charts (TMSCs), the input required for MIDS.

@@ -1,0 +1,161 @@
+/////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+//
+// This program and the accompanying materials are made available
+// under the terms of the MIT License which is available at
+// https://opensource.org/licenses/MIT
+//
+// SPDX-License-Identifier: MIT
+/////////////////////////////////////////////////////////////////////////
+
+ifndef::docsdir[:docsdir: adoc]
+ifndef::imgsdir[:imgsdir: images]
+ifndef::sourcesdir[:sourcesdir: ../sources]
+
+ifndef::mids-version-enduser[:mids-version-enduser: dev]
+ifndef::mids-binary-prefix[:mids-binary-prefix: mids]
+ifndef::mids-binary-version-enduser[:mids-binary-version-enduser: mids-dev]
+
+:idprefix:
+:idseparator: -
+
+// Enable custom style in index-docinfo.html.
+:docinfo:
+
+:!table-caption:
+
+:win-x64: win32.win32.x86_64.zip
+:linux-x64: linux.gtk.x86_64.tar.gz
+
+= Model Inference and Differencing Suite (MIDS)
+
+The Model Inference and Differencing Suite (MIDS) provides:
+
+* Functionality to infer multi-level models of software behavior from execution logs, to get insight into the software behavior.
+* Functionality to compare behavioral models, for change impact analysis, to prevent regressions and reduce the risks for software changes.
+
+== Documentation
+
+For more information about MIDS, please read the link:userguide/index.html[MIDS user guide].
+
+== Downloads
+
+MIDS is available as a portable IDE, as command line scripts (bundled with the IDE) and as a feature for the Eclipse IDE through a P2 update site.
+The MIDS IDE is portable, so just download, extract, and run it, to get started quickly.
+
+.MIDS IDE {mids-version-enduser} (link:userguide/index.html#release-notes[release notes])
+
+_Downloads:_
+
+[cols="2,^1"]
+|===
+| Windows x64 (64-bit)
+| https://github.com/TNO/MIDS/releases/download/{mids-version-enduser}/{mids-binary-version-enduser}-{win-x64}[download]
+
+| Linux x64 (64-bit)
+| https://github.com/TNO/MIDS/releases/download/{mids-version-enduser}/{mids-binary-version-enduser}-{linux-x64}[download]
+|===
+
+_Windows:_
+
+* Extract the downloaded archive somewhere on your hard disk:
+** Extract to a directory where you have read and write access.
+** There is no need to extract to an empty folder, as all files in the archive are contained within a root folder.
+** Don't extract in too deep a path as then you may get issues with too long paths.
+* Execute `mids.exe` from the directory that contains the extracted files to launch the MIDS IDE.
+The `bin` directory contains the command line scripts.
+
+_Linux:_
+
+* Extract the downloaded archive somewhere on your hard disk:
+** Extract to a directory where you have read and write access.
+** There is no need to extract to an empty folder, as all files in the archive are contained within a root folder.
+* Execute `mids` from the directory that contains the extracted files to launch the MIDS IDE.
+The `bin` directory contains the command line scripts.
+
+.P2 update site
+
+The MIDS P2 update site contains all plugins and features, for easy integration into OSGi-based applications.
+
+MIDS {MIDS-version-enduser} is available as an Eclipse P2 update site:
+
+`\https://tno.github.io/MIDS/update-site/{mids-version-enduser}/`
+
+.Dependencies
+
+Install the following dependencies that are required by MIDS:
+
+[cols="1,2"]
+|===
+| GraphViz
+| https://graphviz.org
+
+| mCLR2
+| https://mcrl2.org
+|===
+
+Make sure the `bin` directories of these tools is on your `PATH`.
+
+As part of the Constructive Model Inference process, MIDS can produce GraphML representations of the inferred models.
+Because these models use specific extensions to GraphML, the intended tool to display the GraphML files is yEd.
+yEd can be downloaded at link:https://www.yworks.com/products/yed[].
+After yEd has been installed, GraphML models should automatically open with yEd.
+
+.First use of MIDS
+
+After starting the MIDS IDE, which is based on the Eclipse IDE, you'll be asked for a workspace location.
+Choose a directory.
+Optionally select _Use this as the default and do not ask again_ to skip this question the next time you start the product.
+Confirm with btn:[OK].
+
+image::{imgsdir}/product-workspace.png[]
+
+On first startup, MIDS shows a _Welcome Screen_.
+You may always re-open it by choosing the menu:Help[Welcome] menu.
+
+Click the btn:[Hide] button to access the regular workbench.
+
+image::{imgsdir}/welcome-screen.png[]
+
+The welcome screen provides easy access to key contents of the documentation:
+
+Overview::
+    Learn about basic Eclipse workbench concepts and access the complete MIDS User Guide.
+
+What's New::
+    Discover major new features of this Eclipse release and read the <<release-notes, MIDS Release Notes>>.
+
+Memory configuration::
+    MIDS is distributed with a 'max heap size' configuration of `-Xmx12g` for 12 GB.
+    On some systems this may leave little memory for other processes, or more memory may be available.
+    For these cases it is advised to modify this configuration in `mids.ini`.
+    `mids.ini` can be edited with any text-editor.
+    This configuration also applies to the command line scripts.
+
+== Legal
+
+The material in this documentation is Copyright (c) 2018-2023 TNO and Contributors to the GitHub community.
+
+*License*
+
+MIT License
+
+Copyright (c) 2023 TNO and Contributors to the GitHub community
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

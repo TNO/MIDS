@@ -32,15 +32,6 @@ include::introduction-tool.adoc[]
 
 <<<
 
-[[install]]
-== Installation
-
-include::installation.adoc[]
-
-include::update.adoc[]
-
-<<<
-
 include::importing-a-measurement.adoc[]
 
 <<<
