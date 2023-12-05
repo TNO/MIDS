@@ -142,6 +142,18 @@
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
+        name="org.eclipse.debug.ui">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.debug.ui/Console.highWaterMark"
+          value="256008000"/>
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.debug.ui/Console.lowWaterMark"
+          value="256000000"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
         name="org.eclipse.jdt.core">
       <setupTask
           xsi:type="setup:PreferenceTask"
@@ -186,6 +198,18 @@
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
+        name="org.eclipse.ui">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.ui/defaultPerspectiveId"
+          value="org.eclipse.jdt.ui.JavaPerspective"/>
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.ui/SHOW_MEMORY_MONITOR"
+          value="true"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
         name="org.eclipse.ui.editors">
       <setupTask
           xsi:type="setup:PreferenceTask"
@@ -221,11 +245,11 @@
           value="true"/>
       <setupTask
           xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui.editors/spellingEnabled"
+          key="/instance/org.eclipse.ui.editors/spacesForTabs"
           value="true"/>
       <setupTask
           xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui.editors/spacesForTabs"
+          key="/instance/org.eclipse.ui.editors/spellingEnabled"
           value="true"/>
       <setupTask
           xsi:type="setup:PreferenceTask"
@@ -238,7 +262,7 @@
       <setupTask
           xsi:type="setup:PreferenceTask"
           key="/instance/org.eclipse.ui.ide/WORKSPACE_NAME"
-          value="${scope.project.label} - ${scope.project.stream.name}"/>
+          value="${scope.project.label} development"/>
       <setupTask
           xsi:type="setup:PreferenceTask"
           key="/instance/org.eclipse.ui.ide/EXIT_PROMPT_ON_CLOSE_LAST_WINDOW"
@@ -289,12 +313,20 @@
         name="org.eclipse.wst.xml.core">
       <setupTask
           xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.wst.xml.core/formatCommentJoinLines"
+          value="false"/>
+      <setupTask
+          xsi:type="setup:PreferenceTask"
           key="/instance/org.eclipse.wst.xml.core/indentationChar"
           value="space"/>
       <setupTask
           xsi:type="setup:PreferenceTask"
           key="/instance/org.eclipse.wst.xml.core/indentationSize"
-          value="2"/>
+          value="4"/>
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.wst.xml.core/lineWidth"
+          value="120"/>
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
@@ -402,11 +434,11 @@
         </detail>
         <detail
             key="generateImplicitUnits">
-          <value>false</value>
+          <value>true</value>
         </detail>
         <detail
             key="minimizeImplicitUnits">
-          <value>false</value>
+          <value>true</value>
         </detail>
         <detail
             key="includeMode">
@@ -542,5 +574,5 @@
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
       href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
-  <description>Model Inference and Differencing Suite</description>
+  <description>Model Inference and Differencing Suite (MIDS)</description>
 </setup:Project>
