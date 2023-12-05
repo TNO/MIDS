@@ -1,2 +1,2 @@
 @echo off
-%~dp0/../eclipsec.exe -application nl.tno.mids.cmi.CmiApplication -consoleLog -nosplash %*
+%~dp0/../midsc.exe -application nl.tno.mids.cmi.CmiApplication -consoleLog -nosplash %*

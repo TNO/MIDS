@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 case "$OSTYPE" in
-  linux*) ECLIPSE_PATH=$(dirname -- "$(realpath -- "$BASH_SOURCE")")/../eclipse ;;
-  msys* | cygwin*) ECLIPSE_PATH=$(dirname -- "$(realpath -- "$BASH_SOURCE")")/../eclipsec.exe ;;
+  linux*) ECLIPSE_PATH=$(dirname -- "$(realpath -- "$BASH_SOURCE")")/../mids ;;
+  msys* | cygwin*) ECLIPSE_PATH=$(dirname -- "$(realpath -- "$BASH_SOURCE")")/../midsc.exe ;;
   *) echo "Operating system not supported"
      return 1 ;;
 esac

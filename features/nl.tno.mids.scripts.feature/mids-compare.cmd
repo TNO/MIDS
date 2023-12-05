@@ -1,2 +1,2 @@
 @echo off
-%~dp0/../eclipsec.exe -application nl.tno.mids.compare.MidsCompareApplication -consoleLog -nosplash %*
+%~dp0/../midsc.exe -application nl.tno.mids.compare.MidsCompareApplication -consoleLog -nosplash %*
