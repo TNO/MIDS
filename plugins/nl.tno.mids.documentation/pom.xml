@@ -23,55 +23,40 @@ SPDX-License-Identifier: MIT
   <artifactId>nl.tno.mids.documentation</artifactId>
   <packaging>eclipse-plugin</packaging>
 
-  <properties>
-    <!-- By default deployment is skipped, but documentation should be deployed. -->
-    <maven.deploy.skip>false</maven.deploy.skip>
-  </properties>
-
   <!-- This plugin contains all user documentation, but only packages the 
     eclipse help documentation. -->
   <!-- The reason for this is that we want to share documentation and the 
     version of this plugin needs to be updated also if the shared documentation 
     changes -->
   <build>
-    <defaultGoal>package</defaultGoal>
     <plugins>
       <plugin>
         <groupId>org.asciidoctor</groupId>
         <artifactId>asciidoctor-maven-plugin</artifactId>
         <configuration>
-          <!-- Additional requirements. -->
-          <requires>
-            <require>asciidoctor-diagram</require>
-          </requires>
 
           <!-- Attributes common to all output formats. -->
           <sourceDirectory>adoc</sourceDirectory>
-          <sourceDocumentName>_main.adoc</sourceDocumentName>
+          <sourceDocumentName>index.adoc</sourceDocumentName>
           <attributes>
-            <asciimath />
-            <attribute-missing>error</attribute-missing>
-            <attribute-undefined>error</attribute-undefined>
             <source-highlighter>coderay</source-highlighter>
             <coderay-css>style</coderay-css>
-            <revnumber>${qualifiedVersion}</revnumber>
-            <last-update-label>false</last-update-label>
             <doctype>book</doctype>
             <icons>font</icons>
             <sectnums />
           </attributes>
         </configuration>
 
-        <!-- Rendering the Eclipse help pages. -->
+        <!-- Render the Eclipse help pages. -->
         <executions>
           <execution>
-            <id>eclipse-help-to-html</id>
+            <id>generate-eclipse-help</id>
             <phase>prepare-package</phase>
             <goals>
               <goal>process-asciidoc</goal>
             </goals>
             <configuration>
-              <outputFile>${project.build.directory}/eclipse-help/mids.html</outputFile>
+              <outputDirectory>${project.build.directory}/eclipse-help</outputDirectory>
               <backend>html5</backend>
               <attributes>
                 <imagesdir>../..</imagesdir>
@@ -82,15 +67,15 @@ SPDX-License-Identifier: MIT
             </configuration>
           </execution>
 
-          <!-- Rendering the user guide. -->
+          <!-- Render the user guide as PDF. -->
           <execution>
-            <id>user-guide-to-pdf</id>
+            <id>generate-pdf</id>
             <phase>prepare-package</phase>
             <goals>
               <goal>process-asciidoc</goal>
             </goals>
             <configuration>
-              <outputFile>${project.build.directory}/user-guide/mids-user-guide.pdf</outputFile>
+              <outputFile>${project.build.directory}/website/mids-user-guide.pdf</outputFile>
               <backend>pdf</backend>
               <attributes>
                 <imgsdir>${basedir}/images</imgsdir>
@@ -103,15 +88,15 @@ SPDX-License-Identifier: MIT
             </configuration>
           </execution>
 
-          <!-- Rendering the user guide web. -->
+          <!-- Render the website. -->
           <execution>
-            <id>user-guide-to-web</id>
+            <id>generate-website</id>
             <phase>prepare-package</phase>
             <goals>
               <goal>process-asciidoc</goal>
             </goals>
             <configuration>
-              <outputFile>${project.build.directory}/user-guide/index.html</outputFile>
+              <outputDirectory>${project.build.directory}/website</outputDirectory>
               <backend>html5</backend>
               <attributes>
                 <imagesdir>../..</imagesdir>
@@ -122,11 +107,18 @@ SPDX-License-Identifier: MIT
                 <user-guide-html />
                 <user-guide-web />
               </attributes>
+              <resources>
+                <resource>
+                  <directory>${basedir}/images</directory>
+                  <targetPath>images</targetPath>
+                </resource>
+              </resources>
             </configuration>
           </execution>
         </executions>
       </plugin>
 
+      <!-- Generate Eclipse Help TOC. -->
       <plugin>
         <groupId>com.bsiag.geneclipsetoc</groupId>
         <artifactId>geneclipsetoc-maven-plugin</artifactId>
@@ -140,14 +132,14 @@ SPDX-License-Identifier: MIT
               <outputTocFile>${project.build.directory}/eclipse-help/toc.xml</outputTocFile>
               <sourceFolder>${basedir}</sourceFolder>
               <pages>
-                <page>target/eclipse-help/mids.html</page>
+                <page>target/eclipse-help/index.html</page>
               </pages>
             </configuration>
           </execution>
         </executions>
       </plugin>
 
-      <!-- Only package the eclipse help contents. -->
+      <!-- Package the eclipse help contents. -->
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-packaging-plugin</artifactId>
@@ -155,7 +147,7 @@ SPDX-License-Identifier: MIT
         <configuration>
           <additionalFileSets>
             <fileSet>
-              <!-- Putting it in the same dir within the jar ensures us that 
+              <!-- Putting it in the same dir within the jar ensures us that
                 doc will work in runtime instance and RCP. -->
               <prefix>target/eclipse-help/</prefix>
               <directory>${project.build.directory}/eclipse-help/</directory>
@@ -167,11 +159,12 @@ SPDX-License-Identifier: MIT
         </configuration>
       </plugin>
 
+      <!-- Package the website. -->
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <executions>
           <execution>
-            <id>user-guide-web-zip</id>
+            <id>package-website</id>
             <phase>package</phase>
             <goals>
               <goal>single</goal>

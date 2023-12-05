@@ -10,7 +10,7 @@
 
 include::_initCommon.adoc[]
 
-// Enable custom style in _main-docinfo.html
+// Enable custom style in _index-docinfo.html
 :docinfo:
 
 = MIDS User Guide
