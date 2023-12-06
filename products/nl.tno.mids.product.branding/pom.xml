@@ -46,7 +46,7 @@ SPDX-License-Identifier: MIT
                         <include>plugin.properties</include>
                     </includes>
                     <token>Version: dev</token>
-                    <value>Version: ${escet.version.enduser}</value>
+                    <value>Version: ${mids.version.enduser}</value>
                 </configuration>
             </plugin>
 
