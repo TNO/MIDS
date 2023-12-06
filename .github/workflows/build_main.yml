@@ -47,7 +47,7 @@ jobs:
         sudo apt-get install -y mcrl2
     - name: Build with Maven
       run: mvn verify --batch-mode --update-snapshots --fail-at-end --file pom.xml -Dmids.version.qualifier=$(./releng/versionQualifier.sh)
-    - name: Attach Test Report
+    - name: Attach test report
       if: success() || failure()
       uses: scacap/action-surefire-report@v1
     - name: Attach website
