@@ -81,7 +81,7 @@ MIDS {MIDS-version-enduser} is available as an Eclipse P2 update site:
 
 `\https://tno.github.io/MIDS/update-site/{mids-version-enduser}/`
 
-.Dependencies
+== Dependencies
 
 Install the following dependencies that are required by MIDS:
 
@@ -101,7 +101,7 @@ Because these models use specific extensions to GraphML, the intended tool to di
 yEd can be downloaded at link:https://www.yworks.com/products/yed[].
 After yEd has been installed, GraphML models should automatically open with yEd.
 
-.First use of MIDS
+== First use of MIDS
 
 After starting the MIDS IDE, which is based on the Eclipse IDE, you'll be asked for a workspace location.
 Choose a directory.
