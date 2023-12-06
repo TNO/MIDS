@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>nl.tno.mids</groupId>
+        <artifactId>nl.tno.mids.root</artifactId>
+        <version>0.9.0-SNAPSHOT</version>
+        <relativePath>../../</relativePath>
+    </parent>
+
+    <artifactId>nl.tno.mids.product.branding</artifactId>
+    <packaging>eclipse-plugin</packaging>
+
+    <build>
+        <plugins>
+            <!-- Replace versions. -->
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <version>1.5.3</version>
+                <executions>
+                    <execution>
+                        <id>replace-versions</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <basedir>${project.basedir}</basedir>
+                    <outputDir>target/files-with-replacements/</outputDir>
+                    <includes>
+                        <include>about.properties</include>
+                        <include>plugin.properties</include>
+                    </includes>
+                    <token>Version: dev</token>
+                    <value>Version: ${escet.version.enduser}</value>
+                </configuration>
+            </plugin>
+
+            <!-- Include files with replacements. -->
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-packaging-plugin</artifactId>
+                <configuration>
+                    <additionalFileSets>
+                        <fileSet>
+                            <directory>${project.build.directory}/files-with-replacements/</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </fileSet>
+                    </additionalFileSets>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

@@ -22,7 +22,7 @@ SPDX-License-Identifier: MIT
          </property>
          <property
                name="aboutText"
-               value="Model Inference and Differencing Suite">
+               value="%aboutText">
          </property>
          <property
                name="introTitle"
@@ -51,6 +51,14 @@ SPDX-License-Identifier: MIT
          <property
                name="introBrandingImage"
                value="product:images/intro-mids-bw.png">
+         </property>
+          <property
+               name="introBrandingImageText"
+               value="MIDS">
+         </property>
+         <property
+               name="introDescription-root"
+               value="Welcome to MIDS">
          </property>
          <property
                name="preferenceCustomization"
