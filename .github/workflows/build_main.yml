@@ -54,5 +54,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: MIDS-website
-        path: releng/nl.tno.mids.website/target/website
+        path: releng/nl.tno.mids.releng.website/target/website
         retention-days: 5

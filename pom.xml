@@ -416,7 +416,7 @@ SPDX-License-Identifier: MIT
                         <configuration>
                             <additionalFileSets>
                                 <fileSet>
-                                    <directory>${session.executionRootDirectory}/releng/nl.tno.mids.branding</directory>
+                                    <directory>${session.executionRootDirectory}/releng/nl.tno.mids.releng.branding</directory>
                                     <includes>
                                         <include>about.html</include>
                                     </includes>
@@ -434,7 +434,7 @@ SPDX-License-Identifier: MIT
                             <configuration>
                                 <additionalFileSets>
                                     <fileSet>
-                                        <directory>${session.executionRootDirectory}/releng/nl.tno.mids.branding</directory>
+                                        <directory>${session.executionRootDirectory}/releng/nl.tno.mids.releng.branding</directory>
                                         <includes>
                                             <include>about.html</include>
                                         </includes>

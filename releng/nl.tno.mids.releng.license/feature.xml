@@ -9,11 +9,11 @@ https://opensource.org/licenses/MIT
 SPDX-License-Identifier: MIT
 -->
 <feature
-      id="nl.tno.mids.license"
+      id="nl.tno.mids.releng.license"
       label="MIDS License"
       version="0.9.0.qualifier"
       provider-name="%providerName"
-      plugin="nl.tno.mids.branding">
+      plugin="nl.tno.mids.releng.branding">
 
    <copyright>
       %copyright

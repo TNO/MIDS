@@ -55,4 +55,4 @@ jobs:
       with:
         files: |
           products/nl.tno.mids.product/target/products/mids-*.zip
-          releng/nl.tno.mids.website/target/mids-*.zip
+          releng/nl.tno.mids.releng.website/target/mids-*.zip

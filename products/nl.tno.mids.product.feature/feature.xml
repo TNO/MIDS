@@ -14,7 +14,7 @@ SPDX-License-Identifier: MIT
       version="0.9.0.qualifier"
       provider-name="TNO"
       plugin="nl.tno.mids.product.branding"
-      license-feature="nl.tno.mids.license"
+      license-feature="nl.tno.mids.releng.license"
       license-feature-version="0.0.0">
 
    <description>

@@ -13,7 +13,7 @@ SPDX-License-Identifier: MIT
       label="MIDS Feature"
       version="0.9.0.qualifier"
       provider-name="TNO"
-      license-feature="nl.tno.mids.license"
+      license-feature="nl.tno.mids.releng.license"
       license-feature-version="0.0.0">
 
    <description>
