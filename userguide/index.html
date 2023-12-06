@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<title>MIDS User Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:bold}
+abbr{font-size:.9em}
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+dfn{font-style:italic}
+hr{height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,::before,::after{box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details{margin-left:1.25rem}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
+ul.checklist>li>p:first-child{margin-left:-1em}
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]{border-bottom:1px dotted}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--
+Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+
+<style>
+.menu, .submenu, .menuitem, .menuref {
+    background-color: Menu;
+}
+
+.button {
+    border: 1px solid ButtonFace;
+    /*
+    Styling too similar to a real button is considered bad practice, see https://github.com/asciidoctor/asciidoctor/issues/1881#issuecomment-250702085
+    border: 2px outset ButtonFace;
+    background-color: ButtonFace;
+    */
+    padding-left: 0.5ex;
+    padding-right: 0.5ex;
+    font-weight: normal;
+    font-family: "Segoe UI","Open Sans","DejaVu Sans",sans-serif;
+    white-space: nowrap;
+}
+.button:before {
+    content: none !important;
+}
+.button:after {
+    content: none !important;
+}
+</style>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>MIDS User Guide</h1>
+<div class="details">
+<span id="revnumber">version v0.9-RC3</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#introduction">1. Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#mids-concepts">1.1. MIDS concepts</a></li>
+<li><a href="#mids-tool">1.2. MIDS tool</a></li>
+</ul>
+</li>
+<li><a href="#import">2. Importing a measurement</a></li>
+<li><a href="#cmi">3. Constructive Model Inference</a>
+<ul class="sectlevel2">
+<li><a href="#event-naming-scheme">3.1. Event naming scheme</a></li>
+<li><a href="#inferring-models">3.2. Inferring models</a></li>
+<li><a href="#model-inference-in-the-mids-ui">3.3. Model inference in the MIDS UI</a></li>
+<li><a href="#model-inference-report">3.4. Model inference report</a></li>
+<li><a href="#repeat-inference-process">3.5. Repeat inference process</a></li>
+</ul>
+</li>
+<li><a href="#change-impact-analysis">4. Change impact analysis</a>
+<ul class="sectlevel2">
+<li><a href="#preparing-for-comparison">4.1. Preparing for comparison</a></li>
+<li><a href="#starting-a-comparison">4.2. Starting a comparison</a>
+<ul class="sectlevel3">
+<li><a href="#comparison-in-the-mids-ui">4.2.1. Comparison in the MIDS UI</a></li>
+</ul>
+</li>
+<li><a href="#compare-output">4.3. Compare output</a>
+<ul class="sectlevel3">
+<li><a href="#level-1-model-set-variants">4.3.1. Level 1: Model set variants</a></li>
+<li><a href="#level-2-model-set-variant-relations">4.3.2. Level 2: Model set variant relations</a></li>
+<li><a href="#level-3-model-set-variant-differences">4.3.3. Level 3: Model set variant differences</a></li>
+<li><a href="#level-4-model-variants">4.3.4. Level 4: Model variants</a></li>
+<li><a href="#level-5-model-variant-relations">4.3.5. Level 5: Model variant relations</a></li>
+<li><a href="#level-6-model-variant-differences">4.3.6. Level 6: Model variant differences</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#release-notes">5. Release Notes</a>
+<ul class="sectlevel2">
+<li><a href="#mids-v0-9">5.1. MIDS v0.9</a></li>
+<li><a href="#mids-v0-1-to-v0-8">5.2. MIDS v0.1 to v0.8</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Model Inference and Differencing Suite (MIDS) can be used to infer software behavior models from existing software components.
+The models provide insight into the current software behavior.
+They can also be used to bootstrap the introduction of Model-Driven Engineering (MDE), reducing the need for laborious and error-prone manual modelling.
+Furthermore, the software behavior (models) of different software versions can be compared to find differences, detect regressions and reduce risks for software changes, such as patches and redesigns.
+MIDS allows performing all this in a single integrated environment.
+The ultimate goal is to improve the efficiency of software development and re-engineering, and reduce risks for software evolution.</p>
+</div>
+<div class="paragraph">
+<p>MIDS can be downloaded at <a href="https://tno.github.io/MIDS/" class="bare" target="_blank" rel="noopener">https://tno.github.io/MIDS/</a>.</p>
+</div>
+<div class="paragraph">
+<p>The documentation in this user manual is split into several chapters, together explaining how to work with MIDS:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#mids-concepts">MIDS concepts</a></dt>
+<dd>
+<p>Introduction to the concepts that are used within MIDS and a first overview of the tool.</p>
+</dd>
+<dt class="hdlist1"><a href="#import">Importing a measurement</a></dt>
+<dd>
+<p>Discusses Timed Message Sequence Charts (TMSCs), the input required for MIDS.</p>
+</dd>
+<dt class="hdlist1"><a href="#cmi">Constructive Model Inference</a></dt>
+<dd>
+<p>Discusses Constructive Model Inference (CMI) to infer software behavior (models).</p>
+</dd>
+<dt class="hdlist1"><a href="#change-impact-analysis">Change impact analysis</a></dt>
+<dd>
+<p>Discusses change impact analysis by comparing software behaviors of different software versions.</p>
+</dd>
+<dt class="hdlist1"><a href="#release-notes">Release Notes</a></dt>
+<dd>
+<p>The release notes of the various MIDS releases.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The User Guide can also be downloaded as a PDF from <a href="mids-user-guide.pdf" target="_blank" rel="noopener">here</a>.
+</td>
+</tr>
+</table>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="mids-concepts"><a class="anchor" href="#mids-concepts"></a>1.1. MIDS concepts</h3>
+<div class="paragraph">
+<p>Many complex cyber-physical systems have software with a component-based service-oriented architecture.
+Together the components implement the full functionality of the system.
+Some components are services that provide a service to one or more other components.
+The different components are connected through interfaces, over which they communicate which each other.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/concepts-components-interfaces.png" alt="concepts components interfaces">
+</div>
+</div>
+<div class="paragraph">
+<p>To fully realize the vision of a component-based architecture, clear contracts for the interfaces between components must be established.
+The contracts typically consist of several parts.
+The part that is commonly available is the syntax of the interactions, the function or method signatures, including names, arguments and types.
+This is often specified in e.g. header files (such as for C/C++) or in an interface description language (IDL).
+However, the behavioral protocol of allowed functional interactions is just as important, and is often not available.
+The protocol can be extended to include data relations (the effect of function parameters and return values).
+Finally, other extensions such as timing and resource usage can be included, to completely specify a contract.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/concepts-components-contract.png" alt="concepts components contract">
+</div>
+</div>
+<div class="paragraph">
+<p>Using behavioral models of the components, the behavior of different components can be analyzed, compared, optimized, etc.
+Since strict interfaces are defined, the environment of the component can be abstracted away.
+Analysis can then be restricted to the externally observable behavior of the component over the interfaces via which it communicates.
+By using a separate model for each component, the behavior of each component can be analyzed and qualified in isolation.
+This compositionality allows individual teams within a company to work on a single component, without the need to have models of all other components.
+Also, compositionality makes it feasible to check certain properties, for which it is not computationally infeasible to check them on a whole system at once.
+By restricting analysis to the behavior of the component over the interfaces via which it communicates, also (many of the) internal details of the implementation of the component can be abstracted away.</p>
+</div>
+<div class="paragraph">
+<p>The software for components can be developed using Model-Based Engineering (MBE), also called Model-Driven Engineering (MDE).
+For components developed using formal MDE tooling, interface models are available that formally describe the protocol of the interface, to which clients and servers must adhere.
+Design models may also be available that formally define the implementation (or realization) of the component, including all internal details.
+However, in most companies, not all components are not (yet) developed using the MDE methodology.
+To be able to analyze components developed using traditional software engineering methodologies, models must be obtained for the behavior of such components.</p>
+</div>
+<div class="paragraph">
+<p>The vision of MIDS is to provide an environment that facilitates (software) domain experts to obtain such models, and work with them.
+More concretely, MIDS allows to automatically infer models from existing software, using <a href="#cmi">Constructive Model Inference</a> (CMI).
+CMI uses dynamic information obtained from a running system, in the form of execution traces.
+By combining resulting behavioral models, as well as by injecting domain knowledge, a more complete behavioral model can be obtained.</p>
+</div>
+<div class="paragraph">
+<p>The analyses that can be performed on the behavioral models can be applied for various uses, including but not limited to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Legacy replacement (or 'drop-in' replacement), where the implementation of a component is replaced by a new implementation.
+The new implementation must be compatible with the legacy implementation, and must still communicate with its clients and servers in a proper way.
+The model can also be used to compare the behavior of the legacy and new implementations, to see whether or not they have the same behavior, and if not, where they differ.
+This helps to reduce risks for redesigns.</p>
+</li>
+<li>
+<p>A behavioral model of an existing system can give insight into the normal and abnormal behavior of a component.</p>
+</li>
+<li>
+<p>The software before and after a software change (e.g. patch, redesign) can be compared to ensure only the expected changes were made and no regressions were introduced.
+This reduces risks for software changes.</p>
+</li>
+<li>
+<p>Information on behavior observed during tests can be compared against behavior observed during production, to find out whether all production behavior is covered by tests.
+In case not all production behavior is covered by tests, the information can help to provide information about what tests to add.</p>
+</li>
+<li>
+<p>Information on behavior exposed by a component can be compared against behavior observed during test or production runs, to see what implemented behavior is never used during testing or in practice.</p>
+</li>
+<li>
+<p>Erroneous behavior (e.g. a failing test case) can be compared with correct behavior (e.g. preceding successful runs of the same test suite), to determine where exactly deviations occur, to analyze regressions and flaky tests.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mids-tool"><a class="anchor" href="#mids-tool"></a>1.2. MIDS tool</h3>
+<div class="paragraph">
+<p>The MIDS IDE is an Integrated Development Environment (IDE) based on the <a href="http://eclipse.org" target="_blank" rel="noopener">Eclipse</a> IDE.
+The MIDS IDE also comes bundled with command line scripts.
+For more information, as well as download links, see <a href="https://tno.github.io/MIDS/" class="bare" target="_blank" rel="noopener">https://tno.github.io/MIDS/</a>.</p>
+</div>
+<div class="paragraph">
+<p>Within the MIDS IDE, the files to work with are part of a project.
+The available projects are shown in the <em>Project Explorer</em>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+MIDS provides its own Eclipse perspective configuring all recommended views to be visible.
+This perspective is set by default, but can also be manually set as described in the <a href="http://help.eclipse.org/2021-12/topic/org.eclipse.platform.doc.user/tasks/tasks-9f.htm" target="_blank" rel="noopener">Eclipse documentation</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/tool-project-explorer.png" alt="tool project explorer">
+</div>
+</div>
+<div class="paragraph">
+<p>Each project is simply a directory on the hard disk, and can be expanded to show the files and directories it contains.</p>
+</div>
+<div class="paragraph">
+<p>One way to work with files and directories is to right click on them, showing a menu with various <em>commands</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/tool-file-popup-menu.png" alt="tool file popup menu">
+</div>
+</div>
+<div class="paragraph">
+<p>For instance, it is possible to remove or rename a file, create a new file in a directory, etc.
+Most of this is standard Eclipse functionality.
+MIDS does provide some additional commands, specific to the functionality it provides.
+Such commands are explained in more detail in other parts of this user guide.</p>
+</div>
+<div class="paragraph">
+<p>Another way to work with files is to open them in an <em>editor</em>.
+By double clicking a file, it is opened in the default editor that is associated with that file.
+The specific functionality available in MIDS is explained in other parts of this user guide.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="import"><a class="anchor" href="#import"></a>2. Importing a measurement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MIDS provides <a href="#cmi">Constructive Model Inference</a> to automatically infer models from execution traces.
+CMI works on execution traces, in the form of Timed Message Sequence Charts (TMSCs).
+The details of how to produce a TMSC from your company&#8217;s proprietary logging format, are beyond the scope of this documentation.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cmi"><a class="anchor" href="#cmi"></a>3. Constructive Model Inference</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Passive learning allows inferring models from (execution) traces.
+If execution traces are available, access to the actual system is not required.
+Since the inputs for passive learning are execution traces, the learned models are models of the executed behavior.
+To obtain a model of the complete behavior of a component or system, one needs traces that cover all different parts of the system behavior.
+For instance, one could combine traces from normal execution scenarios with traces from test cases that cover exceptional behavior.</p>
+</div>
+<div class="paragraph">
+<p>MIDS supports the Constructive Model Inference (CMI) method of learning models.
+Contrary to existing heuristic-based approaches, this method uses domain knowledge about the system, e.g. its architecture, communication patterns, middleware, deployment and conventions.
+This knowledge is used to interpret execution traces and construct models that capture one&#8217;s intuition of the system, and can be easily understood and relied upon, without configuring complex parameters.
+Models can be constructed at different levels of abstraction, e.g. system, component, and interface models.</p>
+</div>
+<div class="paragraph">
+<p>The inferred models provide valuable insight into the current software behavior.
+They can can be used to bootstrap the transition to Model-Driven Engineering (MDE).
+The insights they provide are also useful when making changes to the software, as it is difficult to make changes to software without understand how it behaves.
+Furthermore, after you have made your changes, the models can be automatically compared, allowing for <a href="#change-impact-analysis">change impact analysis</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="event-naming-scheme"><a class="anchor" href="#event-naming-scheme"></a>3.1. Event naming scheme</h3>
+<div class="paragraph">
+<p>For every start/end of a function call on a component, we have an event in our models.
+The events are named using our naming scheme.
+The following is an overview of the scheme:</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Component identity</th>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Type of call/handler</th>
+<th class="tableblock halign-left valign-top">Return</th>
+<th class="tableblock halign-left valign-top">Other side</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;component identity&gt; <code>.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;interface name&gt; <code>__</code> &lt;function name&gt; <code>_</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_blk</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em class="silver">none</em> (function start)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em class="silver">none</em> (internal event)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2" rowspan="19"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_lib</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_ret</code> (function end)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>__</code> &lt;component identity&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_req</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2" rowspan="18"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_wait</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_fcn</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_fcncb</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_sync</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_async</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_arslt</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_evtsub</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_evtsubh</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_evtunsub</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_evtunsubh</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_evt</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_evtcb</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_trig</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_trigh</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_call</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_handler</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_unkn</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The name always starts with the name of the first component involved.
+This is the component that declares the event. It represents one of two options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The component on which the internal event occurs.</p>
+</li>
+<li>
+<p>The source component of a communicating event.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The name of the interface and function are added to uniquely know the identity of the software function.
+They are separated by a double underscore.
+The type of call or handler is added, after an additional underscore to separate it from the function name.
+The following options are present:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>_blk</code>
+</td>
+<td class="hdlist2">
+<p>A blocking call.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_lib</code>
+</td>
+<td class="hdlist2">
+<p>A library call.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_req</code>
+</td>
+<td class="hdlist2">
+<p>A request call.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_wait</code>
+</td>
+<td class="hdlist2">
+<p>A wait call.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_fcn</code>
+</td>
+<td class="hdlist2">
+<p>An FCN call.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_fcncb</code>
+</td>
+<td class="hdlist2">
+<p>An FCN callback handler.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_sync</code>
+</td>
+<td class="hdlist2">
+<p>A synchronous handler.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_async</code>
+</td>
+<td class="hdlist2">
+<p>An asynchronous handler.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_arslt</code>
+</td>
+<td class="hdlist2">
+<p>An asynchronous result call for an asynchronous handler.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_evtsub</code>
+</td>
+<td class="hdlist2">
+<p>An event subscription call.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_evtsubh</code>
+</td>
+<td class="hdlist2">
+<p>An event subscription handler.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_evtunsub</code>
+</td>
+<td class="hdlist2">
+<p>An event unsubscription call.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_evtunsubh</code>
+</td>
+<td class="hdlist2">
+<p>An event unsubscription handler.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_evt</code>
+</td>
+<td class="hdlist2">
+<p>An event raise call.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_evtcb</code>
+</td>
+<td class="hdlist2">
+<p>An event callback handler.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_trig</code>
+</td>
+<td class="hdlist2">
+<p>A trigger call.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_trigh</code>
+</td>
+<td class="hdlist2">
+<p>A trigger handler.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_call</code>
+</td>
+<td class="hdlist2">
+<p>An abstract call.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_handler</code>
+</td>
+<td class="hdlist2">
+<p>An abstract handler.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>_unkn</code>
+</td>
+<td class="hdlist2">
+<p>An unknown call/handler, e.g. due to this host being untraced.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For every function call there is the start and end of that function call.
+The end of a function call gets an additional <code>_ret</code> (for &#8220;return&#8221;) added to its name.
+In case the event represents communication to another component, the following applies:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The type of the other side and <code>_ret</code> if applicable, are also added for the other side.</p>
+</li>
+<li>
+<p>The identity of the component on the other side is added, if it does not involve communication to itself (e.g. multiple servers deployed on a single OS process or thread).
+It is separated from the event type by a double underscore.</p>
+</li>
+<li>
+<p>If two runtime components (OS processes/threads) are involved, the order is chronological.
+That is, the first component starts the communication.
+The first type and <code>_ret</code> apply to that component.
+The second type and <code>_ret</code> apply to the receiving component, the second component identity is the receiving component.
+The name reads from left to right chronologically, as: &#8220;this component calls this function in this way and it is handled in this way by the other component&#8221;.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For two events connected by a dependency, the CIF event will be the same for both events, to ensure they synchronize.
+E.g. <code>Component1.SomeInterface__some_function__blk_sync__Component2</code>.</p>
+</div>
+<div class="paragraph">
+<p>For more information about the communication patterns, see <a href="https://doi.org/10.1007/978-3-031-19756-7_13">this scientific paper</a> (primarily Section 4.1).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="inferring-models"><a class="anchor" href="#inferring-models"></a>3.2. Inferring models</h3>
+<div class="paragraph">
+<p>In order to perform CMI, you can use the <code>mids-cmi</code> command-line tool.</p>
+</div>
+<div class="paragraph">
+<p>The CMI tool has a number of configurable options.
+The tool provides a list of available options if used with the <code>-h</code> or <code>-help</code> option.</p>
+</div>
+<div class="paragraph">
+<p>The first parameter configures which trace data is used to infer models.
+Providing the input path is required to perform CMI.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Input file (<code>-i</code> or <code>-input</code>)</dt>
+<dd>
+<p>Constructive Model Inference takes a <a href="#import">TMSC</a>, i.e. a <code>.tmscz</code> file, as input.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>This means the basic command to run the CMI tool is <code>mids-cmi -i some-folder/input.tmscz</code> or <code>mids-cmi -input some-folder/input.tmscz</code>.
+By default, the CMI tool will put the resulting models in a folder called <code>cmi</code> next to the input TMSC file.
+If such a folder does not exist, it will be created by the tool.</p>
+</div>
+<div class="paragraph">
+<p>To customize the CMI process and the output, a number of other options are available.
+The other available options are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Output folder (<code>-o</code> or <code>-output</code>)</dt>
+<dd>
+<p>The output of CMI is stored in the location specified.
+If the provided path does not describe an existing folder, a new folder will be created.
+Specify this option to override the default output folder location.</p>
+</dd>
+<dt class="hdlist1">Save yEd diagrams (<code>-y</code> or <code>-yed</code>)</dt>
+<dd>
+<p>By default, only CIF files are written for the inferred models.
+If the <em>Save yEd diagrams</em> option is enabled, in addition to CIF models, yEd visualizations of the final models are also generated.
+These can be used to inspect the models, to get insight into the software behavior.
+yEd can be downloaded at <a href="https://www.yworks.com/products/yed" class="bare">https://www.yworks.com/products/yed</a>.</p>
+</dd>
+<dt class="hdlist1">Infer protocol between two components (<code>-p</code> or <code>-protocol</code>)</dt>
+<dd>
+<p>The output of model inference is either component models or a single protocol model.
+By default, one or more component models are created.
+If this option is enabled, the output is instead a single protocol model representing communication between a pair of components.
+If protocol inference is chosen, two components have to be selected as communicating parties in the protocol.
+Components can be selected by providing the two component names as argument of the option, separated by a comma.
+Note that computing the protocol can be very memory-intensive and time-consuming.
+Protocol models are always prefix-closed.</p>
+</dd>
+<dt class="hdlist1">Additional protocol scope components (<code>-ps</code> or <code>-protocolscope</code>)</dt>
+<dd>
+<p>If the option to infer a protocol is chosen, extra context components can be added to the scope of the protocol computation, as a comma separated list of component names.
+These additional components will not be directly present in the final protocol, but will be taken into account to determine the allowed order of events in the protocol.
+Note that adding extra components increases the memory and time requirements of the computation.
+If component models are being inferred rather than a protocol, this option will be ignored.</p>
+</dd>
+<dt class="hdlist1">Do not convert events on untraced components to synchronous functions (<code>-u</code> or <code>-no-untraced-synchronous</code>)</dt>
+<dd>
+<p>By default for each component that is untraced, superfluous events and dependencies that link the start and end of a synchronous function are removed.
+This reduces the size of the models makes further analysis easier.
+If combining the dependency information to form a single event is undesired, this option can be used to disable it.</p>
+</dd>
+<dt class="hdlist1">Do not synchronize dependent (<code>-d</code> or <code>-no-sync-dependent</code>)</dt>
+<dd>
+<p>As part of the transformation of TMSC events to CIF events, the component initiating the event has to be identified.
+By default, for communicating events information from the source and target of the corresponding dependency is combined into a single CIF event.
+Otherwise, only local information is used for the CIF event.
+If this behavior is undesired, this option can be used to disable it.
+Note that unless you want to use explicit middleware models, disabling the synchronization is not recommended.</p>
+</dd>
+<dt class="hdlist1">Save single model (<code>-s</code> or <code>-single-model</code>)</dt>
+<dd>
+<p>By default, each component model created by Constructive Model Inference is stored in a separate CIF model.
+If this option is selected, a single CIF model containing all components is created instead.
+When inferring a protocol model rather than component models, this option is ignored.
+Additionally, if the option to generate yEd diagrams is enabled, this option has no effect on that, as always only a single diagram is constructed for all components.</p>
+</dd>
+<dt class="hdlist1">Component exclusion regex (<code>-ce</code> or <code>-component-exclusion</code>)</dt>
+<dt class="hdlist1">Component inclusion regex (<code>-ci</code> or <code>-component-inclusion</code>)</dt>
+<dd>
+<p>Filtering can be applied by including and/or excluding components based on their name.
+A filter consists of a Java regular expression provided as argument to the option, which will be matched against all component names.
+For a component exclusion filter, components matching the pattern will be rejected.
+For a component inclusion filter, components not matching the pattern will be rejected.
+Models for components removed by filtering are discarded and will not be processed further or stored.
+There can be at most one exclusion filter and one inclusion filter defined.</p>
+</dd>
+<dt class="hdlist1">Perform post-processing operation (<code>-c</code> or <code>-post-processing</code>)</dt>
+<dd>
+<p>Furthermore, post-processing operations can be applied to the inferred models.
+Each operation added will be applied to the models in the order they are listed on the command line.
+Each operation can require a certain precondition or result in a certain postcondition with regard to the existence or lack of data and/or tau events in the inferred models.
+If a precondition for an operation is not satisfied, the operation may fail, e.g. when an operation requires tau events to be present, but they are not present.
+Operations may also eliminate certain concepts automatically, if they don&#8217;t support them. E.g. data may be eliminated if an operation only works for models without data.
+Note that as part of post-processing the number of models may increase or decrease.</p>
+<div class="paragraph">
+<p>To add a post-processing operation, its name and any required arguments must be supplied.
+It is possible to add multiple operations by supplying the option multiple times.
+For most operations, it is possible to configure to which components they are applied with filtering.
+Filtering is defined by adding <code>&lt;filter-mode,filter-pattern&gt;</code> before the operation name.
+Filter mode has to be either <code>inclusion</code> or <code>exclusion</code>, and the <code>filter-pattern</code> has to be a Java regular expression for matching component names.
+During processing, each component name is matched against the <code>filter-pattern</code> provided.
+If the <code>filter-mode</code> is <code>inclusion</code>, the operation is applied to components that match the pattern, and not applied to those that do not.
+If the <code>filter-mode</code> is <code>exclusion</code>, the filtering is reversed.
+As a basic example, if the argument <code>ModifyRepetitions(data,0,0,false,0)</code> is supplied, the ModifyRepetitions operation is applied to all models with the provided arguments.
+If <code>&lt;inclusion,ABC.*&gt;ModifyRepetitions(data,0,0,false,0)</code> is supplied instead, the operation is only applied to the components with names that fit the pattern <code>ABC.*</code>, i.e. that start with <code>ABC</code>.
+In contrast, if <code>&lt;exclusion,ABC.*&gt;ModifyRepetitions(data,0,0,false,0)</code> is supplied, the operation is only applied to components with names that do not fit the pattern.</p>
+</div>
+<div class="paragraph">
+<p>The following post-processing operations are available:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">AddAsynchronousPatternConstraints</dt>
+<dd>
+<p>Add constraints that enforce that asynchronous replies happen after the corresponding request, and that each asynchronous request results in a corresponding reply before the same request is made again.
+Also allows such constraints to be visualized in the yEd diagrams.
+This operation requires no configuration.
+This operation can be selectively applied based on filtering.</p>
+</dd>
+<dt class="hdlist1">ExcludeInternalTransitions</dt>
+<dd>
+<p>Remove transitions from the models that do not represent a communication between two components.
+For the purpose of this transformation, events on transitions to and from the initial state (the start and end of service fragments) will always be considered communication.
+Note that this means transitions with those events will not be removed, even elsewhere in the state machine.
+This operation requires no configuration.
+This operation can be selectively applied based on filtering.</p>
+</dd>
+<dt class="hdlist1">FilterClientServerInteractions(<code>component1</code>, <code>component2</code>)</dt>
+<dd>
+<p>Remove all service fragments that are not involved in communication between two specified components.
+The operation has to be configured with two components, which should communicate for the output to be useful.
+This operation can <em>not</em> be selectively applied based on filtering.</p>
+</dd>
+<dt class="hdlist1">HideActions(<code>pattern</code>)</dt>
+<dd>
+<p>Remove all actions fitting a given Java regular expression pattern from the models.
+This operation has to be configured with a pattern to define actions that should be hidden.
+In order to keep models consistent, events on transitions to and from the initial state (the start and end of service fragments) will never be hidden.
+Note that this means transitions with those events will not be removed, even elsewhere in the state machine.
+This operation can be selectively applied based on filtering.</p>
+</dd>
+<dt class="hdlist1">InjectDomainKnowledge(<code>operator</code>, <code>model-path</code>)</dt>
+<dd>
+<p>Combine inferred models with a domain knowledge model.
+This operation can be configured by providing a path to the domain knowledge model, which must be a CIF model, and selecting the operator that will be used to add the domain knowledge to the inferred models.</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Injecting unsuitable domain knowledge can cause following operations to malfunction and fail.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The available operations are <code>intersection</code>, <code>union</code>, <code>difference-left</code>, <code>difference-right</code>, <code>exclusive-or</code> and <code>parallel-composition</code>.
+Suppose we have the domain knowledge model <code>/domain.cif</code>:</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>InjectDomainKnowledge(intersection,some-folder/domain.cif)</code> would compute the behavior present in both the CMI model and the domain knowledge model.</p>
+</li>
+<li>
+<p><code>InjectDomainKnowledge(union,some-folder/domain.cif)</code> would compute the behavior present in either the CMI model or the domain knowledge model, or in both.</p>
+</li>
+<li>
+<p><code>InjectDomainKnowledge(difference-left,some-folder/domain.cif)</code> would compute the behavior present in the domain knowledge model, but not in the CMI model.</p>
+</li>
+<li>
+<p><code>InjectDomainKnowledge(difference-right,some-folder/domain.cif)</code> would compute the behavior present in the CMI model, but not in the domain knowledge model.</p>
+</li>
+<li>
+<p><code>InjectDomainKnowledge(exclusive-or,some-folder/domain.cif)</code> would compute the behavior present in either the CMI model and the domain knowledge model, but not in both.</p>
+</li>
+<li>
+<p><code>InjectDomainKnowledge(parallel-composition,some-folder/domain.cif)</code> would compute the behavior created by executing the CMI model and the domain knowledge model in parallel, synchronizing on common labels.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This operation can be selectively applied based on filtering.</p>
+</div>
+</dd>
+<dt class="hdlist1">MergeComponents</dt>
+<dd>
+<p>Merge multiple runtime components, for instance multiple instances of the same executable, into a single runtime component.
+E.g. merge <code>SomeComponent1</code>, <code>SomeComponent2</code>, etc into <code>SomeComponent</code>, ignoring the details of what is handled by which instance of the component (e.g., OS process or thread).
+Variants of a component are considered part of the same instance, so e.g. <code>SomeComponent_1</code> and <code>SomeComponent_2</code> would be merged into <code>SomeComponent</code> as well.
+Additionally, untraced components are never merged with traced components.
+This operation has to be configured with a Java regular expression pattern to match component names of components that should be merged, and to determine the name of the merged component.
+For instance, <code>(?&lt;name&gt;\\w+XX)\\d+</code> will match components <code>abcXX1</code>, <code>abcXX2</code>, <code>defXX34</code>, <code>defXX71</code>, etc.
+And <code>abcXX1</code> and <code>abcXX2</code> will be merged to <code>abcXX</code>, while <code>defXX34</code> and <code>defXX71</code> will be merged to <code>defXX</code>.
+If filtering is used with this operation, only components included in the filtered models will be merged together.
+References to the merged components are updated in all models, even if they are not in the filtered set.</p>
+</dd>
+<dt class="hdlist1">MergeInterfaceClientsServers(<code>interface-name</code>, <code>merge-clients</code>, <code>merge-servers</code>)</dt>
+<dd>
+<p>Event names contain the identify of the client and server, as well as the client call type (blocking call, library call, FCN call, request/wait calls) and server handling type (synchronous, asynchronous).
+This can be useful to understand the communication between components.
+However, when comparing behavior, it may be useful to hide such details, and focus on the behavior of the component itself, rather than such details of the environment.
+This can reduce the number of (irrelevant) differences.</p>
+<div class="paragraph">
+<p>This transformation hides the client/server component identities, replacing them with the interface name, which then serves as the 'merged' single identity of the various clients/servers.
+It also hides the client call type and server handling type, replacing it with an abstract type (call, handler), which then serves as the 'merged' single type for all call/handler types.
+This transformation can be applied to either all interfaces or a specific one, and for communications with clients only, for communication with servers only, or for both.
+If an interface name is provided, only that interface will be merged.
+If the interface name is empty, all interfaces will be merged.
+The boolean options <code>merge-clients</code> and <code>merge-servers</code> enable or disable the merging of clients and servers respectively.
+So the operation configuration <code>MergeInterfaceClientsServers(ABC,true,false)</code> would merge clients of the <code>ABC</code> interface, while <code>MergeInterfaceClientsServers(ABC,false,true)</code> would merge the servers of the <code>ABC</code> interface.
+The configuration <code>MergeInterfaceClientsServers(,true,true)</code> merges all clients and servers for all interfaces.
+Given that certain details are abstracted away, the result of this transformation can no longer be used to compose component models and form a system model.
+This operation can be selectively applied based on filtering.</p>
+</div>
+</dd>
+<dt class="hdlist1">ModifyRepetitions(<code>mode</code>, <code>lower-threshold</code>, <code>upper-threshold</code>, <code>make-infinite</code>, <code>max-repeats</code>)</dt>
+<dd>
+<p>Detect repetitions in inferred models and modify their representations.
+This operation can be configured by selecting which repetitions it will apply to, and how each repetition will be processed.
+The <code>mode</code> determines how repetitions are encoded in the models, either using edges only (<code>plain</code>) or using variables and edges with guards and updates (<code>data</code>).
+Repetitions can be selected based on a minimum and maximum number of repetitions.
+If a threshold is set to 0, it will be ignored.
+Repetitions can be modified by changing the number of repetitions, either to infinite, by setting <code>make-infinite</code> to <code>true</code>, or limiting to a given maximum (<code>max-repeats</code>).
+Note that if <code>max-repeats</code> is 0, it will not be used as a limit, and if <code>make-infinite</code> is enabled, <code>max-repeats</code> must be 0.
+This operation can be selectively applied based on filtering.</p>
+</dd>
+<dt class="hdlist1">PrefixClose</dt>
+<dd>
+<p>Extend the language described by inferred models with all prefixes.
+This post-processing is required for change impact analysis based on the inferred models.
+This operation requires no configuration.
+This operation can be selectively applied based on filtering.</p>
+</dd>
+<dt class="hdlist1">RenameComponent(<code>old-name</code>, <code>new-name</code>)</dt>
+<dd>
+<p>Renames any component based on a specified old name and new name.
+This rename fails if it causes clashes with other existing component names.
+This operation can <em>not</em> be selectively applied based on filtering.</p>
+</dd>
+<dt class="hdlist1">RenameFunctions(<code>functionMappings</code>)</dt>
+<dd>
+<p>Renames functions based on a mapping of old names to new names.
+Function mappings have to be provided in the form <code>&lt;old-interface&gt;:&lt;old-function&gt;-&gt;&lt;new-interface&gt;:&lt;new-function&gt;</code>.
+For example, <code>OldInterface:old_function-&gt;NewInterface:new_function</code> renames the <code>old_function</code> function of the <code>OldInterface</code> interface to the <code>new_function</code> function of the <code>NewInterface</code> interface.
+Multiple function mappings can be provided, separated by either commas or newlines.
+Note that the operation does not check whether the new function name already exists.
+If multiple mappings are provided for the same function, only the first mapping will be applied.
+This operation can <em>not</em> be selectively applied based on filtering.</p>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1">Options file (<code>-f</code> or <code>-options-file</code>)</dt>
+<dd>
+<p>In addition to command line options, settings can be provided in an options file.
+An options file should be a text file contain one or more CMI options.
+Each option and each argument should be on a separate line.
+As an exception, the options file option itself will be ignored if used in an options file.
+At the end of each run, the CMI tool produces a <code>component-extraction-options.txt</code> file containing the settings for that run, which can be used to repeat the run.
+Option values defined on the command line take precedence over values defined in the options file.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Additionally, it is possible to configure the JVM used to run the tool by using the <code>-vmargs</code> option, followed by the desired JVM options.
+For example, the <code>-Xmx</code> option can be used to increase the available memory space, which may be needed when importing large datasets.
+By adding <code>-vmargs -Xmx20G</code> to the command line the memory the tool can use will be set to 20 gigabytes.
+JVM options can only be added on the command line, not as part of an options file.
+Additionally, any options after the <code>-vmargs</code> option will be interpreted as a JVM option, so they must be added at the end of the command line.
+For information on which JVM options are available, please consult the documentation of the JVM in question.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="model-inference-in-the-mids-ui"><a class="anchor" href="#model-inference-in-the-mids-ui"></a>3.3. Model inference in the MIDS UI</h3>
+<div class="paragraph">
+<p>It is possible to perform Constructive Model Inference in the MIDS UI for a TMSC, i.e. a <code>.tmscz</code> file, that is present in the workspace.
+Right click the TMSC file and choose <em>Construct CIF Models</em> and then <em>Construct component models</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/cmi-component-menu.png" alt="cmi component menu">
+</div>
+</div>
+<div class="paragraph">
+<p>The construction process can also be configured through the same options that are available for the command-line interface.
+These can be configured in the dialog that is shown.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/cmi-component-dialog.png" alt="cmi component dialog">
+</div>
+</div>
+<div class="paragraph">
+<p>A separate dialog is available to configure post-processing operations.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/cmi-dialog-postprocessing.png" alt="cmi dialog postprocessing">
+</div>
+</div>
+<div class="paragraph">
+<p>In case a sequence of operations is defined where the preconditions of an operation are not met, or one operation directly affects or removes features added by another, warnings will be given.
+Note that the warnings are computed statically, and since post-processing operations may be applied to only some of the components, some warnings may be false positive.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="model-inference-report"><a class="anchor" href="#model-inference-report"></a>3.4. Model inference report</h3>
+<div class="paragraph">
+<p>Constructive Model Inference produces a file <code>component_extraction_report.txt</code> containing a brief report of the model inference process.
+This file for example includes the running time of the model inference process.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="repeat-inference-process"><a class="anchor" href="#repeat-inference-process"></a>3.5. Repeat inference process</h3>
+<div class="paragraph">
+<p>Constructive Model Inference produces a <code>component-extraction-options.txt</code> file as part of its output.
+This file can be used to repeat the inference with the same settings.
+Right click the options file, select <em>Construct CIF models</em> and then choose <em>Construct component models</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/cmi-component-repeat.png" alt="cmi component repeat">
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="change-impact-analysis"><a class="anchor" href="#change-impact-analysis"></a>4. Change impact analysis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To reduce risks for software evolution it is important to understand (the impact of) software changes.
+By comparing the software behavior before and after a redesign or patch, one can classify these changes as expected (qualified) and unexpected (regression).
+This way, identified regressions can be addressed early, improving confidence in the new software, reducing risks.</p>
+</div>
+<div class="paragraph">
+<p>MIDS allows automatically comparing software behavior models.
+Starting at a high abstraction level, differences of interest can be inspected in more detail at lower abstraction levels, by moving through the six levels of the comparison results.
+Each step is supported by visualizations that allow engineers and architects to easily find (un)expected differences.</p>
+</div>
+<div class="paragraph">
+<p>MIDS can perform a behavioral comparison of multiple sets of models.
+For instance, a model set for behavior before a software change (e.g. redesign, patch) can be compared to a model set capturing the behavior after the software change.
+Another example is comparing the software behavior for difference products being produced during a single system execution.</p>
+</div>
+<div class="sect2">
+<h3 id="preparing-for-comparison"><a class="anchor" href="#preparing-for-comparison"></a>4.1. Preparing for comparison</h3>
+<div class="paragraph">
+<p>A set of models consists of one or more CIF models in a directory.
+Multiple directories, each being a model set, can be compared.</p>
+</div>
+<div class="paragraph">
+<p>The input models may contain (some) data depending on the model type, which is indicated by the <strong>Model type</strong> option as explained below in the next section.
+General CIF models (indicated by the <code>CIF</code> model type) are allowed to contain discrete variables.
+CMI models (indicated by the <code>CMI</code> model type) on the other hand may not contain any discrete variables other than the ones introduced by <code>ModifyRepetitions</code>.
+In particular this means that variables added by <code>AddAsynchronousPatternConstraints</code> post-processing are unsupported for CMI models.</p>
+</div>
+<div class="paragraph">
+<p>The name of a model set directory serves as the name of the model set.
+A directory can be renamed by right clicking on it and selecting <em>Refactor</em> and then <em>Rename&#8230;&#8203;</em>.
+Multiple directories can be given similar names by selecting all of them and choosing <em>Bulk Rename&#8230;&#8203;</em>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="starting-a-comparison"><a class="anchor" href="#starting-a-comparison"></a>4.2. Starting a comparison</h3>
+<div class="paragraph">
+<p>In order to perform a compare, you can use the <code>mids-compare</code> command-line tool.</p>
+</div>
+<div class="paragraph">
+<p>The compare tool has a number of configurable options.
+The tool provides a list of available options if used with the <code>-h</code> or <code>-help</code> option.</p>
+</div>
+<div class="paragraph">
+<p>The first parameter configures which data should be compared.
+Providing the input path is required for every compare tool run.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Input folder (<code>-i</code> or <code>-input</code>)</dt>
+<dd>
+<p>An input folder must be selected that contains the model sets to be compared.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>This means the basic command to run the compare tool is <code>mids-compare -i some-folder/input-data</code> or <code>mids-compare -input some-folder/input-data</code>.
+If the output folder of the tool is not configured, the folder <code>some-folder/output/</code> will be used to store the results of the comparison.
+This folder will be created if it does not already exist, and will be emptied if it does already exist.</p>
+</div>
+<div class="paragraph">
+<p>To customize the compare process and the output, a number of other options are available.
+The other available options are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Output folder (<code>-o</code> or <code>-output</code>)</dt>
+<dd>
+<p>An output folder can be selected that will contain the results of the comparison.
+Specify this option to override the default output folder location.
+It is not allowed to specify an output folder that is contained in the input folder.</p>
+</dd>
+<dt class="hdlist1">Model type (<code>-t</code> or <code>-type</code>)</dt>
+<dd>
+<p>The type of models that are taken as input for Change Impact Analysis.
+Available types that can be selected are <code>CMI</code> and <code>CIF</code>.
+By default the input is set to <code>CMI</code>, i.e. the models produced by Constructive Model Inference.
+However, any set of CIF models can be taken as input, including ones that are not produced by CMI.
+Select <code>CIF</code> as model type for this.
+The entire CIF specification is considered a single entity to compare against the other CIF models.
+There is currently no option to compare for instance each automaton separately.</p>
+</dd>
+<dt class="hdlist1">CMI compare mode (<code>-m</code> or <code>-mode</code>)</dt>
+<dd>
+<p>If the selected model type is <code>CMI</code>, the compare mode can be selected from <code>automatic</code>, <code>components</code>, <code>protocols</code> or <code>service-fragments</code>.
+By default automatic mode is used.
+Automatic mode compares service fragments of components, protocols, or entire components, depending on what is present.
+To compare components, the CMI option <em>Save single model</em> (<code>-s</code> or <code>-single-model</code>) should not be used, as comparing CIF models with multiple components is not supported.
+However, comparing service fragments from multiple components is supported.
+When a compare mode other than automatic is chosen, the input models will be compared according to the chosen mode if possible.
+If the selected model type is <code>CIF</code>, the value of this option will be ignored.</p>
+</dd>
+<dt class="hdlist1">Entity type (<code>-e</code> or <code>-entity-type</code>)</dt>
+<dd>
+<p>The type of entity that is represented by the models.
+This affects only how the entities are referenced in error messages and output files.
+The entity type can be provided as the name of a singular entity, or as the singular and the plural form separated by a comma.
+The tool assumes the provided entity type is lower case and will change the first character to upper case as needed.
+If the chosen entity type should always be written with an upper case first character, it should be provided as such.
+Additionally, if no plural is provided, <code>s</code> is appended to the singular form to create the plural.
+Both singular and plural names may contain any character except commas.
+For example, entity type can be configured as <code>component</code> or <code>entity,entities</code>.
+If no entity type is selected using this option, an entity type will be selected by the tool.
+When the model type is <code>CIF</code>, the entity type chosen is always <code>entity</code>.
+When the model type is <code>CMI</code>, the entity type corresponds to the model type.</p>
+</dd>
+<dt class="hdlist1">Color scheme (<code>-c</code> or <code>-color</code>)</dt>
+<dd>
+<p>The output of the comparison will include a matrix that shows differences between model sets (more on that later, in the upcoming section about compare output, on level 3).
+This matrix uses colors to highlight any parts with significant differences.
+This options configures the matrix color scheme to use.
+Available choices are <code>intuitive</code> and <code>large-range</code>, where <code>intuitive</code> is the default selection.
+The intuitive color scheme uses a reduced range of colors selected to best match intuition.
+The reduced range does result in the disadvantage that small differences can be hard to discern, because the colors used are very similar.
+The large range color scheme addresses this issue by using a larger range of colors, making it possible to separate values more, at the cost of using less intuitive colors.</p>
+</dd>
+<dt class="hdlist1">Skip post-processing level 6 compare results (<code>-p</code> or <code>-no-post-process</code>)</dt>
+<dd>
+<p>By default, the difference state machines shown in level 6 are post-processed to increase their readability.
+Intuitively, post-processing searches for state-machine patterns that may be simplified.
+Enabling this option will disable such post-processing, which may improve performance but may also reduce the quality of the compare results.</p>
+</dd>
+<dt class="hdlist1">Compare algorithm (<code>-a</code> or <code>-algorithm</code>)</dt>
+<dd>
+<p>The calculation of difference state machines involves comparing the structures of two state machines and determining their difference.
+More details will be provided in the upcoming section about compare output, on level 6.
+There are several algorithms available for doing these comparisons.
+The different available algorithms make a trade-off between computational intensity and quality of the results:</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>heavyweight</code> algorithm outputs a high-quality result, but requires a lot of computational resources.
+This algorithm is only recommended when the input models are relatively small (say, less than 50 states each).</p>
+</li>
+<li>
+<p>The <code>lightweight</code> algorithm is much cheaper in terms of computational intensity, at the cost of quality.
+This algorithm is recommended when the input models are mostly large.</p>
+</li>
+<li>
+<p>The <code>dynamic</code> algorithm applies either the <code>lightweight</code> or the <code>heavyweight</code> algorithm, depending on the sizes of each individual comparison.
+This algorithm is recommended if the input models are a mix of both small and large input models.</p>
+</li>
+<li>
+<p>The <code>walkinshaw</code> algorithm applies the <a href="https://doi.org/10.1145/2430545.2430549">algorithms by Walkinshaw</a>.
+It is between the <code>lightweight</code> and <code>heavyweight</code> algorithms in terms of computational intensity and quality.</p>
+</li>
+<li>
+<p>The <code>bruteforce</code> algorithm give an optimal result that is sometimes better than the results of the <code>heavyweight</code> algorithm.
+But it is also much more computationally intensive (in the worst case) since it explores all the possible ways in which the differences between two state machines can be represented, to select the minimal one.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The default algorithm selected is <code>dynamic</code>.</p>
+</div>
+</dd>
+<dt class="hdlist1">Extend lattice (<code>-x</code> or <code>-extend-lattice</code>)</dt>
+<dd>
+<p>During the computation of the level 2 and level 5 lattices, the compare tool can compute models and model sets to complete the lattices.
+This option can be used to configure that behavior, by using the argument <code>none</code>, <code>partial</code> or <code>full</code>.
+By default or if the argument <code>partial</code> is chosen, lattices are completed but the computed model sets and models are only shown in levels 2 and 5 respectively.
+If the argument <code>none</code> is chosen, the lattices are not completed and no computed models or model sets are present in any level.
+In contrast, if the argument <code>full</code> is chosen, lattices are completed and the computed models and model sets are shown in all levels.
+Note that the union/intersection size limit option can be used to further configure lattice completion.</p>
+</dd>
+<dt class="hdlist1">SVG generation timeout in seconds (<code>-ts</code> or <code>-timeout-svg</code>)</dt>
+<dd>
+<p>The comparison process will generate SVG files.
+This option configures the timeout (in seconds) for generating such files.
+If generation takes longer than the configured value, it will be halted and a warning will be produced to indicate the problem.
+The default value of the timeout is 60 seconds.</p>
+</dd>
+<dt class="hdlist1">Union/intersection size limit (<code>-l5</code> or <code>-size-limit-level5</code>)</dt>
+<dd>
+<p>The compare process calculates additional ('computed') model variants from existing model variants using state machine union and intersection operations.
+This option indicates the maximum size of models (measured in number of states) to be considered for union and intersection computations.
+The default value for the union/intersection size limit is 100 states.
+Models that have more states will not considered for union and intersection.
+As this may lead to incomplete information, this is presented differently in levels 2 and 5 (see below).
+If the option for extending lattices is used with the argument <code>none</code>, the value set for this option is not used.</p>
+</dd>
+<dt class="hdlist1">Structural compare size limit (<code>-l6</code> or <code>-size-limit-level6</code>)</dt>
+<dd>
+<p>This option indicates the maximum size of models (measured in number of states) to be considered for structural comparison.
+Models that have more states will not be structurally compared.
+This may lead to incomplete information in levels 5 and 6 (see below).
+The default value for the structural compare size limit is 5000 states.</p>
+</dd>
+<dt class="hdlist1">Options file (<code>-f</code> or <code>-options-file</code>)</dt>
+<dd>
+<p>In addition to command line options, settings can be provided in an options file.
+An options file should be a text file contain one or more compare tool options.
+Each option and each argument should be on a separate line.
+As an exception, the options file option itself will be ignored if used in an options file.
+At the end of each run, the compare tool produces a <code>compare-options.txt</code> file containing the settings for that run, which can be used to repeat the run.
+Option values defined on the command line take precedence over values defined in the options file.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Additionally, it is possible to configure the JVM used to run the tool by using the <code>-vmargs</code> option, followed by the desired JVM options.
+For example, the <code>-Xmx</code> option can be used to increase the available memory space, which may be needed when importing large datasets.
+By adding <code>-vmargs -Xmx20G</code> to the command line the memory the tool can use will be set to 20 gigabytes.
+JVM options can only be added on the command line, not as part of an options file.
+Additionally, any options after the <code>-vmargs</code> option will be interpreted as a JVM option, so they must be added at the end of the command line.
+For information on which JVM options are available, please consult the documentation of the JVM in question.</p>
+</div>
+<div class="sect3">
+<h4 id="comparison-in-the-mids-ui"><a class="anchor" href="#comparison-in-the-mids-ui"></a>4.2.1. Comparison in the MIDS UI</h4>
+<div class="paragraph">
+<p>In order to perform a compare in the MIDS UI, you can use the right click <em>Compare CIF models</em> action in the MIDS UI on a directory that contains all model sets that should be compared.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/compare-menu.png" alt="compare menu">
+</div>
+</div>
+<div class="paragraph">
+<p>This action will show a dialog with configuration options for the comparison.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/compare-dialog.png" alt="compare dialog">
+</div>
+</div>
+<div class="paragraph">
+<p>The available options are the same as for the command-line tool.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="compare-output"><a class="anchor" href="#compare-output"></a>4.3. Compare output</h3>
+<div class="paragraph">
+<p>The output of the compare tool is centered around the <code>index.html</code> file.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+When performing a compare in the MIDS UI, it is recommended to use a modern external browser to view the <code>index.html</code> file, as the browser integrated in the MIDS tooling is outdated and limited in functionality.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This file contains an overview of the comparison results, presented as six different levels.
+The first three focus on model sets, while the last three focus on individual models within the model sets.
+For both model sets and models, there are three levels: variants, variant relations and variant differences.</p>
+</div>
+<div class="paragraph">
+<p>For readability purposes, in the following text, we will assume the items compared are entities.
+Wherever entities are mentioned, the same also applies to other entity types such as components or service fragments.</p>
+</div>
+<div class="paragraph">
+<p>By default, CMI produces a model per entity, either as a single file or as a file per entity.
+In either case the compare tool will consider entity models, and model sets will contain models for different entities.</p>
+</div>
+<div class="paragraph">
+<p>If the input models contain component models that consist of service fragments, these will be split if the chosen compare mode is <code>service-fragments</code> or <code>automatic</code>.
+In that case the compare tool will consider service fragment models, and model sets will contain models for service fragments of different components.
+Effectively, this increases the level of detail of the compare output, as differences are shown per service fragment, i.e. a part of a component, rather than for the whole component.</p>
+</div>
+<div class="paragraph">
+<p>Below each of the six levels is explained in more detail.</p>
+</div>
+<div class="sect3">
+<h4 id="level-1-model-set-variants"><a class="anchor" href="#level-1-model-set-variants"></a>4.3.1. Level 1: Model set variants</h4>
+<div class="paragraph">
+<p>At the highest level, we look at differences between entire model sets.</p>
+</div>
+<div class="paragraph">
+<p>This level shows which model sets are equal to which other model sets, as indicated by model set variants.
+Two model sets that have the same variant contain the same behavior for all entities, while two model sets with different variants have at least one difference in entity behavior.</p>
+</div>
+<div class="paragraph">
+<p>This is primarily relevant when comparing a larger number of model sets that each represent an instance of a repeated process, because it shows which model sets contain exceptional behavior.
+This level allows to get an overview of the model sets and their behavior, and identify patterns over the various model sets.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="level-2-model-set-variant-relations"><a class="anchor" href="#level-2-model-set-variant-relations"></a>4.3.2. Level 2: Model set variant relations</h4>
+<div class="paragraph">
+<p>In the next level, we look at the relations between the model set variants that have been identified.</p>
+</div>
+<div class="paragraph">
+<p>In particular, we observe some model sets may contain behavior that is an extension of the behavior in another model set.
+By connecting model set variants that have this relation, we can create a (partial) lattice of variants.
+An arrow from one model set variant to another indicates that the behavior of the first model set variant is completely contained in the latter model set variant, i.e. the latter extends the former.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, we can compute additional ('computed') model set variants such that the lattice is completed.
+These computed model sets are indicated in the lattice by diamond shapes, while variants based on input model sets are indicated by ellipses.</p>
+</div>
+<div class="paragraph">
+<p>On the edges between the model set variants, the size of the difference is shown as the number of added entities (e.g. +5 in green) and changed entities (e.g. ~5 in blue).</p>
+</div>
+<div class="paragraph">
+<p>This level allows to relate the model set variants to each other, to determine which to investigate in more detail.</p>
+</div>
+<div class="paragraph">
+<p>Model set variants that contain models that are too large (see the <em>Union/intersection size limit</em> option) will not be related to the other model set variants.
+Their shapes get a dashed border to indicate incomplete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="level-3-model-set-variant-differences"><a class="anchor" href="#level-3-model-set-variant-differences"></a>4.3.3. Level 3: Model set variant differences</h4>
+<div class="paragraph">
+<p>The third level shows a more detailed view of the differences between model sets, in the form of a matrix that shows for each model set pair how many entities are different between them.
+The cells of the matrix are colored based on the number of differences, to better emphasize where significant similarities and differences can be found.</p>
+</div>
+<div class="paragraph">
+<p>This level allows to find patterns on the behavior of larger amounts of model sets.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="level-4-model-variants"><a class="anchor" href="#level-4-model-variants"></a>4.3.4. Level 4: Model variants</h4>
+<div class="paragraph">
+<p>In this level, we look at differences in the behavior of entities in different model sets.
+The differences are displayed as a table showing for each combination of entity and model set which variant of the entity, if any, is present in the model set.
+By comparing the entity behavior variants present in various model sets, we can identify which model sets have different behavior for that entity and how many variants there are.</p>
+</div>
+<div class="paragraph">
+<p>This level allows to find out which entities have different behavior at all.
+It also allows to find patterns on the behavior of an entity over the different model sets.</p>
+</div>
+<div class="paragraph">
+<p>One can click on any variant in the table to see the state machine model corresponding to that variant.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="level-5-model-variant-relations"><a class="anchor" href="#level-5-model-variant-relations"></a>4.3.5. Level 5: Model variant relations</h4>
+<div class="paragraph">
+<p>In this level, the relations between the behavioral variants of entities are shown.</p>
+</div>
+<div class="paragraph">
+<p>Entity variants are considered related when the behavior of one variant is an extension of the behavior of another.
+By connecting entity variants that have this relation, we can create a (partial) lattice of variants.
+An arrow from one entity variant to another indicates that the behavior of the first entity variant is completely contained in the latter entity variant, i.e. the latter extends the former.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, we can compute additional ('computed') entity variants such that the lattice is completed.
+These computed entity variants are indicated in the lattice by diamond shapes, while variants based on input entity variants are indicated by ellipses.</p>
+</div>
+<div class="paragraph">
+<p>On the edges between the model variants, the size of the difference is shown as the number of added transitions (e.g. +5 in green) and removed transitions (e.g. -5 in red).
+The <em>Structural compare size limit</em> option may limit the computation of structural differences, leading to a lack of information.
+If the information is not computed, a question mark (?) is shown on the edge instead.</p>
+</div>
+<div class="paragraph">
+<p>This level allows to relate the variants of an entity to each other, to determine which to investigate in more detail.</p>
+</div>
+<div class="paragraph">
+<p>Model variants that are too large (see the <em>Union/intersection size limit</em> option) will not be related to the other model variants.
+Their shapes get a dashed border to indicate incomplete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="level-6-model-variant-differences"><a class="anchor" href="#level-6-model-variant-differences"></a>4.3.6. Level 6: Model variant differences</h4>
+<div class="paragraph">
+<p>This level shows the differences between specific entity variants.
+These variants are presented in a table, and one can click on <em>diff</em> to see the differences between two variants indicated by the row and column of the table.</p>
+</div>
+<div class="paragraph">
+<p>The differences are represented using a state machine view of the model.
+In this view, one of the variants serves as a base (the one indicated in the row of the table), and coloring indicates where states and transitions have to be added, changed or removed to reach the second variant (the one indicated in the column of the table).
+Clicking on an edge in the state machine opens a side panel containing additional information about that edge.
+The panel can be closed by using the close button in the top right corner, or by clicking the edge again.</p>
+</div>
+<div class="paragraph">
+<p>Depending on the comparison settings, differences are available only between variants directly related in the variant lattice (level 5), or additionally between all input variants.
+The <em>Structural compare size limit</em> option may limit the computation of structural differences, leading to some comparisons being skipped and their results not being available.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="release-notes"><a class="anchor" href="#release-notes"></a>5. Release Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The release notes of the Model Inference and Differencing Suite (MIDS) are listed below, in reverse chronological order.</p>
+</div>
+<div class="sect2">
+<h3 id="mids-v0-9"><a class="anchor" href="#mids-v0-9"></a>5.1. MIDS v0.9</h3>
+<div class="paragraph">
+<p>The first open-source release of MIDS.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mids-v0-1-to-v0-8"><a class="anchor" href="#mids-v0-1-to-v0-8"></a>5.2. MIDS v0.1 to v0.8</h3>
+<div class="paragraph">
+<p>Release notes of older version of MIDS are no longer available.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version v0.9-RC3<br>
+</div>
+</div>
+</body>
+</html>
