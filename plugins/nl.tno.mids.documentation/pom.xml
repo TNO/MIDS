@@ -96,7 +96,7 @@
                             <outputDirectory>${project.build.directory}/website</outputDirectory>
                             <backend>html5</backend>
                             <attributes>
-                                <imagesdir>../..</imagesdir>
+                                <imagesdir></imagesdir>
                                 <sourcesdir>../sources</sourcesdir>
                                 <sectanchors>true</sectanchors>
                                 <toc>left</toc>
