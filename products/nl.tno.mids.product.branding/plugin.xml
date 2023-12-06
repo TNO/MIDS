@@ -53,7 +53,7 @@ SPDX-License-Identifier: MIT
                name="introBrandingImage"
                value="product:images/intro-mids-bw.png">
          </property>
-          <property
+         <property
                name="introBrandingImageText"
                value="MIDS">
          </property>
