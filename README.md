@@ -10,6 +10,7 @@ MIDS provides:
 * [MIDS website and user guide](https://tno.github.io/MIDS)
 * [Setting up a MIDS development environment](docs/setup-development-environment.md)
 * [Build information](docs/build-info.md)
+* [Release information](docs/release-process.md)
 
 ## License
 
