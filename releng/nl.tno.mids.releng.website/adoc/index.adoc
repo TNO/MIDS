@@ -120,17 +120,18 @@ image::{imgsdir}/welcome-screen.png[]
 The welcome screen provides easy access to key contents of the documentation:
 
 Overview::
-    Learn about basic Eclipse workbench concepts and access the complete MIDS User Guide.
+    Learn about basic Eclipse workbench concepts and access the complete link:userguide/index.html[MIDS user guide].
 
 What's New::
-    Discover major new features of this Eclipse release and read the <<release-notes, MIDS Release Notes>>.
+    Discover major new features of this Eclipse release and read the link:userguide/index.html#release-notes[release notes].
 
-Memory configuration::
-    MIDS is distributed with a 'max heap size' configuration of `-Xmx12g` for 12 GB.
-    On some systems this may leave little memory for other processes, or more memory may be available.
-    For these cases it is advised to modify this configuration in `mids.ini`.
-    `mids.ini` can be edited with any text-editor.
-    This configuration also applies to the command line scripts.
+== Configuration
+
+MIDS is distributed with a 'max heap size' configuration of `-Xmx12g` for 12 GB.
+On some systems this may leave little memory for other processes, or more memory may be available.
+For these cases it is advised to modify this configuration in `mids.ini`.
+`mids.ini` can be edited with any text-editor.
+This configuration also applies to both the MIDS IDE and the command line scripts.
 
 == Legal
 
