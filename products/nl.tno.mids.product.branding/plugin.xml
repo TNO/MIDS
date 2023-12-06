@@ -15,6 +15,7 @@ SPDX-License-Identifier: MIT
          point="org.eclipse.core.runtime.products">
       <product
             application="org.eclipse.ui.ide.workbench"
+            description="Model Inference and Differencing Suite"
             name="MIDS v0.9">
          <property
                name="appName"
