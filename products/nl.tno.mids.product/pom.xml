@@ -35,7 +35,7 @@ SPDX-License-Identifier: MIT
                     <repositoryName>MIDS Update Site</repositoryName>
 
                     <!-- Custom archive file name (excluding file extension). -->
-                    <finalName>${mids.binary.version.enduser}-updatesite</finalName>
+                    <finalName>${mids.binary.name}-updatesite</finalName>
                 </configuration>
             </plugin>
 
@@ -61,12 +61,12 @@ SPDX-License-Identifier: MIT
                             <!-- Undocumented, see https://dev.eclipse.org/mhonarc/lists/tycho-user/msg05560.html -->
                             <!-- But available, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=357503 -->
                             <!-- The 'os', 'ws' and 'arch' values are automatically added, as is the file extension. -->
-                            <archiveFileName>${mids.binary.version.enduser}</archiveFileName>
+                            <archiveFileName>${mids.binary.name}</archiveFileName>
 
                             <!-- Add root folder, to prevent issues when extracting to current folder. -->
                             <rootFolders>
-                                <linux>${mids.binary.version.enduser}</linux>
-                                <win32>${mids.binary.version.enduser}</win32>
+                                <linux>${mids.binary.name}</linux>
+                                <win32>${mids.binary.name}</win32>
                             </rootFolders>
                         </product>
                     </products>

@@ -14,7 +14,7 @@ ifndef::sourcesdir[:sourcesdir: ../sources]
 
 ifndef::mids-version-enduser[:mids-version-enduser: dev]
 ifndef::mids-binary-prefix[:mids-binary-prefix: mids]
-ifndef::mids-binary-version-enduser[:mids-binary-version-enduser: mids-dev]
+ifndef::mids-binary-name[:mids-binary-name: mids-dev]
 
 :idprefix:
 :idseparator: -
@@ -50,10 +50,10 @@ _Downloads:_
 [cols="2,^1"]
 |===
 | Windows x64 (64-bit)
-| https://github.com/TNO/MIDS/releases/download/{mids-version-enduser}/{mids-binary-version-enduser}-{win-x64}[download]
+| https://github.com/TNO/MIDS/releases/download/{mids-version-enduser}/{mids-binary-name}-{win-x64}[download]
 
 | Linux x64 (64-bit)
-| https://github.com/TNO/MIDS/releases/download/{mids-version-enduser}/{mids-binary-version-enduser}-{linux-x64}[download]
+| https://github.com/TNO/MIDS/releases/download/{mids-version-enduser}/{mids-binary-name}-{linux-x64}[download]
 |===
 
 _Windows:_

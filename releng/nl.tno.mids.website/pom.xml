@@ -68,7 +68,7 @@ SPDX-License-Identifier: MIT
                                 <toclevels>3</toclevels>
                                 <mids-binary-prefix>${mids.binary.prefix}</mids-binary-prefix>
                                 <mids-version-enduser>${mids.version.enduser}</mids-version-enduser>
-                                <mids-binary-version-enduser>${mids.binary.version.enduser}</mids-binary-version-enduser>
+                                <mids-binary-name>${mids.binary.name}</mids-binary-name>
                             </attributes>
                         </configuration>
                     </execution>
@@ -131,7 +131,7 @@ SPDX-License-Identifier: MIT
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <finalName>${mids.binary.version.enduser}</finalName>
+                            <finalName>${mids.binary.name}</finalName>
                             <descriptors>
                                 <descriptor>${basedir}/assembly.xml</descriptor>
                             </descriptors>
