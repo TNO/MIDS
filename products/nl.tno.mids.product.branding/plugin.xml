@@ -23,7 +23,7 @@ SPDX-License-Identifier: MIT
          </property>
          <property
                name="aboutText"
-               value="%aboutText">
+               value="Model Inference and Differencing Suite">
          </property>
          <property
                name="introTitle"
