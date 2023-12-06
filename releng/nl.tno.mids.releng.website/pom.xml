@@ -71,6 +71,12 @@
                                 <mids-version-enduser>${mids.version.enduser}</mids-version-enduser>
                                 <mids-binary-name>${mids.binary.name}</mids-binary-name>
                             </attributes>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/images</directory>
+                                    <targetPath>images</targetPath>
+                                </resource>
+                            </resources>
                         </configuration>
                     </execution>
                 </executions>
