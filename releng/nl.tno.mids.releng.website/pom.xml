@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+    Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
 
-This program and the accompanying materials are made available
-under the terms of the MIT License which is available at
-https://opensource.org/licenses/MIT
+    This program and the accompanying materials are made available
+    under the terms of the MIT License which is available at
+    https://opensource.org/licenses/MIT
 
-SPDX-License-Identifier: MIT
+    SPDX-License-Identifier: MIT
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -96,7 +97,9 @@ SPDX-License-Identifier: MIT
                                     <type>zip</type>
                                 </artifactItem>
                             </artifactItems>
-                            <outputDirectory>${project.build.directory}/website/userguide</outputDirectory>
+                            <outputDirectory>
+                                ${project.build.directory}/website/userguide
+                            </outputDirectory>
                         </configuration>
                     </execution>
                     <execution>
@@ -114,7 +117,9 @@ SPDX-License-Identifier: MIT
                                     <type>zip</type>
                                 </artifactItem>
                             </artifactItems>
-                            <outputDirectory>${project.build.directory}/website/update-site/${mids.version.enduser}</outputDirectory>
+                            <outputDirectory>
+                                ${project.build.directory}/website/update-site/${mids.version.enduser}
+                            </outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
