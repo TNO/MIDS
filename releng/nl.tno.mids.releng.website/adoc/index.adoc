@@ -8,6 +8,9 @@
 // SPDX-License-Identifier: MIT
 /////////////////////////////////////////////////////////////////////////
 
+// Enable experimental features, for 'kbd' macro.
+:experimental:
+
 ifndef::docsdir[:docsdir: adoc]
 ifndef::imgsdir[:imgsdir: images]
 ifndef::sourcesdir[:sourcesdir: ../sources]
