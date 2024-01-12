@@ -47,7 +47,7 @@ class ComponentExtractionOptions implements Cloneable {
 
     @Accessors
     static class ComponentExtractionInputOptions implements Cloneable {
-        /** Absolute path to input TMSC from which to extract models/ */
+        /** Absolute path to input TMSC from which to extract models. */
         Path path
 
         override clone() {
