@@ -68,10 +68,9 @@ public class CmiFromTmscHandler {
             copiedOptions.getInput().setPath(tmscPath);
             String tmscName = tmscFile.getLocation().removeFileExtension().lastSegment();
             copiedOptions.getOutput().setPath(baseOutputPath.resolve(tmscName));
-            Path projectPath = Paths.get(tmscFile.getProject().getLocation().toOSString());
 
             IJobFunction jobFunc = monitor -> {
-                new ComponentExtraction().extract(tmscPath, projectPath, copiedOptions, monitor);
+                new ComponentExtraction().extract(tmscPath, copiedOptions, monitor);
                 return Status.OK_STATUS;
             };
             Job job = Job.create("Extracting models from " + tmscFile.getName(), jobFunc);

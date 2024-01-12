@@ -183,7 +183,7 @@ class ComponentExtractionTest {
         options.getInput().setPath(baseTmscPath);
         options.getOutput().setPath(actualOutputPath);
 
-        new ComponentExtractionStubbed(baseTestPath).extract(baseTmsctPath, baseInputPath, options,
+        new ComponentExtractionStubbed(baseTestPath).extract(baseTmsctPath, options,
                 new NullProgressMonitor());
 
         try (Stream<Path> baseStream = Files.find(actualOutputPath, Integer.MAX_VALUE,

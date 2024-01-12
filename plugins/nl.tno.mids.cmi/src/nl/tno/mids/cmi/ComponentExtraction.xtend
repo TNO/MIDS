@@ -47,12 +47,10 @@ class ComponentExtraction {
      * 
      * @param relativeResolvePath The absolute path of the input file. Either the TMSC or options file.
      *      During model extraction, all paths are to be resolved against the parent folder of this file.
-     * @param linuxRootPath Path to folder containing, directly or indirectly, the Linux runtime models.
      * @param options The configuration options.
      * @param monitor The progress monitor.
      */
-    def void extract(Path relativeResolvePath, Path linuxRootPath, ComponentExtractionOptions options,
-        IProgressMonitor monitor) {
+    def void extract(Path relativeResolvePath, ComponentExtractionOptions options, IProgressMonitor monitor) {
 
         val startTime = LocalDateTime.now()
         val warnings = new ArrayList
@@ -197,8 +195,8 @@ class ComponentExtraction {
         return targetFolder
     }
 
-    private def void preProcess(TMSC tmsc, String tmscName,
-        ComponentExtractionOptions options, IProgressMonitor monitor) {
+    private def void preProcess(TMSC tmsc, String tmscName, ComponentExtractionOptions options,
+        IProgressMonitor monitor) {
 
         val subMonitor = SubMonitor.convert(monitor, 3)
 

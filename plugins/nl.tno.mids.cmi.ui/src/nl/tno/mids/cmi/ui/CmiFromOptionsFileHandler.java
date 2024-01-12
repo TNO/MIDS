@@ -62,12 +62,9 @@ public class CmiFromOptionsFileHandler {
 
             Path absOptionsPath = Paths.get(optionsFile.getLocation().toOSString());
 
-            // Find project path.
-            Path projectPath = Paths.get(optionsFile.getProject().getLocation().toOSString());
-
             // Schedule model extraction.
             IJobFunction jobFunc = monitor -> {
-                new ComponentExtraction().extract(absOptionsPath, projectPath, options, monitor);
+                new ComponentExtraction().extract(absOptionsPath, options, monitor);
                 return Status.OK_STATUS;
             };
             Job job = Job.create("Extracting models from " + options.getInput().getPath().getFileName().toString(),

@@ -43,7 +43,7 @@ public class CmiApplication implements IApplication {
         LOGGER.info("Writing output to " + options.getOutput().getPath().toString());
 
         // Perform CMI.
-        new ComponentExtraction().extract(inputPath, inputPath.getParent(), options, new NullProgressMonitor());
+        new ComponentExtraction().extract(inputPath, options, new NullProgressMonitor());
 
         return IApplication.EXIT_OK;
     }

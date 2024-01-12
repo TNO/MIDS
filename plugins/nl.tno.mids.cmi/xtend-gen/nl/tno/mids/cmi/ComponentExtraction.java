@@ -48,11 +48,10 @@ public class ComponentExtraction {
    * 
    * @param relativeResolvePath The absolute path of the input file. Either the TMSC or options file.
    *      During model extraction, all paths are to be resolved against the parent folder of this file.
-   * @param linuxRootPath Path to folder containing, directly or indirectly, the Linux runtime models.
    * @param options The configuration options.
    * @param monitor The progress monitor.
    */
-  public void extract(final Path relativeResolvePath, final Path linuxRootPath, final ComponentExtractionOptions options, final IProgressMonitor monitor) {
+  public void extract(final Path relativeResolvePath, final ComponentExtractionOptions options, final IProgressMonitor monitor) {
     try {
       final LocalDateTime startTime = LocalDateTime.now();
       final ArrayList<String> warnings = new ArrayList<String>();
