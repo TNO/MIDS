@@ -1,0 +1,40 @@
+// Interfaces with functions.
+interface IA {
+    operation start
+}
+
+interface IB {
+    operation some_operation
+}
+
+interface IC {
+    operation some_new_operation
+}
+
+// Components with calls and handlers for the interface functions.
+component CompA
+function "start (sync handler)"               as start_sync              implements IA.start              { execType: sync }
+function "some_operation (blocking call)"     as some_operation_blk      implements IB.some_operation     { execType: blk }
+
+component CompB
+function "some_operation (sync handler)"      as some_operation_sync     implements IB.some_operation     { execType: sync }
+function "some_new_operation (blocking call)" as some_new_operation_blk  implements IC.some_new_operation { execType: blk }
+
+component CompC
+function "some_new_operation (sync handler)"  as some_new_operation_sync implements IC.some_new_operation { execType: sync }
+
+// Executors (threads) of the components.
+executor A
+executor B
+
+// Execution trace.
+0.10 A CompA > start_sync
+0.23 A CompA > some_operation_blk      !A_B
+0.41 B CompB > some_operation_sync     ?A_B
+0.76 B CompB > some_new_operation_blk  !B_C
+0.88 C CompC > some_new_operation_sync ?B_C 
+1.24 C CompC < some_new_operation_sync !C_B 
+1.35 B CompB < some_new_operation_blk  ?C_B
+1.42 B CompB < some_operation_sync     !B_A
+1.81 A CompA < some_operation_blk      ?B_A
+1.85 A CompA < start_sync
