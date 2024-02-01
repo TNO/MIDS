@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.lsat.common.xtend,
  org.eclipse.escet.common.java;bundle-version="0.1.0",
  org.slf4j.api,
  org.apache.commons.io,
- nl.esi.pps.common.core.runtime
+ nl.esi.pps.common.core.runtime,
+ nl.esi.pps.tmsc.xtext
 Export-Package: nl.tno.mids.pps.extensions.cmi,
  nl.tno.mids.pps.extensions.info,
  nl.tno.mids.pps.extensions.queries,

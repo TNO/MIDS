@@ -27,6 +27,8 @@ import nl.esi.pps.tmsc.FullScopeTMSC;
 import nl.esi.pps.tmsc.ScopedTMSC;
 import nl.esi.pps.tmsc.TMSC;
 import nl.esi.pps.tmsc.provider.TmscEditPlugin;
+import nl.esi.pps.tmsc.xtext.generator.TmscXtextToTmscTransformation;
+import nl.esi.pps.tmsc.xtext.tmscXtext.TmscXtextModel;
 import nl.tno.mids.pps.extensions.cmi.CmiPreparer;
 import nl.tno.mids.pps.extensions.cmi.CmiPreparers;
 
@@ -43,31 +45,42 @@ public class TmscFileHelper {
      * @throws IOException Thrown in case reading the TMSC fails.
      */
     public static FullScopeTMSC loadTMSC(Path sourcePath) throws IOException {
+        // Load TMSC file.
         Persistor<EObject> persistor = new PersistorFactory(TmscEditPlugin.createResourceSet()).getPersistor();
-        List<EObject> fileContent = persistor.loadAll(URI.createFileURI(sourcePath.toString()));
+        List<EObject> fileContents = persistor.loadAll(URI.createFileURI(sourcePath.toString()));
 
-        Optional<FullScopeTMSC> tmsc = fileContent.stream().filter(obj -> obj instanceof FullScopeTMSC)
+        // If it is a textual TMSC file, transform it to a TMSC.
+        if (!fileContents.isEmpty() && fileContents.get(0) instanceof TmscXtextModel) {
+            TmscXtextModel tmsctModel = (TmscXtextModel)fileContents.get(0);
+            FullScopeTMSC tmsc = new TmscXtextToTmscTransformation().transform(tmsctModel);
+            fileContents = new ArrayList<>(2);
+            fileContents.add(tmsc);
+            fileContents.addAll(tmsc.getArchitectures());
+        }
+
+        // Get the full scope TMSC.
+        Optional<FullScopeTMSC> tmsc = fileContents.stream().filter(obj -> obj instanceof FullScopeTMSC)
                 .map(obj -> (FullScopeTMSC)obj).findFirst();
 
+        // Check that we have a full scope TMSC, with at least one architecture.
         Preconditions.checkArgument(tmsc.isPresent(), "Expected a full scope TMSC to be present.");
         Preconditions.checkArgument(!tmsc.get().getArchitectures().isEmpty(),
                 "Expected architecture information to be present.");
 
+        // Return the TMSC.
         return tmsc.get();
     }
 
     /**
-     * Reads a {@link FullScopeTMSC full-scope TMSC} from {@code sourceLocation}, and
-     * prepares it for CMI by applying a suitable {@link CmiPreparer CMI preparer}.
+     * Reads a {@link FullScopeTMSC full-scope TMSC} from {@code sourceLocation}, and prepares it for CMI by applying a
+     * suitable {@link CmiPreparer CMI preparer}.
      * 
      * @param tmscPath The path from which the TMSC is to be read.
      * @param warnings The warnings produced during the operation.
      * @return The loaded and prepared {@link TMSC} that has been read.
      * @throws IOException Thrown in case reading the TMSC fails.
      */
-    public static ScopedTMSC loadAndPrepareTMSC(Path tmscPath, List<String> warnings)
-            throws IOException
-    {
+    public static ScopedTMSC loadAndPrepareTMSC(Path tmscPath, List<String> warnings) throws IOException {
         // Load the TMSC.
         FullScopeTMSC fullTmsc = loadTMSC(tmscPath);
 
