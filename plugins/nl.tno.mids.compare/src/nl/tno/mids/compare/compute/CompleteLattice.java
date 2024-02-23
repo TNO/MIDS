@@ -110,7 +110,7 @@ public abstract class CompleteLattice<T> {
             // themselves, as that would result in the node itself, given the idempotent property of the combine
             // function, which also reduces the number of required computations. To exploit these properties, we combine
             // the current node only with nodes with a higher index.
-            // - If two nodes are already related (one is an ancestor or descendent of the other), the combined variant
+            // - If two nodes are already related (one is an ancestor or descendant of the other), the combined variant
             // will be equal to one of the two nodes being combined, which are already in the lattice and are already
             // related to each other. We can thus forgo combining such nodes, further improving performance.
             Set<LatticeNode<Variant<T>>> others = inputNodes.stream()
