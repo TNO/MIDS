@@ -57,7 +57,7 @@ public abstract class ComputeLattice<T> {
      * </p>
      * 
      * @param variant Base variant to compare.
-     * @param otherVariant Possibly included variant.
+     * @param otherVariant Other variant to compare.
      * @return {@code true} if the behavior of {@code variant} is contained in the behavior of {@code otherVariant},
      *     {@code false} if it is not contained in that way.
      */
