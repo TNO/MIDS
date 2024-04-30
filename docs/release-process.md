@@ -17,6 +17,7 @@ The GitHub action will then build the release, and attach the built website and 
 * Remove the old website contents from the branch:
   * Remove all files in the root of the branch, except for the `.git*` files.
   * Remove the `userguide` and `images` folders.
+  * Remove all folders in the `update-site` folder.
 * Extract the new website archive into the branch.
 * Add the changes by executing `git add -A .` in a shell.
 * Commit the changes by executing `git commit -m "Replaced website by version [release_name]."` in a shell, replacing `[release_name]` by the name of the release.
