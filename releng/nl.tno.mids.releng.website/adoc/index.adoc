@@ -37,9 +37,11 @@ The Model Inference and Differencing Suite (MIDS) provides:
 * Functionality to infer multi-level models of software behavior from execution logs, to get insight into the software behavior.
 * Functionality to compare behavioral models, for change impact analysis, to prevent regressions and reduce the risks for software changes.
 
-== Documentation
+== Documentation and development
 
-For more information about MIDS, please read the link:userguide/index.html[MIDS user guide].
+For more information about using MIDS, please read the link:userguide/index.html[MIDS user guide].
+
+For more information about the development of MIDS, see the link:https://github.com/TNO/MIDS[MIDS GitHub page].
 
 == Downloads
 
