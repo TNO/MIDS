@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="MIDS" uid="nl.tno.mids.product" id="nl.tno.mids.product.branding.product" application="org.eclipse.ui.ide.workbench" version="0.9.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="MIDS" uid="nl.tno.mids.product" id="nl.tno.mids.product.branding.product" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/nl.tno.mids.product.branding/images/mids_lg.png"/>
