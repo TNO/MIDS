@@ -1,4 +1,4 @@
-# MIDS gets started example
+# MIDS getting started example
 
 We will look at a simple first example of the use of MIDS.
 
