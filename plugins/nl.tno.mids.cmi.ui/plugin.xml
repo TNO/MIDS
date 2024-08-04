@@ -54,10 +54,6 @@ SPDX-License-Identifier: MIT
                   </test>
                   <test
                         property="org.eclipse.core.resources.name"
-                        value="*.tmsct">
-                  </test>
-                  <test
-                        property="org.eclipse.core.resources.name"
                         value="*.tmscz">
                   </test>
                </or>
