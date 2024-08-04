@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
-<target name="Generated from MIDS" sequenceNumber="94">
+<target name="Generated from MIDS" sequenceNumber="95">
   <locations>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="com.google.guava" version="30.1.0.v20210127-2300"/>
@@ -90,6 +90,10 @@
       <repository location="https://download.eclipse.org/lsat/nightly/update-site/"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="11.0.24.v20240802-1444"/>
+      <repository location="https://download.eclipse.org/justj/jres/11/updates/release/latest"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.trace4cps.common.jfreechart.feature.feature.group" version="0.2.0.v20240122-120032-nightly"/>
       <unit id="org.jfree.jfreechart" version="1.6.0.v20240122-120032-nightly"/>
       <repository location="https://download.eclipse.org/trace4cps/nightly/update-site/"/>
@@ -97,10 +101,6 @@
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="net.sourceforge.plantuml.lib.feature.feature.group" version="1.2023.11"/>
       <repository location="https://hallvard.github.io/plantuml/plantuml.lib/1.2023.11"/>
-    </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="11.0.23.v20240427-0611"/>
-      <repository location="https://download.eclipse.org/justj/jres/11/updates/release/latest"/>
     </location>
   </locations>
 </target>

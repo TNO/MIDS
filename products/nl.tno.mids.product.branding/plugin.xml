@@ -74,4 +74,30 @@ SPDX-License-Identifier: MIT
             productId="nl.tno.mids.product.branding.product">
       </introProductBinding>
    </extension>
+   <extension
+         point="org.eclipse.ui.intro.quicklinks">
+      <url
+            description="Read the MIDS documentation."
+            icon="platform:/plugin/org.eclipse.ui.intro.universal/themes/solstice/graphics/icons/ctool/start-cheatsheet.png"
+            importance="high"
+            label="MIDS documentation"
+            location="http://org.eclipse.ui.intro/showHelpTopic?id=/nl.tno.mids.documentation/index.html">
+      </url>
+      <command
+            description="Get started with the MIDS examples."
+            icon="platform:/plugin/org.eclipse.ui.intro.universal/themes/solstice/graphics/icons/ctool/import-existing-project.png"
+            id="org.eclipse.ui.newWizard(newWizardId=nl.tno.mids.product.examples.MidsExamplesWizard)"
+            importance="high"
+            label="Import MIDS examples"
+            resolution="standby">
+      </command>
+      <command
+            description="Create a new empty project for storing your models and other files."
+            icon="platform:/plugin/org.eclipse.ui.intro.universal/themes/solstice/graphics/icons/ctool/new-project.png"
+            id="org.eclipse.ui.newWizard(newWizardId=org.eclipse.ui.wizards.new.project)"
+            importance="high"
+            label="Create empty project"
+            resolution="standby">
+      </command>
+   </extension>
 </plugin>

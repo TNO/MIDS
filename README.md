@@ -8,10 +8,13 @@ MIDS provides:
 ## Documentation
 
 For end users:
+
 * [MIDS website](https://tno.github.io/MIDS)
 * [MIDS user guide](https://tno.github.io/MIDS/userguide)
+* [MIDS getting started example](docs/example.md)
 
 For developers:
+
 * [Setting up a MIDS development environment](docs/setup-development-environment.md)
 * [Build information](docs/build-info.md)
 * [Release information](docs/release-process.md)

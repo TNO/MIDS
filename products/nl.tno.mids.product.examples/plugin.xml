@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+Copyright (c) 2018-2024 TNO and Contributors to the GitHub community
+
+This program and the accompanying materials are made available
+under the terms of the MIT License which is available at
+https://opensource.org/licenses/MIT
+
+SPDX-License-Identifier: MIT
+-->
+<plugin>
+   <extension point="org.eclipse.ui.newWizards">
+      <category id="nl.tno.mids.product.examples.category"
+                name="MIDS"
+                parentCategory="org.eclipse.ui.Examples">
+      </category>
+      <wizard category="org.eclipse.ui.Examples/nl.tno.mids.product.examples.category"
+              class="nl.tno.mids.product.examples.MidsExamplesWizard"
+              icon="icons/mids.png"
+              id="nl.tno.mids.product.examples.MidsExamplesWizard"
+              name="MIDS Examples"
+              project="true">
+         <description>
+            Create a project that contains the MIDS examples.
+         </description>
+      </wizard>
+   </extension>
+</plugin>
