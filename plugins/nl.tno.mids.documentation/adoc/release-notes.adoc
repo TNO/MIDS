@@ -15,10 +15,10 @@ include::_initCommon.adoc[]
 
 The release notes of the Model Inference and Differencing Suite (MIDS) are listed below, in reverse chronological order.
 
-=== MIDS v0.9
+=== MIDS v1.0
 
 The first open-source release of MIDS.
 
-=== MIDS v0.1 to v0.8
+=== MIDS v0.1 to v0.9
 
 Release notes of older version of MIDS are no longer available.

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: MIDS CMI
 Bundle-SymbolicName: nl.tno.mids.cmi;singleton:=true
-Bundle-Version: 0.9.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.core.runtime,
  nl.esi.pps.common.emf.ecore,
  org.eclipse.escet.cif.common,
@@ -18,9 +18,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.expressions,
  org.eclipse.escet.cif.metamodel,
  org.eclipse.escet.cif.metamodel.java,
- nl.tno.mids.cif.extensions;bundle-version="0.9.0",
+ nl.tno.mids.cif.extensions;bundle-version="1.0.0",
  nl.tno.mids.automatalib.distribution;bundle-version="0.10.0",
- nl.tno.mids.automatalib.extensions;bundle-version="0.9.0",
+ nl.tno.mids.automatalib.extensions;bundle-version="1.0.0",
  org.eclipse.emf.ecore.xmi;bundle-version="2.16.0",
  org.eclipse.lsat.common.xtend,
  org.eclipse.escet.common.java,
@@ -36,9 +36,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.escet.setext.texteditorbase;bundle-version="0.1.0",
  org.apache.commons.cli,
  nl.esi.pps.tmsc,
- nl.tno.mids.pps.extensions;bundle-version="0.9.0",
+ nl.tno.mids.pps.extensions;bundle-version="1.0.0",
  org.apache.commons.io;bundle-version="2.6.0",
- nl.tno.mids.common;bundle-version="0.9.0"
+ nl.tno.mids.common;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: nl.tno.mids.cmi
 Export-Package: nl.tno.mids.cmi,

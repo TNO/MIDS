@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: MIDS Compare
 Bundle-SymbolicName: nl.tno.mids.compare;singleton:=true
-Bundle-Version: 0.9.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: TNO
 Export-Package: nl.tno.mids.compare,
  nl.tno.mids.compare.compute,
@@ -24,7 +24,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.escet.cif.metamodel.java,
  org.eclipse.escet.cif.common,
  org.eclipse.escet.common.emf,
- nl.tno.mids.automatalib.extensions;bundle-version="0.9.0",
+ nl.tno.mids.automatalib.extensions;bundle-version="1.0.0",
  org.eclipse.escet.cif.merger,
  org.eclipse.escet.cif.eventbased,
  nl.tno.mids.cif.extensions,
@@ -43,8 +43,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.escet.setext.runtime;bundle-version="0.1.0",
  org.apache.commons.cli,
  org.apache.commons.io,
- nl.tno.mids.common;bundle-version="0.9.0",
- nl.tno.mids.gltsdiff.extensions;bundle-version="0.9.0"
+ nl.tno.mids.common;bundle-version="1.0.0",
+ nl.tno.mids.gltsdiff.extensions;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: nl.tno.mids.compare
 Bundle-ActivationPolicy: lazy
