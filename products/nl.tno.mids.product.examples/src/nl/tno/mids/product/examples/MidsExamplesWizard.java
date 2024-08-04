@@ -19,7 +19,7 @@ public class MidsExamplesWizard extends CopyFilesNewProjectWizard {
     @Override
     protected Map<String, String> getPathsToCopy() {
         Map<String, String> entries = map();
-        entries.put("examples/simple1", "simple1/input");
+        entries.put("examples/simple", "simple/input");
         return entries;
     }
 }
