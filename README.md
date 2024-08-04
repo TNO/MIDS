@@ -11,9 +11,7 @@ For end users:
 
 * [MIDS website](https://tno.github.io/MIDS)
 * [MIDS user guide](https://tno.github.io/MIDS/userguide)
-* Examples:
-  * [Simple first example](docs/example-simple.md)
-  * [A more extensive example](docs/example-extensive.md)
+* [MIDS getting started example](docs/example.md)
 
 For developers:
 
