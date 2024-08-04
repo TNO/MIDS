@@ -30,7 +30,7 @@ public class MidsExamplesWizard extends CopyFilesNewProjectWizard {
     @Override
     protected Map<String, String> getPathsToCopy() {
         Map<String, String> entries = map();
-        entries.put("examples/simple", "simple/input-tmsct");
+        entries.put("examples", "input-tmsct");
         return entries;
     }
 
