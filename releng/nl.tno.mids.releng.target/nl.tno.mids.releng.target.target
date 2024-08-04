@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
-<target name="Generated from MIDS" sequenceNumber="95">
+<target name="Generated from MIDS" sequenceNumber="96">
   <locations>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="com.google.guava" version="30.1.0.v20210127-2300"/>
@@ -45,11 +45,11 @@
       <repository location="https://download.eclipse.org/releases/2021-12/"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <unit id="nl.esi.pps.common.emf.codegen.ecore" version="0.20.0.v20231129-123829-RC5"/>
-      <unit id="nl.esi.pps.common.emf.feature.feature.group" version="0.20.0.v20231129-123829-RC5"/>
-      <unit id="nl.esi.pps.common.ui.feature.feature.group" version="0.20.0.v20231129-123829-RC5"/>
-      <unit id="nl.esi.pps.tmsc.ui.feature.feature.group" version="0.20.0.v20231129-123829-RC5"/>
-      <repository location="https://tno.github.io/PPS/update-site/v0.20.0-RC5/"/>
+      <unit id="nl.esi.pps.common.emf.codegen.ecore" version="0.20.0.v20240222-171036"/>
+      <unit id="nl.esi.pps.common.emf.feature.feature.group" version="0.20.0.v20240222-171036"/>
+      <unit id="nl.esi.pps.common.ui.feature.feature.group" version="0.20.0.v20240222-171036"/>
+      <unit id="nl.esi.pps.tmsc.ui.feature.feature.group" version="0.20.0.v20240222-171036"/>
+      <repository location="https://tno.github.io/PPS/update-site/v0.20.0/"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="com.google.inject" version="5.0.1.v20210324-2015"/>
