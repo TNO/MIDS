@@ -88,6 +88,8 @@ MIDS {MIDS-version-enduser} is available as an Eclipse P2 update site:
 
 == Dependencies
 
+*Mandatory dependencies*
+
 Install the following dependencies that are required by MIDS:
 
 [cols="1,2"]
@@ -100,6 +102,8 @@ Install the following dependencies that are required by MIDS:
 |===
 
 Make sure the `bin` directories of these tools is on your `PATH`.
+
+*Optional dependencies*
 
 As part of the Constructive Model Inference process, MIDS can produce GraphML representations of the inferred models.
 Because these models use specific extensions to GraphML, the intended tool to display the GraphML files is yEd.
