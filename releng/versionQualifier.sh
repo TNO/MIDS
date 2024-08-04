@@ -13,11 +13,16 @@ QUALIFIER_POSTFIX="dev"
 
 if [ $# -gt 0 ]
 then
-    QUALIFIER_POSTFIX=$(echo $1 | sed -e 's/^[^-]*-//')
+    QUALIFIER_POSTFIX=$(echo $1 | cut -s -d '-' -f2-)
 fi
 
 # Get Git last commit date.
 GIT_DATE_EPOCH=$(git log -1 --format=%cd --date=raw | cut -d ' ' -f 1)
 GIT_DATE=$(date -d @$GIT_DATE_EPOCH -u +%Y%m%d-%H%M%S)
 
-echo "v$GIT_DATE-$QUALIFIER_POSTFIX"
+if [ -z "$QUALIFIER_POSTFIX" ]
+then
+    echo "v$GIT_DATE"
+else
+    echo "v$GIT_DATE-$QUALIFIER_POSTFIX"
+fi
