@@ -53,12 +53,6 @@ SPDX-License-Identifier: MIT
          unpack="false"/>
 
    <plugin
-         id="nl.tno.mids.product.intro"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
          id="nl.tno.mids.product.logging"
          download-size="0"
          install-size="0"

@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: MIDS Product Intro
-Bundle-SymbolicName: nl.tno.mids.product.intro;singleton:=true
-Bundle-Version: 0.9.0.qualifier
-Bundle-Vendor: TNO
-Require-Bundle: org.eclipse.ui.intro
-Bundle-ActivationPolicy: lazy
