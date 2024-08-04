@@ -475,7 +475,7 @@ SPDX-License-Identifier: MIT
 <div id="header">
 <h1>Model Inference and Differencing Suite (MIDS)</h1>
 <div class="details">
-<span id="revnumber">version v0.9-RC6</span>
+<span id="revnumber">version v1.0</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -526,7 +526,7 @@ SPDX-License-Identifier: MIT
 The MIDS IDE is portable, so just download, extract, and run it, to get started quickly.</p>
 </div>
 <div class="paragraph">
-<div class="title">MIDS IDE v0.9-RC6 (<a href="userguide/index.html#release-notes">release notes</a>)</div>
+<div class="title">MIDS IDE v1.0 (<a href="userguide/index.html#release-notes">release notes</a>)</div>
 <p><em>Downloads:</em></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -537,11 +537,11 @@ The MIDS IDE is portable, so just download, extract, and run it, to get started 
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Windows x64 (64-bit)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://github.com/TNO/MIDS/releases/download/v0.9-RC6/mids-v0.9-RC6-win32.win32.x86_64.zip">download</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://github.com/TNO/MIDS/releases/download/v1.0/mids-v1.0-win32.win32.x86_64.zip">download</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Linux x64 (64-bit)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://github.com/TNO/MIDS/releases/download/v0.9-RC6/mids-v0.9-RC6-linux.gtk.x86_64.tar.gz">download</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://github.com/TNO/MIDS/releases/download/v1.0/mids-v1.0-linux.gtk.x86_64.tar.gz">download</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -601,16 +601,19 @@ The <code>bin</code> directory contains the command line scripts.</p>
 <p>The MIDS P2 update site contains all plugins and features, for easy integration into OSGi-based applications.</p>
 </div>
 <div class="paragraph">
-<p>MIDS v0.9-RC6 is available as an Eclipse P2 update site:</p>
+<p>MIDS v1.0 is available as an Eclipse P2 update site:</p>
 </div>
 <div class="paragraph">
-<p><code>https://tno.github.io/MIDS/update-site/v0.9-RC6/</code></p>
+<p><code>https://tno.github.io/MIDS/update-site/v1.0/</code></p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="dependencies">Dependencies</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><strong>Mandatory dependencies</strong></p>
+</div>
 <div class="paragraph">
 <p>Install the following dependencies that are required by MIDS:</p>
 </div>
@@ -632,6 +635,9 @@ The <code>bin</code> directory contains the command line scripts.</p>
 </table>
 <div class="paragraph">
 <p>Make sure the <code>bin</code> directories of these tools is on your <code>PATH</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Optional dependencies</strong></p>
 </div>
 <div class="paragraph">
 <p>As part of the Constructive Model Inference process, MIDS can produce GraphML representations of the inferred models.
@@ -668,17 +674,23 @@ You may always re-open it by choosing the <span class="menuseq"><b class="menu">
 </div>
 </div>
 <div class="paragraph">
-<p>The welcome screen provides easy access to key contents of the documentation:</p>
+<p>The welcome screen provides easy access to among others:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Overview</dt>
+<dt class="hdlist1">MIDS documentation</dt>
 <dd>
-<p>Learn about basic Eclipse workbench concepts and access the complete <a href="userguide/index.html">MIDS user guide</a>.</p>
+<p>This opens the <a href="userguide/index.html">MIDS user guide</a> bundled with MIDS.
+You can learn about MIDS, its features, how to use it and how to interpret the inferred models and compare results.</p>
 </dd>
-<dt class="hdlist1">What&#8217;s New</dt>
+<dt class="hdlist1">Import MIDS examples</dt>
 <dd>
-<p>Discover major new features of this Eclipse release and read the <a href="userguide/index.html#release-notes">release notes</a>.</p>
+<p>Imports the MIDS examples project into your MIDS installation.
+You can use it get started with MIDS, following the <a href="https://github.com/TNO/MIDS/blob/main/docs/example.md">MIDS getting started example</a>.</p>
+</dd>
+<dt class="hdlist1">Create empty project</dt>
+<dd>
+<p>Create an empty project for storing your own models and other files, for when you want to use MIDS to infer and compare models for your own system.</p>
 </dd>
 </dl>
 </div>
@@ -737,7 +749,7 @@ SOFTWARE.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version v0.9-RC6<br>
+Version v1.0<br>
 </div>
 </div>
 </body>
