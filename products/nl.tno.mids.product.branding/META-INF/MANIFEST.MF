@@ -7,6 +7,9 @@ Bundle-Vendor: TNO
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.eclipse.equinox.app,
  org.eclipse.ui,
- org.eclipse.ui.intro
+ org.eclipse.ui.intro,
+ org.eclipse.ui.intro.quicklinks;bundle-version="1.1.100",
+ org.eclipse.ui.intro.universal;bundle-version="3.4.200",
+ org.eclipse.ui.ide;bundle-version="3.18.400"
 Automatic-Module-Name: nl.tno.mids.product.branding
 Bundle-ActivationPolicy: lazy
