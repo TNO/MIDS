@@ -497,9 +497,9 @@
         <repository
             url="https://download.eclipse.org/tools/orbit/downloads/drops/R20211213173813/repository"/>
         <repository
-            url="https://download.eclipse.org/trace4cps/nightly/update-site/"/>
+            url="https://download.eclipse.org/trace4cps/v0.2/update-site/"/>
         <repository
-            url="https://download.eclipse.org/lsat/nightly/update-site/"/>
+            url="https://download.eclipse.org/lsat/v0.3/update-site/"/>
         <repository
             url="https://download.eclipse.org/justj/jres/11/updates/release/latest"/>
         <repository
@@ -507,7 +507,7 @@
         <repository
             url="https://hallvard.github.io/plantuml/plantuml.eclipse/1.1.30"/>
         <repository
-            url="https://tno.github.io/PPS/update-site/v0.20.0-RC5/"/>
+            url="https://tno.github.io/PPS/update-site/v0.20.0/"/>
       </repositoryList>
     </targlet>
   </setupTask>
