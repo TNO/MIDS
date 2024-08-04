@@ -126,13 +126,18 @@ Click the btn:[Hide] button to access the regular workbench.
 
 image::{imgsdir}/welcome-screen.png[]
 
-The welcome screen provides easy access to key contents of the documentation:
+The welcome screen provides easy access to among others:
 
-Overview::
-    Learn about basic Eclipse workbench concepts and access the complete link:userguide/index.html[MIDS user guide].
+MIDS documentation::
+    This opens the link:userguide/index.html[MIDS user guide] bundled with MIDS.
+    You can learn about MIDS, its features, how to use it and how to interpret the inferred models and compare results.
 
-What's New::
-    Discover major new features of this Eclipse release and read the link:userguide/index.html#release-notes[release notes].
+Import MIDS examples::
+    Imports the MIDS examples project into your MIDS installation.
+    You can use it get started with MIDS, following the link:https://github.com/TNO/MIDS/blob/main/docs/example.md[MIDS getting started example].
+
+Create empty project::
+    Create an empty project for storing your own models and other files, for when you want to use MIDS to infer and compare models for your own system.
 
 == Configuration
 
