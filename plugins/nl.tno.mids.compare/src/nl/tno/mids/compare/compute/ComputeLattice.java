@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// Copyright (c) 2018-2023 TNO and Contributors to the GitHub community
+// Copyright (c) 2018-2024 TNO and Contributors to the GitHub community
 //
 // This program and the accompanying materials are made available
 // under the terms of the MIT License which is available at
@@ -57,7 +57,7 @@ public abstract class ComputeLattice<T> {
      * </p>
      * 
      * @param variant Base variant to compare.
-     * @param otherVariant Possibly included variant.
+     * @param otherVariant Other variant to compare.
      * @return {@code true} if the behavior of {@code variant} is contained in the behavior of {@code otherVariant},
      *     {@code false} if it is not contained in that way.
      */

@@ -4,7 +4,7 @@
 
 Before setting up the development environment, GitHub should correctly be set up regarding SSH keys (in order to check out the repository using SSH).
 Instructions for generating new SSH keys and adding them to your GitHub account can be found [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
-       
+
 ## Setup
 
 Use the following steps to set up an Eclipse development environment for MIDS development:
@@ -12,7 +12,7 @@ Use the following steps to set up an Eclipse development environment for MIDS de
 1. Download the Eclipse Installer, from https://eclipse.org/downloads.
 2. Run the Eclipse Installer.
 3. Switch to Advanced mode, using the hamburger menu.
-4. Select *Eclipse Modeling Tools*, *2022-03* and *JRE 11.x - https://download.eclipse.org/justj/jres/11/updates/release/latest*.
+4. Select *Eclipse Modeling Tools*, *2022-03* and *JRE 17.x - https://download.eclipse.org/justj/jres/17/updates/release/latest*.
 5. Click *Next*.
 6. Use the green plus button to add `https://raw.githubusercontent.com/TNO/MIDS/main/releng/mids.setup`.
    Choose *Catalog: Eclipse Projects* in the dropdown box.
