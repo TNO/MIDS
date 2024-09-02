@@ -43,6 +43,8 @@ For more information about using MIDS, please read the link:userguide/index.html
 
 For more information about the development of MIDS, see the link:https://github.com/TNO/MIDS[MIDS GitHub page].
 
+For background information, see: Dennis Hendriks, "Model Inference and Comparison for Software Evolution in Large Component-Based Systems", PhD thesis, Radboud University, 2024 link:https://doi.org/10.54195/9789493296640[[DOI]] link:https://repository.ubn.ru.nl/handle/2066/308869[[Download]]
+
 == Downloads
 
 MIDS is available as a portable IDE, as command line scripts (bundled with the IDE) and as a feature for the Eclipse IDE through a P2 update site.
