@@ -20,7 +20,7 @@ For developers:
 * [Release information](docs/release-process.md)
 
 Background information:
-* Dennis Hendriks, "Model Inference and Comparison for Software Evolution in Large Component-Based Systems", PhD thesis, Radboud University, 2024 [DOI](https://doi.org/10.54195/9789493296640) [Download](https://repository.ubn.ru.nl/handle/2066/308869)
+* Dennis Hendriks, "Model Inference and Comparison for Software Evolution in Large Component-Based Systems", PhD thesis, Radboud University, 2024 [[DOI]](https://doi.org/10.54195/9789493296640) [[Download]](https://repository.ubn.ru.nl/handle/2066/308869)
 
 ## License
 
